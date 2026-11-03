@@ -1,14 +1,17 @@
 # Progresso — Ateliê de Estudos
 
-- **Estado:** active — base operacional 0.5 implementada e publicada, com CI remota aprovada.
+- **Estado:** active — base 0.5 publicada; auditoria encontrou duas falhas técnicas e aceite completo ainda pendente.
 - **Prioridade no portfólio:** unassigned.
 - **Data do estado:** 2026-11-03.
-- **Próxima ação:** produzir o próximo material de concurso/cargo solicitado e registrar a avaliação pedagógica real do leitor.
+- **Próxima ação:** corrigir a validação de imagens de revisão/contexto e incluir regressões antes de novo aceite final (AE-026).
 - **Responsável:** agente para implementação e revisão; titular para avaliação de leitura e escolha de seu concurso.
-- **Condição de conclusão desta etapa:** código remoto confirmado, verificações da entrega e 17 skills/documentação relidas no cofre.
+- **Condição atendida da etapa publicada:** código remoto confirmado, verificações dos exemplos e 17 skills/documentação relidas no cofre.
+- **Condição de encerramento do projeto:** corrigir AE-026/027 e comprovar AE-028, preservando a avaliação pedagógica e os limites declarados.
 - **GitHub:** destino informado pelo titular: https://github.com/kauanramalho/Gerados-de-Materiais-de-Estudos. Código publicado, histórico inicial preservado e SHA remoto confirmado. A CI aprovou verify e artifacts: https://github.com/kauanramalho/Gerados-de-Materiais-de-Estudos/actions/runs/41642703635. O bloqueio anterior está resolvido para esse destino.
 
 ## Base operacional
+
+A [auditoria de 03/11/2026](docs/auditoria-v05.md) não recomenda encerrar o projeto. Os 119 testes existentes passaram novamente, mas os ensaios adicionais reproduziram inclusão de imagem externa à pasta em revisão/contexto e ausência de capítulos afetados quando muda uma figura. Os oito PDFs publicados são referências, sem pedido final vinculado; ainda falta um aceite real completo do fluxo. O fechamento anterior comprova a entrega da base e dos exemplos, não a conclusão integral do objetivo original.
 
 Apostila e caderno por manifesto; pedido por texto/foto/print; leitura de instruções/skills com hashes; pesquisa de concurso/banca/provas/fontes; cobertura completa da seleção em --final; navegação por áreas/destinos do PDF; fontes e questões rastreáveis. Sem recorte, o pedido abrange todo o programa do cargo e não tem teto artificial de páginas. Ver [fluxo completo](docs/do-pedido-a-entrega.md).
 

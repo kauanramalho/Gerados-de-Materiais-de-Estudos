@@ -2,6 +2,8 @@
 
 Revisão de 03/11/2026. A base editorial operada pelo agente está implementada para apostila, caderno, simulado e revisão. As pendências técnicas de formatos, pontuação, manutenção, casos de impressão e auditoria foram desenvolvidas com exemplos e testes; o código está publicado no repositório do titular e a CI remota aprovou validações e oito PDFs.
 
+**Parecer da auditoria posterior:** projeto ainda não concluído. Foram reproduzidas duas falhas não cobertas pelos 119 testes: validação de recursos em revisão/contexto e impacto de mudança de figura na edição. Corrigir AE-026/027 e executar o aceite real AE-028 antes de declarar encerramento. Ver [relatório completo](auditoria-v05.md). As evidências abaixo descrevem a base entregue e não anulam esses achados.
+
 ## Entregue no método
 
 | Parte | Evidência |

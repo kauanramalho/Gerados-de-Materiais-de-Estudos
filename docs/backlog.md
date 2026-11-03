@@ -28,7 +28,10 @@ Estados: pronto, em execução, concluído, impedido, planejado. A ordem abaixo 
 | AE-022 | reprodução e retomada | estado 0.4 retomado e pipeline reproduzido em host GitHub; verify/artifacts aprovados | CI remota e evidências de fechamento | concluído |
 | AE-023 | validar e aprofundar skills | evidência por procedimento; módulos novos criados junto do fluxo que implementam | ae-curar-acervo aplicada; demais validações ainda pendentes | em execução |
 | AE-024 | tornar obrigatória a navegação correta | sumário, questão/resolução/retorno/teoria, áreas reais e hashes auditados; regressões negativas e cliques nos quatro materiais | AE-010; contrato em docs/navegacao.md | concluído |
-| AE-025 | pedido simples e cobertura focada no concurso | texto/foto/print preservados, pesquisa/contexto registrados, escopo integral sem teto de páginas e --final com testes negativos | contrato/ingestão entregues; aplicação real completa permanece em AE-021/022 | concluído |
+| AE-025 | pedido simples e cobertura focada no concurso | texto/foto/print preservados, pesquisa/contexto registrados, escopo integral sem teto de páginas e --final com testes negativos | contrato/ingestão entregues; aplicação real completa permanece em AE-021/028 | concluído |
+| AE-026 | validar imagens em todas as entradas renderizadas | revisão e contexto rejeitam recursos não declarados/fora da pasta antes do Pandoc; recursos válidos entram nos hashes; regressões negativas e positivas | defeito reproduzido na auditoria 0.5 | pronto |
+| AE-027 | propagar mudanças de figuras na comparação de edições | imagem alterada sinaliza capítulos dependentes e revisão relacionada, ou usa sinalização conservadora explícita; regressão reproduzível | defeito reproduzido na auditoria 0.5 | pronto |
+| AE-028 | comprovar pedido real de ponta a ponta | texto e foto/print reais conferidos, edital/retificações e provas pesquisados; apostila e caderno cobrem a seleção; --final, revisão factual/pedagógica e artefatos entregues auditados | AE-026/027; alvo confirmado; não escolher concurso do titular por inferência | planejado |
 
 Responsável pela execução: agente na tarefa autorizada; titular decide concurso, preferência visual final e prioridades pessoais. Issues no GitHub devem espelhar os itens abertos quando o repositório existir; não afirmar que foram criadas antes da confirmação remota.
 
@@ -37,3 +40,7 @@ Responsável pela execução: agente na tarefa autorizada; titular decide concur
 Na auditoria inicial, AE-009 e AE-011 estavam marcados como concluídos, e AE-012 como em execução, sem evidência suficiente. Os estados foram corrigidos. Na entrega 0.3 posterior, AE-011 foi implementado e testado. Depois, o titular aprovou o layout e pediu a checagem contínua dos links; AE-009 passou a em execução e AE-024 foi implementado. Avaliação pedagógica do titular e auditoria integral de acessibilidade continuam pendentes. O titular forneceu destino público com escrita confirmada; AE-004 passou a em execução. O 403 de criação fica como histórico, sem substituir a conferência de envio/CI.
 
 Ver [diagnóstico de prontidão](prontidao.md) para skills candidatas, Markdown previsto, critérios e ordem de execução. A produção dos próximos lotes não exige terminar todo o acervo ou contratar um serviço.
+
+## Auditoria completa de 03/11/2026
+
+AE-026/027 registram defeitos novos, ainda sem correção; AE-028 separa o aceite real dos contratos sintéticos já entregues em AE-025 e da reprodução técnica em AE-022. AE-009 e AE-023 continuam abertos. A [auditoria](auditoria-v05.md) contém provas, limites e critérios de encerramento. Os parágrafos anteriores descrevem a evolução histórica; não significam que o projeto inteiro esteja concluído.
