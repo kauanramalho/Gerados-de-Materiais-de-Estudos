@@ -24,6 +24,7 @@ Ao receber nome, edital ou provas de um concurso, inicie a identificação e a p
 - Use templates/ para briefing, fontes, perfil de banca, capítulos, questões e relatório. Mantenha um registro por execução com o que foi realmente lido, produzido e validado.
 - As instruções são reutilizáveis, mas não constituem automação ativa nem integração com um provedor de IA. Não instalar serviços ou contratar APIs sem necessidade do estágio atual.
 - Para novos lotes, usar docs/producao.md e um manifesto de material. Executar pré-validação, verificações da matéria, exportação e revisão. Não limitar a produção à amostra fixa de redes.
+- Para registrar ou reutilizar questões, usar ae-curar-acervo e docs/acervo.md. Recuperar o banco arquivado quando necessário; preservar revisões e direitos. A CLI não substitui a conferência de fontes oficiais.
 
 ## Gestão e encerramento
 

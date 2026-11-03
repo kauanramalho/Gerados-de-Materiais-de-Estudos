@@ -1,0 +1,176 @@
+[
+  {
+    "id": "Q-AUT-001",
+    "origem": "AUTORAL",
+    "objetivo": "MAT-01",
+    "formato": "multipla-escolha",
+    "enunciado": "Um valor de R$ 240,00 recebe desconto de 15% e depois aumento de 10% sobre o valor já reduzido. Qual é o valor final?",
+    "alternativas": {
+      "A": "R$ 228,00",
+      "B": "R$ 224,40",
+      "C": "R$ 204,00",
+      "D": "R$ 264,00",
+      "E": "R$ 224,00"
+    },
+    "resposta": "B",
+    "comentarios": {
+      "A": "Soma as taxas como se tivessem a mesma base.",
+      "B": "Correta: 240 × 0,85 × 1,10 = 224,40.",
+      "C": "Considera somente o desconto.",
+      "D": "Aplica somente o aumento ao valor inicial.",
+      "E": "Arredonda ou calcula a segunda mudança sem justificativa."
+    },
+    "direitos": "original-projeto",
+    "dificuldade": "estimada-intermediaria",
+    "perfil_referencia": "Demonstração autoral; sem banca definida.",
+    "theory": "porcentagens",
+    "source_ids": [
+      "M01"
+    ]
+  },
+  {
+    "id": "Q-AUT-002",
+    "origem": "AUTORAL",
+    "objetivo": "MAT-02",
+    "formato": "multipla-escolha",
+    "enunciado": "Uma taxa passou de 12% para 15%. Qual foi seu aumento relativo, tomando a taxa inicial como base?",
+    "alternativas": {
+      "A": "3%",
+      "B": "20%",
+      "C": "15%",
+      "D": "25%",
+      "E": "12%"
+    },
+    "resposta": "D",
+    "comentarios": {
+      "A": "Três é a diferença em pontos percentuais, não o crescimento relativo.",
+      "B": "Usa 15 como denominador: 3/15, em vez da base inicial 12.",
+      "C": "Repete a taxa final.",
+      "D": "Correta: (15 − 12)/12 = 0,25 = 25%.",
+      "E": "Repete a taxa inicial."
+    },
+    "direitos": "original-projeto",
+    "dificuldade": "estimada-intermediaria",
+    "perfil_referencia": "Demonstração autoral; sem banca definida.",
+    "theory": "porcentagens",
+    "source_ids": [
+      "M01"
+    ]
+  },
+  {
+    "id": "Q-AUT-003",
+    "origem": "AUTORAL",
+    "objetivo": "MAT-03",
+    "formato": "multipla-escolha",
+    "enunciado": "No registro de trinta sessões descrito nos dados do material, foram resolvidas 900 questões. Qual é a média de questões por sessão?",
+    "alternativas": {
+      "A": "25",
+      "B": "28",
+      "C": "30",
+      "D": "35",
+      "E": "180"
+    },
+    "resposta": "C",
+    "comentarios": {
+      "A": "É um valor observado, mas não o total dividido pelo número de sessões.",
+      "B": "Não corresponde a 900/30.",
+      "C": "Correta: 900 dividido por 30 é 30.",
+      "D": "Também é um valor observado; a média exige usar todas as sessões.",
+      "E": "Divide por cinco valores distintos; há trinta observações."
+    },
+    "direitos": "original-projeto",
+    "dificuldade": "estimada-intermediaria",
+    "perfil_referencia": "Demonstração autoral; sem banca definida.",
+    "theory": "medias",
+    "source_ids": [
+      "M02"
+    ]
+  },
+  {
+    "id": "Q-AUT-004",
+    "origem": "AUTORAL",
+    "objetivo": "MAT-04",
+    "formato": "multipla-escolha",
+    "enunciado": "Uma bolsa tem duas fichas azuis e três verdes, todas com a mesma chance individual de retirada. Em duas retiradas sucessivas sem reposição, qual é a probabilidade de ambas serem azuis?",
+    "alternativas": {
+      "A": "4/25",
+      "B": "2/5",
+      "C": "1/5",
+      "D": "1/4",
+      "E": "1/10"
+    },
+    "resposta": "E",
+    "comentarios": {
+      "A": "Seria a probabilidade com reposição e nova mistura.",
+      "B": "É a probabilidade de azul apenas na primeira retirada.",
+      "C": "Não combina corretamente os dois passos; há dois pares favoráveis entre vinte.",
+      "D": "É a chance da segunda azul condicionada à primeira azul, sem o primeiro fator.",
+      "E": "Correta: (2/5) × (1/4) = 1/10."
+    },
+    "direitos": "original-projeto",
+    "dificuldade": "estimada-intermediaria",
+    "perfil_referencia": "Demonstração autoral; sem banca definida.",
+    "theory": "probabilidade",
+    "source_ids": [
+      "M02"
+    ]
+  },
+  {
+    "id": "Q-AUT-005",
+    "origem": "AUTORAL",
+    "objetivo": "MAT-03",
+    "formato": "multipla-escolha",
+    "enunciado": "Duas sessões tiveram média de 20 questões; outras oito sessões tiveram média de 40 questões. Qual é a média conjunta nas dez sessões?",
+    "alternativas": {
+      "A": "36",
+      "B": "30",
+      "C": "40",
+      "D": "24",
+      "E": "60"
+    },
+    "resposta": "A",
+    "comentarios": {
+      "A": "Correta: (2 × 20 + 8 × 40)/10 = 36.",
+      "B": "Faz média simples das médias, atribuindo o mesmo peso aos grupos.",
+      "C": "Ignora as duas sessões do primeiro grupo.",
+      "D": "Não recompõe os totais dos dois grupos.",
+      "E": "Soma médias sem dividir pelo número de observações."
+    },
+    "direitos": "original-projeto",
+    "dificuldade": "estimada-intermediaria",
+    "perfil_referencia": "Demonstração autoral; sem banca definida.",
+    "theory": "medias",
+    "source_ids": [
+      "M02"
+    ]
+  },
+  {
+    "id": "Q-AUT-006",
+    "origem": "AUTORAL",
+    "objetivo": "MAT-01",
+    "formato": "multipla-escolha",
+    "enunciado": "Uma quantidade caiu de 200 para 180. Qual aumento percentual, aproximadamente, permite voltar de 180 para 200? Arredonde para duas casas decimais.",
+    "alternativas": {
+      "A": "10,00%",
+      "B": "9,09%",
+      "C": "11,11%",
+      "D": "20,00%",
+      "E": "90,00%"
+    },
+    "resposta": "C",
+    "comentarios": {
+      "A": "Usa a base inicial 200, embora o aumento parta de 180.",
+      "B": "Corresponde a 20/220, que não é a base do retorno.",
+      "C": "Correta: 20/180 × 100 = 11,111…%, arredondado para 11,11%.",
+      "D": "Confunde a diferença absoluta 20 com uma taxa percentual.",
+      "E": "É o percentual conservado após a queda em relação à base 200."
+    },
+    "direitos": "original-projeto",
+    "dificuldade": "estimada-intermediaria",
+    "perfil_referencia": "Demonstração autoral; sem banca definida.",
+    "theory": "porcentagens",
+    "source_ids": [
+      "M01"
+    ]
+  }
+]

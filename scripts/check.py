@@ -6,6 +6,7 @@ import sys
 from urllib.parse import unquote
 from integrity import validate_questions, validate_navigation
 from material import load_material
+from contracts import require_schema, validator
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -23,8 +24,11 @@ def main():
             if target and not (path.parent / target).exists():
                 errors.append(f'{path.relative_to(ROOT)}: arquivo ausente: {target}')
     skills = list((ROOT / '.agents/skills').glob('*/SKILL.md'))
-    if len(skills) != 12:
-        errors.append(f'Esperadas 12 skills, encontradas {len(skills)}')
+    inventory = (ROOT / 'docs/skills.md').read_text(encoding='utf-8')
+    listed = set(re.findall(r'\.\./\.agents/skills/([^/]+)/SKILL\.md', inventory))
+    actual = {p.parent.name for p in skills}
+    if actual != listed:
+        errors.append(f'Inventário de skills divergente: arquivos={sorted(actual)}, índice={sorted(listed)}')
     for skill in skills:
         content = skill.read_text(encoding='utf-8')
         for field in ('name:', 'description:', '## Entradas', '## Procedimento', '## Saídas', '## Validação'):
@@ -32,10 +36,16 @@ def main():
                 errors.append(f'{skill.parent.name}: contrato incompleto: {field}')
     questions = json.loads((ROOT / 'examples/redes/questoes.json').read_text(encoding='utf-8'))
     errors += validate_questions(questions)
+    for i, question in enumerate(questions):
+        try:
+            require_schema(question, 'questao.schema.json', f'amostra[{i}]')
+        except ValueError as error:
+            errors.append(str(error))
     for schema in (ROOT / 'schemas').glob('*.json'):
         data = json.loads(schema.read_text(encoding='utf-8'))
         if data.get('$schema') != 'https://json-schema.org/draft/2020-12/schema':
             errors.append(f'Schema sem versão: {schema.name}')
+        validator(schema.name)
     materials = list((ROOT / 'materials').glob('*/material.json'))
     for manifest in materials:
         try:
@@ -48,7 +58,7 @@ def main():
     if errors:
         print('\n'.join(errors))
         return 1
-    print(f'OK: {len(files)} Markdowns, 12 skills, {len(questions)} questões e contratos JSON; '
+    print(f'OK: {len(files)} Markdowns, {len(skills)} skills, {len(questions)} questões e contratos JSON; '
           + ('HTML conferido.' if html.exists() else 'HTML ainda não gerado.'))
     print('Limite: existência de referências não comprova conteúdo, direitos ou qualidade pedagógica.')
     print(f'Manifestos de materiais conferidos: {len(materials)}.')

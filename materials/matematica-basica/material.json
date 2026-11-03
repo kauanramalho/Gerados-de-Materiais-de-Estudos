@@ -1,0 +1,38 @@
+{
+  "id": "matematica-basica",
+  "title": "Matemática: porcentagens, médias e probabilidade",
+  "version": "0.3.0",
+  "scope": "Piloto autoral para testar fórmulas, tabela com continuação e figuras. Não é atribuído a edital ou banca e não cobre um programa completo de matemática.",
+  "chapters": [
+    {
+      "id": "cap-percentuais",
+      "title": "Porcentagens e bases de comparação",
+      "file": "01-porcentagens.md",
+      "objectives": [
+        "MAT-01",
+        "MAT-02"
+      ]
+    },
+    {
+      "id": "cap-medias",
+      "title": "Médias e o total observado",
+      "file": "02-medias.md",
+      "objectives": [
+        "MAT-03"
+      ]
+    },
+    {
+      "id": "cap-probabilidade",
+      "title": "Probabilidade sem reposição",
+      "file": "03-probabilidade.md",
+      "objectives": [
+        "MAT-04"
+      ]
+    }
+  ],
+  "questions": "questoes.json",
+  "sources": "fontes.json",
+  "figures": "figuras.json",
+  "coverage": "cobertura.json",
+  "practice_context": "contexto-questoes.md"
+}

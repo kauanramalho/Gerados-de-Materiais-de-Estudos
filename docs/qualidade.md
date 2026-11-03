@@ -31,3 +31,5 @@ Medir cobertura por item do edital, questões reais com evidência completa, par
 ## Verificações aplicadas ao piloto 0.2
 
 Usar os relatórios de build_material.py, as verificações técnicas da matéria e docs/validacao-piloto.md. Em SQL, executar a massa e comparar resultados, inclusive ausência de valores, múltiplas correspondências e erros esperados. No caderno, conferir se todos os dados necessários constam do próprio arquivo. Aprovação estrutural não equivale a aceite pedagógico.
+
+No publicador 0.3, testar também tipos/datas dos contratos e correspondência dos hashes de provas/gabaritos com as fontes. Em matemática, conferir contas e condições de equiprobabilidade, observar cada fração no PDF e garantir alternativa textual às fórmulas. Conferir cabeçalhos e linhas de tabelas na continuação. O catálogo deve preservar a revisão usada em cada edição; testes sintéticos de gabarito não são evidência de retificação oficial.

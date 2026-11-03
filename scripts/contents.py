@@ -78,7 +78,7 @@ def render_contents(html, entries, pages=None):
 
 
 def pdf_contents_pages(path, entries):
-    import fitz
+    import pymupdf as fitz
     with fitz.open(path) as document:
         destinations = document.resolve_names()
         pages = {}

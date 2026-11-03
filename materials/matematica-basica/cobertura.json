@@ -1,0 +1,39 @@
+[
+  {
+    "edital_item": "Objetivo de demonstração: porcentagens; sem edital associado",
+    "objectives": [
+      "MAT-01",
+      "MAT-02"
+    ],
+    "questions": [
+      "Q-AUT-001",
+      "Q-AUT-002",
+      "Q-AUT-006"
+    ],
+    "status": "complemento",
+    "limits": "mudanças sucessivas e base de comparação; não é cobertura de edital"
+  },
+  {
+    "edital_item": "Objetivo de demonstração: médias; sem edital associado",
+    "objectives": [
+      "MAT-03"
+    ],
+    "questions": [
+      "Q-AUT-003",
+      "Q-AUT-005"
+    ],
+    "status": "complemento",
+    "limits": "média aritmética e combinação de grupos; demais medidas fora do recorte"
+  },
+  {
+    "edital_item": "Objetivo de demonstração: probabilidade; sem edital associado",
+    "objectives": [
+      "MAT-04"
+    ],
+    "questions": [
+      "Q-AUT-004"
+    ],
+    "status": "complemento",
+    "limits": "universo finito equiprovável e duas retiradas; não cobre inferência"
+  }
+]

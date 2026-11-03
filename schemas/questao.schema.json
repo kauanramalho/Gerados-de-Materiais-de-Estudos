@@ -110,14 +110,18 @@
         },
         "numero": {
           "type": "string",
-          "minLength": 1
+          "minLength": 1,
+          "pattern": "^[1-9][0-9]*$"
         },
         "pagina": {
           "type": "string",
-          "minLength": 1
+          "minLength": 1,
+          "pattern": "^[1-9][0-9]*$"
         },
         "ano": {
-          "type": "integer"
+          "type": "integer",
+          "minimum": 1900,
+          "maximum": 9999
         },
         "prova_url": {
           "type": "string",

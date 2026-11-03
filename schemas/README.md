@@ -1,6 +1,8 @@
-# Contratos de dados v0.1
+# Contratos de dados v0.3
 
-JSON Schema 2020-12 descreve os formatos de briefing, questões e manifesto de material. Os contratos apoiam a publicação, sem substituir a revisão editorial. `scripts/check.py` verifica a amostra, a estrutura documental e os manifestos em materials/ usando a biblioteca padrão; validação genérica de todos os schemas é uma tarefa do pipeline futuro.
+JSON Schema 2020-12 descreve briefing, questões, manifesto, fontes, figuras e cobertura. `scripts/contracts.py` usa jsonschema e FormatChecker para validar tipos, datas, campos obrigatórios e propriedades extras. Instale `requirements-core.txt`. Os contratos apoiam a publicação sem substituir revisão editorial ou consulta aos documentos originais.
+
+`scripts/check.py` verifica os próprios schemas, a amostra e os manifestos presentes. A CLI valida as entradas efetivamente usadas antes de compor o material; um schema de briefing disponível não significa que todo pedido tenha briefing JSON persistido.
 
 Questão REAL exige origem completa e gabarito oficial. AUTORAL não pode receber uma atribuição fictícia de banca. Para ADAPTADA, registrar origem e mudanças. A publicação do texto de terceiros depende de direitos; o registro pode apontar apenas para o item na prova.
 
@@ -8,3 +10,6 @@ Questão REAL exige origem completa e gabarito oficial. AUTORAL não pode recebe
 - [Questão](questao.schema.json)
 
 - [Manifesto de material](material.schema.json). A CLI build_material.py aplica também verificações de arquivos, cobertura, fontes, figuras e navegação.
+- [Fontes](fontes.schema.json)
+- [Figuras](figuras.schema.json)
+- [Cobertura](cobertura.schema.json)

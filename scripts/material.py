@@ -3,6 +3,7 @@ from datetime import datetime, timezone
 from hashlib import sha256
 from html import escape
 import json
+from importlib.metadata import version as package_version
 import platform
 from pathlib import Path
 import re
@@ -13,6 +14,7 @@ from urllib.parse import urlparse
 
 from contents import contents_entries, render_contents, pdf_contents_pages
 from integrity import validate_questions, validate_navigation
+from contracts import require_schema
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -32,12 +34,14 @@ def read_json(path):
 
 def http_url(value):
     parsed = urlparse(str(value))
-    return parsed.scheme == 'https' and bool(parsed.netloc) and not parsed.username
+    return (parsed.scheme == 'https' and bool(parsed.hostname)
+            and parsed.username is None and parsed.password is None)
 
 
 def load_material(path):
     path = Path(path).resolve()
     folder, config = path.parent, read_json(path)
+    require_schema(config, 'material.schema.json', path.name)
     for field in ('id', 'title', 'version', 'scope', 'chapters', 'questions', 'sources', 'figures', 'coverage'):
         if field not in config or config[field] in ('', None):
             raise ValueError(f'Manifesto sem campo: {field}')
@@ -45,6 +49,13 @@ def load_material(path):
         raise ValueError('ID do material deve usar letras minúsculas, números e hífen')
     data = {key: read_json(local_path(folder, config[key]))
             for key in ('questions', 'sources', 'figures', 'coverage')}
+    for key, schema in (('sources', 'fontes.schema.json'), ('figures', 'figuras.schema.json'),
+                        ('coverage', 'cobertura.schema.json')):
+        require_schema(data[key], schema, config[key])
+    if not isinstance(data['questions'], list):
+        raise ValueError(f'{config["questions"]}: tipo esperado: lista de questões')
+    for i, question in enumerate(data['questions']):
+        require_schema(question, 'questao.schema.json', f'{config["questions"]}[{i}]')
     if not isinstance(config['chapters'], list) or not config['chapters']:
         raise ValueError('O material deve ter ao menos um capítulo')
     if any(not isinstance(value, list) or any(not isinstance(row, dict) for row in value)
@@ -98,6 +109,8 @@ def load_material(path):
             raise ValueError(f'{q["id"]}: remissão teórica ausente')
         if not set(q.get('source_ids', [])) <= set(source_ids):
             raise ValueError(f'{q["id"]}: fonte desconhecida')
+        if not q.get('source_ids'):
+            raise ValueError(f'{q["id"]}: falta fonte de apoio ao comentário')
         if q['origem'] in ('REAL', 'ADAPTADA'):
             original = q['fonte_original']
             if not all(http_url(original[k]) for k in ('prova_url', 'gabarito_url')):
@@ -107,6 +120,11 @@ def load_material(path):
             for field in ('prova_sha256', 'gabarito_sha256'):
                 if not re.fullmatch(r'[a-f0-9]{64}', original.get(field, '')):
                     raise ValueError(f'{q["id"]}: falta hash da evidência: {field}')
+            for role in ('prova', 'gabarito'):
+                matches = [s for s in data['sources'] if s['id'] in q['source_ids']
+                           and s['url'] == original[role + '_url']]
+                if not any(s.get('sha256') == original[role + '_sha256'] for s in matches):
+                    raise ValueError(f'{q["id"]}: hash de {role} diverge das fontes declaradas')
             if q['direitos'] == 'reproducao-verificada' and not q.get('permission_evidence'):
                 raise ValueError(f'{q["id"]}: falta evidência da permissão de reprodução')
         if q['origem'] == 'ADAPTADA' and not q.get('permission_evidence'):
@@ -206,7 +224,7 @@ def compose_material(data, kind='apostila'):
 
 
 def audit_pdf(pdf, entries, pages, questions):
-    import fitz
+    import pymupdf as fitz
     errors, internal, external, body_sizes = [], 0, 0, []
     with fitz.open(pdf) as document:
         destinations = document.resolve_names()
@@ -251,7 +269,7 @@ def publish(data, output_folder, kind='apostila', pdf=False):
     source, html_path = output / f'{kind}.md', output / f'{kind}.html'
     source.write_text(compose_material(data, kind), encoding='utf-8')
     subprocess.run(['pandoc', str(source), '--from=markdown-raw_html', '--standalone', '--toc',
-                    '--toc-depth=2', '--number-sections', '--embed-resources',
+                    '--toc-depth=2', '--number-sections', '--embed-resources', '--mathml',
                     '--resource-path=' + str(folder), '--css=' + str(ROOT / 'styles/apostila.css'),
                     '--metadata=title:' + config['title'], '--metadata=lang:pt-BR',
                     '--metadata=toc-title:Sumário', '-o', str(html_path)], check=True)
@@ -265,24 +283,30 @@ def publish(data, output_folder, kind='apostila', pdf=False):
               'generated_at': datetime.now(timezone.utc).isoformat(),
               'questions': len(data['questions']), 'html_navigation': 'passed',
               'editorial_review': 'requires-recorded-review', 'files': {}, 'inputs': {}}
-    report['toolchain'] = {'publisher_version': '0.2.0', 'python': platform.python_version(),
+    report['toolchain'] = {'publisher_version': '0.3.0', 'python': platform.python_version(),
+                          'jsonschema': package_version('jsonschema'),
                           'pandoc': subprocess.check_output(['pandoc', '--version'], text=True).splitlines()[0],
                           'stylesheet_sha256': sha256((ROOT / 'styles/apostila.css').read_bytes()).hexdigest(),
                           'publisher_sha256': sha256(Path(__file__).read_bytes()).hexdigest(),
                           'contents_sha256': sha256((ROOT / 'scripts/contents.py').read_bytes()).hexdigest()}
+    report['toolchain']['contracts_sha256'] = sha256((ROOT / 'scripts/contracts.py').read_bytes()).hexdigest()
+    report['toolchain']['schemas'] = {p.name: sha256(p.read_bytes()).hexdigest()
+                                    for p in sorted((ROOT / 'schemas').glob('*.json'))}
     if pdf:
         try:
-            import fitz
+            import pymupdf as fitz
             from playwright.sync_api import sync_playwright
         except ImportError as error:
             raise ValueError('Instale requirements-pdf.txt para gerar PDF') from error
         executable = shutil.which('chromium') or shutil.which('google-chrome')
-        if not executable:
-            raise ValueError('Chromium/Chrome não encontrado')
         pdf_path = output / f'{kind}.pdf'
         with sync_playwright() as playwright:
+            executable = executable or playwright.chromium.executable_path
+            if not Path(executable).is_file():
+                raise ValueError('Chromium/Chrome não encontrado; instale com python -m playwright install chromium')
             browser = playwright.chromium.launch(executable_path=executable, headless=True,
                 args=['--no-sandbox', '--disable-dev-shm-usage'], timeout=30000)
+            report['toolchain']['chromium'] = browser.version
             try:
                 page = browser.new_page(java_script_enabled=False)
                 page.route('**/*', lambda route: route.abort())

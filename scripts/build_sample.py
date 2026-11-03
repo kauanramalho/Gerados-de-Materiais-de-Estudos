@@ -75,7 +75,7 @@ def main():
         pdf = build / 'amostra.pdf'
         try:
             from playwright.sync_api import sync_playwright, Error
-            import fitz
+            import pymupdf as fitz
         except ImportError:
             parser.error('Para PDF: instale requirements-pdf.txt. O HTML já foi gerado.')
         try:

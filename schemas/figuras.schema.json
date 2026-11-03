@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Figuras de um material",
+  "type": "array",
+  "minItems": 0,
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "id",
+      "file",
+      "caption",
+      "alt",
+      "rights",
+      "source"
+    ],
+    "properties": {
+      "id": {
+        "type": "string",
+        "pattern": "^FIG-[0-9]{3,}$"
+      },
+      "file": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "\\S"
+      },
+      "caption": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "\\S"
+      },
+      "alt": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "\\S"
+      },
+      "rights": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "\\S"
+      },
+      "source": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "\\S"
+      }
+    }
+  }
+}

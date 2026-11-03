@@ -1,0 +1,18 @@
+[
+  {
+    "id": "FIG-001",
+    "file": "figuras/fatores.svg",
+    "caption": "Mudanças sucessivas usam bases diferentes.",
+    "alt": "Valor inicial 240, após desconto de 15%: 204; após aumento de 10%: 224,40.",
+    "rights": "original-projeto",
+    "source": "original-projeto"
+  },
+  {
+    "id": "FIG-002",
+    "file": "figuras/retiradas.svg",
+    "caption": "Árvore de duas retiradas sem reposição.",
+    "alt": "Primeira azul: 2/5, depois azul 1/4 ou verde 3/4. Primeira verde: 3/5, depois azul 2/4 ou verde 2/4.",
+    "rights": "original-projeto",
+    "source": "original-projeto"
+  }
+]

@@ -35,3 +35,7 @@
 ## D009 — 2026-11-03 — Piloto e publicador por manifesto
 
 **Decisão:** usar um recorte público de modelagem relacional/SQL da Dataprev/FGV como referência e publicar apostila e caderno dos mesmos dados. **Motivo:** havia edital e provas no contexto, permitindo testar proveniência, questões e resultados executáveis. **Consequência:** a seleção não altera prioridade pessoal; itens reais têm status preliminar explícito e acesso por link; o aceite pedagógico depende de leitura e aplicação. **Revisar quando:** houver preferência diferente de concurso ou avaliação do leitor.
+
+## D010 — 2026-11-03 — Contratos verificáveis e catálogo com revisões
+
+**Decisão:** usar JSON Schema com validação de formatos antes da publicação e SQLite local para identidade, revisões e ocorrências de questões por edição. **Motivo:** o titular autorizou continuar as pendências diagnosticadas; tipos/datas incoerentes, duplicatas e alterações silenciosas prejudicam materiais reutilizados. **Consequência:** importar edição modificada exige nova versão; revisões divergentes exigem motivo registrado, preservam o estado anterior e não recompõem PDFs antigos. Fontes oficiais continuam conferidas pelo agente. **Revisar quando:** acervo ou concorrência exigirem outra forma de armazenamento, mantendo rastreabilidade e direitos.

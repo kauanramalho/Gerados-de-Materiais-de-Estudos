@@ -51,3 +51,6 @@ header h1.title { font-size: 30pt; }
   a { text-decoration: underline; }
   nav a { text-decoration: none; }
 }
+/* MathML nativo: a exportação não depende de scripts ou fontes remotas. */
+.math.display{display:block;text-align:center;margin:1.1em 0;break-inside:avoid}
+math{font-size:1em}

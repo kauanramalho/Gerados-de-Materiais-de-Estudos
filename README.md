@@ -2,7 +2,7 @@
 
 Base permanente de instruções, skills e modelos para produzir apostilas e cadernos de questões de concursos, com explicações claras, ilustrações úteis e fontes verificáveis.
 
-**Fase atual:** piloto editorial produzido e publicador de materiais em versão 0.2. O projeto é conduzido por um agente com acesso a este repositório. Ainda não existe um serviço autônomo que receba editais ou gere apostilas sem uma sessão de trabalho.
+**Fase atual:** publicador 0.3, dois pilotos editoriais e acervo local consultável. O projeto é conduzido por um agente com acesso a este repositório. Ainda não existe um serviço autônomo que receba editais ou gere apostilas sem uma sessão de trabalho.
 
 ## Como pedir um material
 
@@ -14,7 +14,7 @@ O agente deve recuperar o estado do projeto, identificar o concurso, buscar edit
 
 ## O que está disponível
 
-- [Instruções para agentes](AGENTS.md) e [12 skills editoriais](docs/skills.md), com entradas, procedimentos, saídas e critérios de aceite.
+- [Instruções para agentes](AGENTS.md) e [13 skills editoriais](docs/skills.md), com entradas, procedimentos, saídas e critérios de aceite.
 - [Planejamento](docs/planejamento.md), [arquitetura](docs/arquitetura.md), [roadmap](docs/roadmap.md) e [backlog](docs/backlog.md).
 - [O que falta para ficar pronto](docs/prontidao.md): lacunas verificadas, skills candidatas, documentos previstos e critérios de conclusão.
 - [Manual editorial](docs/manual-editorial.md), [padrão visual](docs/padrao-visual.md), [política de questões](docs/questoes.md) e [revisão](docs/qualidade.md).
@@ -25,6 +25,8 @@ O agente deve recuperar o estado do projeto, identificar o concurso, buscar edit
 
 O agente já pode montar materiais a partir de um manifesto. O piloto contém teoria, três figuras, exemplos SQL verificados, oito questões autorais e três referências a questões reais com comentário. Veja o [fluxo de produção](docs/producao.md) e o [piloto](materials/dataprev-sql/README.md).
 
+O [piloto de matemática](materials/matematica-basica/README.md) acrescenta seis questões autorais, fórmulas sem JavaScript e tabela com continuação. O [acervo local](docs/acervo.md) permite importar os dois lotes, buscar e deduplicar 17 itens, com histórico de revisões explícitas.
+
 ```sh
 python scripts/build_material.py materials/dataprev-sql/material.json --check
 python scripts/build_material.py materials/dataprev-sql/material.json --pdf
@@ -33,7 +35,7 @@ python scripts/build_material.py materials/dataprev-sql/material.json --kind cad
 
 ## Verificar e gerar a amostra inicial
 
-Requer Python 3.11+ e Pandoc para HTML. Para PDF, requer Chromium/Chrome, Playwright e PyMuPDF (`pip install -r requirements-pdf.txt`). A verificação usa apenas a biblioteca padrão do Python; não exige chave de API.
+Requer Python 3.11+ e `pip install -r requirements-core.txt` para validar os contratos JSON. Para HTML, requer Pandoc. Para PDF, instale `requirements-pdf.txt` e use Chromium/Chrome de sistema ou `python -m playwright install chromium`. Não exige chave de API.
 
 ```sh
 python scripts/check.py

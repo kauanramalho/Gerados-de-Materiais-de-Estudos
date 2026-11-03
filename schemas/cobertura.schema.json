@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Cobertura de um material",
+  "type": "array",
+  "minItems": 1,
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "edital_item",
+      "objectives",
+      "questions",
+      "status",
+      "limits"
+    ],
+    "properties": {
+      "edital_item": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "\\S"
+      },
+      "objectives": {
+        "type": "array",
+        "uniqueItems": true,
+        "items": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        }
+      },
+      "questions": {
+        "type": "array",
+        "uniqueItems": true,
+        "items": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        }
+      },
+      "status": {
+        "enum": [
+          "parcial",
+          "completo",
+          "nao-coberto",
+          "pre-requisito",
+          "complemento"
+        ]
+      },
+      "limits": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "\\S"
+      }
+    }
+  }
+}

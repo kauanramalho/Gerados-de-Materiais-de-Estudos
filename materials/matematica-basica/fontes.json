@@ -1,0 +1,18 @@
+[
+  {
+    "id": "M01",
+    "title": "OpenStax — Prealgebra 2e, §6.2",
+    "url": "https://openstax.org/books/prealgebra-2e/pages/6-2-solve-general-applications-of-percent",
+    "locator": "Equações de porcentagem e mudança percentual; página HTML consultada",
+    "checked_on": "2026-11-03",
+    "rights": "consulta conceitual; sem reprodução de texto ou exemplos"
+  },
+  {
+    "id": "M02",
+    "title": "OpenStax — Prealgebra 2e, §5.5",
+    "url": "https://openstax.org/books/prealgebra-2e/pages/5-5-averages-and-probability",
+    "locator": "Média aritmética e definição elementar de probabilidade; página HTML consultada",
+    "checked_on": "2026-11-03",
+    "rights": "consulta conceitual; sem reprodução de texto, figura ou exemplos"
+  }
+]

@@ -23,3 +23,9 @@ Adotar coluna única, tipografia legível, figuras perto do conceito, exemplos c
 ## Próximo levantamento
 
 No piloto, selecionar dois ou três capítulos abertos comparáveis à matéria e analisar páginas efetivas: abertura, desenvolvimento, exemplo resolvido, figura e exercícios. Registrar edição, páginas, o padrão adotado, limites de uso e ajustes observados no teste. Não baixar bibliotecas inteiras nem copiar capítulos de livros comerciais.
+
+## Consulta aplicada ao segundo piloto — 03/11/2026
+
+Foram abertas as seções HTML [Prealgebra 2e §6.2](https://openstax.org/books/prealgebra-2e/pages/6-2-solve-general-applications-of-percent) e [§5.5](https://openstax.org/books/prealgebra-2e/pages/5-5-averages-and-probability). As páginas apresentam objetivos, preparação, explicação, exemplo resolvido e tentativa guiada. A organização reforça a escolha própria de introduzir a base de cálculo antes da fórmula e conferir o resultado depois da solução.
+
+O novo piloto usa situações, números e diagramas originais. Não foram copiados enunciados, figuras ou identidade gráfica. Esta consulta a duas seções HTML não encerra a comparação de capítulos completos em PDF prevista em AE-015.

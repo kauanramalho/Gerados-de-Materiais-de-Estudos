@@ -38,7 +38,9 @@ IDs persistem entre revisões: `CAP-001`, `FIG-001`, `Q-AUT-001`, `Q-REAL-001`; 
 
 Markdown é a fonte editorial. HTML serve à leitura e à revisão; PDF A4 serve à distribuição. A CLI `scripts/build_material.py` 0.2 recebe manifesto, capítulos, figuras, fontes, cobertura e questões, compondo apostila ou caderno com Pandoc e Chromium via Playwright. O sumário usa os destinos do PDF para conferir as páginas; a navegação e os hashes são registrados. `scripts/build_sample.py` preserva a demonstração inicial de redes.
 
-O piloto SQL validou essa implementação nos dois formatos. Fórmulas, tabelas longas, outras matérias, ligação entre volumes e auditoria completa de acessibilidade permanecem pendentes. HTML com títulos/descrições não certifica PDF acessível. Avaliar outro motor de impressão somente se os testes demonstrarem uma limitação concreta; ver [prontidão](prontidao.md) e [produção](producao.md).
+O publicador 0.3 aplica contratos com jsonschema, exporta fórmulas MathML sem JavaScript e foi aplicado a SQL/matemática em apostila/caderno. Uma tabela com continuação e sete fórmulas foram conferidas no novo lote. Ligação entre volumes, texto normativo, outras figuras detalhadas e auditoria completa de acessibilidade permanecem pendentes. HTML com títulos/descrições não certifica PDF acessível. Avaliar outro motor de impressão somente se os testes demonstrarem uma limitação concreta; ver [prontidão](prontidao.md) e [produção](producao.md).
+
+O [catálogo local](acervo.md) guarda questões, revisões imutáveis e ocorrências por edição em SQLite. Busca e exportação usam snapshots consistentes; importação usa transação. Os manifestos são entradas da produção e os bancos completos são arquivados fora do Git. Alterações de resposta não recompõem automaticamente materiais já entregues.
 
 ## Integrações
 

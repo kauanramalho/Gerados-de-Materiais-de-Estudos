@@ -1,4 +1,4 @@
-# Produção de materiais — versão 0.2
+# Produção de materiais — versão 0.3
 
 O agente pesquisa e redige; o publicador monta e verifica os arquivos preparados. Esta versão já aceita materiais novos por manifesto e exporta apostila e caderno de questões. Não há chamada automática a um LLM ou serviço de recebimento permanente.
 
@@ -18,7 +18,11 @@ Uma pasta de material contém material.json, capítulos Markdown, questoes.json,
 
 Os capítulos começam no nível H2; o H1 e seu ID são gerados a partir do manifesto. Figuras ficam dentro da pasta, são declaradas no manifesto de figuras e recebem descrição no Markdown. As questões apontam para um objetivo ensinado e uma seção de teoria existente.
 
+Os arquivos passam pelos JSON Schemas de material, questão, fontes, figuras e cobertura, com validação de datas e tipos. Campos desconhecidos não são ignorados silenciosamente. Os hashes de prova/gabarito de um item real precisam corresponder às fontes declaradas. Instale `requirements-core.txt`; a dependência é incluída em `requirements-pdf.txt`.
+
 O exemplo completo está em [materials/dataprev-sql](../materials/dataprev-sql/README.md). O [modelo de manifesto](../templates/manifesto-material.json) e o [modelo de conteúdo](../templates/conteudo-capitulo.md) são pontos de partida. Os contratos estão em schemas; a pré-validação também verifica referências entre arquivos.
+
+O [piloto de matemática](../materials/matematica-basica/README.md) demonstra fórmulas com `$...$` e `$$...$$`, convertidas para MathML nativo com descrição em palavras no texto. Não há carregamento de MathJax remoto. Confira fórmulas no PDF e mantenha equivalentes textuais; isso não certifica acessibilidade integral.
 
 ## Comandos
 
@@ -30,6 +34,8 @@ python scripts/build_material.py materials/dataprev-sql/material.json --kind cad
 ```
 
 Use --output para escolher outra pasta de saída. Sem --pdf, o comando gera Markdown, HTML e relatório; os números de página no sumário são preenchidos quando o PDF é exportado. --check não gera o material.
+
+Após revisar o lote, importe o manifesto no [acervo](acervo.md). Alterações em edições já registradas exigem nova versão. Revisões de questões são explícitas e preservam histórico; arquive o banco e a exportação fora do Git/cofre.
 
 ## O que as verificações garantem
 
