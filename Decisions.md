@@ -51,3 +51,11 @@
 ## D013 — 2026-11-03 — Fechamento funcional e publicação
 
 **Decisão:** usar o repositório público Gerados-de-Materiais-de-Estudos fornecido pelo titular, preservando seu primeiro commit. Implementar simulado/pontuação, revisão, edições/erratas e auditoria com quatro skills próprias. **Motivo:** pedido de resolver pendências e confirmar os destinos. **Consequência:** envio e CI foram conferidos; avaliação pedagógica e novas coleções exigem execução real. Gabarito do simulado fica em seção posterior no mesmo PDF. Marcação PDF/SVG melhora a semântica sem presumir PDF/UA. **Revisar quando:** novo pedido ou requisito exigir expansão.
+
+## D014 — 2026-11-03 — Recursos e impacto de figuras pela AST
+
+**Decisão:** conferir o Markdown composto com o mesmo leitor do Pandoc antes da incorporação e rastrear usos de figuras nessa AST. **Motivo:** imagens de revisão/contexto escapavam da checagem, e a comparação de edições ignorava alterações de figuras. **Consequência:** caminhos resolvidos precisam permanecer no material e no inventário; SVG não pode buscar recursos externos. Uso sem capítulo definido exige revisão conservadora explícita. **Revisar quando:** novos formatos ou sintaxes exigirem ajuste, mantendo validação antes de leitura e hashes completos.
+
+## D015 — 2026-11-03 — Caso real escolhido e aceite honesto
+
+**Decisão:** validar a matéria inteira Banco de Dados do Dataprev/FGV, Perfil 3, nos 17 itens do edital 001/2026. **Motivo:** escolha expressa do titular. **Consequência:** pedidos por texto e print de teste, pesquisa oficial, 17 capítulos e 49 questões; o print é renderização do edital pelo agente, não foto recebida do usuário. Aplicação das 17 skills e revisão editorial por IA são documentadas; AE-009 exige retorno real do leitor. **Revisar quando:** o retorno indicar falha ou uma nova seleção mudar o escopo.

@@ -1,0 +1,150 @@
+{
+  "id": "dataprev-bd",
+  "title": "Banco de Dados — Dataprev/FGV 2026",
+  "version": "0.6.1",
+  "scope": "Matéria completa de Banco de Dados do Anexo I, Perfil 3 — Desenvolvimento de Software, edital Dataprev 001/2026 retificado em 29/07/2026, páginas 30–31: itens 1 a 17. Caso de validação escolhido pelo titular; não é cobertura das demais disciplinas do concurso. Inclui explicações, exemplos resolvidos, figuras, questões autorais e referências a itens reais. A consulta de 03/11/2026 localizou gabarito preliminar de 2026, assim identificado. Não há teto artificial de páginas; a extensão acompanha os objetivos.",
+  "chapters": [
+    {
+      "id": "cap-modelagem",
+      "title": "Modelagem conceitual, lógica e física",
+      "file": "01-modelagem.md",
+      "objectives": [
+        "BD-01"
+      ]
+    },
+    {
+      "id": "cap-abordagens",
+      "title": "Abordagens relacional e multidimensional",
+      "file": "02-abordagens.md",
+      "objectives": [
+        "BD-02"
+      ]
+    },
+    {
+      "id": "cap-normalizacao",
+      "title": "Normalização e dependências",
+      "file": "03-normalizacao.md",
+      "objectives": [
+        "BD-03"
+      ]
+    },
+    {
+      "id": "cap-integridade",
+      "title": "Integridade referencial",
+      "file": "04-integridade.md",
+      "objectives": [
+        "BD-04"
+      ]
+    },
+    {
+      "id": "cap-metadados",
+      "title": "Metadados e linhagem",
+      "file": "05-metadados.md",
+      "objectives": [
+        "BD-05"
+      ]
+    },
+    {
+      "id": "cap-dimensional",
+      "title": "Modelagem dimensional",
+      "file": "06-dimensional.md",
+      "objectives": [
+        "BD-06"
+      ]
+    },
+    {
+      "id": "cap-sql",
+      "title": "Consultas SQL",
+      "file": "07-sql.md",
+      "objectives": [
+        "BD-07"
+      ]
+    },
+    {
+      "id": "cap-ddl",
+      "title": "Definição de dados — DDL",
+      "file": "08-ddl.md",
+      "objectives": [
+        "BD-08"
+      ]
+    },
+    {
+      "id": "cap-dml",
+      "title": "Manipulação de dados — DML",
+      "file": "09-dml.md",
+      "objectives": [
+        "BD-09"
+      ]
+    },
+    {
+      "id": "cap-sgbd",
+      "title": "Sistemas gerenciadores de bancos de dados",
+      "file": "10-sgbd.md",
+      "objectives": [
+        "BD-10"
+      ]
+    },
+    {
+      "id": "cap-propriedades",
+      "title": "Propriedades e transações",
+      "file": "11-propriedades.md",
+      "objectives": [
+        "BD-11"
+      ]
+    },
+    {
+      "id": "cap-nosql",
+      "title": "Bancos de dados NoSQL",
+      "file": "12-nosql.md",
+      "objectives": [
+        "BD-12"
+      ]
+    },
+    {
+      "id": "cap-memoria",
+      "title": "Bancos em memória",
+      "file": "13-memoria.md",
+      "objectives": [
+        "BD-13"
+      ]
+    },
+    {
+      "id": "cap-lakes",
+      "title": "Data lakes e big data",
+      "file": "14-lakes.md",
+      "objectives": [
+        "BD-14"
+      ]
+    },
+    {
+      "id": "cap-estruturas",
+      "title": "Dados estruturados e não estruturados",
+      "file": "15-estruturas.md",
+      "objectives": [
+        "BD-15"
+      ]
+    },
+    {
+      "id": "cap-avaliacao",
+      "title": "Avaliação de modelos de dados",
+      "file": "16-avaliacao.md",
+      "objectives": [
+        "BD-16"
+      ]
+    },
+    {
+      "id": "cap-integracao",
+      "title": "Integração e ingestão de dados",
+      "file": "17-integracao.md",
+      "objectives": [
+        "BD-17"
+      ]
+    }
+  ],
+  "questions": "questoes.json",
+  "sources": "fontes.json",
+  "figures": "figuras.json",
+  "coverage": "cobertura.json",
+  "profile": "perfil-banca.md",
+  "practice_context": "contexto-questoes.md"
+}

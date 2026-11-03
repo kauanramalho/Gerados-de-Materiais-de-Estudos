@@ -1,0 +1,98 @@
+[
+  {
+    "id": "FIG-001",
+    "file": "figuras/modelagem.svg",
+    "caption": "Três níveis de decisão",
+    "alt": "Conceitual: Aluno — Curso, Relacionamento N:M, Regras do negócio; Lógico: Aluno, Curso, Matricula, Chaves e restrições, Modelo relacional; Físico: Tipos do SGBD, Índices e partições, Acesso e armazenamento",
+    "source": "original-projeto",
+    "rights": "original-projeto"
+  },
+  {
+    "id": "FIG-002",
+    "file": "figuras/abordagens.svg",
+    "caption": "Um evento, duas perspectivas",
+    "alt": "Transação: Registrar uma matrícula, Conferir aluno e curso, Alteração individual; Análise: Receita por mês e curso, Agregações e dimensões, Muitos eventos",
+    "source": "original-projeto",
+    "rights": "original-projeto"
+  },
+  {
+    "id": "FIG-003",
+    "file": "figuras/normalizacao.svg",
+    "caption": "Cada informação depende de sua chave",
+    "alt": "Aluno: aluno_id → nome, Cadastro da pessoa; Curso: curso_id → título, Referência ao instrutor; Instrutor: instrutor_id → nome, Cadastro do instrutor; Matricula: (aluno, curso) → nota, Dados do vínculo",
+    "source": "original-projeto",
+    "rights": "original-projeto"
+  },
+  {
+    "id": "FIG-004",
+    "file": "figuras/integridade.svg",
+    "caption": "Três situações de referência",
+    "alt": "Correspondência: aluno_id = 1, Aluno 1 existe, Referência válida; Ausência permitida: aluno_id = NULL, Coluna anulável, Relação não obrigatória; Referência inválida: aluno_id = 99, Aluno 99 não existe, Viola a chave estrangeira",
+    "source": "original-projeto",
+    "rights": "original-projeto"
+  },
+  {
+    "id": "FIG-005",
+    "file": "figuras/sgbd.svg",
+    "caption": "Responsabilidades do SGBD",
+    "alt": "Analisar e planejar: Sintaxe e objetos, Estimativas e plano; Executar e coordenar: Consulta e restrições, Transações e visibilidade; Armazenar e recuperar: Dados e índices, Catálogo e log",
+    "source": "original-projeto",
+    "rights": "original-projeto"
+  },
+  {
+    "id": "FIG-006",
+    "file": "figuras/transacoes.svg",
+    "caption": "Concorrência: preservar os dois efeitos",
+    "alt": "T1 e T2 leem: Saldo inicial = 100, T1 pretende somar 20, T2 pretende somar 30; Gravação sem controle: T1 grava 120, T2 grava 130, Acréscimo de 20 perdido; Efeitos preservados: Resultado esperado: 150, Operação e controle, compatíveis com a regra",
+    "source": "original-projeto",
+    "rights": "original-projeto"
+  },
+  {
+    "id": "FIG-007",
+    "file": "figuras/nosql.svg",
+    "caption": "Famílias e padrões de acesso",
+    "alt": "Chave–valor: Chave → valor, Busca por identidade; Documentos: Campos e subdocumentos, Unidade acessada junta; Famílias de colunas: Chaves e colunas, Organização distribuída; Grafos: Nós e arestas, Percursos de relações",
+    "source": "original-projeto",
+    "rights": "original-projeto"
+  },
+  {
+    "id": "FIG-008",
+    "file": "figuras/memoria.svg",
+    "caption": "Operação e persistência são decisões distintas",
+    "alt": "Em memória: Dados operados em RAM, Capacidade e volatilidade; Snapshot: Estado em um instante, Recuperação a partir dele; Log de operações: Sequência registrada, Reaplicação na recuperação",
+    "source": "original-projeto",
+    "rights": "original-projeto"
+  },
+  {
+    "id": "FIG-009",
+    "file": "figuras/lake.svg",
+    "caption": "Organização ilustrativa de um lake",
+    "alt": "Recepção: Originais identificados, Dados e metadados; Tratamento: Validação e deduplicação, Tipos e regras; Consumo: Conjuntos interpretados, Indicadores e consultas",
+    "source": "original-projeto",
+    "rights": "original-projeto"
+  },
+  {
+    "id": "FIG-010",
+    "file": "figuras/avaliacao.svg",
+    "caption": "Avaliar, medir e revisar",
+    "alt": "Requisitos: Significado e cardinalidade, Consultas e histórico; Casos e modelo: Válidos e inválidos, Chaves, grão e restrições; Evidências: Carga representativa, Correção e desempenho",
+    "source": "original-projeto",
+    "rights": "original-projeto"
+  },
+  {
+    "id": "FIG-011",
+    "file": "figuras/integracao.svg",
+    "caption": "Localizar a transformação no fluxo",
+    "alt": "ETL: Extrair → Transformar, → Carregar no destino; ELT: Extrair → Carregar, → Transformar no destino",
+    "source": "original-projeto",
+    "rights": "original-projeto"
+  },
+  {
+    "id": "FIG-012",
+    "file": "figuras/estrela.svg",
+    "caption": "Estrela: chaves do fato apontam para dimensões",
+    "alt": "FatoMatricula referencia DimAluno, DimCurso e DimData por chaves estrangeiras e guarda valor_pago no grão de matrícula individual.",
+    "source": "original-projeto",
+    "rights": "original-projeto"
+  }
+]

@@ -1,0 +1,16 @@
+PRAGMA foreign_keys=ON;
+CREATE TABLE Aluno(id INTEGER PRIMARY KEY, nome TEXT NOT NULL);
+CREATE TABLE Curso(id INTEGER PRIMARY KEY, titulo TEXT NOT NULL);
+CREATE TABLE Matricula(
+  aluno_id INTEGER NOT NULL REFERENCES Aluno(id),
+  curso_id INTEGER NOT NULL REFERENCES Curso(id),
+  nota NUMERIC CHECK(nota>=0 AND nota<=10),
+  PRIMARY KEY(aluno_id,curso_id)
+);
+INSERT INTO Aluno VALUES(1,'Ana'),(2,'Beto'),(3,'Caio');
+INSERT INTO Curso VALUES(10,'SQL'),(20,'Modelagem');
+INSERT INTO Matricula VALUES(1,10,8),(1,20,9),(2,10,NULL);
+CREATE TABLE Lista(valor INTEGER);
+INSERT INTO Lista VALUES(1),(NULL);
+CREATE TABLE ResumoAluno(id INTEGER PRIMARY KEY, maior_nota NUMERIC);
+INSERT INTO ResumoAluno VALUES(1,5),(2,5),(3,5);

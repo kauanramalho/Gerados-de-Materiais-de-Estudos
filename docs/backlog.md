@@ -24,14 +24,14 @@ Estados: pronto, em execução, concluído, impedido, planejado. A ordem abaixo 
 | AE-018 | formato de revisão e recuperação ativa | revisão curta com perguntas e remissões à teoria, aplicada em um exemplar | AE-008 | concluído |
 | AE-019 | consolidar contratos e erros da CLI | schemas de fontes/figuras/cobertura, tipos/datas e erros úteis com testes negativos | publicador 0.3 | concluído |
 | AE-020 | manutenção de edições e erratas | mudança de fonte/gabarito com impacto rastreado, nova edição e IDs preservados | AE-008; articulação com AE-011 | concluído |
-| AE-021 | coleção de um concurso | itens do edital cobertos ou com lacuna justificada; capítulos e prática revisados | concurso/recorte definidos e padrão ajustado | planejado |
+| AE-021 | coleção de uma seleção de edital | todos os 17 itens de Banco de Dados, Dataprev/FGV Perfil 3, com teoria e prática revisadas | recorte escolhido pelo titular; outras matérias não incluídas | concluído |
 | AE-022 | reprodução e retomada | estado 0.4 retomado e pipeline reproduzido em host GitHub; verify/artifacts aprovados | CI remota e evidências de fechamento | concluído |
-| AE-023 | validar e aprofundar skills | evidência por procedimento; módulos novos criados junto do fluxo que implementam | ae-curar-acervo aplicada; demais validações ainda pendentes | em execução |
+| AE-023 | validar e aprofundar skills | 17 procedimentos aplicados com evidências e limites; cartões individuais | caso real BD e regressão dos formatos existentes | concluído |
 | AE-024 | tornar obrigatória a navegação correta | sumário, questão/resolução/retorno/teoria, áreas reais e hashes auditados; regressões negativas e cliques nos quatro materiais | AE-010; contrato em docs/navegacao.md | concluído |
 | AE-025 | pedido simples e cobertura focada no concurso | texto/foto/print preservados, pesquisa/contexto registrados, escopo integral sem teto de páginas e --final com testes negativos | contrato/ingestão entregues; aplicação real completa permanece em AE-021/028 | concluído |
-| AE-026 | validar imagens em todas as entradas renderizadas | revisão e contexto rejeitam recursos não declarados/fora da pasta antes do Pandoc; recursos válidos entram nos hashes; regressões negativas e positivas | defeito reproduzido na auditoria 0.5 | pronto |
-| AE-027 | propagar mudanças de figuras na comparação de edições | imagem alterada sinaliza capítulos dependentes e revisão relacionada, ou usa sinalização conservadora explícita; regressão reproduzível | defeito reproduzido na auditoria 0.5 | pronto |
-| AE-028 | comprovar pedido real de ponta a ponta | texto e foto/print reais conferidos, edital/retificações e provas pesquisados; apostila e caderno cobrem a seleção; --final, revisão factual/pedagógica e artefatos entregues auditados | AE-026/027; alvo confirmado; não escolher concurso do titular por inferência | planejado |
+| AE-026 | validar imagens em todas as entradas renderizadas | revisão e contexto rejeitam recursos não declarados/fora da pasta antes do Pandoc; recursos válidos entram nos hashes; regressões negativas e positivas | regressões e caso real 0.6 | concluído |
+| AE-027 | propagar mudanças de figuras na comparação de edições | imagem alterada sinaliza capítulos dependentes e revisão relacionada, ou usa sinalização conservadora explícita; regressão reproduzível | regressões e caso real 0.6 | concluído |
+| AE-028 | comprovar pedido real de ponta a ponta | texto e print de edital conferidos, fontes oficiais pesquisadas; apostila/caderno cobrem os 17 itens, --final e revisão editorial por IA; artefatos auditados | caso BD escolhido pelo titular; retorno real de aprendizagem separado em AE-009 | concluído |
 
 Responsável pela execução: agente na tarefa autorizada; titular decide concurso, preferência visual final e prioridades pessoais. Issues no GitHub devem espelhar os itens abertos quando o repositório existir; não afirmar que foram criadas antes da confirmação remota.
 
@@ -44,3 +44,9 @@ Ver [diagnóstico de prontidão](prontidao.md) para skills candidatas, Markdown 
 ## Auditoria completa de 03/11/2026
 
 AE-026/027 registram defeitos novos, ainda sem correção; AE-028 separa o aceite real dos contratos sintéticos já entregues em AE-025 e da reprodução técnica em AE-022. AE-009 e AE-023 continuam abertos. A [auditoria](auditoria-v05.md) contém provas, limites e critérios de encerramento. Os parágrafos anteriores descrevem a evolução histórica; não significam que o projeto inteiro esteja concluído.
+
+## Resolução dos achados — versão 0.6
+
+AE-026/027 corrigidos com regressões; AE-021/028 comprovados no recorte real escolhido, e AE-023 com aplicação delimitada das 17 skills. A auditoria 0.5 e os estados anteriores permanecem como histórico. São 138 testes locais e 22 verificações SQL. Ver [caso real](validacao-real-dataprev.md) e [matriz das skills](validacao-skills-v06.md).
+
+Somente AE-009 permanece em acompanhamento: retorno real de clareza, aprendizagem e dificuldade. O [protocolo](avaliacao-pedagogica.md) está pronto. Não há arquivo, skill ou correção técnica obrigatória conhecida ainda por desenvolver para o funcionamento pedido. Novas coleções e rechecagem de fontes são execuções futuras do método, não cobertura universal já produzida.

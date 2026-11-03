@@ -1,0 +1,218 @@
+[
+  {
+    "id": "portal",
+    "title": "FGV — portal Dataprev 2026",
+    "url": "https://conhecimento.fgv.br/concursos/dataprev26",
+    "checked_on": "2026-11-03",
+    "locator": "links oficiais, edital e publicações disponíveis em 03/11/2026",
+    "rights": "consulta e referência; texto, comentários e figuras do material são originais; itens de prova somente por link",
+    "sha256": "a5d7e2b4946c1e57837029ebea9ae20ae6770e0d93617924518f2da6eba9f394"
+  },
+  {
+    "id": "E26",
+    "title": "Dataprev — Edital 001/2026 retificado",
+    "url": "https://conhecimento.fgv.br/sites/default/files/concursos/edital-retificado-dataprev.pdf",
+    "checked_on": "2026-11-03",
+    "locator": "Anexo I, Perfil 3, páginas 30–31; identificação do concurso na página 1",
+    "rights": "consulta e referência; texto, comentários e figuras do material são originais; itens de prova somente por link",
+    "sha256": "cbb5d3f9e23a814e066ad459f9f83a17c1b12eb415f7d1df620bf96749db472f"
+  },
+  {
+    "id": "P26",
+    "title": "FGV/Dataprev 2026 — Desenvolvimento de Software, tipo 1",
+    "url": "https://conhecimento.fgv.br/sites/default/files/concursos/analista-de-tecnologia-da-informacao-desenvolvimento-de-software-cns003-tipo-1.pdf",
+    "checked_on": "2026-11-03",
+    "locator": "questões 46–52, páginas 13–14; cabeçalho do tipo 1",
+    "rights": "consulta e referência; texto, comentários e figuras do material são originais; itens de prova somente por link",
+    "sha256": "6db36aee343042d939059b38be4dae91deee284393a1e4d62f3d279dc864fdc7"
+  },
+  {
+    "id": "G26",
+    "title": "FGV/Dataprev 2026 — gabarito preliminar",
+    "url": "https://conhecimento.fgv.br/sites/default/files/concursos/dataprev2026-gabaritos-para-publicacao.pdf",
+    "checked_on": "2026-11-03",
+    "locator": "página 13, quadro Desenvolvimento de Software, tipo 1; preliminar",
+    "rights": "consulta e referência; texto, comentários e figuras do material são originais; itens de prova somente por link",
+    "sha256": "77fef273e696ca3a540d3febb00caa4985cd12794ce6efd5fd92127af5e47ae0"
+  },
+  {
+    "id": "P24",
+    "title": "FGV/Dataprev 2024 — Desenvolvimento de Software, tipo 1",
+    "url": "https://conhecimento.fgv.br/sites/default/files/concursos/ati-desenvolvimento-de-software-cns003-tipo-01.pdf",
+    "checked_on": "2026-11-03",
+    "locator": "questões 65–67, página 14, tipo 1",
+    "rights": "consulta e referência; texto, comentários e figuras do material são originais; itens de prova somente por link",
+    "sha256": "371563e3716f875087e62a7d9cff407c977d3cceeddaa0530d506928b7b222a4"
+  },
+  {
+    "id": "G24",
+    "title": "FGV/Dataprev 2024 — gabarito definitivo",
+    "url": "https://conhecimento.fgv.br/sites/default/files/concursos/dataprev_gabarito_definitivo-1.pdf",
+    "checked_on": "2026-11-03",
+    "locator": "quadro Desenvolvimento de Software, tipo 1",
+    "rights": "consulta e referência; texto, comentários e figuras do material são originais; itens de prova somente por link",
+    "sha256": "f2f0b93b313eff060af7925976e0e326cc38e93d8fb48e5494682c82a345cd8c"
+  },
+  {
+    "id": "F01",
+    "title": "Database Design, 2nd edition — Entity Relationship Model",
+    "url": "https://opentextbc.ca/dbdesign01/chapter/chapter-8-entity-relationship-model/",
+    "checked_on": "2026-11-03",
+    "locator": "entities, attributes, cardinalities and relationships",
+    "rights": "consulta e referência; texto, comentários e figuras do material são originais; itens de prova somente por link",
+    "sha256": "5573f7e75e91d513660d2e971a54f48cef2ccb64678918478f470154668b66b8"
+  },
+  {
+    "id": "F02",
+    "title": "Database Design, 2nd edition — Normalization",
+    "url": "https://opentextbc.ca/dbdesign01/chapter/chapter-12-normalization/",
+    "checked_on": "2026-11-03",
+    "locator": "functional dependencies, 1NF, 2NF, 3NF and BCNF",
+    "rights": "consulta e referência; texto, comentários e figuras do material são originais; itens de prova somente por link",
+    "sha256": "f171d4d76c28b4d5c581fe73fc5f3f5e212ddc6c65742bd824a5db8921f5fe85"
+  },
+  {
+    "id": "F03",
+    "title": "PostgreSQL 17 — Constraints",
+    "url": "https://www.postgresql.org/docs/17/ddl-constraints.html",
+    "checked_on": "2026-11-03",
+    "locator": "primary/foreign keys, nullability, CHECK and referential actions",
+    "rights": "consulta e referência; texto, comentários e figuras do material são originais; itens de prova somente por link",
+    "sha256": "f2bb5a68cf7de139f5476bba833816bb1d168195ffa96474fc9f09cfdf131d91"
+  },
+  {
+    "id": "F04",
+    "title": "PostgreSQL 17 — Queries",
+    "url": "https://www.postgresql.org/docs/17/queries.html",
+    "checked_on": "2026-11-03",
+    "locator": "joins, grouping, subqueries, set operations and WITH",
+    "rights": "consulta e referência; texto, comentários e figuras do material são originais; itens de prova somente por link",
+    "sha256": "54fd60c8bd76ccd2da04045ed4b68d846a039e7145a537bfbd948e7ef2a404be"
+  },
+  {
+    "id": "F05",
+    "title": "PostgreSQL 17 — Data Definition",
+    "url": "https://www.postgresql.org/docs/17/ddl.html",
+    "checked_on": "2026-11-03",
+    "locator": "tables, constraints, views and schemas",
+    "rights": "consulta e referência; texto, comentários e figuras do material são originais; itens de prova somente por link",
+    "sha256": "355ae7bf74acc4fb8b72326d832bb09b017b1a591b0493119b7197607600edb2"
+  },
+  {
+    "id": "F06",
+    "title": "PostgreSQL 17 — Data Manipulation",
+    "url": "https://www.postgresql.org/docs/17/dml.html",
+    "checked_on": "2026-11-03",
+    "locator": "INSERT, UPDATE and DELETE",
+    "rights": "consulta e referência; texto, comentários e figuras do material são originais; itens de prova somente por link",
+    "sha256": "0c3e3f7e83fbfa8600ec9f50248a648b1f4b0b108b23ab30033367f00c060d97"
+  },
+  {
+    "id": "F07",
+    "title": "PostgreSQL 17 — Transaction Isolation",
+    "url": "https://www.postgresql.org/docs/17/transaction-iso.html",
+    "checked_on": "2026-11-03",
+    "locator": "isolation levels and PostgreSQL implementation differences",
+    "rights": "consulta e referência; texto, comentários e figuras do material são originais; itens de prova somente por link",
+    "sha256": "5a1928c59c1653ea7cd25ea3ea34f5dd4fe9d2bc69985a2ee79e4a103e708638"
+  },
+  {
+    "id": "F08",
+    "title": "Microsoft Learn — Star schema guidance",
+    "url": "https://learn.microsoft.com/en-us/power-bi/guidance/star-schema",
+    "checked_on": "2026-11-03",
+    "locator": "fact/dimension tables, grain, measures, slowly changing dimensions",
+    "rights": "consulta e referência; texto, comentários e figuras do material são originais; itens de prova somente por link",
+    "sha256": "f5c5235084d17569c9ca20276419195e253e00c2e6c00407eb37f1b585c6de62"
+  },
+  {
+    "id": "F09",
+    "title": "IBM — Metadata",
+    "url": "https://www.ibm.com/think/topics/metadata",
+    "checked_on": "2026-11-03",
+    "locator": "metadata definitions and technical/business/operational distinctions",
+    "rights": "consulta e referência; texto, comentários e figuras do material são originais; itens de prova somente por link",
+    "sha256": "8121f8fdd00fc85b726b17d929a68c9d7207e1e47187f0d27b72e4aa4baa65d1"
+  },
+  {
+    "id": "F10",
+    "title": "MongoDB Manual — Data Modeling",
+    "url": "https://www.mongodb.com/docs/manual/data-modeling/",
+    "checked_on": "2026-11-03",
+    "locator": "flexible schema, embedding and references; validation",
+    "rights": "consulta e referência; texto, comentários e figuras do material são originais; itens de prova somente por link",
+    "sha256": "b541b29d9d264d6144cd32e8026397ade30926174c6de99e65ad7cc367ec8b5c"
+  },
+  {
+    "id": "F11",
+    "title": "Redis — Persistence",
+    "url": "https://redis.io/docs/latest/operate/oss_and_stack/management/persistence/",
+    "checked_on": "2026-11-03",
+    "locator": "RDB, AOF, no persistence and combinations",
+    "rights": "consulta e referência; texto, comentários e figuras do material são originais; itens de prova somente por link",
+    "sha256": "8560592664e192228886a9c54fc6c4f4c6818bcbfb5809fdea1a69d6d887750f"
+  },
+  {
+    "id": "F12",
+    "title": "Microsoft Learn — Data Lake Storage introduction",
+    "url": "https://learn.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-introduction",
+    "checked_on": "2026-11-03",
+    "locator": "data lake capabilities, storage and access organization",
+    "rights": "consulta e referência; texto, comentários e figuras do material são originais; itens de prova somente por link",
+    "sha256": "74ef32271900ed5bdfba3e7d16364e7feb19b7101f217472bdfd00d0b0d32023"
+  },
+  {
+    "id": "F13",
+    "title": "Apache Parquet — Overview",
+    "url": "https://parquet.apache.org/docs/overview/",
+    "checked_on": "2026-11-03",
+    "locator": "column-oriented storage format",
+    "rights": "consulta e referência; texto, comentários e figuras do material são originais; itens de prova somente por link",
+    "sha256": "156d953bcdb1ae329615c7ce5264fd09460832815e14562046eb6ccf7ad5cf23"
+  },
+  {
+    "id": "F14",
+    "title": "IBM — ETL",
+    "url": "https://www.ibm.com/think/topics/etl",
+    "checked_on": "2026-11-03",
+    "locator": "extraction, transformation, loading and data quality",
+    "rights": "consulta e referência; texto, comentários e figuras do material são originais; itens de prova somente por link",
+    "sha256": "2d31e5374bfd024ff06dff58d92b2358e5cd0b752f8983720d41a7c399385b8c"
+  },
+  {
+    "id": "F15",
+    "title": "IBM — ELT",
+    "url": "https://www.ibm.com/think/topics/elt",
+    "checked_on": "2026-11-03",
+    "locator": "extraction, loading and transformation in the target",
+    "rights": "consulta e referência; texto, comentários e figuras do material são originais; itens de prova somente por link",
+    "sha256": "528d5081ae7a133e468035b9e7c38f10a8183210cd756792d64950c04fdf593e"
+  },
+  {
+    "id": "F16",
+    "title": "PostgreSQL 17 — Logical Decoding Concepts",
+    "url": "https://www.postgresql.org/docs/17/logicaldecoding-explanation.html",
+    "checked_on": "2026-11-03",
+    "locator": "replication slots, checkpoints, replay and consumer duplicate handling",
+    "rights": "consulta e referência; texto, comentários e figuras do material são originais; itens de prova somente por link",
+    "sha256": "7258a7a3d3c4aeaf320458f34bc31ab988178082548d2cf356246dbd4f692eb8"
+  },
+  {
+    "id": "F17",
+    "title": "PostgreSQL 17 — Using EXPLAIN",
+    "url": "https://www.postgresql.org/docs/17/using-explain.html",
+    "checked_on": "2026-11-03",
+    "locator": "plans, estimates, measurements and EXPLAIN ANALYZE",
+    "rights": "consulta e referência; texto, comentários e figuras do material são originais; itens de prova somente por link",
+    "sha256": "13b655d04a927232429d874baacdbb77adaadcb8b6acd46731f0ee3a936207b3"
+  },
+  {
+    "id": "R26",
+    "title": "Dataprev — 1ª retificação",
+    "url": "https://conhecimento.fgv.br/sites/default/files/concursos/extrato-1a-retificacao-do-edital.pdf",
+    "checked_on": "2026-11-03",
+    "locator": "itens da 1ª retificação; alteração do programa refere-se ao Perfil 6, não a Banco de Dados do Perfil 3",
+    "rights": "consulta e referência; texto, comentários e figuras do material são originais; itens de prova somente por link",
+    "sha256": "29381158ccf2ea5052ec491c5cb2393717898e7cf63b992a4f58d64280cc64d5"
+  }
+]

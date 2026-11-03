@@ -72,3 +72,7 @@ Corrigir AE-026/027 com regressões; aplicar AE-028 a um alvo confirmado; confer
 ## Acompanhamento das pendências
 
 As seis tarefas abertas do backlog foram espelhadas em issues durante a auditoria: [AE-009](https://github.com/kauanramalho/Gerados-de-Materiais-de-Estudos/issues/1), [AE-021](https://github.com/kauanramalho/Gerados-de-Materiais-de-Estudos/issues/2), [AE-023](https://github.com/kauanramalho/Gerados-de-Materiais-de-Estudos/issues/3), [AE-026](https://github.com/kauanramalho/Gerados-de-Materiais-de-Estudos/issues/4), [AE-027](https://github.com/kauanramalho/Gerados-de-Materiais-de-Estudos/issues/5) e [AE-028](https://github.com/kauanramalho/Gerados-de-Materiais-de-Estudos/issues/6). São registros de trabalho pendente, sem atribuição de prioridade humana ou declaração de correção.
+
+## Situação posterior dos achados
+
+Este relatório preserva o diagnóstico anterior às correções. A versão 0.6 corrige AE-026/027 e executa o [caso real de Banco de Dados](validacao-real-dataprev.md), com [evidências das 17 skills](validacao-skills-v06.md). Consulte o [estado atual](prontidao.md). A avaliação real pelo leitor continua distinta da revisão por IA.

@@ -1,0 +1,238 @@
+[
+  {
+    "edital_id": "BD-01",
+    "edital_item": "1 Modelagem de dados (conceitual, lógica e física).",
+    "objectives": [
+      "BD-01"
+    ],
+    "questions": [
+      "Q-AUT-101",
+      "Q-AUT-102",
+      "Q-REAL-003"
+    ],
+    "status": "completo",
+    "limits": "Recorte integral da matéria de Banco de Dados, Perfil 3; explicação e prática revisadas. Dificuldade estimada editorialmente; demais disciplinas não fazem parte desta seleção."
+  },
+  {
+    "edital_id": "BD-02",
+    "edital_item": "2 Abordagem relacional e multidimensional.",
+    "objectives": [
+      "BD-02"
+    ],
+    "questions": [
+      "Q-AUT-103",
+      "Q-AUT-104"
+    ],
+    "status": "completo",
+    "limits": "Recorte integral da matéria de Banco de Dados, Perfil 3; explicação e prática revisadas. Dificuldade estimada editorialmente; demais disciplinas não fazem parte desta seleção."
+  },
+  {
+    "edital_id": "BD-03",
+    "edital_item": "3 Normalização das estruturas de dados.",
+    "objectives": [
+      "BD-03"
+    ],
+    "questions": [
+      "Q-AUT-105",
+      "Q-AUT-106",
+      "Q-AUT-140",
+      "Q-REAL-046"
+    ],
+    "status": "completo",
+    "limits": "Recorte integral da matéria de Banco de Dados, Perfil 3; explicação e prática revisadas. Dificuldade estimada editorialmente; demais disciplinas não fazem parte desta seleção."
+  },
+  {
+    "edital_id": "BD-04",
+    "edital_item": "4 Integridade referencial.",
+    "objectives": [
+      "BD-04"
+    ],
+    "questions": [
+      "Q-AUT-107",
+      "Q-AUT-108",
+      "Q-REAL-001"
+    ],
+    "status": "completo",
+    "limits": "Recorte integral da matéria de Banco de Dados, Perfil 3; explicação e prática revisadas. Dificuldade estimada editorialmente; demais disciplinas não fazem parte desta seleção."
+  },
+  {
+    "edital_id": "BD-05",
+    "edital_item": "5 Metadados.",
+    "objectives": [
+      "BD-05"
+    ],
+    "questions": [
+      "Q-AUT-109",
+      "Q-AUT-110",
+      "Q-REAL-048"
+    ],
+    "status": "completo",
+    "limits": "Recorte integral da matéria de Banco de Dados, Perfil 3; explicação e prática revisadas. Dificuldade estimada editorialmente; demais disciplinas não fazem parte desta seleção."
+  },
+  {
+    "edital_id": "BD-06",
+    "edital_item": "6 Modelagem dimensional.",
+    "objectives": [
+      "BD-06"
+    ],
+    "questions": [
+      "Q-AUT-111",
+      "Q-AUT-112",
+      "Q-AUT-141",
+      "Q-REAL-049"
+    ],
+    "status": "completo",
+    "limits": "Recorte integral da matéria de Banco de Dados, Perfil 3; explicação e prática revisadas. Dificuldade estimada editorialmente; demais disciplinas não fazem parte desta seleção."
+  },
+  {
+    "edital_id": "BD-07",
+    "edital_item": "7 Linguagem de consulta estruturada (SQL).",
+    "objectives": [
+      "BD-07"
+    ],
+    "questions": [
+      "Q-AUT-113",
+      "Q-AUT-114",
+      "Q-AUT-135",
+      "Q-AUT-136",
+      "Q-AUT-137"
+    ],
+    "status": "completo",
+    "limits": "Recorte integral da matéria de Banco de Dados, Perfil 3; explicação e prática revisadas. Dificuldade estimada editorialmente; demais disciplinas não fazem parte desta seleção."
+  },
+  {
+    "edital_id": "BD-08",
+    "edital_item": "8 Linguagem de definição de dados (DDL).",
+    "objectives": [
+      "BD-08"
+    ],
+    "questions": [
+      "Q-AUT-115",
+      "Q-AUT-116",
+      "Q-AUT-138"
+    ],
+    "status": "completo",
+    "limits": "Recorte integral da matéria de Banco de Dados, Perfil 3; explicação e prática revisadas. Dificuldade estimada editorialmente; demais disciplinas não fazem parte desta seleção."
+  },
+  {
+    "edital_id": "BD-09",
+    "edital_item": "9 Linguagem de manipulação de dados (DML).",
+    "objectives": [
+      "BD-09"
+    ],
+    "questions": [
+      "Q-AUT-117",
+      "Q-AUT-118",
+      "Q-AUT-139",
+      "Q-REAL-002"
+    ],
+    "status": "completo",
+    "limits": "Recorte integral da matéria de Banco de Dados, Perfil 3; explicação e prática revisadas. Dificuldade estimada editorialmente; demais disciplinas não fazem parte desta seleção."
+  },
+  {
+    "edital_id": "BD-10",
+    "edital_item": "10 SGBD.",
+    "objectives": [
+      "BD-10"
+    ],
+    "questions": [
+      "Q-AUT-119",
+      "Q-AUT-120"
+    ],
+    "status": "completo",
+    "limits": "Recorte integral da matéria de Banco de Dados, Perfil 3; explicação e prática revisadas. Dificuldade estimada editorialmente; demais disciplinas não fazem parte desta seleção."
+  },
+  {
+    "edital_id": "BD-11",
+    "edital_item": "11 Propriedades de banco de dados.",
+    "objectives": [
+      "BD-11"
+    ],
+    "questions": [
+      "Q-AUT-121",
+      "Q-AUT-122"
+    ],
+    "status": "completo",
+    "limits": "Recorte integral da matéria de Banco de Dados, Perfil 3; explicação e prática revisadas. Dificuldade estimada editorialmente; demais disciplinas não fazem parte desta seleção."
+  },
+  {
+    "edital_id": "BD-12",
+    "edital_item": "12 Banco de dados NoSQL.",
+    "objectives": [
+      "BD-12"
+    ],
+    "questions": [
+      "Q-AUT-123",
+      "Q-AUT-124",
+      "Q-REAL-050"
+    ],
+    "status": "completo",
+    "limits": "Recorte integral da matéria de Banco de Dados, Perfil 3; explicação e prática revisadas. Dificuldade estimada editorialmente; demais disciplinas não fazem parte desta seleção."
+  },
+  {
+    "edital_id": "BD-13",
+    "edital_item": "13 Banco de dados em memória.",
+    "objectives": [
+      "BD-13"
+    ],
+    "questions": [
+      "Q-AUT-125",
+      "Q-AUT-126"
+    ],
+    "status": "completo",
+    "limits": "Recorte integral da matéria de Banco de Dados, Perfil 3; explicação e prática revisadas. Dificuldade estimada editorialmente; demais disciplinas não fazem parte desta seleção."
+  },
+  {
+    "edital_id": "BD-14",
+    "edital_item": "14 Data lakes e soluções para big data.",
+    "objectives": [
+      "BD-14"
+    ],
+    "questions": [
+      "Q-AUT-127",
+      "Q-AUT-128"
+    ],
+    "status": "completo",
+    "limits": "Recorte integral da matéria de Banco de Dados, Perfil 3; explicação e prática revisadas. Dificuldade estimada editorialmente; demais disciplinas não fazem parte desta seleção."
+  },
+  {
+    "edital_id": "BD-15",
+    "edital_item": "15 Dados Estruturados e não Estruturados.",
+    "objectives": [
+      "BD-15"
+    ],
+    "questions": [
+      "Q-AUT-129",
+      "Q-AUT-130"
+    ],
+    "status": "completo",
+    "limits": "Recorte integral da matéria de Banco de Dados, Perfil 3; explicação e prática revisadas. Dificuldade estimada editorialmente; demais disciplinas não fazem parte desta seleção."
+  },
+  {
+    "edital_id": "BD-16",
+    "edital_item": "16 Avaliação de modelos de dados.",
+    "objectives": [
+      "BD-16"
+    ],
+    "questions": [
+      "Q-AUT-131",
+      "Q-AUT-132"
+    ],
+    "status": "completo",
+    "limits": "Recorte integral da matéria de Banco de Dados, Perfil 3; explicação e prática revisadas. Dificuldade estimada editorialmente; demais disciplinas não fazem parte desta seleção."
+  },
+  {
+    "edital_id": "BD-17",
+    "edital_item": "17 Técnicas de Integração e Ingestão de Dados (ETL/ELT, Transferência de Arquivos e Integração via Base de Dados).",
+    "objectives": [
+      "BD-17"
+    ],
+    "questions": [
+      "Q-AUT-133",
+      "Q-AUT-134",
+      "Q-AUT-142"
+    ],
+    "status": "completo",
+    "limits": "Recorte integral da matéria de Banco de Dados, Perfil 3; explicação e prática revisadas. Dificuldade estimada editorialmente; demais disciplinas não fazem parte desta seleção."
+  }
+]

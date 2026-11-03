@@ -1,0 +1,279 @@
+{
+  "setup": "massa.sql",
+  "cases": [
+    {
+      "id": "JOIN-LEFT",
+      "sql": "SELECT a.nome,m.curso_id FROM Aluno a LEFT JOIN Matricula m ON m.aluno_id=a.id ORDER BY a.id,m.curso_id",
+      "expected": [
+        [
+          "Ana",
+          10
+        ],
+        [
+          "Ana",
+          20
+        ],
+        [
+          "Beto",
+          10
+        ],
+        [
+          "Caio",
+          null
+        ]
+      ]
+    },
+    {
+      "id": "Q113-COUNT",
+      "sql": "SELECT COUNT(*),COUNT(m.nota) FROM Aluno a LEFT JOIN Matricula m ON m.aluno_id=a.id",
+      "expected": [
+        [
+          4,
+          2
+        ]
+      ]
+    },
+    {
+      "id": "GROUP-AVG",
+      "sql": "SELECT curso_id,COUNT(*),COUNT(nota),AVG(nota) FROM Matricula GROUP BY curso_id ORDER BY curso_id",
+      "expected": [
+        [
+          10,
+          2,
+          1,
+          8.0
+        ],
+        [
+          20,
+          1,
+          1,
+          9.0
+        ]
+      ]
+    },
+    {
+      "id": "WHERE-AFTER-LEFT",
+      "sql": "SELECT a.nome,m.curso_id FROM Aluno a LEFT JOIN Matricula m ON m.aluno_id=a.id WHERE m.nota>=7 ORDER BY a.id,m.curso_id",
+      "expected": [
+        [
+          "Ana",
+          10
+        ],
+        [
+          "Ana",
+          20
+        ]
+      ]
+    },
+    {
+      "id": "EXISTS",
+      "sql": "SELECT a.nome FROM Aluno a WHERE NOT EXISTS(SELECT 1 FROM Matricula m WHERE m.aluno_id=a.id) ORDER BY a.id",
+      "expected": [
+        [
+          "Caio"
+        ]
+      ]
+    },
+    {
+      "id": "Q114-NOT-IN-NULL",
+      "sql": "SELECT id FROM Aluno WHERE id NOT IN(SELECT valor FROM Lista) ORDER BY id",
+      "expected": []
+    },
+    {
+      "id": "NOT-EXISTS-NULL",
+      "sql": "SELECT id FROM Aluno a WHERE NOT EXISTS(SELECT 1 FROM Lista l WHERE l.valor=a.id) ORDER BY id",
+      "expected": [
+        [
+          2
+        ],
+        [
+          3
+        ]
+      ]
+    },
+    {
+      "id": "MAX-ALL",
+      "sql": "SELECT a.id,(SELECT MAX(nota) FROM Matricula m WHERE m.aluno_id=a.id) FROM Aluno a ORDER BY a.id",
+      "expected": [
+        [
+          1,
+          9
+        ],
+        [
+          2,
+          null
+        ],
+        [
+          3,
+          null
+        ]
+      ]
+    },
+    {
+      "id": "UPDATE-CORRELATED",
+      "before_sql": "UPDATE ResumoAluno AS r SET maior_nota=(SELECT MAX(m.nota) FROM Matricula m WHERE m.aluno_id=r.id);",
+      "sql": "SELECT id,maior_nota FROM ResumoAluno ORDER BY id",
+      "expected": [
+        [
+          1,
+          9
+        ],
+        [
+          2,
+          null
+        ],
+        [
+          3,
+          null
+        ]
+      ]
+    },
+    {
+      "id": "Q117-COALESCE",
+      "before_sql": "UPDATE Matricula SET nota=COALESCE(nota,0)+1 WHERE curso_id=10;",
+      "sql": "SELECT aluno_id,curso_id,nota FROM Matricula ORDER BY aluno_id,curso_id",
+      "expected": [
+        [
+          1,
+          10,
+          9
+        ],
+        [
+          1,
+          20,
+          9
+        ],
+        [
+          2,
+          10,
+          1
+        ]
+      ]
+    },
+    {
+      "id": "Q118-DELETE",
+      "before_sql": "DELETE FROM Matricula WHERE nota IS NULL;",
+      "sql": "SELECT aluno_id,curso_id FROM Matricula ORDER BY aluno_id,curso_id",
+      "expected": [
+        [
+          1,
+          10
+        ],
+        [
+          1,
+          20
+        ]
+      ]
+    },
+    {
+      "id": "Q135-HAVING",
+      "sql": "SELECT curso_id FROM Matricula GROUP BY curso_id HAVING COUNT(nota)>=2",
+      "expected": []
+    },
+    {
+      "id": "Q136-UNION",
+      "sql": "SELECT COUNT(*) FROM (SELECT 1 AS x UNION SELECT 1 UNION SELECT 2 UNION SELECT 2 UNION SELECT 3)",
+      "expected": [
+        [
+          3
+        ]
+      ]
+    },
+    {
+      "id": "Q136-UNION-ALL",
+      "sql": "SELECT COUNT(*) FROM (SELECT 1 AS x UNION ALL SELECT 1 UNION ALL SELECT 2 UNION ALL SELECT 2 UNION ALL SELECT 3)",
+      "expected": [
+        [
+          5
+        ]
+      ]
+    },
+    {
+      "id": "Q137-WINDOW",
+      "sql": "SELECT aluno_id,curso_id,ROW_NUMBER() OVER(PARTITION BY curso_id ORDER BY aluno_id) FROM Matricula ORDER BY curso_id,aluno_id",
+      "expected": [
+        [
+          1,
+          10,
+          1
+        ],
+        [
+          2,
+          10,
+          2
+        ],
+        [
+          1,
+          20,
+          1
+        ]
+      ]
+    },
+    {
+      "id": "Q139-NULL-EQUALITY",
+      "before_sql": "UPDATE Matricula SET nota=0 WHERE nota=NULL;",
+      "sql": "SELECT COUNT(*) FROM Matricula WHERE nota IS NULL",
+      "expected": [
+        [
+          1
+        ]
+      ]
+    },
+    {
+      "id": "DDL-FK",
+      "sql": "INSERT INTO Matricula VALUES(99,10,7)",
+      "expect_error": "integrity"
+    },
+    {
+      "id": "DDL-PK",
+      "sql": "INSERT INTO Matricula VALUES(1,10,7)",
+      "expect_error": "integrity"
+    },
+    {
+      "id": "DDL-CHECK",
+      "sql": "INSERT INTO Matricula VALUES(3,10,11)",
+      "expect_error": "integrity"
+    },
+    {
+      "id": "DDL-NULL",
+      "before_sql": "INSERT INTO Matricula VALUES(3,10,NULL);",
+      "sql": "SELECT COUNT(*) FROM Matricula WHERE nota IS NULL",
+      "expected": [
+        [
+          2
+        ]
+      ]
+    },
+    {
+      "id": "Q141-WEIGHTED",
+      "sql": "SELECT (8.0*5+12.0*10)/20",
+      "expected": [
+        [
+          8.0
+        ]
+      ]
+    },
+    {
+      "id": "ROLLBACK",
+      "before_sql": "BEGIN; UPDATE Matricula SET nota=1; ROLLBACK;",
+      "sql": "SELECT aluno_id,curso_id,nota FROM Matricula ORDER BY aluno_id,curso_id",
+      "expected": [
+        [
+          1,
+          10,
+          8
+        ],
+        [
+          1,
+          20,
+          9
+        ],
+        [
+          2,
+          10,
+          null
+        ]
+      ]
+    }
+  ]
+}

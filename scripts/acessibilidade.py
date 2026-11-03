@@ -40,7 +40,7 @@ def inspect(html_path,pdf_path):
             page.route('**/*',lambda route:route.abort())
             page.set_content(Path(html_path).read_text(encoding='utf-8'),wait_until='load',timeout=15000)
             dom=page.evaluate('''() => {
-              const visible=e=>!!e.getClientRects().length && getComputedStyle(e).visibility!=="hidden";
+              const visible=e=>Array.from(e.getClientRects()).some(r=>r.width>0&&r.height>0) && getComputedStyle(e).visibility!=="hidden";
               const rgb=s=>(s.match(/[\\d.]+/g)||[]).slice(0,3).map(Number);
               const text=[];
               for(const e of document.body.querySelectorAll('*')){
@@ -49,13 +49,14 @@ def inspect(html_path,pdf_path):
                 while(p){b=getComputedStyle(p).backgroundColor;if(b!=='rgba(0, 0, 0, 0)'&&b!=='transparent')break;p=p.parentElement;}
                 text.push({label:e.textContent.trim().slice(0,90),foreground:rgb(c.color),background:rgb(b||'rgb(255,255,255)'),size:parseFloat(c.fontSize),bold:parseInt(c.fontWeight)>=700});
               }
-              const links=Array.from(document.querySelectorAll('a[href]')).filter(visible);
+              const links=Array.from(document.querySelectorAll('a[href]')).filter(e=>visible(e)&&e.tabIndex>=0);
               links.forEach((e,i)=>e.dataset.aeAuditIndex=i);
               return {lang:document.documentElement.lang,
                 headings:Array.from(document.querySelectorAll('h1,h2,h3,h4,h5,h6')).filter(visible).map(e=>({id:e.id,level:+e.tagName[1],text:e.textContent.trim()})),
                 images:Array.from(document.querySelectorAll('img,svg')).filter(visible).map(e=>({alt:e.getAttribute('aria-label')||e.getAttribute('alt')||e.querySelector('title')?.textContent,role:e.getAttribute('role'),tag:e.tagName.toLowerCase()})),
                 tables:Array.from(document.querySelectorAll('table')).filter(visible).map(e=>({headers:e.querySelectorAll('th').length,rows:e.rows.length})),
-                math:Array.from(document.querySelectorAll('math')).filter(visible).map(e=>e.textContent.trim()),text,links:links.length};
+                math:Array.from(document.querySelectorAll('math')).filter(visible).map(e=>e.textContent.trim()),text,links:links.length,
+                hidden_focusable_links:links.filter(e=>e.closest('[aria-hidden="true"]')).length};
             }''')
             if not dom['lang'].lower().startswith('pt'):
                 errors.append('Idioma do documento não declarado como português')
@@ -69,6 +70,7 @@ def inspect(html_path,pdf_path):
                 errors.append('SVG sem papel semântico de imagem')
             if any(not t['headers'] for t in dom['tables']):errors.append('Tabela sem cabeçalho semântico')
             if any(not text for text in dom['math']):errors.append('MathML sem conteúdo textual')
+            if dom['hidden_focusable_links']:errors.append('Link focável oculto de tecnologia assistiva')
             failures=[]
             for row in dom['text']:
                 minimum=3 if row['size']>=24 or (row['bold'] and row['size']>=18.66) else 4.5
@@ -103,7 +105,8 @@ def inspect(html_path,pdf_path):
                             bounds.append(page_number+1)
         if bounds:errors.append('Texto fora dos limites da página: '+str(sorted(set(bounds))))
     return dict(passed=not errors,errors=errors,html=dict(language=dom['lang'],images=len(dom['images']),tables=len(dom['tables']),
-                mathml=len(dom['math']),text_contrasts=len(dom['text']),contrast_failures=failures,keyboard_links=tabs),
+                mathml=len(dom['math']),text_contrasts=len(dom['text']),contrast_failures=failures,keyboard_links=tabs,
+                keyboard_links_expected=dom['links']),
                 pdf=dict(tagged=tagged,heading_order_checked=len(positions),heading_order=ordered,text_bounds_ok=not bounds),
                 limits=['Não é certificação WCAG ou PDF/UA.','Leitor de tela real e interpretação semântica de fórmulas/tabelas exigem revisão assistiva.',
                         'Contraste medido para texto e fundo CSS dos documentos deste motor; imagens e fundos complexos exigem revisão visual.'])

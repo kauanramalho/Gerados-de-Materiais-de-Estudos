@@ -1,4 +1,4 @@
-# Produção de materiais — versão 0.5
+# Produção de materiais — versão 0.6
 
 O agente pesquisa e redige; o publicador monta e verifica os arquivos preparados. Esta versão já aceita materiais novos por manifesto e exporta apostila, caderno, simulado e revisão. Os dois novos formatos têm planos próprios; ver docs/simulados.md e docs/revisao-aprendizagem.md. Não há chamada automática a um LLM ou serviço de recebimento permanente.
 
@@ -19,6 +19,8 @@ Seguir [do-pedido-a-entrega.md](do-pedido-a-entrega.md). Aceitar texto, foto ou 
 Uma pasta de material contém material.json, capítulos Markdown, questoes.json, fontes.json, figuras.json e cobertura.json. Um contexto de exercícios é recomendado para que o caderno possa ser resolvido sem depender das páginas de teoria. O perfil da banca pode ser registrado em arquivo próprio.
 
 Os capítulos começam no nível H2; o H1 e seu ID são gerados a partir do manifesto. Figuras ficam dentro da pasta, são declaradas no manifesto de figuras e recebem descrição no Markdown. As questões apontam para um objetivo ensinado e uma seção de teoria existente.
+
+Pandoc também é necessário em --check. A versão 0.6 usa a árvore de imagens do mesmo leitor Markdown da exportação, abrangendo sintaxe de referência, títulos e caminhos com espaços. Todos os formatos preparados são conferidos: capítulos, revisões, contexto de questões, perfil, enunciados e comentários. Uma figura pode ser exclusiva da revisão ou do contexto, desde que declarada e incluída nos hashes. Imagens remotas, caminhos fora da pasta e dependências externas/ativas dentro de SVG são recusados antes da incorporação. Não usar novos recursos em um objeto já carregado sem recarregar seu manifesto.
 
 Os arquivos passam pelos JSON Schemas de material, questão, fontes, figuras e cobertura, com validação de datas e tipos. Campos desconhecidos não são ignorados silenciosamente. Os hashes de prova/gabarito de um item real precisam corresponder às fontes declaradas. Instale `requirements-core.txt`; a dependência é incluída em `requirements-pdf.txt`.
 

@@ -19,17 +19,9 @@ from navigation import instrument_html, required_edges, link_plan, navigation_ma
 from request import read_request, require_delivery
 from formats import prepare_format, validate_simulation
 from acessibilidade import svg_accessibility
+from resources import local_path, validate_images
 
 ROOT = Path(__file__).resolve().parents[1]
-
-
-def local_path(folder, relative):
-    if not isinstance(relative, str) or not relative or Path(relative).is_absolute():
-        raise ValueError('Referência local deve ser um caminho relativo não vazio')
-    resolved = (folder / relative).resolve()
-    if not resolved.is_relative_to(folder.resolve()) or not resolved.is_file():
-        raise ValueError(f'Arquivo ausente ou fora da pasta do material: {relative}')
-    return resolved
 
 
 def read_json(path):
@@ -86,13 +78,6 @@ def load_material(path):
         anchors.update(re.findall(r'\{#([\w-]+)\}', text))
         inputs.append(text_path)
     anchors.update(chapter_ids)
-    declared_figures = {figure['file'] for figure in data['figures']}
-    for chapter in config['chapters']:
-        text = local_path(folder, chapter['file']).read_text(encoding='utf-8')
-        for alternative, target in re.findall(r'!\[([^\]]*)\]\(([^)]+)\)', text):
-            if not alternative.strip() or target not in declared_figures:
-                raise ValueError('Imagem sem descrição ou fora do manifesto de figuras')
-            local_path(folder, target)
     figure_ids = set()
     for figure in data['figures']:
         if figure['id'] in figure_ids or not all(figure.get(k) for k in ('caption', 'alt', 'rights', 'source')):
@@ -103,9 +88,6 @@ def load_material(path):
             raise ValueError('Formato de figura não suportado')
         if figure['source'] != 'original-projeto' and figure['source'] not in source_ids:
             raise ValueError('Figura aponta para fonte inexistente')
-        chapter_texts = '\n'.join(local_path(folder, c['file']).read_text(encoding='utf-8') for c in config['chapters'])
-        if figure['file'] not in chapter_texts:
-            raise ValueError(f'Figura sem chamada no capítulo: {figure["id"]}')
         inputs.append(figure_path)
     question_ids = {q['id'] for q in data['questions']}
     for q in data['questions']:
@@ -169,6 +151,15 @@ def load_material(path):
     if result['revision']:
         prepare_format(result, 'revisao')
         inputs += [local_path(folder, row['file']) for row in result['revision']['chapters']]
+    # Validate exactly what each supported format renders, including questions,
+    # comments, profiles, contexts and revision chapters. Parsing never embeds files.
+    kinds = ['apostila', 'caderno'] + (['simulado'] if result['simulation'] else []) + (['revisao'] if result['revision'] else [])
+    result['image_usage'] = {kind: sorted(validate_images(config['title']+'\n\n'+compose_material(result, kind),
+                                                        folder, result['figures'])) for kind in kinds}
+    used = {file for values in result['image_usage'].values() for file in values}
+    for figure in result['figures']:
+        if local_path(folder, figure['file']).relative_to(folder).as_posix() not in used:
+            raise ValueError(f'Figura sem chamada no material: {figure["id"]}')
     return result
 
 
@@ -313,6 +304,10 @@ def publish(data, output_folder, kind='apostila', pdf=False, final=False):
     data = prepare_format(data, kind)
     delivery = require_delivery(data, kind, final)
     config, folder = data['config'], data['folder']
+    markdown = compose_material(data, kind)
+    used_images = validate_images(config['title']+'\n\n'+markdown, folder, data['figures'])
+    if any(local_path(folder, file) not in data['inputs'] for file in used_images):
+        raise ValueError('Imagem fora do inventário de hashes carregado; recarregue o manifesto')
     output = Path(output_folder).resolve()
     if output == folder or folder.is_relative_to(output):
         raise ValueError('Saída não pode sobrescrever a pasta de origem')
@@ -323,9 +318,10 @@ def publish(data, output_folder, kind='apostila', pdf=False, final=False):
     if not shutil.which('pandoc'):
         raise ValueError('Pandoc não encontrado')
     source, html_path = output / f'{kind}.md', output / f'{kind}.html'
-    source.write_text(compose_material(data, kind), encoding='utf-8')
+    source.write_text(markdown, encoding='utf-8')
     subprocess.run(['pandoc', str(source), '--from=markdown-raw_html', '--standalone', '--toc',
                     '--toc-depth=2', '--number-sections', '--embed-resources', '--mathml',
+                    '--highlight-style=' + str(ROOT / 'styles/code-accessible.theme'),
                     '--resource-path=' + str(folder), '--css=' + str(ROOT / 'styles/apostila.css'),
                     '--metadata=title:' + config['title'], '--metadata=lang:pt-BR',
                     '--metadata=toc-title:Sumário', '-o', str(html_path)], check=True)
@@ -343,7 +339,7 @@ def publish(data, output_folder, kind='apostila', pdf=False, final=False):
               'questions': len(data['questions']), 'html_navigation': 'passed',
               'editorial_review': 'requires-recorded-review', 'files': {}, 'inputs': {}}
     report['request'] = delivery
-    report['toolchain'] = {'publisher_version': '0.5.0', 'python': platform.python_version(),
+    report['toolchain'] = {'publisher_version': '0.6.0', 'python': platform.python_version(),
                           'jsonschema': package_version('jsonschema'),
                           'pandoc': subprocess.check_output(['pandoc', '--version'], text=True).splitlines()[0],
                           'stylesheet_sha256': sha256((ROOT / 'styles/apostila.css').read_bytes()).hexdigest(),
@@ -353,6 +349,9 @@ def publish(data, output_folder, kind='apostila', pdf=False, final=False):
     report['toolchain']['navigation_sha256'] = sha256((ROOT / 'scripts/navigation.py').read_bytes()).hexdigest()
     report['toolchain']['request_sha256'] = sha256((ROOT / 'scripts/request.py').read_bytes()).hexdigest()
     report['toolchain']['accessibility_sha256'] = sha256((ROOT / 'scripts/acessibilidade.py').read_bytes()).hexdigest()
+    report['toolchain']['resources_sha256'] = sha256((ROOT / 'scripts/resources.py').read_bytes()).hexdigest()
+    report['toolchain']['formats_sha256'] = sha256((ROOT / 'scripts/formats.py').read_bytes()).hexdigest()
+    report['toolchain']['code_theme_sha256'] = sha256((ROOT / 'styles/code-accessible.theme').read_bytes()).hexdigest()
     report['toolchain']['schemas'] = {p.name: sha256(p.read_bytes()).hexdigest()
                                     for p in sorted((ROOT / 'schemas').glob('*.json'))}
     if pdf:

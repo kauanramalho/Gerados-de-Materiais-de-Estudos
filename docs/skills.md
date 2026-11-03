@@ -1,29 +1,29 @@
 # Índice de skills
 
-Fonte de execução: `.agents/skills/<nome>/SKILL.md`. O agente deve ler as instruções adequadas; o nome no catálogo sozinho não executa um procedimento. Cada arquivo informa sua versão. ae-diagramar 0.5.0 e ae-revisar 0.4.0 exigem a auditoria do PDF final e os cliques antes da entrega. O titular aprovou o layout; a validação pedagógica pelo leitor permanece pendente.
+Fonte executável: `.agents/skills/<nome>/SKILL.md`. O agente lê todas as skills ao retomar um pedido e registra a versão consultada; o nome no índice não executa o procedimento. São 17 skills locais, aplicadas na validação 0.6. A [matriz de validação](validacao-skills-v06.md) registra evidência por procedimento e seus limites.
 
-| Skill | Finalidade | Evidência disponível e limite |
-|---|---|---|
-| [ae-orquestrar](../.agents/skills/ae-orquestrar/SKILL.md) | Conduzir um pedido de material de concurso do briefing à entrega | fluxo inicial produziu o piloto; retomada do estado 0.4 e reprodução pela CI registradas; novos casos exigem revisão |
-| [ae-analisar-edital](../.agents/skills/ae-analisar-edital/SKILL.md) | Identificar concurso e converter edital em cobertura rastreável | recorte Dataprev mapeado; edital completo, OCR e retificações exigem outros casos |
-| [ae-pesquisar-fontes](../.agents/skills/ae-pesquisar-fontes/SKILL.md) | Pesquisar e registrar fontes de conteúdo com proveniência | fontes do piloto registradas; atualização sistemática pendente |
-| [ae-curar-referencias](../.agents/skills/ae-curar-referencias/SKILL.md) | Selecionar modelos de escrita e apresentação editorial | dois capítulos abertos comparados em páginas PDF representativas; ver curadoria-editorial-aplicada.md |
-| [ae-analisar-banca](../.agents/skills/ae-analisar-banca/SKILL.md) | Construir um perfil de prova baseado em amostra explícita | dez itens selecionados em duas provas; não há calibração estatística |
-| [ae-escrever-capitulo](../.agents/skills/ae-escrever-capitulo/SKILL.md) | Redigir um capítulo didático com teoria desenvolvida e prática | capítulo SQL produzido; avaliação do leitor pendente |
-| [ae-ilustrar](../.agents/skills/ae-ilustrar/SKILL.md) | Produzir ou selecionar representações visuais didáticas verificadas | esquemas SQL e painel genérico detalhado revisados; modelos comerciais exigem seu manual |
-| [ae-questoes-reais](../.agents/skills/ae-questoes-reais/SKILL.md) | Selecionar e conferir questões autênticas com gabarito oficial | três referências oficiais no piloto, com gabarito preliminar explícito |
-| [ae-questoes-autorais](../.agents/skills/ae-questoes-autorais/SKILL.md) | Criar itens originais coerentes com objetivos e perfil observado | oito itens no piloto; dificuldade editorial estimada, sem aplicação com alunos |
-| [ae-diagramar](../.agents/skills/ae-diagramar/SKILL.md) | Montar apostilas e cadernos navegáveis em HTML e PDF | 0.5.0 aplica quatro formatos e auditoria, mantendo navegação/--final; versão anterior aplicada a quatro PDFs; layout aprovado, 118 entradas e 217 áreas conferidas; acessibilidade e novos casos pendentes |
-| [ae-revisar](../.agents/skills/ae-revisar/SKILL.md) | Revisar precisão, didática, questões e artefatos finais | 0.4.0 confere formatos/edições/acessibilidade e fidelidade/cobertura; rotas, coordenadas, cliques e hashes conferidos; 26 testes de navegação; acessibilidade e aceite pedagógico pendentes |
-| [ae-gerenciar](../.agents/skills/ae-gerenciar/SKILL.md) | Manter progresso, decisões, backlog e documentação no Segundo Cérebro | notas e entregas no Drive conferidas; publicação e CI GitHub confirmadas |
-| [ae-curar-acervo](../.agents/skills/ae-curar-acervo/SKILL.md) | Importar, buscar, deduplicar e versionar questões | 21 itens em três materiais; filtros, idempotência e revisões testados; fonte oficial ainda exige consulta do agente |
-| [ae-montar-simulado](../.agents/skills/ae-montar-simulado/SKILL.md) | Matriz, aplicação e pontuação | exemplar com seis questões e testes de pesos/anulações; treino autoral explícito |
-| [ae-produzir-revisao](../.agents/skills/ae-produzir-revisao/SKILL.md) | Recuperação ativa e síntese | revisão de matemática com remissões locais; avaliação de utilidade pelo leitor pendente |
-| [ae-atualizar-material](../.agents/skills/ae-atualizar-material/SKILL.md) | Impacto, edição e errata | mudanças de conteúdo/fontes/IDs testadas; gabaritos alterados nos testes são sintéticos |
-| [ae-auditar-acessibilidade](../.agents/skills/ae-auditar-acessibilidade/SKILL.md) | Teclado, contraste, descrições e estrutura | auditoria executada e marcação corrigida; limites assistivos explícitos |
+| Skill | Finalidade |
+|---|---|
+| [ae-orquestrar](../.agents/skills/ae-orquestrar/SKILL.md) | Conduzir identificação, pesquisa, produção, revisão e entrega |
+| [ae-analisar-edital](../.agents/skills/ae-analisar-edital/SKILL.md) | Conferir identidade, retificações e programa literal, inclusive continuação de prints |
+| [ae-pesquisar-fontes](../.agents/skills/ae-pesquisar-fontes/SKILL.md) | Pesquisar fontes com proveniência, localizadores e datas |
+| [ae-curar-referencias](../.agents/skills/ae-curar-referencias/SKILL.md) | Aplicar modelos de escrita e apresentação editorial |
+| [ae-analisar-banca](../.agents/skills/ae-analisar-banca/SKILL.md) | Analisar amostra explícita de provas e seus limites |
+| [ae-escrever-capitulo](../.agents/skills/ae-escrever-capitulo/SKILL.md) | Redigir teoria desenvolvida, exemplos e prática |
+| [ae-ilustrar](../.agents/skills/ae-ilustrar/SKILL.md) | Criar figuras didáticas, descritas e rastreáveis |
+| [ae-questoes-reais](../.agents/skills/ae-questoes-reais/SKILL.md) | Conferir questões autênticas e gabarito oficial |
+| [ae-questoes-autorais](../.agents/skills/ae-questoes-autorais/SKILL.md) | Elaborar itens e distratores coerentes com os objetivos |
+| [ae-diagramar](../.agents/skills/ae-diagramar/SKILL.md) | Exportar os quatro formatos com recursos e links auditados |
+| [ae-revisar](../.agents/skills/ae-revisar/SKILL.md) | Fazer segunda passagem técnica/editorial e conferir artefatos |
+| [ae-gerenciar](../.agents/skills/ae-gerenciar/SKILL.md) | Manter progresso, decisões, backlog e cofre com confirmação |
+| [ae-curar-acervo](../.agents/skills/ae-curar-acervo/SKILL.md) | Buscar, deduplicar, importar e preservar revisões de questões |
+| [ae-montar-simulado](../.agents/skills/ae-montar-simulado/SKILL.md) | Montar matriz, aplicação e pontuação |
+| [ae-produzir-revisao](../.agents/skills/ae-produzir-revisao/SKILL.md) | Propor recuperação ativa e remissões à teoria |
+| [ae-atualizar-material](../.agents/skills/ae-atualizar-material/SKILL.md) | Comparar edições, propagar impacto de figuras e registrar errata |
+| [ae-auditar-acessibilidade](../.agents/skills/ae-auditar-acessibilidade/SKILL.md) | Medir teclado, contraste, descrições e estrutura com limites |
 
-O fluxo agora começa por texto/foto/print, lê todas as skills e segue [do-pedido-a-entrega.md](do-pedido-a-entrega.md). Na versão 0.4, essas cinco skills passaram a 0.2.0; no fechamento, ae-orquestrar passou a 0.3.0 e ae-gerenciar a 0.2.0. Não há nova skill duplicando a orquestração. A ingestão e o contrato final têm testes; uma nova solicitação real completa ainda precisa aplicar o fluxo de ponta a ponta.
+ae-diagramar 0.6.0 valida recursos de todos os textos antes de incorporá-los; ae-atualizar-material 0.2.0 rastreia figuras e seus usos; ae-revisar 0.5.0 reforça a segunda passagem e os distratores; ae-analisar-edital 0.3.0 distingue o trecho visível da continuação pesquisada. As demais versões constam em seus arquivos.
 
-Ordem usual: orquestrar → edital/fontes/perfil → plano → escrita/figuras/questões → revisão → diagramação → gestão. A curadoria editorial melhora os padrões antes de escalar. As skills são modulares para reutilização; não exigem múltiplos agentes.
+Ordem usual: orquestração → edital/fontes/perfil → plano → escrita/figuras/questões → revisão → diagramação → gestão. A revisão pode exigir retorno às etapas anteriores. Os procedimentos são modulares e não exigem múltiplos agentes.
 
-As evidências descrevem partes observadas, sem certificar aplicação universal. Há 17 skills locais: 12 da fundação, ae-curar-acervo e quatro módulos implementados junto das ferramentas de simulado, revisão, edições e acessibilidade. A [prontidão](prontidao.md) distingue base operacional, aplicação por caso e avaliação pelo leitor. Não há instalação global presumida.
+Os cartões podem ser classificados conservadoramente como `active-with-caveats` após confirmar seus registros: houve aplicação prática delimitada, sem instalação global, calibração estatística da dificuldade ou aprovação pedagógica presumida. Cada matéria exige pesquisa e revisão próprias. Não há skill obrigatória ainda por criar para o escopo atual; a continuidade é conteúdo sob demanda e retorno do leitor.

@@ -1,0 +1,104 @@
+[
+  {
+    "id": "BD-01",
+    "texto": "1 Modelagem de dados (conceitual, lógica e física).",
+    "materia": "Banco de Dados",
+    "localizador": "Anexo I, Perfil 3 — Desenvolvimento de Software, páginas 30–31"
+  },
+  {
+    "id": "BD-02",
+    "texto": "2 Abordagem relacional e multidimensional.",
+    "materia": "Banco de Dados",
+    "localizador": "Anexo I, Perfil 3 — Desenvolvimento de Software, páginas 30–31"
+  },
+  {
+    "id": "BD-03",
+    "texto": "3 Normalização das estruturas de dados.",
+    "materia": "Banco de Dados",
+    "localizador": "Anexo I, Perfil 3 — Desenvolvimento de Software, páginas 30–31"
+  },
+  {
+    "id": "BD-04",
+    "texto": "4 Integridade referencial.",
+    "materia": "Banco de Dados",
+    "localizador": "Anexo I, Perfil 3 — Desenvolvimento de Software, páginas 30–31"
+  },
+  {
+    "id": "BD-05",
+    "texto": "5 Metadados.",
+    "materia": "Banco de Dados",
+    "localizador": "Anexo I, Perfil 3 — Desenvolvimento de Software, páginas 30–31"
+  },
+  {
+    "id": "BD-06",
+    "texto": "6 Modelagem dimensional.",
+    "materia": "Banco de Dados",
+    "localizador": "Anexo I, Perfil 3 — Desenvolvimento de Software, páginas 30–31"
+  },
+  {
+    "id": "BD-07",
+    "texto": "7 Linguagem de consulta estruturada (SQL).",
+    "materia": "Banco de Dados",
+    "localizador": "Anexo I, Perfil 3 — Desenvolvimento de Software, páginas 30–31"
+  },
+  {
+    "id": "BD-08",
+    "texto": "8 Linguagem de definição de dados (DDL).",
+    "materia": "Banco de Dados",
+    "localizador": "Anexo I, Perfil 3 — Desenvolvimento de Software, páginas 30–31"
+  },
+  {
+    "id": "BD-09",
+    "texto": "9 Linguagem de manipulação de dados (DML).",
+    "materia": "Banco de Dados",
+    "localizador": "Anexo I, Perfil 3 — Desenvolvimento de Software, páginas 30–31"
+  },
+  {
+    "id": "BD-10",
+    "texto": "10 SGBD.",
+    "materia": "Banco de Dados",
+    "localizador": "Anexo I, Perfil 3 — Desenvolvimento de Software, páginas 30–31"
+  },
+  {
+    "id": "BD-11",
+    "texto": "11 Propriedades de banco de dados.",
+    "materia": "Banco de Dados",
+    "localizador": "Anexo I, Perfil 3 — Desenvolvimento de Software, páginas 30–31"
+  },
+  {
+    "id": "BD-12",
+    "texto": "12 Banco de dados NoSQL.",
+    "materia": "Banco de Dados",
+    "localizador": "Anexo I, Perfil 3 — Desenvolvimento de Software, páginas 30–31"
+  },
+  {
+    "id": "BD-13",
+    "texto": "13 Banco de dados em memória.",
+    "materia": "Banco de Dados",
+    "localizador": "Anexo I, Perfil 3 — Desenvolvimento de Software, páginas 30–31"
+  },
+  {
+    "id": "BD-14",
+    "texto": "14 Data lakes e soluções para big data.",
+    "materia": "Banco de Dados",
+    "localizador": "Anexo I, Perfil 3 — Desenvolvimento de Software, páginas 30–31"
+  },
+  {
+    "id": "BD-15",
+    "texto": "15 Dados Estruturados e não Estruturados.",
+    "materia": "Banco de Dados",
+    "localizador": "Anexo I, Perfil 3 — Desenvolvimento de Software, páginas 30–31"
+  },
+  {
+    "id": "BD-16",
+    "texto": "16 Avaliação de modelos de dados.",
+    "materia": "Banco de Dados",
+    "localizador": "Anexo I, Perfil 3 — Desenvolvimento de Software, páginas 30–31"
+  },
+  {
+    "id": "BD-17",
+    "texto": "17 Técnicas de Integração e Ingestão de Dados (ETL/ELT, Transferência de Arquivos e Integração via Base de Dados).",
+    "materia": "Banco de Dados",
+    "localizador": "Anexo I, Perfil 3 — Desenvolvimento de Software, páginas 30–31"
+  }
+]

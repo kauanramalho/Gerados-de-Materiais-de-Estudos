@@ -1,7 +1,7 @@
 ---
 name: ae-atualizar-material
 description: Analisar alterações e emitir nova edição com impacto e errata rastreáveis.
-version: 0.1.0
+version: 0.2.0
 ---
 
 # Analisar alterações e emitir nova edição com impacto e errata rastreáveis.
@@ -21,6 +21,7 @@ Edição anterior preservada, fontes/questões novas, motivo e evidência da mud
 3. Execute scripts/edicoes.py com manifestos anterior/novo, --motivo, --report e --errata. Revise questões, capítulos e fontes sinalizados; mudança de fonte exige revisão conservadora de todos os capítulos.
 4. Complete a errata com trecho anterior, correção, fundamento e revisor. IDs removidos devem ter justificativa; o relatório de impacto não aprova automaticamente a correção.
 5. Recalcule e revise questões, regenere PDFs e reaudite links/acessibilidade. Confira bytes publicados; mantenha catálogo e histórico coerentes com a edição e documente no Segundo Cérebro.
+6. Conferir changed_figures e figure_review_policy: alteração de arquivo ou metadado de figura encaminha capítulos e questões relacionados. Uso em contexto/questão ou referência não resolvida por capítulo exige revisão conservadora explícita. Não ignorar uma figura porque o texto do capítulo permaneceu igual; revisar também capítulos de síntese e mudanças de metadados do material.
 
 ## Saídas
 

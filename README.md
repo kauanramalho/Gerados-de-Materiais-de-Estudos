@@ -4,7 +4,7 @@ Repositório público: [Gerados-de-Materiais-de-Estudos](https://github.com/kaua
 
 Base permanente de instruções, skills e modelos para produzir apostilas e cadernos de questões de concursos, com explicações claras, ilustrações úteis e fontes verificáveis.
 
-**Fase atual:** publicador 0.5, simulado/pontuação, revisão ativa, edições/erratas e acessibilidade; entrada por texto/foto/print, pesquisa e cobertura vinculadas ao pedido, navegação auditada, dois pilotos e acervo local. O projeto é conduzido por um agente com acesso a este repositório. Ainda não existe um serviço autônomo que receba editais ou gere apostilas sem uma sessão de trabalho.
+**Fase atual:** publicador 0.6, quatro formatos, validação de imagens em todas as entradas e acompanhamento de figuras nas edições; entrada por texto/foto/print, pesquisa e cobertura vinculadas ao pedido, navegação auditada e acervo local. O projeto é conduzido por um agente com acesso a este repositório. Ainda não existe um serviço autônomo que receba editais ou gere apostilas sem uma sessão de trabalho.
 
 ## Como pedir um material
 
@@ -20,7 +20,7 @@ O agente lê todas as instruções e skills, identifica o concurso, pesquisa edi
 
 - [Instruções para agentes](AGENTS.md) e [17 skills editoriais](docs/skills.md), com entradas, procedimentos, saídas e critérios de aceite.
 - [Planejamento](docs/planejamento.md), [arquitetura](docs/arquitetura.md), [roadmap](docs/roadmap.md) e [backlog](docs/backlog.md).
-- [O que falta para ficar pronto](docs/prontidao.md): lacunas verificadas, skills candidatas, documentos previstos e critérios de conclusão.
+- [Estado de prontidão](docs/prontidao.md): desenvolvimento entregue, evidências e avaliação real pelo leitor em acompanhamento.
 - [Navegação obrigatória](docs/navegacao.md): sumário clicável, resolução correta, retorno, hashes e bloqueio de exportação com erro. O layout atual foi aprovado pelo titular.
 - [Manual editorial](docs/manual-editorial.md), [padrão visual](docs/padrao-visual.md), [política de questões](docs/questoes.md) e [revisão](docs/qualidade.md).
 - [Referências pesquisadas](references/catalogo.md), [modelos reutilizáveis](templates/README.md), [contratos de dados](schemas/README.md) e prova mínima de navegação em [examples/redes](examples/redes/README.md).
@@ -32,7 +32,9 @@ Entregas finais de concurso usam pedido.json vinculado ao manifesto e `--final`.
 
 O agente já pode montar materiais a partir de um manifesto. O piloto contém teoria, três figuras, exemplos SQL verificados, oito questões autorais e três referências a questões reais com comentário. Veja o [fluxo de produção](docs/producao.md) e o [piloto](materials/dataprev-sql/README.md).
 
-O [piloto de matemática](materials/matematica-basica/README.md) acrescenta seis questões autorais, fórmulas sem JavaScript e tabela com continuação. O [acervo local](docs/acervo.md) permite importar os dois lotes, buscar e deduplicar 21 itens, com histórico de revisões explícitas.
+O [caso de Banco de Dados Dataprev/FGV](materials/dataprev-bd/README.md) desenvolve os 17 itens da matéria do Perfil 3, com 17 capítulos, 12 figuras e 49 questões. Veja o [protocolo de validação real](docs/validacao-real-dataprev.md) e a [avaliação pedagógica](docs/avaliacao-pedagogica.md), que distingue revisão editorial e retorno do leitor.
+
+O [piloto de matemática](materials/matematica-basica/README.md) acrescenta seis questões autorais, fórmulas sem JavaScript e tabela com continuação. O [acervo local](docs/acervo.md) preserva 67 questões únicas e 70 revisões nos quatro materiais, com busca, deduplicação e histórico explícito.
 
 ```sh
 python scripts/build_material.py materials/dataprev-sql/material.json --check
@@ -44,7 +46,7 @@ Também estão implementados [simulado e pontuação](docs/simulados.md), [revis
 
 ## Verificar e gerar a amostra inicial
 
-Requer Python 3.11+ e `pip install -r requirements-core.txt` para validar os contratos JSON. Para HTML, requer Pandoc. Para PDF, instale `requirements-pdf.txt` e use Chromium/Chrome de sistema ou `python -m playwright install chromium`. Não exige chave de API.
+Requer Python 3.11+, `pip install -r requirements-core.txt` e Pandoc para validar os manifestos e o Markdown efetivamente renderizado. Para PDF, instale `requirements-pdf.txt` e use Chromium/Chrome de sistema ou `python -m playwright install chromium`. Não exige chave de API.
 
 ```sh
 python scripts/check.py

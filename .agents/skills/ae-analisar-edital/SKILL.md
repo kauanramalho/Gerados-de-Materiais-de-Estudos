@@ -1,7 +1,7 @@
 ---
 name: ae-analisar-edital
 description: Identificar concurso e converter edital em cobertura rastreável.
-version: 0.2.0
+version: 0.3.0
 ---
 
 # Identificar concurso e converter edital em cobertura rastreável
@@ -21,6 +21,7 @@ Nome, texto, foto/print ou documento/link; cargo se disponível. Consulte AGENTS
 3. Extraia todos os itens e subitens aplicáveis ao cargo, mantendo numeração, texto e localizador; confira OCR/transcrição visualmente. Registre programa e seleção em pedido.json. Pedido completo seleciona todo o programa; matéria/recorte seleciona todos os itens pedidos.
 4. Preencha a matriz: edital_id → texto literal → objetivo → capítulo → questão. Compare-a com o anexo oficial para detectar omissões. Identifique pré-requisitos necessários e complementos justificados; não acrescente assunto de outro concurso.
 5. Registre lacunas e data de corte; não suponha cronograma, banca ou pesos ainda não confirmados.
+6. Um print pode mostrar somente o começo de uma matéria. Conferir a continuação nas páginas seguintes do documento oficial, como os 17 itens de Banco de Dados do caso Dataprev. Não tomar o fim da imagem como fim do programa nem transcrever como visível aquilo que foi recuperado depois na pesquisa.
 
 ## Saídas
 

@@ -26,6 +26,7 @@ jobs:
       - run: pip install -r requirements-pdf.txt
       - run: python -m playwright install --with-deps chromium
       - run: python -m unittest discover -s tests -p test_navigation.py -v
+      - run: python -m unittest discover -s tests -p test_resources.py -v
       - run: python scripts/build_material.py materials/dataprev-sql/material.json --pdf
       - run: python scripts/build_material.py materials/dataprev-sql/material.json --kind caderno --pdf
       - run: python scripts/build_material.py materials/matematica-basica/material.json --pdf
@@ -34,6 +35,12 @@ jobs:
       - run: python scripts/build_material.py materials/matematica-basica/material.json --kind revisao --pdf
       - run: python scripts/build_material.py materials/redes-lgpd/material.json --pdf
       - run: python scripts/build_material.py materials/redes-lgpd/material.json --kind caderno --pdf
+      - run: python scripts/check_sql.py materials/dataprev-bd/verificacoes.json --report build/dataprev-bd/sql-validation.json
+      - run: python scripts/build_material.py materials/dataprev-bd/material.json --pdf
+      - run: python scripts/build_material.py materials/dataprev-bd/material.json --kind caderno --pdf
+      - run: python scripts/audit_links.py build/dataprev-bd/apostila.pdf build/dataprev-bd/caderno.pdf --browser --report build/dataprev-bd/navigation-audit.json
+      - run: python scripts/acessibilidade.py build/dataprev-bd/apostila.html build/dataprev-bd/apostila.pdf --report build/dataprev-bd/apostila-acessibilidade.json
+      - run: python scripts/acessibilidade.py build/dataprev-bd/caderno.html build/dataprev-bd/caderno.pdf --report build/dataprev-bd/caderno-acessibilidade.json
       - run: python scripts/simulado.py materials/matematica-basica/material.json --respostas materials/matematica-basica/respostas-exemplo.json --report build/pontuacao.json
       - run: python scripts/audit_links.py build/matematica-basica/simulado.pdf build/matematica-basica/revisao.pdf build/redes-lgpd/apostila.pdf build/redes-lgpd/caderno.pdf --browser --report build/new-formats-navigation.json
       - run: python scripts/acessibilidade.py build/matematica-basica/revisao.html build/matematica-basica/revisao.pdf --report build/revisao-acessibilidade.json
@@ -42,6 +49,7 @@ jobs:
       - run: python scripts/acervo.py --db build/acervo.sqlite importar materials/dataprev-sql/material.json
       - run: python scripts/acervo.py --db build/acervo.sqlite importar materials/matematica-basica/material.json
       - run: python scripts/acervo.py --db build/acervo.sqlite importar materials/redes-lgpd/material.json
+      - run: python scripts/acervo.py --db build/acervo.sqlite importar materials/dataprev-bd/material.json --aceitar-revisoes --motivo 'Comentários ampliados e fontes reconferidas; gabarito preliminar preservado'
       - run: python scripts/acervo.py --db build/acervo.sqlite exportar --output build/acervo.json
       - uses: actions/upload-artifact@v4
         with:

@@ -2,8 +2,6 @@
 import json
 from pathlib import Path
 import shutil
-import time
-from urllib.parse import unquote, urlparse
 
 
 def check_html_clicks(html_path, plan):
@@ -41,18 +39,14 @@ def check_html_clicks(html_path, plan):
                             rect = rects[index]
                             page.mouse.click(rect['x'] + rect['w']/2, rect['y'] + rect['h']/2)
                             clicks += 1
-                            target = page.locator('[id=' + json.dumps(edge['target'], ensure_ascii=False) + ']')
-                            arrived = False
-                            deadline = time.monotonic() + 5
-                            while time.monotonic() < deadline:
-                                actual = unquote(urlparse(page.url).fragment)
-                                box = target.bounding_box(timeout=2000)
-                                if actual == edge['target'] and box and -2 <= box['y'] < 900:
-                                    arrived = True
-                                    break
-                                page.wait_for_timeout(20)
-                            if not arrived:
-                                failures.append(f'Clique não levou ao destino visível: {edge["source"]} → {edge["target"]}')
+                            # One browser-side condition avoids repeated short RPC
+                            # timeouts while the native anchor scroll is settling.
+                            page.wait_for_function('''(ident) => {
+                                const target = document.getElementById(ident);
+                                if (!target || decodeURIComponent(location.hash.slice(1)) !== ident) return false;
+                                const box = target.getBoundingClientRect();
+                                return box.width > 0 && box.height > 0 && box.y >= -2 && box.y < innerHeight;
+                            }''', arg=edge['target'], timeout=10000, polling=50)
                     except Error as error:
                         failures.append(f'Elemento não clicável/localizável: {edge["source"]}: {str(error).splitlines()[0]}')
                     if failures:

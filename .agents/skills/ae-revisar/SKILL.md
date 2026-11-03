@@ -1,7 +1,7 @@
 ---
 name: ae-revisar
 description: Revisar precisão, didática, questões e artefatos finais.
-version: 0.4.0
+version: 0.5.0
 ---
 
 # Revisar precisão, didática, questões e artefatos finais
@@ -25,6 +25,7 @@ Material, fontes, edital, perfil de banca e checklist. Consulte AGENTS.md e as p
 
 7. Conferir ordem/matriz e pontuação/anulação de simulados, síntese/remissões de revisão e impacto/errata de edições. Executar acessibilidade.py e registrar limites assistivos.
 8. Comparar pedido, imagem/transcrição, programa oficial completo, seleção, capítulos e cada questão. Não aceitar unidade parcial como conclusão de pedido completo. Executar --check --final e revisar fidelidade da extração, evidências e pertinência; o validador estrutural não comprova leitura real das fontes.
+9. Na segunda passagem, conferir hipóteses de transação/versão, grão e unidades, pertinência das remissões e plausibilidade de cada distrator. Distratores absurdos e respostas denunciadas pelo formato não calibram o nível da banca. Registrar o que foi corrigido e separar revisão editorial por IA de avaliação com leitor; usar docs/avaliacao-pedagogica.md.
 
 ## Saídas
 

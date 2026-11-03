@@ -1,0 +1,1580 @@
+[
+  {
+    "id": "Q-AUT-101",
+    "origem": "AUTORAL",
+    "objetivo": "BD-01",
+    "formato": "multipla-escolha",
+    "enunciado": "Uma equipe decide: I — quais objetos do negócio precisam ser representados; II — quais colunas formam a chave de uma tabela; III — qual índice atende a uma consulta frequente. A associação usual entre essas decisões e os níveis de modelagem é:",
+    "alternativas": {
+      "A": "I conceitual; II lógico; III físico.",
+      "B": "I físico; II conceitual; III lógico.",
+      "C": "I lógico; II físico; III conceitual.",
+      "D": "Todas são exclusivamente físicas.",
+      "E": "Todas são exclusivamente conceituais."
+    },
+    "resposta": "A",
+    "comentarios": {
+      "A": "Correta. Objetos e significado pertencem ao conceitual; a estrutura relacional e suas chaves ao lógico; o caminho de acesso é físico.",
+      "B": "Incorreta. A definição dos objetos não começa pela organização física, e um índice é uma decisão de implementação.",
+      "C": "Incorreta. A chave expressa identificação no modelo lógico; o índice não define o significado de uma entidade.",
+      "D": "Incorreta. A implementação precisa respeitar decisões anteriores sobre significado e estrutura.",
+      "E": "Incorreta. Escolher um índice é detalhar implementação, além da abstração conceitual."
+    },
+    "direitos": "original-projeto",
+    "dificuldade": "estimada-inicial",
+    "theory": "bd01",
+    "source_ids": [
+      "F01",
+      "F03"
+    ],
+    "reasoning": "Estratégia: identificar a regra ou o efeito pedido e confrontar as condições do enunciado. Objetos e significado pertencem ao conceitual; a estrutura relacional e suas chaves ao lógico; o caminho de acesso é físico."
+  },
+  {
+    "id": "Q-AUT-102",
+    "origem": "AUTORAL",
+    "objetivo": "BD-01",
+    "formato": "multipla-escolha",
+    "enunciado": "Um curso pode ser oferecido em várias edições. Um aluno pode se matricular em edições diferentes do mesmo curso, mas só uma vez em cada edição. Uma tabela Matricula usa id artificial como chave primária. Qual restrição adicional representa diretamente a unicidade de negócio informada?",
+    "alternativas": {
+      "A": "Nenhuma: a chave artificial garante qualquer regra de negócio.",
+      "B": "UNIQUE(aluno_id, edicao_id), supondo que edicao_id identifique a edição.",
+      "C": "UNIQUE(aluno_id).",
+      "D": "UNIQUE(curso_id).",
+      "E": "UNIQUE(aluno_id, curso_id), sem identificar a edição."
+    },
+    "resposta": "B",
+    "comentarios": {
+      "A": "Incorreta. A chave artificial distingue linhas, mas não substitui a unicidade do vínculo pretendido.",
+      "B": "Correta. O vínculo único é aluno–edição; o id artificial isolado não impede repetir esse vínculo.",
+      "C": "Incorreta. Isso impediria o aluno de cursar edições diferentes, contrariando o requisito.",
+      "D": "Incorreta. Isso admitiria uma única matrícula por curso, embora possam existir vários alunos e edições.",
+      "E": "Incorreta. O par impediria uma nova matrícula legítima em outra edição do mesmo curso."
+    },
+    "direitos": "original-projeto",
+    "dificuldade": "estimada-intermediaria",
+    "theory": "bd01",
+    "source_ids": [
+      "F01",
+      "F03"
+    ],
+    "reasoning": "Estratégia: identificar a regra ou o efeito pedido e confrontar as condições do enunciado. O vínculo único é aluno–edição; o id artificial isolado não impede repetir esse vínculo."
+  },
+  {
+    "id": "Q-AUT-103",
+    "origem": "AUTORAL",
+    "objetivo": "BD-02",
+    "formato": "multipla-escolha",
+    "enunciado": "Uma análise já mostra a receita por dia e por curso. A gestora passa a observar a receita por mês e por curso, somando os dias do mesmo mês. Essa mudança caracteriza:",
+    "alternativas": {
+      "A": "Drill-down na dimensão Curso.",
+      "B": "Pivot sem mudança no nível temporal.",
+      "C": "Roll-up na dimensão Tempo.",
+      "D": "Drill-down na dimensão Tempo.",
+      "E": "Slice sem mudança de agregação temporal."
+    },
+    "resposta": "C",
+    "comentarios": {
+      "A": "Incorreta. Não foram detalhados cursos em subníveis; a alteração ocorre no nível de Tempo e aumenta a agregação.",
+      "B": "Incorreta. Reorganizar eixos não explica, por si só, a soma dos dias em meses.",
+      "C": "Correta. O resultado passa a um nível temporal mais agregado, conservando a análise por curso.",
+      "D": "Incorreta. Drill-down detalharia, por exemplo, um mês em seus dias, no sentido oposto.",
+      "E": "Incorreta. A operação descrita soma dias em meses; não é apenas fixar um valor de dimensão mantendo o nível anterior."
+    },
+    "direitos": "original-projeto",
+    "dificuldade": "estimada-inicial",
+    "theory": "bd02",
+    "source_ids": [
+      "F08"
+    ],
+    "reasoning": "Estratégia: identificar a regra ou o efeito pedido e confrontar as condições do enunciado. O resultado passa a um nível temporal mais agregado, conservando a análise por curso."
+  },
+  {
+    "id": "Q-AUT-104",
+    "origem": "AUTORAL",
+    "objetivo": "BD-02",
+    "formato": "multipla-escolha",
+    "enunciado": "Uma solução usa tabelas relacionais em estrela e SQL para analisar matrículas por curso e período. Um analista afirma que isso é impossível porque análise multidimensional nunca usa tabelas relacionais. A avaliação correta é:",
+    "alternativas": {
+      "A": "A afirmação é correta: um SGBD relacional deixa de aceitar SQL quando recebe tabelas de fatos.",
+      "B": "A presença de chaves estrangeiras torna a carga necessariamente OLTP.",
+      "C": "Uma estrela precisa ter exatamente três dimensões.",
+      "D": "A afirmação é incorreta: a organização dimensional pode ser implementada por tabelas relacionais.",
+      "E": "A afirmação é correta: dimensões exigem necessariamente um armazenamento físico em cubos proprietário."
+    },
+    "resposta": "D",
+    "comentarios": {
+      "A": "Incorreta. A definição de fatos e dimensões não elimina o suporte às consultas do SGBD.",
+      "B": "Incorreta. Relacionamentos referenciais podem sustentar modelos analíticos; a carga é caracterizada por suas operações.",
+      "C": "Incorreta. A quantidade de dimensões depende do domínio; a metáfora de cubo não impõe três eixos.",
+      "D": "Correta. Finalidade analítica e representação física não são categorias obrigatoriamente incompatíveis.",
+      "E": "Incorreta. O modelo dimensional pode ser representado por tabelas relacionais, sem essa exigência de armazenamento."
+    },
+    "direitos": "original-projeto",
+    "dificuldade": "estimada-intermediaria",
+    "theory": "bd02",
+    "source_ids": [
+      "F08"
+    ],
+    "reasoning": "Estratégia: identificar a regra ou o efeito pedido e confrontar as condições do enunciado. Finalidade analítica e representação física não são categorias obrigatoriamente incompatíveis."
+  },
+  {
+    "id": "Q-AUT-105",
+    "origem": "AUTORAL",
+    "objetivo": "BD-03",
+    "formato": "multipla-escolha",
+    "enunciado": "Considere R(A,B,C), em 1FN, com dependências A → B e B → C. Admita que A seja a única chave candidata e que B não identifique todas as colunas. Qual diagnóstico é adequado?",
+    "alternativas": {
+      "A": "A relação viola necessariamente 2FN porque A determina B.",
+      "B": "B é obrigatoriamente chave candidata porque determina C.",
+      "C": "A relação está necessariamente em BCNF porque A é chave.",
+      "D": "A relação satisfaz 3FN apenas porque a chave A determina todos os atributos.",
+      "E": "A relação pode estar em 2FN e violar 3FN por B → C."
+    },
+    "resposta": "E",
+    "comentarios": {
+      "A": "Incorreta. A dependência da chave completa simples não é uma dependência parcial.",
+      "B": "Incorreta. Determinar uma coluna não significa determinar toda a relação, inclusive A.",
+      "C": "Incorreta. A dependência não trivial B → C também precisa ser examinada; B não é superchave.",
+      "D": "Incorreta. Além de examinar a chave, é necessário avaliar B → C; o determinante não é superchave e o dependente não é primo.",
+      "E": "Correta. A chave simples não tem parte própria gerando dependência parcial; B não é superchave e C não é primo."
+    },
+    "direitos": "original-projeto",
+    "dificuldade": "estimada-intermediaria",
+    "theory": "bd03",
+    "source_ids": [
+      "F02"
+    ],
+    "reasoning": "Estratégia: identificar a regra ou o efeito pedido e confrontar as condições do enunciado. A chave simples não tem parte própria gerando dependência parcial; B não é superchave e C não é primo."
+  },
+  {
+    "id": "Q-AUT-106",
+    "origem": "AUTORAL",
+    "objetivo": "BD-03",
+    "formato": "multipla-escolha",
+    "enunciado": "Em R(aluno,disciplina,professor), admita (aluno,disciplina) → professor e professor → disciplina, sem outras dependências independentes. As chaves candidatas são (aluno,disciplina) e (aluno,professor). A dependência professor → disciplina:",
+    "alternativas": {
+      "A": "Pode satisfazer a exceção da 3FN e ainda violar BCNF.",
+      "B": "Prova que professor sozinho é chave candidata.",
+      "C": "É trivial porque disciplina pertence a uma chave candidata.",
+      "D": "Prova que a relação não pode ter mais de uma chave candidata.",
+      "E": "Prova que a BCNF aceita qualquer determinante quando o dependente é primo."
+    },
+    "resposta": "A",
+    "comentarios": {
+      "A": "Correta. Disciplina é atributo primo, mas professor não é superchave. A BCNF não admite essa exceção da 3FN.",
+      "B": "Incorreta. Professor não determina aluno segundo as dependências informadas.",
+      "C": "Incorreta. Ser atributo primo não torna a dependência trivial; trivialidade exige o dependente contido no determinante.",
+      "D": "Incorreta. O próprio conjunto de dependências admite as duas chaves candidatas informadas.",
+      "E": "Incorreta. Essa é uma distinção em relação à 3FN: a BCNF exige determinante superchave para dependências não triviais."
+    },
+    "direitos": "original-projeto",
+    "dificuldade": "estimada-avancada",
+    "theory": "bd03",
+    "source_ids": [
+      "F02"
+    ],
+    "reasoning": "Estratégia: identificar a regra ou o efeito pedido e confrontar as condições do enunciado. Disciplina é atributo primo, mas professor não é superchave. A BCNF não admite essa exceção da 3FN."
+  },
+  {
+    "id": "Q-AUT-107",
+    "origem": "AUTORAL",
+    "objetivo": "BD-04",
+    "formato": "multipla-escolha",
+    "enunciado": "A coluna responsavel_id é uma chave estrangeira simples e permite NULL. Um requisito novo exige que todo registro tenha um responsável existente. Qual mudança representa diretamente a obrigatoriedade, mantendo a verificação de existência?",
+    "alternativas": {
+      "A": "Declarar DEFAULT NULL como única restrição.",
+      "B": "Acrescentar NOT NULL à coluna e manter a chave estrangeira.",
+      "C": "Remover a chave estrangeira e manter apenas um nome sugestivo na coluna.",
+      "D": "Criar somente um índice não exclusivo em responsavel_id.",
+      "E": "Acrescentar somente UNIQUE em responsavel_id e preservar sua nulidade."
+    },
+    "resposta": "B",
+    "comentarios": {
+      "A": "Incorreta. O padrão nulo mantém justamente a ausência que o requisito pretende impedir.",
+      "B": "Correta. A chave estrangeira verifica a referência; NOT NULL impede usar ausência no lugar da referência obrigatória.",
+      "C": "Incorreta. O nome não confere a existência do responsável no cadastro referenciado.",
+      "D": "Incorreta. Um índice de acesso não torna obrigatória uma referência nem substitui sua integridade.",
+      "E": "Incorreta. Unicidade não impede a ausência permitida por NULL e ainda pode restringir uma cardinalidade que não foi pedida."
+    },
+    "direitos": "original-projeto",
+    "dificuldade": "estimada-inicial",
+    "theory": "bd04",
+    "source_ids": [
+      "F03"
+    ],
+    "reasoning": "Estratégia: identificar a regra ou o efeito pedido e confrontar as condições do enunciado. A chave estrangeira verifica a referência; NOT NULL impede usar ausência no lugar da referência obrigatória."
+  },
+  {
+    "id": "Q-AUT-108",
+    "origem": "AUTORAL",
+    "objetivo": "BD-04",
+    "formato": "multipla-escolha",
+    "enunciado": "Uma chave estrangeira usa ON DELETE SET NULL, mas sua coluna também é NOT NULL. Existe uma linha dependente. Não há gatilho nem outra alteração que remova essa dependência. Ao tentar excluir a linha referenciada, é correto concluir que:",
+    "alternativas": {
+      "A": "A ação conclui sempre e a conferência de NOT NULL deixa de existir para essa coluna.",
+      "B": "A ação se converte obrigatoriamente em NO ACTION na definição do esquema.",
+      "C": "A operação não pode completar atribuindo NULL e violando NOT NULL; a incompatibilidade precisa ser tratada.",
+      "D": "A coluna recebe seu valor DEFAULT, pois SET NULL e SET DEFAULT são sinônimos.",
+      "E": "A linha dependente sempre é excluída como se a ação fosse CASCADE."
+    },
+    "resposta": "C",
+    "comentarios": {
+      "A": "Incorreta. A ação referencial não revoga a restrição estrutural.",
+      "B": "Incorreta. Não ocorre essa reescrita automática da política; o conflito precisa ser tratado pelas regras do sistema.",
+      "C": "Correta. A ação referencial não suspende as demais restrições aplicáveis à linha dependente.",
+      "D": "Incorreta. As ações são diferentes; SET NULL não escolhe automaticamente o padrão da coluna.",
+      "E": "Incorreta. SET NULL e CASCADE têm efeitos diferentes; não se deve trocar a política declarada."
+    },
+    "direitos": "original-projeto",
+    "dificuldade": "estimada-intermediaria",
+    "theory": "bd04",
+    "source_ids": [
+      "F03"
+    ],
+    "reasoning": "Estratégia: identificar a regra ou o efeito pedido e confrontar as condições do enunciado. A ação referencial não suspende as demais restrições aplicáveis à linha dependente."
+  },
+  {
+    "id": "Q-AUT-109",
+    "origem": "AUTORAL",
+    "objetivo": "BD-05",
+    "formato": "multipla-escolha",
+    "enunciado": "Dois relatórios usam colunas DECIMAL iguais, mas um calcula receita por data de emissão e outro por data de recebimento. A primeira conferência adequada para entender a divergência deve incluir:",
+    "alternativas": {
+      "A": "A conclusão de que um dos SGBDs está necessariamente corrompido.",
+      "B": "Conferir apenas precisão e escala, presumindo igualdade de significado pelo tipo compartilhado.",
+      "C": "Conferir somente o horário de carga, sem revisar a definição dos indicadores.",
+      "D": "Definições de negócio, critérios temporais e linhagem das transformações.",
+      "E": "Apenas o tamanho físico dos arquivos."
+    },
+    "resposta": "D",
+    "comentarios": {
+      "A": "Incorreta. A divergência pode decorrer de definições legítimas diferentes, sem corrupção.",
+      "B": "Incorreta. Tipos iguais não mostram qual evento e calendário entram no indicador.",
+      "C": "Incorreta. A carga pode estar completa e ainda aplicar critérios de negócio diferentes.",
+      "D": "Correta. Representações técnicas iguais não garantem indicadores com o mesmo significado ou recorte temporal.",
+      "E": "Incorreta. Tamanho não esclarece qual evento e período entram no indicador."
+    },
+    "direitos": "original-projeto",
+    "dificuldade": "estimada-intermediaria",
+    "theory": "bd05",
+    "source_ids": [
+      "F09"
+    ],
+    "reasoning": "Estratégia: identificar a regra ou o efeito pedido e confrontar as condições do enunciado. Representações técnicas iguais não garantem indicadores com o mesmo significado ou recorte temporal."
+  },
+  {
+    "id": "Q-AUT-110",
+    "origem": "AUTORAL",
+    "objetivo": "BD-05",
+    "formato": "multipla-escolha",
+    "enunciado": "Um catálogo registra nome de coluna, tipo, nulidade e chave, mas não informa se valor representa reais ou dólares. Qual afirmação é sustentada por esse caso?",
+    "alternativas": {
+      "A": "A presença de um tipo numérico permite descobrir a moeda sem informação adicional.",
+      "B": "Metadados existem apenas fora de bancos de dados.",
+      "C": "O catálogo técnico gera automaticamente todas as definições de negócio necessárias.",
+      "D": "Uma regra de periodicidade da carga substitui a documentação da unidade monetária.",
+      "E": "Metadados técnicos não substituem a definição semântica necessária ao uso do dado."
+    },
+    "resposta": "E",
+    "comentarios": {
+      "A": "Incorreta. O mesmo tipo pode representar valores de moedas ou medidas diferentes.",
+      "B": "Incorreta. Catálogos de SGBDs também contêm metadados técnicos.",
+      "C": "Incorreta. Essas definições precisam ser informadas e mantidas; não se deduzem apenas dos tipos.",
+      "D": "Incorreta. Periodicidade e unidade monetária são metadados diferentes.",
+      "E": "Correta. Tipos e restrições de representação não revelam automaticamente unidade, moeda e significado de negócio."
+    },
+    "direitos": "original-projeto",
+    "dificuldade": "estimada-inicial",
+    "theory": "bd05",
+    "source_ids": [
+      "F09"
+    ],
+    "reasoning": "Estratégia: identificar a regra ou o efeito pedido e confrontar as condições do enunciado. Tipos e restrições de representação não revelam automaticamente unidade, moeda e significado de negócio."
+  },
+  {
+    "id": "Q-AUT-111",
+    "origem": "AUTORAL",
+    "objetivo": "BD-06",
+    "formato": "multipla-escolha",
+    "enunciado": "FatoMatricula possui uma linha por matrícula e valor_total = 600. FatoPagamento possui três parcelas de 200 para essa matrícula. Uma junção direta repete a linha da matrícula três vezes. Somar valor_total após essa junção resulta em 1.800. A análise adequada é:",
+    "alternativas": {
+      "A": "Há multiplicação pelo encontro de grãos diferentes; é necessário compatibilizar os grãos antes de agregar.",
+      "B": "Cada parcela passa a representar uma nova matrícula, mantendo o grão original do fato.",
+      "C": "SUM(DISTINCT valor_total) resolve corretamente qualquer conjunto de matrículas.",
+      "D": "Basta agrupar por valor_total, mesmo quando matrículas diferentes têm o mesmo valor.",
+      "E": "Adicionar a data da consulta ao GROUP BY garante corrigir qualquer multiplicação."
+    },
+    "resposta": "A",
+    "comentarios": {
+      "A": "Correta. O total da matrícula foi repetido por parcela. Agregar pagamentos ao grão necessário é uma solução possível.",
+      "B": "Incorreta. A multiplicação por parcelas não cria novos eventos de matrícula nem conserva seu grão.",
+      "C": "Incorreta. Matrículas diferentes podem ter o mesmo valor; DISTINCT poderia eliminar valores legítimos.",
+      "D": "Incorreta. Agrupar somente pelo valor pode reunir eventos diferentes e não resolve a identidade do grão.",
+      "E": "Incorreta. Um atributo não relacionado à identidade do evento não resolve a cardinalidade da junção."
+    },
+    "direitos": "original-projeto",
+    "dificuldade": "estimada-intermediaria",
+    "theory": "bd06",
+    "source_ids": [
+      "F08"
+    ],
+    "reasoning": "Estratégia: identificar a regra ou o efeito pedido e confrontar as condições do enunciado. O total da matrícula foi repetido por parcela. Agregar pagamentos ao grão necessário é uma solução possível."
+  },
+  {
+    "id": "Q-AUT-112",
+    "origem": "AUTORAL",
+    "objetivo": "BD-06",
+    "formato": "multipla-escolha",
+    "enunciado": "Uma dimensão mantém versões históricas de região do aluno. O relatório deve atribuir cada matrícula à região vigente na data do evento. Qual estratégia é coerente?",
+    "alternativas": {
+      "A": "Escolher qualquer versão dimensional, pois as datas de vigência são apenas decorativas.",
+      "B": "Referenciar a versão dimensional aplicável ao evento, com controle de vigência e identidade da versão.",
+      "C": "Sobrescrever todas as versões anteriores e manter apenas a região atual.",
+      "D": "Usar a chave natural do aluno para juntar indiscriminadamente todas as suas versões.",
+      "E": "Manter apenas a versão atual e presumir que ela descreve todas as datas passadas."
+    },
+    "resposta": "B",
+    "comentarios": {
+      "A": "Incorreta. A versão deve corresponder à regra temporal usada para interpretar o evento.",
+      "B": "Correta. A referência histórica permite preservar o contexto da época em vez de substituí-lo pela região atual.",
+      "C": "Incorreta. Isso perde o contexto exigido pelo relatório histórico.",
+      "D": "Incorreta. Sem selecionar a versão aplicável, a junção pode multiplicar o fato e atribuir contextos errados.",
+      "E": "Incorreta. A estratégia perde justamente o histórico exigido."
+    },
+    "direitos": "original-projeto",
+    "dificuldade": "estimada-intermediaria",
+    "theory": "bd06",
+    "source_ids": [
+      "F08"
+    ],
+    "reasoning": "Estratégia: identificar a regra ou o efeito pedido e confrontar as condições do enunciado. A referência histórica permite preservar o contexto da época em vez de substituí-lo pela região atual."
+  },
+  {
+    "id": "Q-AUT-113",
+    "origem": "AUTORAL",
+    "objetivo": "BD-07",
+    "formato": "multipla-escolha",
+    "enunciado": "Aluno possui Ana, Beto e Caio. Matricula possui duas linhas de Ana, com notas 8 e 9, e uma de Beto, com nota NULL; Caio não tem matrícula. Na consulta abaixo, o par (linhas, avaliadas) é:\n\n```sql\nSELECT COUNT(*) AS linhas, COUNT(m.nota) AS avaliadas\nFROM Aluno a LEFT JOIN Matricula m ON m.aluno_id = a.id;\n```",
+    "alternativas": {
+      "A": "(2, 2).",
+      "B": "(3, 2).",
+      "C": "(4, 2).",
+      "D": "(3, 3).",
+      "E": "(4, 4)."
+    },
+    "resposta": "C",
+    "comentarios": {
+      "A": "Incorreta. As linhas de Beto e Caio não desaparecem nessa consulta sem filtro posterior.",
+      "B": "Incorreta. Ana aparece em duas combinações; portanto, são quatro linhas no resultado intermediário.",
+      "C": "Correta. O LEFT JOIN produz duas linhas para Ana, uma para Beto e uma preservada para Caio; apenas duas notas são não nulas.",
+      "D": "Incorreta. O número de alunos não é a quantidade de linhas após a multiplicidade da junção, e notas nulas não são contadas por COUNT(nota).",
+      "E": "Incorreta. COUNT(*) conta as quatro linhas, mas COUNT(nota) ignora as duas notas nulas do resultado."
+    },
+    "direitos": "original-projeto",
+    "dificuldade": "estimada-intermediaria",
+    "theory": "bd07",
+    "source_ids": [
+      "F04",
+      "F03"
+    ],
+    "reasoning": "Estratégia: identificar a regra ou o efeito pedido e confrontar as condições do enunciado. O LEFT JOIN produz duas linhas para Ana, uma para Beto e uma preservada para Caio; apenas duas notas são não nulas."
+  },
+  {
+    "id": "Q-AUT-114",
+    "origem": "AUTORAL",
+    "objetivo": "BD-07",
+    "formato": "multipla-escolha",
+    "enunciado": "Considere os valores de Aluno.id iguais a 1, 2 e 3. A subconsulta SELECT valor FROM Lista retorna 1 e NULL. Sem outra condição, WHERE id NOT IN (SELECT valor FROM Lista) retorna:",
+    "alternativas": {
+      "A": "Somente o aluno 1.",
+      "B": "Todos os alunos, pois NULL é sempre ignorado em qualquer operador.",
+      "C": "Um erro obrigatório de sintaxe apenas porque a subconsulta contém NULL.",
+      "D": "Nenhum dos três alunos.",
+      "E": "Somente os alunos 2 e 3."
+    },
+    "resposta": "D",
+    "comentarios": {
+      "A": "Incorreta. O valor 1 está no conjunto; ele não satisfaz sua negação.",
+      "B": "Incorreta. O tratamento de NULL em NOT IN não é o mesmo de COUNT(coluna).",
+      "C": "Incorreta. O comando pode ser sintaticamente válido; o problema está no resultado lógico do predicado.",
+      "D": "Correta. Para 1 a exclusão é falsa; para 2 e 3 a comparação com o NULL deixa o predicado desconhecido. WHERE exige verdadeiro.",
+      "E": "Incorreta. Essa seria uma conclusão indevida que ignora a presença de NULL no conjunto de NOT IN."
+    },
+    "direitos": "original-projeto",
+    "dificuldade": "estimada-intermediaria",
+    "theory": "bd07",
+    "source_ids": [
+      "F04",
+      "F03"
+    ],
+    "reasoning": "Estratégia: identificar a regra ou o efeito pedido e confrontar as condições do enunciado. Para 1 a exclusão é falsa; para 2 e 3 a comparação com o NULL deixa o predicado desconhecido. WHERE exige verdadeiro."
+  },
+  {
+    "id": "Q-AUT-115",
+    "origem": "AUTORAL",
+    "objetivo": "BD-08",
+    "formato": "multipla-escolha",
+    "enunciado": "Uma tabela de matrículas usa id como PRIMARY KEY e declara UNIQUE(aluno_id, edicao_id, id). As duas referências são NOT NULL e possuem as respectivas chaves estrangeiras. A regra exige impedir o mesmo par aluno–edição mesmo quando os ids artificiais são diferentes. Qual alteração atende a essa regra?",
+    "alternativas": {
+      "A": "Somente PRIMARY KEY(id).",
+      "B": "Somente CHECK(id > 0).",
+      "C": "UNIQUE(aluno_id, edicao_id, id), com id já único, sem outra restrição para o par.",
+      "D": "UNIQUE(aluno_id) e nenhum controle sobre edicao_id.",
+      "E": "Substituir a unicidade tripla por UNIQUE(aluno_id, edicao_id), mantendo as restrições de referência e nulidade."
+    },
+    "resposta": "E",
+    "comentarios": {
+      "A": "Incorreta. Ela identifica linhas, sem impedir dois ids diferentes para o mesmo vínculo de negócio.",
+      "B": "Incorreta. Uma condição sobre id não assegura as referências nem a unicidade do par.",
+      "C": "Incorreta. Incluir o id único torna a combinação distinta mesmo quando aluno–edição se repete; isso não proíbe o vínculo duplicado.",
+      "D": "Incorreta. A regra impediria matrículas legítimas do mesmo aluno em edições diferentes.",
+      "E": "Correta. Incluir o id já único não impede o vínculo duplicado; a unicidade deve incidir no par de negócio."
+    },
+    "direitos": "original-projeto",
+    "dificuldade": "estimada-intermediaria",
+    "theory": "bd08",
+    "source_ids": [
+      "F05",
+      "F03"
+    ],
+    "reasoning": "Estratégia: identificar a regra ou o efeito pedido e confrontar as condições do enunciado. Cada mecanismo sustenta uma parte da regra: unicidade do vínculo, obrigatoriedade e existência das referências."
+  },
+  {
+    "id": "Q-AUT-116",
+    "origem": "AUTORAL",
+    "objetivo": "BD-08",
+    "formato": "multipla-escolha",
+    "enunciado": "Uma VIEW comum foi definida por SELECT nome FROM Aluno. Depois, uma alteração confirmada modifica o nome de um aluno na tabela-base. Sem tratar uma visão materializada, uma nova transação iniciada após essa confirmação consulta a VIEW. Ela normalmente:",
+    "alternativas": {
+      "A": "Avalia a consulta definida sobre os dados visíveis da base; não depende de uma cópia estática obrigatória de todas as linhas.",
+      "B": "Retorna obrigatoriamente o nome antigo porque toda VIEW é um backup.",
+      "C": "Exige recriar a VIEW após cada mudança de valor da base.",
+      "D": "Bloqueia definitivamente qualquer UPDATE na tabela-base, por ser uma VIEW de leitura.",
+      "E": "Conserva apenas os valores presentes no momento de sua criação, mesmo sem materialização."
+    },
+    "resposta": "A",
+    "comentarios": {
+      "A": "Correta. Uma visão comum representa uma consulta nomeada. A visibilidade ainda depende das regras transacionais.",
+      "B": "Incorreta. Uma visão comum não é, por definição, uma cópia histórica independente.",
+      "C": "Incorreta. Alterações de conteúdo não exigem normalmente recriar a definição da consulta.",
+      "D": "Incorreta. Definir uma visão comum não proíbe por si só alterações diretas na tabela-base.",
+      "E": "Incorreta. Essa é uma confusão com uma cópia persistida; a visão comum mantém a definição da consulta."
+    },
+    "direitos": "original-projeto",
+    "dificuldade": "estimada-intermediaria",
+    "theory": "bd08",
+    "source_ids": [
+      "F05",
+      "F03"
+    ],
+    "reasoning": "Estratégia: identificar a regra ou o efeito pedido e confrontar as condições do enunciado. Uma visão comum representa uma consulta nomeada. A visibilidade ainda depende das regras transacionais."
+  },
+  {
+    "id": "Q-AUT-117",
+    "origem": "AUTORAL",
+    "objetivo": "BD-09",
+    "formato": "multipla-escolha",
+    "enunciado": "Matricula contém (Ana,curso 10,nota 8), (Ana,curso 20,nota 9) e (Beto,curso 10,nota NULL). Execute a instrução abaixo. Quais notas ficam, nessa mesma ordem?\n\n```sql\nUPDATE Matricula\nSET nota = COALESCE(nota, 0) + 1\nWHERE curso_id = 10;\n```",
+    "alternativas": {
+      "A": "8, 9 e 1.",
+      "B": "9, 9 e 1.",
+      "C": "9, 10 e 1.",
+      "D": "9, 9 e NULL.",
+      "E": "8, 9 e 0."
+    },
+    "resposta": "B",
+    "comentarios": {
+      "A": "Incorreta. O primeiro registro também satisfaz o filtro: sua nota 8 é acrescida de um.",
+      "B": "Correta. Apenas o curso 10 é atualizado; 8 passa a 9 e NULL é convertido para zero antes de somar um. O curso 20 permanece 9.",
+      "C": "Incorreta. O valor do curso 20 não é atingido pelo WHERE.",
+      "D": "Incorreta. COALESCE escolhe zero para a nota nula do registro selecionado.",
+      "E": "Incorreta. A expressão soma um depois de aplicar COALESCE, e o primeiro registro também é selecionado."
+    },
+    "direitos": "original-projeto",
+    "dificuldade": "estimada-intermediaria",
+    "theory": "bd09",
+    "source_ids": [
+      "F06",
+      "F04"
+    ],
+    "reasoning": "Estratégia: identificar a regra ou o efeito pedido e confrontar as condições do enunciado. Apenas o curso 10 é atualizado; 8 passa a 9 e NULL é convertido para zero antes de somar um. O curso 20 permanece 9."
+  },
+  {
+    "id": "Q-AUT-118",
+    "origem": "AUTORAL",
+    "objetivo": "BD-09",
+    "formato": "multipla-escolha",
+    "enunciado": "Com as mesmas três matrículas do item anterior, qual é o efeito de DELETE FROM Matricula WHERE nota IS NULL, supondo inexistência de outras dependências que impeçam a operação?",
+    "alternativas": {
+      "A": "Substitui a nota de Beto por zero.",
+      "B": "Remove Beto da tabela Aluno automaticamente em qualquer SGBD.",
+      "C": "Remove apenas a matrícula de Beto e preserva a definição da tabela.",
+      "D": "Remove a tabela e suas colunas.",
+      "E": "Remove as duas matrículas de Ana."
+    },
+    "resposta": "C",
+    "comentarios": {
+      "A": "Incorreta. DELETE não realiza a atribuição descrita por um UPDATE.",
+      "B": "Incorreta. A instrução tem Matricula como alvo; não há essa propagação universal inversa.",
+      "C": "Correta. Somente essa linha satisfaz IS NULL; DELETE remove linhas, não a estrutura.",
+      "D": "Incorreta. Esse é um efeito estrutural associado a DROP, não ao DELETE informado.",
+      "E": "Incorreta. As notas de Ana são não nulas, portanto o predicado não as seleciona."
+    },
+    "direitos": "original-projeto",
+    "dificuldade": "estimada-inicial",
+    "theory": "bd09",
+    "source_ids": [
+      "F06",
+      "F04"
+    ],
+    "reasoning": "Estratégia: identificar a regra ou o efeito pedido e confrontar as condições do enunciado. Somente essa linha satisfaz IS NULL; DELETE remove linhas, não a estrutura."
+  },
+  {
+    "id": "Q-AUT-119",
+    "origem": "AUTORAL",
+    "objetivo": "BD-10",
+    "formato": "multipla-escolha",
+    "enunciado": "No PostgreSQL, uma pessoa pretende usar EXPLAIN ANALYZE UPDATE para examinar o plano e acredita que os dados nunca serão alterados porque a palavra EXPLAIN aparece primeiro. Qual orientação está correta?",
+    "alternativas": {
+      "A": "ANALYZE só acrescenta estimativas sem executar a instrução-alvo.",
+      "B": "A medição garante que o plano será ótimo para qualquer volume futuro.",
+      "C": "O comando atualiza apenas estatísticas de catálogo e não executa o UPDATE informado.",
+      "D": "EXPLAIN ANALYZE executa a instrução; devem-se controlar seus efeitos, por exemplo com transação e ROLLBACK quando apropriado.",
+      "E": "EXPLAIN ANALYZE aceita somente SELECT, portanto UPDATE sempre causa erro de sintaxe."
+    },
+    "resposta": "D",
+    "comentarios": {
+      "A": "Incorreta. A opção coleta medidas reais por execução; não se limita às estimativas do planejador.",
+      "B": "Incorreta. Medidas de uma execução não são garantia universal para outras distribuições e cargas.",
+      "C": "Incorreta. A alternativa confunde a opção de EXPLAIN com a tarefa de manutenção de estatísticas.",
+      "D": "Correta. A opção ANALYZE coleta medidas da execução. Não é uma observação puramente estimada sem efeitos.",
+      "E": "Incorreta. O PostgreSQL permite analisar instruções de alteração, com os respectivos efeitos de execução."
+    },
+    "direitos": "original-projeto",
+    "dificuldade": "estimada-intermediaria",
+    "theory": "bd10",
+    "source_ids": [
+      "F05",
+      "F17"
+    ],
+    "reasoning": "Estratégia: identificar a regra ou o efeito pedido e confrontar as condições do enunciado. A opção ANALYZE coleta medidas da execução. Não é uma observação puramente estimada sem efeitos."
+  },
+  {
+    "id": "Q-AUT-120",
+    "origem": "AUTORAL",
+    "objetivo": "BD-10",
+    "formato": "multipla-escolha",
+    "enunciado": "Um índice favorece buscas seletivas por aluno, mas aumenta espaço e custo de manutenção em alterações. A carga mudou e passou a ler quase todas as linhas em cada relatório. Qual avaliação é adequada?",
+    "alternativas": {
+      "A": "Manter obrigatoriamente o mesmo plano, porque índices nunca alteram custos de escrita.",
+      "B": "Proibir qualquer varredura sequencial, mesmo ao ler quase toda a tabela.",
+      "C": "Remover todos os índices apenas porque um relatório passou a fazer leitura ampla.",
+      "D": "Tratar um tempo medido em três linhas como prova de desempenho em milhões.",
+      "E": "Reexaminar planos e medidas da carga, pois o benefício do índice depende do acesso e tem custos."
+    },
+    "resposta": "E",
+    "comentarios": {
+      "A": "Incorreta. Índices precisam ser mantidos e podem ter custos adicionais nas alterações.",
+      "B": "Incorreta. Esse caminho pode ser adequado quando a maior parte das linhas será acessada.",
+      "C": "Incorreta. A análise precisa considerar outros acessos e os custos da carga inteira, não só uma consulta.",
+      "D": "Incorreta. A amostra não representa necessariamente o volume e a distribuição de produção.",
+      "E": "Correta. Seletividade, volume e distribuição podem mudar o caminho de acesso mais adequado."
+    },
+    "direitos": "original-projeto",
+    "dificuldade": "estimada-intermediaria",
+    "theory": "bd10",
+    "source_ids": [
+      "F05",
+      "F17"
+    ],
+    "reasoning": "Estratégia: identificar a regra ou o efeito pedido e confrontar as condições do enunciado. Seletividade, volume e distribuição podem mudar o caminho de acesso mais adequado."
+  },
+  {
+    "id": "Q-AUT-121",
+    "origem": "AUTORAL",
+    "objetivo": "BD-11",
+    "formato": "multipla-escolha",
+    "enunciado": "Duas transações leem saldo 100. A aplicação de T1 calcula 120 e a de T2 calcula 130. Depois, gravações absolutas sem proteção adequada registram 120 e, por último, 130. Pretendia-se preservar os dois acréscimos, de 20 e 30. Qual diagnóstico corresponde ao resultado?",
+    "alternativas": {
+      "A": "Houve atualização perdida; o efeito combinado esperado era 150.",
+      "B": "O resultado correto para preservar ambos é 130.",
+      "C": "Houve apenas uma leitura fantasma causada por inserção de novas linhas.",
+      "D": "Apenas envolver cada gravação isolada em uma transação impede esse padrão de perda em qualquer isolamento.",
+      "E": "O resultado comprova uma dupla aplicação dos dois acréscimos."
+    },
+    "resposta": "A",
+    "comentarios": {
+      "A": "Correta. A última gravação usou um valor calculado a partir do estado antigo e sobrescreveu o acréscimo anterior.",
+      "B": "Incorreta. 130 conserva apenas um dos dois acréscimos em relação ao saldo inicial.",
+      "C": "Incorreta. O cenário descreve sobrescrita de um efeito calculado com estado antigo, sem informar inserção ou mudança do conjunto de linhas.",
+      "D": "Incorreta. A proteção precisa abranger o padrão de leitura, cálculo e atualização, segundo os mecanismos e o isolamento adotados.",
+      "E": "Incorreta. Uma aplicação dupla de ambos produziria outro valor; o cenário perdeu um dos efeitos."
+    },
+    "direitos": "original-projeto",
+    "dificuldade": "estimada-intermediaria",
+    "theory": "bd11",
+    "source_ids": [
+      "F07"
+    ],
+    "reasoning": "Estratégia: identificar a regra ou o efeito pedido e confrontar as condições do enunciado. A última gravação usou um valor calculado a partir do estado antigo e sobrescreveu o acréscimo anterior."
+  },
+  {
+    "id": "Q-AUT-122",
+    "origem": "AUTORAL",
+    "objetivo": "BD-11",
+    "formato": "multipla-escolha",
+    "enunciado": "Uma aplicação usa isolamento SERIALIZABLE no PostgreSQL. Diante de conflito, uma transação pode ser abortada para preservar a garantia de serialização. A aplicação deve:",
+    "alternativas": {
+      "A": "Repetir apenas uma instrução arbitrária sem considerar o restante da transação.",
+      "B": "Tratar a falha e, quando apropriado, tentar novamente a transação completa com a regra de negócio preservada.",
+      "C": "Confirmar apenas uma parte arbitrária da transação abortada e considerar o restante concluído.",
+      "D": "Concluir que SERIALIZABLE impede toda execução concorrente.",
+      "E": "Reduzir o isolamento silenciosamente em toda falha."
+    },
+    "resposta": "B",
+    "comentarios": {
+      "A": "Incorreta. Uma tentativa parcial pode não preservar a unidade lógica e as decisões da transação.",
+      "B": "Correta. A garantia pode ser implementada impedindo que uma execução conflitante seja confirmada; não é promessa de sucesso de toda tentativa.",
+      "C": "Incorreta. Isso não preserva a unidade lógica e não corresponde a uma confirmação da transação que falhou.",
+      "D": "Incorreta. A garantia de resultado serializável não exige que nenhuma operação seja concorrente.",
+      "E": "Incorreta. Mudar a garantia pode violar o requisito e não substitui uma política de tratamento."
+    },
+    "direitos": "original-projeto",
+    "dificuldade": "estimada-intermediaria",
+    "theory": "bd11",
+    "source_ids": [
+      "F07"
+    ],
+    "reasoning": "Estratégia: identificar a regra ou o efeito pedido e confrontar as condições do enunciado. A garantia pode ser implementada impedindo que uma execução conflitante seja confirmada; não é promessa de sucesso de toda tentativa."
+  },
+  {
+    "id": "Q-AUT-123",
+    "origem": "AUTORAL",
+    "objetivo": "BD-12",
+    "formato": "multipla-escolha",
+    "enunciado": "Uma coleção MongoDB admite documentos com campos diferentes. A equipe quer impor que um campo obrigatório possua um tipo apropriado. Qual conclusão é correta?",
+    "alternativas": {
+      "A": "A validade sintática de JSON garante todas as regras do domínio.",
+      "B": "Um campo com o mesmo nome tem obrigatoriamente o mesmo significado em qualquer coleção.",
+      "C": "A flexibilidade do modelo é compatível com configurar validação de esquema.",
+      "D": "Nenhum banco documental permite qualquer regra de estrutura.",
+      "E": "Todos os documentos precisam ser convertidos obrigatoriamente em tabelas relacionais."
+    },
+    "resposta": "C",
+    "comentarios": {
+      "A": "Incorreta. Sintaxe, tipos esperados e significado de negócio são níveis distintos de validação.",
+      "B": "Incorreta. A semântica deve ser definida; o nome sozinho não a estabelece.",
+      "C": "Correta. A documentação prevê validação; flexível não significa ausência obrigatória de regras.",
+      "D": "Incorreta. A afirmação ignora recursos de validação de produtos como MongoDB.",
+      "E": "Incorreta. Não é necessário trocar de modelo apenas para validar estrutura."
+    },
+    "direitos": "original-projeto",
+    "dificuldade": "estimada-inicial",
+    "theory": "bd12",
+    "source_ids": [
+      "F10"
+    ],
+    "reasoning": "Estratégia: identificar a regra ou o efeito pedido e confrontar as condições do enunciado. A documentação prevê validação; flexível não significa ausência obrigatória de regras."
+  },
+  {
+    "id": "Q-AUT-124",
+    "origem": "AUTORAL",
+    "objetivo": "BD-12",
+    "formato": "multipla-escolha",
+    "enunciado": "Um modelo representa explicitamente pessoas como nós e relações como arestas com propriedades; as consultas percorrem sequências dessas relações. Qual família descreve diretamente essa representação?",
+    "alternativas": {
+      "A": "Bancos de famílias de colunas.",
+      "B": "Bancos chave–valor.",
+      "C": "Uma categoria obrigatória de todo banco NoSQL.",
+      "D": "Bancos orientados a grafos.",
+      "E": "Bancos orientados a documentos."
+    },
+    "resposta": "D",
+    "comentarios": {
+      "A": "Incorreta. Essa família tem outra organização central de acesso; não é a definição por nós e arestas.",
+      "B": "Incorreta. Uma chave localiza um valor, sem estabelecer por definição o modelo de arestas descrito.",
+      "C": "Incorreta. NoSQL abrange famílias diferentes, e apenas uma delas foi caracterizada no enunciado.",
+      "D": "Correta. Nós, arestas e percursos são os elementos diretamente explicitados nessa família.",
+      "E": "Incorreta. Documentos podem representar referências, mas não são a família definida diretamente por nós, arestas e percursos."
+    },
+    "direitos": "original-projeto",
+    "dificuldade": "estimada-inicial",
+    "theory": "bd12",
+    "source_ids": [
+      "F10"
+    ],
+    "reasoning": "Estratégia: identificar a regra ou o efeito pedido e confrontar as condições do enunciado. Nós, arestas e percursos são os elementos diretamente explicitados nessa família."
+  },
+  {
+    "id": "Q-AUT-125",
+    "origem": "AUTORAL",
+    "objetivo": "BD-13",
+    "formato": "multipla-escolha",
+    "enunciado": "Um sistema em memória só possui, para recuperação, um snapshot concluído às 10h00. Alterações posteriores não têm log persistente nem outra cópia. Às 10h05, o estado volátil é perdido. Qual estado está sustentado pelo mecanismo de recuperação informado?",
+    "alternativas": {
+      "A": "Obrigatoriamente o estado exato de 10h05.",
+      "B": "O estado imediatamente anterior à falha, mesmo sem qualquer registro persistido posterior ao snapshot.",
+      "C": "Nenhum estado, porque um banco em memória nunca admite snapshot.",
+      "D": "Todas as alterações posteriores, porque uma resposta ao cliente substitui armazenamento persistente.",
+      "E": "O estado do snapshot de 10h00; as alterações posteriores não estão garantidas por ele."
+    },
+    "resposta": "E",
+    "comentarios": {
+      "A": "Incorreta. Não foi informado mecanismo que preserve todas as mudanças posteriores ao snapshot.",
+      "B": "Incorreta. O mecanismo informado não permite reconstruir alterações que não foram persistidas.",
+      "C": "Incorreta. O mecanismo de snapshot foi explicitamente informado e pode existir em produtos em memória.",
+      "D": "Incorreta. A confirmação deve ser interpretada conforme as garantias do sistema; a resposta não cria uma cópia persistente inexistente.",
+      "E": "Correta. Um snapshot de um instante anterior não contém operações posteriores que não foram persistidas por outro mecanismo."
+    },
+    "direitos": "original-projeto",
+    "dificuldade": "estimada-intermediaria",
+    "theory": "bd13",
+    "source_ids": [
+      "F11"
+    ],
+    "reasoning": "Estratégia: identificar a regra ou o efeito pedido e confrontar as condições do enunciado. Um snapshot de um instante anterior não contém operações posteriores que não foram persistidas por outro mecanismo."
+  },
+  {
+    "id": "Q-AUT-126",
+    "origem": "AUTORAL",
+    "objetivo": "BD-13",
+    "formato": "multipla-escolha",
+    "enunciado": "Um cadastro de cursos é a fonte de verdade persistente. Um cache contém cópias de consultas e pode remover entradas para liberar memória. Quando uma entrada é removida, uma estratégia coerente é:",
+    "alternativas": {
+      "A": "Buscar o dado na fonte persistente e, conforme a política, repor a entrada do cache.",
+      "B": "Concluir necessariamente que o curso foi excluído do cadastro.",
+      "C": "Gravar NULL no cadastro persistente apenas porque a cópia não foi encontrada no cache.",
+      "D": "Reconstruir com garantia todo o cadastro apenas pelas entradas restantes do cache, dispensando a origem.",
+      "E": "Tratar a remoção por espaço como uma exclusão de negócio a propagar para a fonte."
+    },
+    "resposta": "A",
+    "comentarios": {
+      "A": "Correta. A ausência da cópia de acesso rápido não implica exclusão do cadastro original.",
+      "B": "Incorreta. Remoção do cache e exclusão da fonte são eventos diferentes.",
+      "C": "Incorreta. Um cache miss não demonstra que o dado de origem deva ser apagado ou substituído.",
+      "D": "Incorreta. A política admite remoção de entradas; as cópias restantes podem não conter todas as informações.",
+      "E": "Incorreta. A política de memória não autoriza eliminar o registro persistente do negócio."
+    },
+    "direitos": "original-projeto",
+    "dificuldade": "estimada-inicial",
+    "theory": "bd13",
+    "source_ids": [
+      "F11"
+    ],
+    "reasoning": "Estratégia: identificar a regra ou o efeito pedido e confrontar as condições do enunciado. A ausência da cópia de acesso rápido não implica exclusão do cadastro original."
+  },
+  {
+    "id": "Q-AUT-127",
+    "origem": "AUTORAL",
+    "objetivo": "BD-14",
+    "formato": "multipla-escolha",
+    "enunciado": "Consultas analíticas leem poucas colunas de muitos registros armazenados em arquivos. Uma organização colunar, como Parquet, pode contribuir porque:",
+    "alternativas": {
+      "A": "Proíbe qualquer forma de particionamento de arquivos.",
+      "B": "Permite estratégias de leitura e compressão orientadas às colunas necessárias, conforme o mecanismo utilizado.",
+      "C": "Transforma qualquer arquivo em um SGBD completo com todas as garantias transacionais.",
+      "D": "Garante o melhor desempenho para toda consulta, sem medição.",
+      "E": "Dispensa conhecer tipos e significado das colunas."
+    },
+    "resposta": "B",
+    "comentarios": {
+      "A": "Incorreta. O formato colunar não implica a proibição alegada.",
+      "B": "Correta. O benefício decorre do acesso e do formato; depende da implementação e da carga.",
+      "C": "Incorreta. Formato de armazenamento não equivale a um sistema gerenciador completo.",
+      "D": "Incorreta. Não existe essa garantia independente do padrão de acesso e do ambiente.",
+      "E": "Incorreta. A interpretação e a qualidade continuam necessárias."
+    },
+    "direitos": "original-projeto",
+    "dificuldade": "estimada-intermediaria",
+    "theory": "bd14",
+    "source_ids": [
+      "F12",
+      "F13"
+    ],
+    "reasoning": "Estratégia: identificar a regra ou o efeito pedido e confrontar as condições do enunciado. O benefício decorre do acesso e do formato; depende da implementação e da carga."
+  },
+  {
+    "id": "Q-AUT-128",
+    "origem": "AUTORAL",
+    "objetivo": "BD-14",
+    "formato": "multipla-escolha",
+    "enunciado": "Uma organização conserva arquivos brutos em um data lake e pretende reutilizá-los em análises diferentes. Qual prática é coerente com esse objetivo?",
+    "alternativas": {
+      "A": "Tratar a quantidade de arquivos como a quantidade exata de matrículas válidas.",
+      "B": "Pressupor que todo conteúdo bruto já está pronto para qualquer indicador.",
+      "C": "Manter identificação, catálogo, linhagem, controles de acesso e regras de qualidade e interpretação.",
+      "D": "Retirar todos os metadados para tornar o armazenamento neutro.",
+      "E": "Afirmar que schema-on-read significa inexistência de qualquer esquema em todo o fluxo."
+    },
+    "resposta": "C",
+    "comentarios": {
+      "A": "Incorreta. Arquivos, eventos e entidades de negócio são unidades diferentes.",
+      "B": "Incorreta. É necessário aplicar definições, tratamento e controles pertinentes.",
+      "C": "Correta. Conservar dados em formatos variados não elimina a necessidade de localizá-los e compreendê-los.",
+      "D": "Incorreta. Isso dificulta descoberta, interpretação e reprocessamento.",
+      "E": "Incorreta. A expressão indica uma forma de interpretar estrutura; não proíbe esquemas nem validações."
+    },
+    "direitos": "original-projeto",
+    "dificuldade": "estimada-intermediaria",
+    "theory": "bd14",
+    "source_ids": [
+      "F12",
+      "F13"
+    ],
+    "reasoning": "Estratégia: identificar a regra ou o efeito pedido e confrontar as condições do enunciado. Conservar dados em formatos variados não elimina a necessidade de localizá-los e compreendê-los."
+  },
+  {
+    "id": "Q-AUT-129",
+    "origem": "AUTORAL",
+    "objetivo": "BD-15",
+    "formato": "multipla-escolha",
+    "enunciado": "O documento JSON {\"nota\":\"alto\"} está sintaticamente bem formado. O sistema exige nota numérica entre zero e dez. O caso demonstra que:",
+    "alternativas": {
+      "A": "A sintaxe JSON valida automaticamente a faixa numérica de qualquer campo chamado nota.",
+      "B": "Armazenar em um produto documental dispensa a regra numérica expressa pela aplicação.",
+      "C": "O tipo string deve ser convertido para número sem possibilidade de rejeição, qualquer que seja o texto.",
+      "D": "Validade sintática não garante adequação ao tipo e à regra de negócio.",
+      "E": "O documento é sintaticamente inválido porque JSON não permite strings como valores."
+    },
+    "resposta": "D",
+    "comentarios": {
+      "A": "Incorreta. Os nomes dos campos não impõem por si só tipos e domínios de negócio.",
+      "B": "Incorreta. Escolher armazenamento não elimina um requisito de validação já definido.",
+      "C": "Incorreta. Nem todo texto possui conversão numérica válida; a entrada inadequada deve ter tratamento explícito.",
+      "D": "Correta. Uma string pode ser válida em JSON e ainda ser inadequada para o campo numérico exigido.",
+      "E": "Incorreta. JSON permite strings; a inadequação decorre da regra do campo, não dessa proibição inexistente."
+    },
+    "direitos": "original-projeto",
+    "dificuldade": "estimada-inicial",
+    "theory": "bd15",
+    "source_ids": [
+      "F09",
+      "F10"
+    ],
+    "reasoning": "Estratégia: identificar a regra ou o efeito pedido e confrontar as condições do enunciado. Uma string pode ser válida em JSON e ainda ser inadequada para o campo numérico exigido."
+  },
+  {
+    "id": "Q-AUT-130",
+    "origem": "AUTORAL",
+    "objetivo": "BD-15",
+    "formato": "multipla-escolha",
+    "enunciado": "Uma fotografia de um equipamento tem tamanho, formato e data registrados em um catálogo, mas a identificação visual do defeito exige interpretar a imagem. É correto afirmar que:",
+    "alternativas": {
+      "A": "A data transforma automaticamente todos os pixels em colunas de uma tabela de defeitos.",
+      "B": "A presença de data e tamanho garante extrair o diagnóstico visual sem processamento adicional.",
+      "C": "Armazenar a fotografia em uma coluna relacional transforma seu conteúdo em registros de defeitos já interpretados.",
+      "D": "Conteúdo não estruturado não possui nenhuma organização técnica de bytes.",
+      "E": "Metadados estruturados podem coexistir com um conteúdo visual não estruturado para a análise pretendida."
+    },
+    "resposta": "E",
+    "comentarios": {
+      "A": "Incorreta. Registrar metadados não extrai, por si só, os fatos visuais.",
+      "B": "Incorreta. Metadados do arquivo não fornecem automaticamente o conteúdo semântico da fotografia.",
+      "C": "Incorreta. O armazenamento da imagem não elimina a necessidade de interpretar os fatos visuais.",
+      "D": "Incorreta. Formatos de imagem possuem estrutura técnica; a classificação considera a organização para o uso analítico.",
+      "E": "Correta. Os campos do catálogo não substituem a interpretação de todo o conteúdo da imagem."
+    },
+    "direitos": "original-projeto",
+    "dificuldade": "estimada-intermediaria",
+    "theory": "bd15",
+    "source_ids": [
+      "F09",
+      "F10"
+    ],
+    "reasoning": "Estratégia: identificar a regra ou o efeito pedido e confrontar as condições do enunciado. Os campos do catálogo não substituem a interpretação de todo o conteúdo da imagem."
+  },
+  {
+    "id": "Q-AUT-131",
+    "origem": "AUTORAL",
+    "objetivo": "BD-16",
+    "formato": "multipla-escolha",
+    "enunciado": "Uma equipe mediu uma consulta em dez linhas e quer afirmar que o mesmo desempenho está garantido para milhões de linhas com outra distribuição. Qual avaliação é adequada?",
+    "alternativas": {
+      "A": "É necessário testar uma carga representativa, registrar método e ambiente e verificar correção e custos.",
+      "B": "A medição pequena garante qualquer resultado futuro porque usa a mesma linguagem SQL.",
+      "C": "Somente o nome do fornecedor deve decidir a avaliação.",
+      "D": "Se o resultado sai rápido, não é necessário conferir se está correto.",
+      "E": "A avaliação deve excluir todos os casos com valores ausentes."
+    },
+    "resposta": "A",
+    "comentarios": {
+      "A": "Correta. Volume e distribuição influenciam planos e recursos; a pequena execução não sustenta a generalização.",
+      "B": "Incorreta. A linguagem comum não torna cargas e recursos equivalentes.",
+      "C": "Incorreta. A adequação depende também dos requisitos e evidências da carga.",
+      "D": "Incorreta. Desempenho sem correção não atende ao objetivo do sistema.",
+      "E": "Incorreta. Casos de limite podem revelar erros importantes e devem representar o domínio."
+    },
+    "direitos": "original-projeto",
+    "dificuldade": "estimada-intermediaria",
+    "theory": "bd16",
+    "source_ids": [
+      "F01",
+      "F08",
+      "F17"
+    ],
+    "reasoning": "Estratégia: identificar a regra ou o efeito pedido e confrontar as condições do enunciado. Volume e distribuição influenciam planos e recursos; a pequena execução não sustenta a generalização."
+  },
+  {
+    "id": "Q-AUT-132",
+    "origem": "AUTORAL",
+    "objetivo": "BD-16",
+    "formato": "multipla-escolha",
+    "enunciado": "O negócio permite alunos sem matrícula e alunos com várias matrículas. A massa de teste contém apenas alunos com exatamente uma matrícula. Qual lacuna de avaliação está presente?",
+    "alternativas": {
+      "A": "Falta somente um índice físico; ele é suficiente para comprovar todas as cardinalidades de negócio.",
+      "B": "Faltam casos que exercitem participação zero e multiplicidade maior que um.",
+      "C": "O requisito foi comprovado integralmente porque existe ao menos uma linha.",
+      "D": "É obrigatório proibir alunos sem matrícula para adaptar o requisito ao teste.",
+      "E": "Nenhuma informação pode ser obtida de testes pequenos."
+    },
+    "resposta": "B",
+    "comentarios": {
+      "A": "Incorreta. Índice de acesso não substitui os casos e restrições que representam as quantidades permitidas.",
+      "B": "Correta. A massa não demonstra que o modelo representa os extremos admitidos pelo requisito.",
+      "C": "Incorreta. Uma ocorrência intermediária não verifica todas as cardinalidades permitidas.",
+      "D": "Incorreta. A avaliação deve conferir o modelo contra o requisito, não alterá-lo silenciosamente.",
+      "E": "Incorreta. Testes pequenos bem escolhidos são úteis; o problema é a seleção dos casos."
+    },
+    "direitos": "original-projeto",
+    "dificuldade": "estimada-intermediaria",
+    "theory": "bd16",
+    "source_ids": [
+      "F01",
+      "F08",
+      "F17"
+    ],
+    "reasoning": "Estratégia: identificar a regra ou o efeito pedido e confrontar as condições do enunciado. A massa não demonstra que o modelo representa os extremos admitidos pelo requisito."
+  },
+  {
+    "id": "Q-AUT-133",
+    "origem": "AUTORAL",
+    "objetivo": "BD-17",
+    "formato": "multipla-escolha",
+    "enunciado": "Uma carga grava eventos e pode ser repetida após falha. A primeira tentativa gravou e1 e e2; a segunda recebeu e1, e2 e e3. O destino deve representar cada evento lógico uma única vez. Qual estratégia atende diretamente a esse requisito?",
+    "alternativas": {
+      "A": "Apagar os metadados de execução antes da nova tentativa.",
+      "B": "Afirmar que qualquer checkpoint dispensa conferir o fluxo completo.",
+      "C": "Usar uma identidade de evento e uma política idempotente que reconheça repetições.",
+      "D": "Acrescentar todas as linhas sem conferir identidade.",
+      "E": "Deduplicar somente pelo aluno, eliminando qualquer matrícula adicional da mesma pessoa."
+    },
+    "resposta": "C",
+    "comentarios": {
+      "A": "Incorreta. Isso não impede repetição e reduz a capacidade de compreender o processamento.",
+      "B": "Incorreta. A garantia depende dos mecanismos e efeitos na origem e no destino.",
+      "C": "Correta. Assim, o reenvio não deve multiplicar os efeitos de e1 e e2, e e3 pode ser processado.",
+      "D": "Incorreta. Isso pode produzir cinco registros para três eventos lógicos.",
+      "E": "Incorreta. O aluno pode participar de eventos diferentes e válidos; a chave de deduplicação seria inadequada."
+    },
+    "direitos": "original-projeto",
+    "dificuldade": "estimada-intermediaria",
+    "theory": "bd17",
+    "source_ids": [
+      "F14",
+      "F15",
+      "F16"
+    ],
+    "reasoning": "Estratégia: identificar a regra ou o efeito pedido e confrontar as condições do enunciado. Assim, o reenvio não deve multiplicar os efeitos de e1 e e2, e e3 pode ser processado."
+  },
+  {
+    "id": "Q-AUT-134",
+    "origem": "AUTORAL",
+    "objetivo": "BD-17",
+    "formato": "multipla-escolha",
+    "enunciado": "Defina o data warehouse como destino considerado. Um processo extrai dados do sistema de origem, mantém arquivos temporários, transforma-os em um motor externo e só então carrega os dados preparados no warehouse. Em relação a esse destino, a sequência central é:",
+    "alternativas": {
+      "A": "ETL exige que a transformação ocorra necessariamente dentro do sistema de origem, e por isso não admite o fluxo descrito.",
+      "B": "O fluxo é ELT apenas porque a origem é um sistema transacional.",
+      "C": "ETL e ELT deixam de ser aplicáveis sempre que existirem arquivos intermediários.",
+      "D": "ETL, porque a transformação precede a carga no warehouse definido.",
+      "E": "ELT obrigatoriamente, porque qualquer gravação temporária já é a carga no destino final."
+    },
+    "resposta": "D",
+    "comentarios": {
+      "A": "Incorreta. A transformação pode ocorrer em um componente de processamento antes da carga no destino considerado.",
+      "B": "Incorreta. A categoria depende da posição da transformação em relação à carga definida, não somente do tipo da origem.",
+      "C": "Incorreta. Arquivos podem participar do fluxo; o destino e a sequência relevante devem estar claros.",
+      "D": "Correta. A existência de armazenamento intermediário não muda qual destino foi expressamente considerado.",
+      "E": "Incorreta. O enunciado distingue arquivos intermediários do destino considerado."
+    },
+    "direitos": "original-projeto",
+    "dificuldade": "estimada-intermediaria",
+    "theory": "bd17",
+    "source_ids": [
+      "F14",
+      "F15",
+      "F16"
+    ],
+    "reasoning": "Estratégia: identificar a regra ou o efeito pedido e confrontar as condições do enunciado. A existência de armazenamento intermediário não muda qual destino foi expressamente considerado."
+  },
+  {
+    "id": "Q-AUT-135",
+    "origem": "AUTORAL",
+    "objetivo": "BD-07",
+    "formato": "multipla-escolha",
+    "enunciado": "Matricula possui as três linhas do contexto-base. Qual curso satisfaz HAVING COUNT(nota) >= 2 após GROUP BY curso_id?",
+    "alternativas": {
+      "A": "Apenas o curso 10, pois ele tem duas linhas.",
+      "B": "Apenas o curso 20, porque sua nota é maior.",
+      "C": "Os dois cursos, porque NULL é contado como zero conhecido.",
+      "D": "O comando é necessariamente inválido porque HAVING não pode usar COUNT de uma coluna.",
+      "E": "Nenhum: cada curso tem somente uma nota conhecida."
+    },
+    "resposta": "E",
+    "comentarios": {
+      "A": "Incorreta. O predicado usa COUNT(nota), não COUNT(*).",
+      "B": "Incorreta. O valor da nota não determina a quantidade de notas não nulas.",
+      "C": "Incorreta. NULL não é contado por COUNT(nota).",
+      "D": "Incorreta. HAVING pode filtrar grupos por essa agregação; o resultado depende da contagem dos valores não nulos.",
+      "E": "Correta. O curso 10 tem duas matrículas, mas apenas uma nota não nula; o curso 20 tem uma nota conhecida."
+    },
+    "direitos": "original-projeto",
+    "dificuldade": "estimada-intermediaria",
+    "theory": "bd07",
+    "source_ids": [
+      "F04",
+      "F03"
+    ],
+    "reasoning": "Estratégia: identificar a regra ou o efeito pedido e confrontar as condições do enunciado. O curso 10 tem duas matrículas, mas apenas uma nota não nula; o curso 20 tem uma nota conhecida."
+  },
+  {
+    "id": "Q-AUT-136",
+    "origem": "AUTORAL",
+    "objetivo": "BD-07",
+    "formato": "multipla-escolha",
+    "enunciado": "Um primeiro resultado de uma coluna contém 1, 1 e 2; outro contém 2 e 3. Considere resultados compatíveis e apenas as quantidades de linhas. UNION e UNION ALL produzem, respectivamente:",
+    "alternativas": {
+      "A": "3 e 5 linhas.",
+      "B": "5 e 3 linhas.",
+      "C": "2 e 2 linhas.",
+      "D": "1 e 5 linhas.",
+      "E": "3 e 3 linhas."
+    },
+    "resposta": "A",
+    "comentarios": {
+      "A": "Correta. UNION elimina repetições e deixa 1,2,3; UNION ALL preserva as cinco ocorrências.",
+      "B": "Incorreta. A alternativa inverte o tratamento de duplicatas dos operadores.",
+      "C": "Incorreta. Os operadores não fazem uma interseção limitada aos valores coincidentes.",
+      "D": "Incorreta. UNION conserva todos os valores distintos, não apenas o comum 2.",
+      "E": "Incorreta. UNION ALL não elimina automaticamente as repetições."
+    },
+    "direitos": "original-projeto",
+    "dificuldade": "estimada-intermediaria",
+    "theory": "bd07",
+    "source_ids": [
+      "F04",
+      "F03"
+    ],
+    "reasoning": "Estratégia: identificar a regra ou o efeito pedido e confrontar as condições do enunciado. UNION elimina repetições e deixa 1,2,3; UNION ALL preserva as cinco ocorrências."
+  },
+  {
+    "id": "Q-AUT-137",
+    "origem": "AUTORAL",
+    "objetivo": "BD-07",
+    "formato": "multipla-escolha",
+    "enunciado": "Em Matricula, as linhas são (aluno 1,curso 10), (aluno 2,curso 10) e (aluno 1,curso 20). Qual efeito possui ROW_NUMBER() OVER (PARTITION BY curso_id ORDER BY aluno_id), sem outro agrupamento?",
+    "alternativas": {
+      "A": "Numera todas as linhas globalmente sem reiniciar no curso 20, apesar de PARTITION BY.",
+      "B": "Numera as linhas dentro de cada curso, preservando três linhas: números 1 e 2 no curso 10 e 1 no curso 20.",
+      "C": "Reduz obrigatoriamente a tabela a duas linhas, uma por curso.",
+      "D": "Numera todas as linhas com 1, sem considerar a ordenação.",
+      "E": "Remove o aluno 1 porque ele aparece em dois cursos."
+    },
+    "resposta": "B",
+    "comentarios": {
+      "A": "Incorreta. A partição delimita as janelas; a numeração recomeça para o curso 20.",
+      "B": "Correta. PARTITION BY separa as janelas; a função não reduz o resultado a uma linha por grupo.",
+      "C": "Incorreta. Uma função de janela não tem o mesmo efeito de redução de GROUP BY.",
+      "D": "Incorreta. No curso 10, as duas linhas recebem posições diferentes.",
+      "E": "Incorreta. A função não elimina essa participação válida em partições diferentes."
+    },
+    "direitos": "original-projeto",
+    "dificuldade": "estimada-intermediaria",
+    "theory": "bd07",
+    "source_ids": [
+      "F04",
+      "F03"
+    ],
+    "reasoning": "Estratégia: identificar a regra ou o efeito pedido e confrontar as condições do enunciado. PARTITION BY separa as janelas; a função não reduz o resultado a uma linha por grupo."
+  },
+  {
+    "id": "Q-AUT-138",
+    "origem": "AUTORAL",
+    "objetivo": "BD-08",
+    "formato": "multipla-escolha",
+    "enunciado": "Uma tabela Curso tem codigo com UNIQUE e NOT NULL, além de outra coluna escolhida como PRIMARY KEY. Um projeto quer que outra tabela referencie Curso(codigo), em um SGBD que admite esse alvo de chave estrangeira. Qual afirmação é correta?",
+    "alternativas": {
+      "A": "A chave estrangeira dispensa a existência dos códigos referenciados não nulos.",
+      "B": "Usar uma chave candidata transforma automaticamente a referência em CASCADE.",
+      "C": "A referência pode usar essa chave candidata única; o alvo não precisa ser obrigatoriamente a coluna escolhida como chave primária.",
+      "D": "Somente o nome da coluna decide se a referência é válida.",
+      "E": "UNIQUE significa que o código pode se repetir sem limite."
+    },
+    "resposta": "C",
+    "comentarios": {
+      "A": "Incorreta. A integridade referencial continua exigindo correspondência nas condições informadas.",
+      "B": "Incorreta. A escolha da ação referencial é uma decisão distinta.",
+      "C": "Correta. Chaves referenciadas podem ser candidatas com a unicidade exigida pelo SGBD.",
+      "D": "Incorreta. A restrição e as regras do SGBD importam, não apenas o nome.",
+      "E": "Incorreta. A finalidade da restrição é impedir a duplicação proibida pelo domínio."
+    },
+    "direitos": "original-projeto",
+    "dificuldade": "estimada-intermediaria",
+    "theory": "bd08",
+    "source_ids": [
+      "F05",
+      "F03"
+    ],
+    "reasoning": "Estratégia: identificar a regra ou o efeito pedido e confrontar as condições do enunciado. Chaves referenciadas podem ser candidatas com a unicidade exigida pelo SGBD."
+  },
+  {
+    "id": "Q-AUT-139",
+    "origem": "AUTORAL",
+    "objetivo": "BD-09",
+    "formato": "multipla-escolha",
+    "enunciado": "A tabela Matricula do contexto-base possui uma nota NULL. Sem outras alterações, UPDATE Matricula SET nota = 0 WHERE nota = NULL seleciona quantas linhas segundo a lógica usual de NULL em SQL?",
+    "alternativas": {
+      "A": "Três, porque o predicado é ignorado pelo UPDATE.",
+      "B": "Duas, porque somente notas conhecidas são iguais a NULL.",
+      "C": "O comando sempre é um erro de sintaxe porque NULL só pode aparecer em INSERT.",
+      "D": "Zero; deve-se usar IS NULL para testar a ausência pretendida.",
+      "E": "Uma, porque NULL sempre é igual a si mesmo pelo operador =."
+    },
+    "resposta": "D",
+    "comentarios": {
+      "A": "Incorreta. O WHERE continua sendo aplicado.",
+      "B": "Incorreta. Valores conhecidos também não produzem verdadeiro nessa comparação.",
+      "C": "Incorreta. A instrução pode ser válida; o predicado não produz verdadeiro para as linhas que se pretendia selecionar.",
+      "D": "Correta. A comparação por igualdade com NULL não é verdadeira e o WHERE não seleciona essas linhas.",
+      "E": "Incorreta. A igualdade comum não tem essa semântica em SQL."
+    },
+    "direitos": "original-projeto",
+    "dificuldade": "estimada-intermediaria",
+    "theory": "bd09",
+    "source_ids": [
+      "F06",
+      "F04"
+    ],
+    "reasoning": "Estratégia: identificar a regra ou o efeito pedido e confrontar as condições do enunciado. A comparação por igualdade com NULL não é verdadeira e o WHERE não seleciona essas linhas."
+  },
+  {
+    "id": "Q-AUT-140",
+    "origem": "AUTORAL",
+    "objetivo": "BD-03",
+    "formato": "multipla-escolha",
+    "enunciado": "Em R(A,B,C), admita A → B e B → C. A decomposição em R1(A,B) e R2(B,C) compartilha B, e B determina todos os atributos de R2. Qual propriedade isso sustenta para essa decomposição binária?",
+    "alternativas": {
+      "A": "Necessariamente perda de todas as linhas porque C foi separado.",
+      "B": "É obrigatório perder informação porque B não é a chave candidata original A.",
+      "C": "A decomposição prova que (A,B) é uma chave candidata mínima da relação original.",
+      "D": "A garantia de que toda consulta será mais rápida em qualquer ambiente.",
+      "E": "Junção sem perda para relações que satisfaçam as dependências informadas."
+    },
+    "resposta": "E",
+    "comentarios": {
+      "A": "Incorreta. Separar atributos não implica perda quando a decomposição satisfaz a condição de junção.",
+      "B": "Incorreta. Na condição de junção, importa que a interseção determine uma das relações decompostas; não é necessário que seja a chave original inteira.",
+      "C": "Incorreta. A determina B e C; portanto A já é chave e (A,B) não é mínima nesse conjunto de dependências.",
+      "D": "Incorreta. Uma propriedade lógica de decomposição não é uma promessa universal de desempenho.",
+      "E": "Correta. A interseção B determina uma das relações decompostas, condição que sustenta a reconstrução sem linhas espúrias nesse caso."
+    },
+    "direitos": "original-projeto",
+    "dificuldade": "estimada-avancada",
+    "theory": "bd03",
+    "source_ids": [
+      "F02"
+    ],
+    "reasoning": "Estratégia: identificar a regra ou o efeito pedido e confrontar as condições do enunciado. A interseção B determina uma das relações decompostas, condição que sustenta a reconstrução sem linhas espúrias nesse caso."
+  },
+  {
+    "id": "Q-AUT-141",
+    "origem": "AUTORAL",
+    "objetivo": "BD-06",
+    "formato": "multipla-escolha",
+    "enunciado": "Uma turma de 8 alunos tem média 5, e outra de 12 alunos tem média 10. Considere médias calculadas por aluno, com o mesmo critério. A média dos 20 alunos é:",
+    "alternativas": {
+      "A": "8.",
+      "B": "7,5.",
+      "C": "15.",
+      "D": "10.",
+      "E": "5."
+    },
+    "resposta": "A",
+    "comentarios": {
+      "A": "Correta. A soma das notas é 8×5 + 12×10 = 160; dividir por 20 dá 8. É necessário ponderar pelos tamanhos dos grupos.",
+      "B": "Incorreta. Essa é a média simples das duas médias e ignora os tamanhos diferentes das turmas.",
+      "C": "Incorreta. Somar as médias não produz a média dos alunos.",
+      "D": "Incorreta. Esse é o valor da segunda turma, não o conjunto das duas.",
+      "E": "Incorreta. Esse é o valor da primeira turma, não o conjunto das duas."
+    },
+    "direitos": "original-projeto",
+    "dificuldade": "estimada-intermediaria",
+    "theory": "bd06",
+    "source_ids": [
+      "F08"
+    ],
+    "reasoning": "Estratégia: identificar a regra ou o efeito pedido e confrontar as condições do enunciado. A soma das notas é 8×5 + 12×10 = 160; dividir por 20 dá 8. É necessário ponderar pelos tamanhos dos grupos."
+  },
+  {
+    "id": "Q-AUT-142",
+    "origem": "AUTORAL",
+    "objetivo": "BD-17",
+    "formato": "multipla-escolha",
+    "enunciado": "Na decodificação lógica do PostgreSQL, após uma falha, mudanças recentes podem ser reenviadas a partir de uma posição anterior persistida. Qual requisito do consumidor continua relevante?",
+    "alternativas": {
+      "A": "Dispensar qualquer conferência no destino porque existe um log na origem.",
+      "B": "Evitar efeitos indevidos de mensagens repetidas e controlar seu progresso de processamento.",
+      "C": "Presumir que nunca pode haver repetição em nenhuma falha.",
+      "D": "Tratar todo reenvio como um novo evento de negócio distinto.",
+      "E": "Substituir a identidade dos eventos por números aleatórios a cada tentativa."
+    },
+    "resposta": "B",
+    "comentarios": {
+      "A": "Incorreta. O fluxo completo precisa tratar aplicação, retomada e efeitos no destino.",
+      "B": "Correta. A documentação descreve a possibilidade de reenvio após retorno a uma posição de checkpoint.",
+      "C": "Incorreta. Isso contradiz o comportamento documentado para o cenário.",
+      "D": "Incorreta. O mesmo evento pode ser retransmitido sem constituir um novo fato lógico.",
+      "E": "Incorreta. Isso dificulta reconhecer repetições e manter progresso coerente."
+    },
+    "direitos": "original-projeto",
+    "dificuldade": "estimada-intermediaria",
+    "theory": "bd17",
+    "source_ids": [
+      "F14",
+      "F15",
+      "F16"
+    ],
+    "reasoning": "Estratégia: identificar a regra ou o efeito pedido e confrontar as condições do enunciado. A documentação descreve a possibilidade de reenvio após retorno a uma posição de checkpoint."
+  },
+  {
+    "id": "Q-REAL-046",
+    "origem": "REAL",
+    "objetivo": "BD-03",
+    "formato": "multipla-escolha",
+    "enunciado": "Referência à questão 46 da prova oficial. Leia enunciado e alternativas no PDF da FGV.",
+    "alternativas": {
+      "A": "Consulte a alternativa A no item oficial.",
+      "B": "Consulte a alternativa B no item oficial.",
+      "C": "Consulte a alternativa C no item oficial.",
+      "D": "Consulte a alternativa D no item oficial.",
+      "E": "Consulte a alternativa E no item oficial."
+    },
+    "resposta": "A",
+    "comentarios": {
+      "A": "Correta. Há dependências parciais dos atributos descritivos em relação à chave composta informada; elas impedem 2FN.",
+      "B": "Incorreta. A dependência descrita é parcial, não apenas uma dependência transitiva a tratar somente na 3FN.",
+      "C": "Incorreta. Trocar por um identificador artificial não elimina as dependências de negócio existentes.",
+      "D": "Incorreta. Horas alocadas descreve o vínculo inteiro; separar esse atributo não corrige os dados que dependem apenas do engenheiro.",
+      "E": "Incorreta. Ter uma chave composta não basta para 2FN: as dependências dos atributos não primos precisam ser examinadas."
+    },
+    "direitos": "somente-link",
+    "dificuldade": "estimada-intermediaria",
+    "fonte_original": {
+      "banca": "FGV",
+      "orgao": "Dataprev",
+      "cargo": "ATI — Desenvolvimento de Software",
+      "ano": 2026,
+      "caderno": "Tipo 1",
+      "numero": "46",
+      "pagina": "13",
+      "prova_url": "https://conhecimento.fgv.br/sites/default/files/concursos/analista-de-tecnologia-da-informacao-desenvolvimento-de-software-cns003-tipo-1.pdf",
+      "gabarito_url": "https://conhecimento.fgv.br/sites/default/files/concursos/dataprev2026-gabaritos-para-publicacao.pdf",
+      "gabarito_status": "preliminar",
+      "conferido_em": "2026-11-03",
+      "prova_sha256": "6db36aee343042d939059b38be4dae91deee284393a1e4d62f3d279dc864fdc7",
+      "gabarito_sha256": "77fef273e696ca3a540d3febb00caa4985cd12794ce6efd5fd92127af5e47ae0",
+      "gabarito_pagina": 13
+    },
+    "theory": "bd03",
+    "source_ids": [
+      "P26",
+      "G26",
+      "F02"
+    ],
+    "reasoning": "Abra o item na prova oficial, identifique as condições informadas e confronte cada alternativa com a teoria BD-03. O resultado indicado é o gabarito preliminar de 2026, separado desta análise original."
+  },
+  {
+    "id": "Q-REAL-001",
+    "origem": "REAL",
+    "objetivo": "BD-04",
+    "formato": "multipla-escolha",
+    "enunciado": "Consultar o enunciado original pelo link oficial; não reproduzido.",
+    "alternativas": {
+      "A": "Consultar alternativa na prova original.",
+      "B": "Consultar alternativa na prova original.",
+      "C": "Consultar alternativa na prova original.",
+      "D": "Consultar alternativa na prova original.",
+      "E": "Consultar alternativa na prova original."
+    },
+    "resposta": "E",
+    "comentarios": {
+      "A": "Incorreta. Inverte o sentido da referência: excluir um pedido não é o evento que, nessa declaração, dispara a exclusão do cliente.",
+      "B": "Incorreta. CASCADE e NO ACTION não são apenas rótulos documentais: determinam consequências diferentes para a exclusão da linha referenciada.",
+      "C": "Incorreta. Não existe escolha automática de outro cliente. A chave estrangeira não autoriza realocar pedidos para uma referência arbitrária.",
+      "D": "Incorreta. Os efeitos foram trocados: CASCADE pode excluir os pedidos dependentes; NO ACTION não implementa essa remoção em cascata.",
+      "E": "Correta. A exclusão do cliente propaga a remoção dos pedidos com CASCADE; com NO ACTION, não se pode deixar uma referência inválida. O item não estabelece adiamento que altere essa análise simples."
+    },
+    "direitos": "somente-link",
+    "dificuldade": "estimada-intermediaria",
+    "fonte_original": {
+      "banca": "FGV",
+      "orgao": "Dataprev",
+      "cargo": "ATI — Desenvolvimento de Software",
+      "ano": 2026,
+      "caderno": "Tipo 1",
+      "numero": "47",
+      "pagina": "13",
+      "prova_url": "https://conhecimento.fgv.br/sites/default/files/concursos/analista-de-tecnologia-da-informacao-desenvolvimento-de-software-cns003-tipo-1.pdf",
+      "gabarito_url": "https://conhecimento.fgv.br/sites/default/files/concursos/dataprev2026-gabaritos-para-publicacao.pdf",
+      "gabarito_status": "preliminar",
+      "conferido_em": "2026-11-03",
+      "prova_sha256": "6db36aee343042d939059b38be4dae91deee284393a1e4d62f3d279dc864fdc7",
+      "gabarito_sha256": "77fef273e696ca3a540d3febb00caa4985cd12794ce6efd5fd92127af5e47ae0",
+      "gabarito_pagina": 13
+    },
+    "theory": "bd04",
+    "source_ids": [
+      "P26",
+      "G26",
+      "F03"
+    ],
+    "reasoning": "Abra o item na prova oficial, identifique as condições informadas e confronte cada alternativa com a teoria BD-04. O resultado indicado é o gabarito preliminar de 2026, separado desta análise original."
+  },
+  {
+    "id": "Q-REAL-048",
+    "origem": "REAL",
+    "objetivo": "BD-05",
+    "formato": "multipla-escolha",
+    "enunciado": "Referência à questão 48 da prova oficial. Leia enunciado e alternativas no PDF da FGV.",
+    "alternativas": {
+      "A": "Consulte a alternativa A no item oficial.",
+      "B": "Consulte a alternativa B no item oficial.",
+      "C": "Consulte a alternativa C no item oficial.",
+      "D": "Consulte a alternativa D no item oficial.",
+      "E": "Consulte a alternativa E no item oficial."
+    },
+    "resposta": "D",
+    "comentarios": {
+      "A": "Incorreta. A restrição de tipo e nulidade é técnica, não uma definição de indicador de negócio.",
+      "B": "Incorreta. A primeira informação descreve estrutura; o segundo enunciado explica significado, não apenas representação técnica.",
+      "C": "Incorreta. A primeira informação não é a execução de uma carga; o terceiro enunciado registra processo.",
+      "D": "Correta. A sequência é técnica, de negócio e de processo: estrutura; significado do indicador; execução e contagens da carga.",
+      "E": "Incorreta. A ordem troca as categorias do segundo e do terceiro enunciados: a definição é de negócio e a execução é de processo."
+    },
+    "direitos": "somente-link",
+    "dificuldade": "estimada-intermediaria",
+    "fonte_original": {
+      "banca": "FGV",
+      "orgao": "Dataprev",
+      "cargo": "ATI — Desenvolvimento de Software",
+      "ano": 2026,
+      "caderno": "Tipo 1",
+      "numero": "48",
+      "pagina": "13",
+      "prova_url": "https://conhecimento.fgv.br/sites/default/files/concursos/analista-de-tecnologia-da-informacao-desenvolvimento-de-software-cns003-tipo-1.pdf",
+      "gabarito_url": "https://conhecimento.fgv.br/sites/default/files/concursos/dataprev2026-gabaritos-para-publicacao.pdf",
+      "gabarito_status": "preliminar",
+      "conferido_em": "2026-11-03",
+      "prova_sha256": "6db36aee343042d939059b38be4dae91deee284393a1e4d62f3d279dc864fdc7",
+      "gabarito_sha256": "77fef273e696ca3a540d3febb00caa4985cd12794ce6efd5fd92127af5e47ae0",
+      "gabarito_pagina": 13
+    },
+    "theory": "bd05",
+    "source_ids": [
+      "P26",
+      "G26",
+      "F09"
+    ],
+    "reasoning": "Abra o item na prova oficial, identifique as condições informadas e confronte cada alternativa com a teoria BD-05. O resultado indicado é o gabarito preliminar de 2026, separado desta análise original."
+  },
+  {
+    "id": "Q-REAL-049",
+    "origem": "REAL",
+    "objetivo": "BD-06",
+    "formato": "multipla-escolha",
+    "enunciado": "Referência à questão 49 da prova oficial. Leia enunciado e alternativas no PDF da FGV.",
+    "alternativas": {
+      "A": "Consulte a alternativa A no item oficial.",
+      "B": "Consulte a alternativa B no item oficial.",
+      "C": "Consulte a alternativa C no item oficial.",
+      "D": "Consulte a alternativa D no item oficial.",
+      "E": "Consulte a alternativa E no item oficial."
+    },
+    "resposta": "A",
+    "comentarios": {
+      "A": "Correta. As colunas de referência estão no fato e apontam para as chaves das dimensões, materializando a estrela apresentada.",
+      "B": "Incorreta. Não é necessário compor a chave de cada dimensão com as chaves de todas as outras dimensões.",
+      "C": "Incorreta. Relacionamentos do esquema relacional apresentado são materializados por referências; não ficam apenas no desenho conceitual.",
+      "D": "Incorreta. A alternativa inverte o sentido das referências apresentado no modelo.",
+      "E": "Incorreta. Não é necessário criar uma tabela associativa para cada ligação simples fato–dimensão da estrela informada."
+    },
+    "direitos": "somente-link",
+    "dificuldade": "estimada-intermediaria",
+    "fonte_original": {
+      "banca": "FGV",
+      "orgao": "Dataprev",
+      "cargo": "ATI — Desenvolvimento de Software",
+      "ano": 2026,
+      "caderno": "Tipo 1",
+      "numero": "49",
+      "pagina": "14",
+      "prova_url": "https://conhecimento.fgv.br/sites/default/files/concursos/analista-de-tecnologia-da-informacao-desenvolvimento-de-software-cns003-tipo-1.pdf",
+      "gabarito_url": "https://conhecimento.fgv.br/sites/default/files/concursos/dataprev2026-gabaritos-para-publicacao.pdf",
+      "gabarito_status": "preliminar",
+      "conferido_em": "2026-11-03",
+      "prova_sha256": "6db36aee343042d939059b38be4dae91deee284393a1e4d62f3d279dc864fdc7",
+      "gabarito_sha256": "77fef273e696ca3a540d3febb00caa4985cd12794ce6efd5fd92127af5e47ae0",
+      "gabarito_pagina": 13
+    },
+    "theory": "bd06",
+    "source_ids": [
+      "P26",
+      "G26",
+      "F08"
+    ],
+    "reasoning": "Abra o item na prova oficial, identifique as condições informadas e confronte cada alternativa com a teoria BD-06. O resultado indicado é o gabarito preliminar de 2026, separado desta análise original."
+  },
+  {
+    "id": "Q-REAL-050",
+    "origem": "REAL",
+    "objetivo": "BD-12",
+    "formato": "multipla-escolha",
+    "enunciado": "Referência à questão 50 da prova oficial. Leia enunciado e alternativas no PDF da FGV.",
+    "alternativas": {
+      "A": "Consulte a alternativa A no item oficial.",
+      "B": "Consulte a alternativa B no item oficial.",
+      "C": "Consulte a alternativa C no item oficial.",
+      "D": "Consulte a alternativa D no item oficial.",
+      "E": "Consulte a alternativa E no item oficial."
+    },
+    "resposta": "D",
+    "comentarios": {
+      "A": "Incorreta. Um projeto relacional é possível em outros requisitos, mas não é a escolha que melhor acompanha a unidade flexível e o acesso completo descritos.",
+      "B": "Incorreta. Grafos destacam percursos de relações, que não são a necessidade central apresentada.",
+      "C": "Incorreta. Tipos definidos pelo usuário não exprimem tão diretamente a proposta de documentos flexíveis indicada no cenário.",
+      "D": "Correta. Documentos permitem representar fichas com campos distintos e recuperá-las como unidades, atendendo às condições apresentadas.",
+      "E": "Incorreta. Uma tabela de todas as categorias com muitos campos opcionais não expressa a alternativa documental mais adequada ao cenário."
+    },
+    "direitos": "somente-link",
+    "dificuldade": "estimada-intermediaria",
+    "fonte_original": {
+      "banca": "FGV",
+      "orgao": "Dataprev",
+      "cargo": "ATI — Desenvolvimento de Software",
+      "ano": 2026,
+      "caderno": "Tipo 1",
+      "numero": "50",
+      "pagina": "14",
+      "prova_url": "https://conhecimento.fgv.br/sites/default/files/concursos/analista-de-tecnologia-da-informacao-desenvolvimento-de-software-cns003-tipo-1.pdf",
+      "gabarito_url": "https://conhecimento.fgv.br/sites/default/files/concursos/dataprev2026-gabaritos-para-publicacao.pdf",
+      "gabarito_status": "preliminar",
+      "conferido_em": "2026-11-03",
+      "prova_sha256": "6db36aee343042d939059b38be4dae91deee284393a1e4d62f3d279dc864fdc7",
+      "gabarito_sha256": "77fef273e696ca3a540d3febb00caa4985cd12794ce6efd5fd92127af5e47ae0",
+      "gabarito_pagina": 13
+    },
+    "theory": "bd12",
+    "source_ids": [
+      "P26",
+      "G26",
+      "F10"
+    ],
+    "reasoning": "Abra o item na prova oficial, identifique as condições informadas e confronte cada alternativa com a teoria BD-12. O resultado indicado é o gabarito preliminar de 2026, separado desta análise original."
+  },
+  {
+    "id": "Q-REAL-002",
+    "origem": "REAL",
+    "objetivo": "BD-09",
+    "formato": "multipla-escolha",
+    "enunciado": "Consultar o enunciado original pelo link oficial; não reproduzido.",
+    "alternativas": {
+      "A": "Consultar alternativa na prova original.",
+      "B": "Consultar alternativa na prova original.",
+      "C": "Consultar alternativa na prova original.",
+      "D": "Consultar alternativa na prova original.",
+      "E": "Consultar alternativa na prova original."
+    },
+    "resposta": "D",
+    "comentarios": {
+      "A": "Incorreta. É possível usar uma subconsulta escalar como expressão atribuída pelo UPDATE; a correlação relaciona cada veículo às viagens pertinentes.",
+      "B": "Incorreta. A agregação MAX pode compor essa subconsulta. Não há a proibição genérica alegada para sua posição na expressão.",
+      "C": "Incorreta. Não existe um filtro externo que preserve os veículos sem viagens. A subconsulta produz NULL para o agregado sobre o conjunto vazio.",
+      "D": "Correta. Todas as linhas-alvo são consideradas; veículos com viagens recebem o máximo calculado e aqueles sem viagens recebem NULL, permitido pela coluna.",
+      "E": "Incorreta. MAX de conjunto vazio não produz automaticamente zero. Para substituir NULL seria necessária uma regra explícita, como COALESCE, que não aparece."
+    },
+    "direitos": "somente-link",
+    "dificuldade": "estimada-intermediaria",
+    "fonte_original": {
+      "banca": "FGV",
+      "orgao": "Dataprev",
+      "cargo": "ATI — Desenvolvimento de Software",
+      "ano": 2026,
+      "caderno": "Tipo 1",
+      "numero": "51",
+      "pagina": "14",
+      "prova_url": "https://conhecimento.fgv.br/sites/default/files/concursos/analista-de-tecnologia-da-informacao-desenvolvimento-de-software-cns003-tipo-1.pdf",
+      "gabarito_url": "https://conhecimento.fgv.br/sites/default/files/concursos/dataprev2026-gabaritos-para-publicacao.pdf",
+      "gabarito_status": "preliminar",
+      "conferido_em": "2026-11-03",
+      "prova_sha256": "6db36aee343042d939059b38be4dae91deee284393a1e4d62f3d279dc864fdc7",
+      "gabarito_sha256": "77fef273e696ca3a540d3febb00caa4985cd12794ce6efd5fd92127af5e47ae0",
+      "gabarito_pagina": 13
+    },
+    "theory": "bd09",
+    "source_ids": [
+      "P26",
+      "G26",
+      "F06",
+      "F04"
+    ],
+    "reasoning": "Abra o item na prova oficial, identifique as condições informadas e confronte cada alternativa com a teoria BD-09. O resultado indicado é o gabarito preliminar de 2026, separado desta análise original."
+  },
+  {
+    "id": "Q-REAL-003",
+    "origem": "REAL",
+    "objetivo": "BD-01",
+    "formato": "multipla-escolha",
+    "enunciado": "Consultar o enunciado original pelo link oficial; não reproduzido.",
+    "alternativas": {
+      "A": "Consultar alternativa na prova original.",
+      "B": "Consultar alternativa na prova original.",
+      "C": "Consultar alternativa na prova original.",
+      "D": "Consultar alternativa na prova original.",
+      "E": "Consultar alternativa na prova original."
+    },
+    "resposta": "C",
+    "comentarios": {
+      "A": "Incorreta. Um array em uma entidade não é o mapeamento relacional convencional do relacionamento N:M pedido pelo item.",
+      "B": "Incorreta. Transformar uma entidade em atributo multivalorado não representa adequadamente o mapeamento relacional solicitado.",
+      "C": "Correta. A tabela associativa registra os pares ligados e referencia cada entidade. Sua identificação deve respeitar as regras do vínculo.",
+      "D": "Incorreta. Uma única chave estrangeira em apenas um dos lados representa diretamente outras cardinalidades, sem registrar todos os pares N:M desse mapeamento.",
+      "E": "Incorreta. Mesclar as entidades não elimina a necessidade de representar as associações e pode repetir ou perder informação."
+    },
+    "direitos": "somente-link",
+    "dificuldade": "estimada-intermediaria",
+    "fonte_original": {
+      "banca": "FGV",
+      "orgao": "Dataprev",
+      "cargo": "ATI — Desenvolvimento de Software",
+      "ano": 2026,
+      "caderno": "Tipo 1",
+      "numero": "52",
+      "pagina": "14",
+      "prova_url": "https://conhecimento.fgv.br/sites/default/files/concursos/analista-de-tecnologia-da-informacao-desenvolvimento-de-software-cns003-tipo-1.pdf",
+      "gabarito_url": "https://conhecimento.fgv.br/sites/default/files/concursos/dataprev2026-gabaritos-para-publicacao.pdf",
+      "gabarito_status": "preliminar",
+      "conferido_em": "2026-11-03",
+      "prova_sha256": "6db36aee343042d939059b38be4dae91deee284393a1e4d62f3d279dc864fdc7",
+      "gabarito_sha256": "77fef273e696ca3a540d3febb00caa4985cd12794ce6efd5fd92127af5e47ae0",
+      "gabarito_pagina": 13
+    },
+    "theory": "bd01",
+    "source_ids": [
+      "P26",
+      "G26",
+      "F01",
+      "F03"
+    ],
+    "reasoning": "Abra o item na prova oficial, identifique as condições informadas e confronte cada alternativa com a teoria BD-01. O resultado indicado é o gabarito preliminar de 2026, separado desta análise original."
+  }
+]
