@@ -1,6 +1,6 @@
 # Prontidão do projeto — versão 0.5
 
-Revisão de 03/11/2026. A base editorial operada pelo agente está implementada para apostila, caderno, simulado e revisão. As pendências técnicas de formatos, pontuação, manutenção, casos de impressão e auditoria foram desenvolvidas com exemplos e testes; publicação/CI estão sendo conferidas no repositório informado pelo titular.
+Revisão de 03/11/2026. A base editorial operada pelo agente está implementada para apostila, caderno, simulado e revisão. As pendências técnicas de formatos, pontuação, manutenção, casos de impressão e auditoria foram desenvolvidas com exemplos e testes; o código está publicado no repositório do titular e a CI remota aprovou validações e oito PDFs.
 
 ## Entregue no método
 
@@ -31,6 +31,6 @@ Uma solicitação real nova ainda precisa exercitar identificação, visão/pesq
 
 ## Publicação e gestão
 
-Destino indicado pelo titular: [Gerados-de-Materiais-de-Estudos](https://github.com/kauanramalho/Gerados-de-Materiais-de-Estudos). Repositório público e escrita confirmados nesta execução; o primeiro commit existente será preservado. O resultado do envio, SHA e CI deve ser registrado somente depois de lido. A documentação e os 17 cartões de skills são conferidos por leitura após gravação no Segundo Cérebro; PDFs, anexos e backups permanecem fora do cofre.
+Destino indicado pelo titular: [Gerados-de-Materiais-de-Estudos](https://github.com/kauanramalho/Gerados-de-Materiais-de-Estudos). Repositório público, histórico inicial preservado, envio/SHA e CI confirmados. A execução 41642703635 aprovou verify e artifacts. A base passou em 119 testes locais. A documentação e os 17 cartões de skills são conferidos por leitura após gravação no Segundo Cérebro; PDFs, anexos e backups permanecem fora do cofre.
 
 O [backlog](backlog.md) mantém estados e limites; o [Progress](../Progress.md) contém uma próxima ação concreta. A continuidade de materiais e avaliações não deve ser apresentada como funcionalidade técnica ainda inexistente.

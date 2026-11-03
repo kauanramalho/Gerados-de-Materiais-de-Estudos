@@ -1,6 +1,6 @@
 # Contrato de navegação — obrigatório em cada entrega
 
-O sumário deve ser clicável no PDF: clicar no número, título ou página leva à seção correspondente. Toda questão leva à sua própria resolução, que retorna à mesma questão. Remissões teóricas da apostila e referências internas precisam levar aos seus destinos. O requisito vale para qualquer concurso/matéria nos formatos já suportados: apostila e caderno. O layout atual foi aprovado pelo titular e permanece como padrão.
+O sumário deve ser clicável no PDF: clicar no número, título ou página leva à seção correspondente. Toda questão leva à sua própria resolução, que retorna à mesma questão. Remissões teóricas da apostila e referências internas precisam levar aos seus destinos. O requisito vale para qualquer concurso/matéria nos formatos já suportados: apostila, caderno, simulado e revisão. O layout atual foi aprovado pelo titular e permanece como padrão.
 
 ## Verificação automática na exportação
 
@@ -34,7 +34,7 @@ Para PDF renomeado, usar `--manifest caminho/arquivo-navigation.json` em uma cha
 - Entregar somente o PDF cujo hash foi aprovado; reler bytes ou metadados após o upload e manter a associação dos relatórios.
 - Arquivar versões anteriores antes de substituir arquivos de entrega. Edição posterior do PDF invalida a auditoria anterior e exige nova conferência.
 - Novo formato, motor de impressão ou mudança nas rotas exige atualizar contrato e testes antes de ser habilitado. Links entre PDFs separados ainda exigem implementação/testes próprios; não presumir suporte a partir do caderno atual.
-- A CI prepara regressões e auditoria dos quatro PDFs; sua execução remota depende de acesso GitHub. Falha interna não deve ser ignorada para publicar.
+- A CI executa regressões e auditorias dos oito PDFs de referência; execução remota confirmada no repositório do titular. Falha interna não deve ser ignorada para publicar.
 
 ## Regressões que devem continuar passando
 

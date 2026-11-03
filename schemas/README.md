@@ -14,3 +14,5 @@ Questão REAL exige origem completa e gabarito oficial. AUTORAL não pode recebe
 - [Fontes](fontes.schema.json)
 - [Figuras](figuras.schema.json)
 - [Cobertura](cobertura.schema.json)
+- [Simulado](simulado.schema.json): matriz, duração e pontuação.
+- [Revisão](revisao.schema.json): capítulos curtos e remissões.

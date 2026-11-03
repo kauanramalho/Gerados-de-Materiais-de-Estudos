@@ -1,12 +1,12 @@
 # Progresso — Ateliê de Estudos
 
-- **Estado:** active — base operacional 0.5 implementada, com publicação e conferência remota em andamento.
+- **Estado:** active — base operacional 0.5 implementada e publicada, com CI remota aprovada.
 - **Prioridade no portfólio:** unassigned.
 - **Data do estado:** 2026-11-03.
-- **Próxima ação:** concluir publicação/CI no repositório informado e conferir os registros/artefatos no Segundo Cérebro.
+- **Próxima ação:** produzir o próximo material de concurso/cargo solicitado e registrar a avaliação pedagógica real do leitor.
 - **Responsável:** agente para implementação e revisão; titular para avaliação de leitura e escolha de seu concurso.
 - **Condição de conclusão desta etapa:** código remoto confirmado, verificações da entrega e 17 skills/documentação relidas no cofre.
-- **GitHub:** destino informado pelo titular: https://github.com/kauanramalho/Gerados-de-Materiais-de-Estudos. Visibilidade pública e permissão de escrita confirmadas; publicação da versão atual em execução. O bloqueio anterior de criação não impede mais usar esse destino.
+- **GitHub:** destino informado pelo titular: https://github.com/kauanramalho/Gerados-de-Materiais-de-Estudos. Código publicado, histórico inicial preservado e SHA remoto confirmado. A CI aprovou verify e artifacts: https://github.com/kauanramalho/Gerados-de-Materiais-de-Estudos/actions/runs/41642703635. O bloqueio anterior está resolvido para esse destino.
 
 ## Base operacional
 
@@ -22,7 +22,7 @@ A versão 0.5 implementa simulado e pontuação, revisão ativa, comparação de
 - Curadoria: páginas reais de dois capítulos abertos comparadas, com edição, páginas e licenças em [curadoria editorial](docs/curadoria-editorial-aplicada.md).
 - Edições: exemplo editorial altera a explicação de uma autoral, preservando gabarito e IDs; alterações de gabarito nos testes são sintéticas.
 
-Os resultados finais da suíte, CI, navegação e artefatos ficam no relatório de fechamento. Ver [validação por matéria/formato](docs/validacao-multimateria.md) e [prontidão](docs/prontidao.md). Os testes estruturais não comprovam pesquisa factual ou aprendizagem por si sós.
+Passaram 119 testes locais; a CI em outro host aprovou validações, oito PDFs, navegação, pontuação e auditorias. O acervo preservado cresceu para 21 itens. Os resultados, hashes e evidências ficam no relatório de fechamento. Ver [validação por matéria/formato](docs/validacao-multimateria.md) e [prontidão](docs/prontidao.md). Os testes estruturais não comprovam pesquisa factual ou aprendizagem por si sós.
 
 ## Continuidade e limites
 

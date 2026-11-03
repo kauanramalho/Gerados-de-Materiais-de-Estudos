@@ -41,6 +41,7 @@ jobs:
       - run: python scripts/audit_links.py build/dataprev-sql/apostila.pdf build/dataprev-sql/caderno.pdf build/matematica-basica/apostila.pdf build/matematica-basica/caderno.pdf --browser --report build/navigation-audit.json
       - run: python scripts/acervo.py --db build/acervo.sqlite importar materials/dataprev-sql/material.json
       - run: python scripts/acervo.py --db build/acervo.sqlite importar materials/matematica-basica/material.json
+      - run: python scripts/acervo.py --db build/acervo.sqlite importar materials/redes-lgpd/material.json
       - run: python scripts/acervo.py --db build/acervo.sqlite exportar --output build/acervo.json
       - uses: actions/upload-artifact@v4
         with:

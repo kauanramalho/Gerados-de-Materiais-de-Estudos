@@ -7,7 +7,7 @@ Estados: pronto, em execução, concluído, impedido, planejado. A ordem abaixo 
 | AE-001 | fundação e 12 skills | procedimentos e links locais válidos | nenhuma | concluído |
 | AE-002 | catálogo editorial | fontes abertas consultadas, decisões e licenças registradas | AE-001 | concluído |
 | AE-003 | prova de navegação | HTML/PDF com figura, sumário e questão ↔ solução conferidos | AE-001 | concluído |
-| AE-004 | publicação GitHub | destino público informado e escrita confirmada; enviar/verificar SHA e CI preservando o histórico | repositório criado pelo titular | em execução |
+| AE-004 | publicação GitHub | repositório público, histórico inicial preservado, SHA e CI confirmados | destino informado pelo titular | concluído |
 | AE-005 | registro no Segundo Cérebro | projeto, cartões, índice e relatório lidos após escrita | regras do cofre | concluído |
 | AE-006 | identificar primeiro concurso | órgão/cargo/ano e edital/retificações confirmados | referência metodológica Dataprev/FGV; sem alterar prioridade | concluído |
 | AE-007 | analisar provas relacionadas | perfil de banca com amostra e limitações | AE-006 | concluído |
@@ -25,7 +25,7 @@ Estados: pronto, em execução, concluído, impedido, planejado. A ordem abaixo 
 | AE-019 | consolidar contratos e erros da CLI | schemas de fontes/figuras/cobertura, tipos/datas e erros úteis com testes negativos | publicador 0.3 | concluído |
 | AE-020 | manutenção de edições e erratas | mudança de fonte/gabarito com impacto rastreado, nova edição e IDs preservados | AE-008; articulação com AE-011 | concluído |
 | AE-021 | coleção de um concurso | itens do edital cobertos ou com lacuna justificada; capítulos e prática revisados | concurso/recorte definidos e padrão ajustado | planejado |
-| AE-022 | reprodução e retomada | build em ambiente limpo e retomada de tarefa registrados; CI remota conferida quando publicada | Python isolado no mesmo host testado; retomada/CI remota pendentes | em execução |
+| AE-022 | reprodução e retomada | estado 0.4 retomado e pipeline reproduzido em host GitHub; verify/artifacts aprovados | CI remota e evidências de fechamento | concluído |
 | AE-023 | validar e aprofundar skills | evidência por procedimento; módulos novos criados junto do fluxo que implementam | ae-curar-acervo aplicada; demais validações ainda pendentes | em execução |
 | AE-024 | tornar obrigatória a navegação correta | sumário, questão/resolução/retorno/teoria, áreas reais e hashes auditados; regressões negativas e cliques nos quatro materiais | AE-010; contrato em docs/navegacao.md | concluído |
 | AE-025 | pedido simples e cobertura focada no concurso | texto/foto/print preservados, pesquisa/contexto registrados, escopo integral sem teto de páginas e --final com testes negativos | contrato/ingestão entregues; aplicação real completa permanece em AE-021/022 | concluído |

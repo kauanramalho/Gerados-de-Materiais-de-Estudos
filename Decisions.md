@@ -47,3 +47,7 @@
 ## D012 — 2026-11-03 — Pedido simples, escopo integral e extensão necessária
 
 **Decisão:** aceitar texto, foto ou print; o agente carrega todo o método e pesquisa concurso, edital/retificações, banca, provas anteriores/relacionadas, conteúdo e acervo. Pedido sem recorte abrange todo o programa do cargo, em apostila ou caderno, sem teto artificial de páginas. **Motivo:** o titular reiterou esse funcionamento e pediu correção de lacunas. **Consequência:** lotes são checkpoints internos até concluir o pedido; pedido.json e --final vinculam pesquisa/contexto e todos os itens selecionados ao material, detectando omissões e questões fora do escopo. Visão, pesquisa factual e revisão didática permanecem ações do agente e precisam de evidência real, além dos testes estruturais. **Revisar quando:** formato, ferramenta ou novo caso real exigir ajuste, preservando foco no pedido e transparência de lacunas.
+
+## D013 — 2026-11-03 — Fechamento funcional e publicação
+
+**Decisão:** usar o repositório público Gerados-de-Materiais-de-Estudos fornecido pelo titular, preservando seu primeiro commit. Implementar simulado/pontuação, revisão, edições/erratas e auditoria com quatro skills próprias. **Motivo:** pedido de resolver pendências e confirmar os destinos. **Consequência:** envio e CI foram conferidos; avaliação pedagógica e novas coleções exigem execução real. Gabarito do simulado fica em seção posterior no mesmo PDF. Marcação PDF/SVG melhora a semântica sem presumir PDF/UA. **Revisar quando:** novo pedido ou requisito exigir expansão.

@@ -32,7 +32,7 @@ Entregas finais de concurso usam pedido.json vinculado ao manifesto e `--final`.
 
 O agente já pode montar materiais a partir de um manifesto. O piloto contém teoria, três figuras, exemplos SQL verificados, oito questões autorais e três referências a questões reais com comentário. Veja o [fluxo de produção](docs/producao.md) e o [piloto](materials/dataprev-sql/README.md).
 
-O [piloto de matemática](materials/matematica-basica/README.md) acrescenta seis questões autorais, fórmulas sem JavaScript e tabela com continuação. O [acervo local](docs/acervo.md) permite importar os dois lotes, buscar e deduplicar 17 itens, com histórico de revisões explícitas.
+O [piloto de matemática](materials/matematica-basica/README.md) acrescenta seis questões autorais, fórmulas sem JavaScript e tabela com continuação. O [acervo local](docs/acervo.md) permite importar os dois lotes, buscar e deduplicar 21 itens, com histórico de revisões explícitas.
 
 ```sh
 python scripts/build_material.py materials/dataprev-sql/material.json --check

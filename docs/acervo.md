@@ -50,3 +50,7 @@ Registros `somente-link` conservam metadados, resposta e comentário próprio, s
 O banco completo deve ser arquivado fora do Git e fora do cofre Obsidian. Para retomar, recupere esse arquivo SQLite. É possível reconstruir os itens dos manifestos disponíveis, mas reconstruir apenas as edições atuais não recupera revisões históricas perdidas. Confirme hashes e faça cópia de segurança antes de migrar bancos de outra versão. A versão de estrutura atual é 1; arquivos desconhecidos não são migrados nem sobrescritos silenciosamente.
 
 O código não guarda caminhos absolutos privados no catálogo. Ainda assim, revise campos e conteúdo antes de compartilhar um banco ou JSON de trabalhos pessoais. A base pública do projeto contém os manifestos e ferramentas, não um acervo comercial de terceiros.
+
+## Fechamento 0.5
+
+O banco anterior foi preservado e ampliado para 21 itens ao importar redes/LGPD: 18 autorais e três reais por link. A edição 0.5 de matemática reutiliza as seis questões existentes. Novos formatos não atribuem banca às autorais. Arquivar banco/exportação fora do cofre e do Git público.
