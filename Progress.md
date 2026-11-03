@@ -14,6 +14,8 @@ Fundação contém instruções, 12 skills, manual editorial, padrão visual, re
 
 ## Marcos e limites
 
+Revisão do sumário em 03/11/2026: apresentação acadêmica com hierarquia numerada, recuos, linhas pontilhadas e coluna de páginas. As 12 entradas foram conferidas contra os destinos reais do PDF; os rodapés exibem a mesma paginação. A amostra mantém 5 páginas e 18 links internos funcionais. Padrão incorporado à documentação para futuras apostilas.
+
 M0 concluído. M0.1: pacote local pronto; publicação GitHub impedida; documentação e 12 cartões de skills arquivados no Segundo Cérebro e conferidos por leitura. Índices atualizados e comentário de progresso registrado. M1: piloto editorial planejado, ainda sem concurso identificado nesta tarefa. Não há serviço autônomo, sincronizador, skills globais instaladas ou CI remota validada.
 
 ## Riscos

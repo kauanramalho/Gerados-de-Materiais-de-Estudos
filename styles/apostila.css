@@ -9,9 +9,23 @@ h1, h2, h3 { break-after: avoid; }
 p { margin: 0 0 10px; orphans: 3; widows: 3; }
 a { color: #155766; text-decoration: underline; text-underline-offset: 2px; overflow-wrap: anywhere; }
 a:focus-visible { outline: 3px solid #b15916; outline-offset: 3px; }
-nav { border-left: 4px solid #176568; padding: 8px 20px; margin: 26px 0; background: #f4f7f8; }
-nav ul { padding-left: 18px; }
-nav li { margin: 4px 0; }
+nav { margin: 16mm 0 0; padding: 0; color: #243541; }
+nav #toc-title { font: normal 30pt/1.1 Georgia, 'Liberation Serif', serif; color: #15384f; margin: 0; padding-bottom: 6mm; border-bottom: .8pt solid #243541; }
+.toc-column-label { text-align: right; margin: 4mm 0 5mm; font-size: 8pt; letter-spacing: .08em; text-transform: uppercase; color: #65737d; }
+nav ol { list-style: none; margin: 0; padding: 0; }
+.toc-chapter { margin: 0 0 9mm; break-inside: avoid; }
+.toc-link { display: flex; gap: 3mm; align-items: baseline; color: inherit; text-decoration: none; line-height: 1.4; }
+.toc-chapter > .toc-link { font-size: 12pt; font-weight: 600; }
+.toc-number { flex: 0 0 7mm; font-variant-numeric: tabular-nums; }
+.toc-label { flex: 0 1 auto; min-width: 0; }
+.toc-leader { flex: 1 0 6mm; border-bottom: .7pt dotted #a8b2b8; align-self: flex-end; margin-bottom: .35em; }
+.toc-page { flex: 0 0 6mm; text-align: right; align-self: flex-end; font-variant-numeric: tabular-nums; font-weight: 400; }
+nav .toc-subsections { margin: 3mm 0 0 10mm; }
+.toc-subsections li { margin: 0 0 2.5mm; }
+.toc-subsections .toc-link { font: 11pt/1.4 Georgia, 'Liberation Serif', serif; color: #3e4c57; }
+.toc-subsections .toc-number { flex-basis: 10mm; color: #6a7780; }
+.header-section-number { color: #62757d; margin-right: .25em; }
+@media screen { .toc-link:hover .toc-label { text-decoration: underline; } }
 blockquote { border-left: 3px solid #176568; margin: 18px 0; padding: 12px 18px; background: #f4f7f8; }
 figure { margin: 20px 0; break-inside: avoid; }
 figure img { width: 100%; height: auto; }
@@ -25,8 +39,10 @@ header h1.title { font-size: 30pt; }
 @media print {
   body { max-width: none; margin: 0; padding: 0; }
   body > h1 { break-before: page; }
-  #title-block-header { padding-top: 25mm; min-height: 50mm; }
+  #title-block-header { padding-top: 7mm; border-top-width: 2px; }
+  #title-block-header h1.title { font-size: 16pt; font-weight: 400; line-height: 1.3; margin: 0; }
   nav { break-after: page; }
   blockquote, tr { break-inside: avoid; }
   a { text-decoration: underline; }
+  nav a { text-decoration: none; }
 }

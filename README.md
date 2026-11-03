@@ -22,7 +22,7 @@ O agente deve recuperar o estado do projeto, identificar o concurso, buscar edit
 
 ## Verificar e gerar a amostra
 
-Requer Python 3.11+ e Pandoc para HTML. Para PDF, requer Chromium/Chrome e Playwright (`pip install -r requirements-pdf.txt`). A verificação usa apenas a biblioteca padrão do Python; não exige chave de API.
+Requer Python 3.11+ e Pandoc para HTML. Para PDF, requer Chromium/Chrome, Playwright e PyMuPDF (`pip install -r requirements-pdf.txt`). A verificação usa apenas a biblioteca padrão do Python; não exige chave de API.
 
 ```sh
 python scripts/check.py
@@ -31,7 +31,7 @@ python scripts/build_sample.py
 python scripts/build_sample.py --pdf
 ```
 
-Saídas em `build/`: HTML autocontido e, com `--pdf`, PDF A4. A amostra demonstra diagramação e links; não é material de um concurso identificado nem certifica equivalência com uma banca. O pipeline editorial completo está no roadmap.
+Saídas em `build/`: HTML autocontido e, com `--pdf`, PDF A4. O sumário apresenta hierarquia numerada, linhas pontilhadas e páginas obtidas dos destinos reais do PDF; a exportação confere a paginação em duas passagens. O HTML recebe esses mesmos números quando gerado com `--pdf`. A amostra demonstra diagramação e links; não é material de um concurso identificado nem certifica equivalência com uma banca. O pipeline editorial completo está no roadmap.
 
 ## Escopo e limites
 

@@ -25,6 +25,8 @@ Fotografias podem ser anotadas quando os direitos permitirem. Imagem gerada por 
 
 ## Paginação e navegação
 
+O sumário deve seguir apresentação editorial acadêmica: títulos e subtítulos numerados, recuos consistentes, capítulos com maior peso, linhas pontilhadas discretas e coluna de páginas alinhada à direita. Usar fundo branco e hierarquia tipográfica, sem marcadores de lista visíveis ou caixa de navegação. Os números devem corresponder ao PDF final e aos rodapés, com validação após a exportação. Na amostra, os destinos nomeados do primeiro PDF alimentam os números da segunda passagem; conferir estabilidade antes da entrega.
+
 Manter título com o parágrafo seguinte; evitar órfãs e viúvas; controlar quebras em figuras, tabelas e alternativas. Tabelas longas precisam de cabeçalho repetido. Sumário, glossário e índice de figuras devem navegar por IDs, sem números de página digitados manualmente.
 
 Cada questão aponta para seu gabarito comentado e cada resolução retorna à questão. A resolução pode ligar à seção de teoria. Testar após a exportação: destinos válidos, texto selecionável, fontes incorporadas ou fallback legível, figuras sem corte e nenhuma página vazia acidental. Acessibilidade PDF exige auditoria adicional; o protótipo não declara conformidade PDF/UA.

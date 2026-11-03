@@ -5,6 +5,7 @@ from pathlib import Path
 import shutil
 import subprocess
 from integrity import validate_questions, validate_navigation
+from contents import contents_entries, render_contents, pdf_contents_pages
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -58,7 +59,11 @@ def main():
                     '--embed-resources', '--resource-path=' + str(ROOT / 'examples/redes'),
                     '--css=' + str(ROOT / 'styles/apostila.css'),
                     '--metadata=title:Ateliê de Estudos — amostra editorial',
-                    '--metadata=lang:pt-BR', '--metadata=toc-title:Sumário', '-o', str(output)], check=True)
+                    '--metadata=lang:pt-BR', '--number-sections',
+                    '--metadata=toc-title:Sumário', '-o', str(output)], check=True)
+    original_html = output.read_text(encoding='utf-8')
+    entries = contents_entries(original_html)
+    output.write_text(render_contents(original_html, entries), encoding='utf-8')
     errors = validate_navigation(output.read_text(encoding='utf-8'), questions)
     if errors:
         raise SystemExit('\n'.join(errors))
@@ -70,6 +75,7 @@ def main():
         pdf = build / 'amostra.pdf'
         try:
             from playwright.sync_api import sync_playwright, Error
+            import fitz
         except ImportError:
             parser.error('Para PDF: instale requirements-pdf.txt. O HTML já foi gerado.')
         try:
@@ -80,15 +86,32 @@ def main():
                 try:
                     page = instance.new_page()
                     page.route('**/*', lambda route: route.abort())
-                    page.set_content(output.read_text(encoding='utf-8'), wait_until='load', timeout=15000)
-                    page.pdf(path=str(pdf), format='A4', print_background=True, prefer_css_page_size=True)
+                    pages = {}
+                    footer = ('<div style="font:9px Arial;color:#64727b;width:100%;margin:0 20mm;'
+                              'display:flex;justify-content:space-between;border-top:1px solid #d6dde0;'
+                              'padding-top:7px"><span>Ateliê de Estudos</span>'
+                              '<span class="pageNumber"></span></div>')
+                    for _ in range(3):
+                        output.write_text(render_contents(original_html, entries, pages), encoding='utf-8')
+                        page.set_content(output.read_text(encoding='utf-8'), wait_until='load', timeout=15000)
+                        page.pdf(path=str(pdf), format='A4', print_background=True,
+                                 prefer_css_page_size=True, display_header_footer=True,
+                                 header_template='<span></span>', footer_template=footer)
+                        resolved_pages = pdf_contents_pages(pdf, entries)
+                        if pages == resolved_pages:
+                            break
+                        pages = resolved_pages
+                    else:
+                        raise SystemExit('Paginação do sumário não estabilizou; confira o PDF.')
+                    (build / 'toc-pages.json').write_text(
+                        json.dumps(pages, ensure_ascii=False, indent=2), encoding='utf-8')
                 finally:
                     instance.close()
         except Error:
             raise SystemExit('Falha do Chromium/Playwright. HTML preservado; exportação PDF pendente.')
         if not pdf.is_file() or pdf.stat().st_size < 1000:
             raise SystemExit('Falha ao exportar PDF; confira Chromium e o HTML gerado.')
-        print(f'PDF gerado: {pdf}. Inspeção visual e destinos PDF ainda precisam ser conferidos.')
+        print(f'PDF gerado: {pdf}. {len(entries)} entradas do sumário com paginação conferida.')
 
 
 if __name__ == '__main__':

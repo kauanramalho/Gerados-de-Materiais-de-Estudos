@@ -23,3 +23,7 @@
 ## D006 — 2026-11-03 — Licença a definir pelo titular
 
 **Decisão:** não atribuir licença aberta por inferência. **Motivo:** tornar público não determina autorização de redistribuição. **Consequência:** LICENSE.md explicita direitos e pendência, sem incorporar obras externas. **Revisar quando:** titular escolher licenças para ferramentas e conteúdo.
+
+## D007 — 2026-11-03 — Sumário com apresentação acadêmica
+
+**Decisão:** usar hierarquia numerada, recuos de subseções, linhas pontilhadas discretas e páginas alinhadas à direita, com fundo branco e links preservados. **Motivo:** o titular pediu uma apresentação semelhante à de livros e apostilas de graduação. **Consequência:** o publicador obtém as páginas dos destinos do PDF e verifica a paginação; rodapés mostram a mesma numeração. O padrão fica registrado em docs/padrao-visual.md. **Revisar quando:** nova avaliação visual do titular ou novos formatos exigirem ajuste.
