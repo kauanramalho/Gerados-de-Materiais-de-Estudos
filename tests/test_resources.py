@@ -1,8 +1,10 @@
 """Reproduce the resource and figure-impact gaps with disposable, non-private assets."""
 from copy import deepcopy
+import base64
 import importlib.util
 import json
 from pathlib import Path
+import re
 import shutil
 import sys
 import tempfile
@@ -99,7 +101,12 @@ class ResourceTests(unittest.TestCase):
             self.assertIn('figuras/extra.svg',data['image_usage'][kind])
         output=Path(self.temp.name)/'out'
         report=publish(data,output,'revisao')
-        self.assertIn('INSIDE-FIXTURE',(output/'revisao.html').read_text())
+        html=(output/'revisao.html').read_text()
+        # Pandoc versions embed SVG either inline or as a base64 data image.
+        # Check the actual embedded content in both forms, not its serialization.
+        embedded='\n'.join(base64.b64decode(value).decode('utf-8') for value in
+                           re.findall(r'data:image/svg\+xml;base64,([^"\s]+)',html))
+        self.assertIn('INSIDE-FIXTURE',html+'\n'+embedded)
         self.assertTrue(report['inputs']['figuras/extra.svg'])
 
     def test_title_and_spaces_in_local_image_syntax_are_supported(self):
