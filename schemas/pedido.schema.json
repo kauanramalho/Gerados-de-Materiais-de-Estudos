@@ -23,7 +23,9 @@
     "tipo": {
       "enum": [
         "apostila",
-        "caderno"
+        "caderno",
+        "simulado",
+        "revisao"
       ]
     },
     "entrada": {

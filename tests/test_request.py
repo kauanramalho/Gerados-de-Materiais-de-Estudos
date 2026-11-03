@@ -130,7 +130,7 @@ class RequestTests(unittest.TestCase):
         self.request['contexto'][0]['sha256'] = '0'*64
         self.assertIn('alterada', self.errors())
         paths = {r['arquivo'] for r in instruction_inventory()}
-        self.assertEqual(len([p for p in paths if p.endswith('/SKILL.md')]), 13)
+        self.assertEqual(len([p for p in paths if p.endswith('/SKILL.md')]), 17)
 
     def test_no_artificial_maximum_for_program_items(self):
         item = self.request['programa'][0]

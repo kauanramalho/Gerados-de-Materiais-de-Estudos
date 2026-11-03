@@ -25,7 +25,7 @@ PNG, JPEG e WebP são aceitos na ingestão local. Converter outros formatos com 
 
 ## 2. Carregar todo o método
 
-Ler README, AGENTS, Progress e Decisions; todas as 13 skills; os documentos de políticas, os modelos, os contratos e o catálogo de referências do projeto. Ler o índice do acervo e os materiais anteriores antes de decidir o que reutilizar; abrir os exemplos e fontes anteriores pertinentes ao novo conteúdo. Não importar cegamente conteúdo de um piloto para outro concurso.
+Ler README, AGENTS, Progress e Decisions; todas as 17 skills; os documentos de políticas, os modelos, os contratos e o catálogo de referências do projeto. Ler o índice do acervo e os materiais anteriores antes de decidir o que reutilizar; abrir os exemplos e fontes anteriores pertinentes ao novo conteúdo. Não importar cegamente conteúdo de um piloto para outro concurso.
 
 `pedido.contexto` lista instruções, skills, documentos, modelos, schemas e referências com seus hashes. `lido_em` começa nulo. O agente só preenche a data depois de ler o arquivo. `python scripts/pedido.py contexto` produz o inventário atual; arquivo novo ou alterado exige nova leitura antes da entrega final. Esse registro documenta uma ação do agente; gerar o inventário não lê nem compreende os arquivos automaticamente. Progress e Decisions são consultados como estado mutável, sem confundi-los com as instruções permanentes.
 

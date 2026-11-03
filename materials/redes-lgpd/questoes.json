@@ -1,0 +1,110 @@
+[
+  {
+    "id": "Q-AUT-001",
+    "origem": "AUTORAL",
+    "objetivo": "NET-01",
+    "formato": "multipla-escolha",
+    "enunciado": "Em uma rede local sem controles especiais adicionais, a tabela do switch associa o MAC de destino à porta 7. O quadro chega pela porta 1. Qual encaminhamento corresponde ao destino conhecido?",
+    "alternativas": {
+      "A": "Devolver pela porta 1.",
+      "B": "Enviar indiscriminadamente a todas as portas.",
+      "C": "Encaminhar pela porta 7.",
+      "D": "Descartar porque endereços MAC não servem ao encaminhamento."
+    },
+    "resposta": "C",
+    "comentarios": {
+      "A": "A porta de entrada não é a porta associada ao destino.",
+      "B": "O destino está conhecido; não é o caso de inundação de unicast desconhecido.",
+      "C": "A associação do MAC de destino aponta para a porta 7.",
+      "D": "Bridges e switches de camada 2 usam informações MAC para encaminhar e filtrar."
+    },
+    "direitos": "original-projeto",
+    "dificuldade": "estimada-inicial",
+    "perfil_referencia": "Validação técnica autoral; sem banca ou edital atribuídos.",
+    "theory": "portas-mac",
+    "source_ids": [
+      "N01"
+    ]
+  },
+  {
+    "id": "Q-AUT-002",
+    "origem": "AUTORAL",
+    "objetivo": "NET-01",
+    "formato": "multipla-escolha",
+    "enunciado": "No esquema genérico deste material, as portas 1–24 são RJ45 e os slots 25–26 são SFP. Qual afirmação respeita os limites da figura?",
+    "alternativas": {
+      "A": "Todos os switches têm exatamente esse painel.",
+      "B": "O desenho representa uma organização possível; o equipamento real exige consulta ao manual.",
+      "C": "Todo conector RJ45 garante alimentação PoE.",
+      "D": "O desenho prova que qualquer módulo SFP funciona em qualquer slot."
+    },
+    "resposta": "B",
+    "comentarios": {
+      "A": "O desenho foi identificado como genérico.",
+      "B": "A figura identifica partes do exemplo, sem prometer características de todos os modelos.",
+      "C": "Conector físico não comprova suporte a PoE.",
+      "D": "Compatibilidade depende do equipamento e do módulo."
+    },
+    "direitos": "original-projeto",
+    "dificuldade": "estimada-inicial",
+    "perfil_referencia": "Validação técnica autoral; sem banca ou edital atribuídos.",
+    "theory": "portas-mac",
+    "source_ids": [
+      "N01"
+    ]
+  },
+  {
+    "id": "Q-AUT-003",
+    "origem": "AUTORAL",
+    "objetivo": "LGPD-01",
+    "formato": "multipla-escolha",
+    "enunciado": "Segundo o caput do art. 46 da LGPD consultado, que conjunto de medidas os agentes de tratamento devem adotar para proteger dados pessoais?",
+    "alternativas": {
+      "A": "Somente medidas técnicas.",
+      "B": "Medidas técnicas e administrativas aptas à proteção prevista no artigo.",
+      "C": "Somente providências após comprovação de incidente.",
+      "D": "Somente avisos públicos, sem controles de acesso."
+    },
+    "resposta": "B",
+    "comentarios": {
+      "A": "O artigo inclui também medidas administrativas.",
+      "B": "A obrigação combina medidas técnicas e administrativas contra os eventos descritos.",
+      "C": "A proteção não é condicionada à ocorrência prévia de incidente.",
+      "D": "Avisos não substituem medidas de segurança aptas a proteger os dados."
+    },
+    "direitos": "original-projeto",
+    "dificuldade": "estimada-inicial",
+    "perfil_referencia": "Validação técnica autoral; sem banca ou edital atribuídos.",
+    "theory": "lgpd-seguranca",
+    "source_ids": [
+      "L01"
+    ]
+  },
+  {
+    "id": "Q-AUT-004",
+    "origem": "AUTORAL",
+    "objetivo": "LGPD-02",
+    "formato": "multipla-escolha",
+    "enunciado": "O § 2º do art. 46 da LGPD determina que as medidas de segurança sejam observadas em qual período?",
+    "alternativas": {
+      "A": "Desde a concepção do produto ou serviço até sua execução.",
+      "B": "Apenas depois de um incidente.",
+      "C": "Somente durante uma fiscalização.",
+      "D": "Apenas após o encerramento do serviço."
+    },
+    "resposta": "A",
+    "comentarios": {
+      "A": "Esse é o intervalo explicitado no § 2º.",
+      "B": "A regra começa antes de eventual incidente.",
+      "C": "O dever não depende de fiscalização.",
+      "D": "O dispositivo inclui concepção e execução, e não somente encerramento."
+    },
+    "direitos": "original-projeto",
+    "dificuldade": "estimada-inicial",
+    "perfil_referencia": "Validação técnica autoral; sem banca ou edital atribuídos.",
+    "theory": "lgpd-seguranca",
+    "source_ids": [
+      "L01"
+    ]
+  }
+]

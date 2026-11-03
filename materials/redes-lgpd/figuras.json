@@ -1,0 +1,10 @@
+[
+  {
+    "id": "FIG-001",
+    "file": "switch-generico.svg",
+    "caption": "Painel genérico de treinamento; numeração e conectores não representam um modelo comercial.",
+    "alt": "Painel com 24 portas RJ45 em duas fileiras numeradas de 1 a 24, dois slots SFP 25 e 26 e LEDs à esquerda. Rótulos distinguem conectores e alertam para variações por modelo.",
+    "rights": "original-projeto",
+    "source": "original-projeto"
+  }
+]

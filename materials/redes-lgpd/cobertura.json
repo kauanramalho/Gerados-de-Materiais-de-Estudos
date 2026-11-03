@@ -1,0 +1,36 @@
+[
+  {
+    "edital_item": "Validação técnica sem edital — encaminhamento e identificação de interfaces",
+    "objectives": [
+      "NET-01"
+    ],
+    "questions": [
+      "Q-AUT-001",
+      "Q-AUT-002"
+    ],
+    "status": "completo",
+    "limits": "Objetivo restrito do demonstrador; não é programa integral de redes."
+  },
+  {
+    "edital_item": "Validação normativa sem edital — LGPD art.46 caput",
+    "objectives": [
+      "LGPD-01"
+    ],
+    "questions": [
+      "Q-AUT-003"
+    ],
+    "status": "completo",
+    "limits": "Somente o dever de segurança do caput; não cobre toda a LGPD."
+  },
+  {
+    "edital_item": "Validação normativa sem edital — LGPD art.46 §2º",
+    "objectives": [
+      "LGPD-02"
+    ],
+    "questions": [
+      "Q-AUT-004"
+    ],
+    "status": "completo",
+    "limits": "Concepção e execução; regulamentação de incidentes fora deste recorte."
+  }
+]

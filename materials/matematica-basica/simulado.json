@@ -1,0 +1,42 @@
+{
+  "duration_minutes": 30,
+  "basis": {
+    "type": "autoral",
+    "source_id": null,
+    "locator": "Treinamento didático original; tempo e pontuação não atribuídos a edital ou banca"
+  },
+  "order": [
+    "Q-AUT-001",
+    "Q-AUT-002",
+    "Q-AUT-003",
+    "Q-AUT-004",
+    "Q-AUT-005",
+    "Q-AUT-006"
+  ],
+  "matrix": [
+    {
+      "objective": "MAT-01",
+      "count": 2
+    },
+    {
+      "objective": "MAT-02",
+      "count": 1
+    },
+    {
+      "objective": "MAT-03",
+      "count": 2
+    },
+    {
+      "objective": "MAT-04",
+      "count": 1
+    }
+  ],
+  "scoring": {
+    "correct": 1,
+    "wrong": -0.25,
+    "blank": 0,
+    "annulled": "credit",
+    "weights": {}
+  },
+  "annulled_ids": []
+}

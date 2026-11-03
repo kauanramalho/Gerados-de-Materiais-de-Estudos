@@ -1,7 +1,7 @@
 ---
 name: ae-orquestrar
 description: Conduzir um pedido de material de concurso do briefing à entrega.
-version: 0.2.0
+version: 0.3.0
 ---
 
 # Conduzir um pedido de material de concurso do briefing à entrega
@@ -20,7 +20,8 @@ Pedido, contexto disponível e estado do projeto. Consulte AGENTS.md e as polít
 2. Acione ae-analisar-edital para identidade e cobertura, ae-pesquisar-fontes para evidências e ae-analisar-banca quando houver questões por perfil.
 3. Pedido sem recorte abrange todo o programa do cargo. Mapeie todos os itens e subitens e planeje capítulos, questões e figuras. Produza unidades verificáveis internamente até completar o pedido, sem teto artificial de páginas ou substituição por piloto. Use templates/estado-producao.md para retomada.
 4. Passe o conteúdo por ae-revisar. Vincule pedido.json ao manifesto, confira todo o escopo com --check --final e exporte com --pdf --final; audite links e bytes entregues. Corrija falhas antes de encerrar o pedido completo. O mesmo fluxo de pesquisa vale para cadernos.
-5. Use ae-gerenciar para atualizar estado, evidências e próximos passos; informe lacunas reais e links dos artefatos.
+5. Para simulado, revisão, edição/errata e acessibilidade, aplicar ae-montar-simulado, ae-produzir-revisao, ae-atualizar-material e ae-auditar-acessibilidade. Os quatro formatos têm contratos próprios; não presumir ligações entre PDFs separados.
+6. Use ae-gerenciar para atualizar estado, evidências e próximos passos; informe lacunas reais e links dos artefatos.
 
 ## Saídas
 

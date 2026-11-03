@@ -1,7 +1,7 @@
 ---
 name: ae-gerenciar
 description: Manter progresso, decisões, backlog e documentação no Segundo Cérebro.
-version: 0.1.0
+version: 0.2.0
 ---
 
 # Manter progresso, decisões, backlog e documentação no Segundo Cérebro
@@ -18,7 +18,7 @@ Estado do Git, entregas verificadas, regras atuais do cofre e autorização da t
 
 1. Leia o estado vigente e decisões; procure capturas posteriores relacionadas. Confirme fontes canônicas e mantenha prioridade desconhecida como unassigned.
 2. Atualize Progress com resultado real, bloqueio e uma próxima ação; Decisions só para decisões duráveis com motivo e condição de revisão.
-3. Registre backlog e evidências por marco sem percentuais inventados. Se GitHub estiver disponível, confirme arquivos e commit remoto antes de declarar publicação.
+3. Registre backlog e evidências sem percentuais inventados. O destino autorizado é kauanramalho/Gerados-de-Materiais-de-Estudos; preservar seu histórico inicial. Confirme árvore, SHA, visibilidade e CI antes de declarar publicação. Não manter o bloqueio histórico de criação como estado atual depois de resolvido.
 4. No cofre, preserve autoria por IA, organização e um cartão por skill. Faça alterações mínimas, confira concorrência e releia escritos. Guarde PDFs de relatório fora do cofre.
 5. Feche com resumo do resultado, links e pendências. Não afirme sincronização, scheduler ou instalação global sem teste; não envie mensagens externas sem instrução explícita.
 

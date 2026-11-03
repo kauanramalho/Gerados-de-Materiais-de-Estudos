@@ -1,7 +1,7 @@
 ---
 name: ae-diagramar
 description: Montar apostilas e cadernos navegáveis em HTML e PDF.
-version: 0.4.0
+version: 0.5.0
 ---
 
 # Montar apostilas e cadernos navegáveis em HTML e PDF
@@ -23,7 +23,8 @@ Capítulos, questões, figuras, metadados e padrões visuais. Consulte AGENTS.md
 5. Confira o manifesto *-navigation.json: todos os links visíveis precisam de área clicável e destino esperado no PDF, incluindo título/página do sumário e pares questão/resolução. A CLI deve bloquear falha interna. Execute scripts/audit_links.py nos PDFs finais com --browser e --external; siga docs/navegacao.md e registre limitações externas.
 6. Preserve o layout aprovado. Compare paginação e posições do texto quando a mudança for só técnica. Inspecione o PDF, corrija falhas e arquive relatórios com hashes da mesma exportação. Não reaproveite aprovação de um arquivo alterado.
 
-7. Em entrega final de concurso, exigir pedido.json vinculado e usar --check --final e --pdf --final; para caderno acrescentar --kind caderno. Não impor limite artificial de páginas nem reduzir fonte para encurtar. Pilotos sem --final são referências e não demonstram cobertura do pedido completo.
+7. Usar --kind simulado ou revisao com os planos próprios para esses formatos. Executar acessibilidade.py nos artefatos finais e conferir tags PDF e nomes acessíveis de SVGs; registrar limites, sem presumir certificação PDF/UA.
+8. Em entrega final de concurso, exigir pedido.json vinculado e usar --check --final e --pdf --final; acrescentar --kind do formato quando pertinente. Não impor limite artificial de páginas nem reduzir fonte para encurtar. Pilotos sem --final são referências e não demonstram cobertura do pedido completo.
 
 ## Saídas
 

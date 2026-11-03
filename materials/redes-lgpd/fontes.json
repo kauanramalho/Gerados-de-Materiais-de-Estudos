@@ -1,0 +1,20 @@
+[
+  {
+    "id": "N01",
+    "title": "IETF — RFC 4188, Definitions of Managed Objects for Bridges",
+    "url": "https://www.rfc-editor.org/rfc/rfc4188.txt",
+    "locator": "dot1dTpFdbPort e dot1dTpFdbTable; associação de endereços e portas, p.25",
+    "checked_on": "2026-11-03",
+    "rights": "consulta técnica; esquema e explicação próprios",
+    "sha256": "f85ce6fb0b5829a4aadc05d94b50c7e44c65dd9caa6936b3cd2ac48eb0b7af5a"
+  },
+  {
+    "id": "L01",
+    "title": "Câmara dos Deputados — Lei 13.709/2018, texto atualizado",
+    "url": "https://www2.camara.leg.br/legin/fed/lei/2018/lei-13709-14-agosto-2018-787077-normaatualizada-pl.html",
+    "locator": "art.46, caput e §2º; redação consultada em 03/11/2026",
+    "checked_on": "2026-11-03",
+    "rights": "texto normativo oficial; explicação e questões próprias",
+    "sha256": "5ade20f12d206504f3beb13a0595d144efc891229ad0e6badcebfa97a8a83596"
+  }
+]

@@ -1,7 +1,7 @@
 {
   "id": "matematica-basica",
   "title": "Matemática: porcentagens, médias e probabilidade",
-  "version": "0.3.0",
+  "version": "0.5.0",
   "scope": "Piloto autoral para testar fórmulas, tabela com continuação e figuras. Não é atribuído a edital ou banca e não cobre um programa completo de matemática.",
   "chapters": [
     {
@@ -34,5 +34,7 @@
   "sources": "fontes.json",
   "figures": "figuras.json",
   "coverage": "cobertura.json",
-  "practice_context": "contexto-questoes.md"
+  "practice_context": "contexto-questoes.md",
+  "simulado": "simulado.json",
+  "revisao": "revisao.json"
 }

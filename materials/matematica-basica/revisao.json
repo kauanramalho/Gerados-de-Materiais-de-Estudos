@@ -1,0 +1,17 @@
+{
+  "method": "Tente responder às perguntas de recuperação antes de ler a síntese. Resolva a prática e use os retornos à explicação para corrigir suas dúvidas. Retome em intervalos ajustados ao seu desempenho.",
+  "chapters": [
+    {
+      "id": "cap-percentuais",
+      "file": "revisao-porcentagens.md"
+    },
+    {
+      "id": "cap-medias",
+      "file": "revisao-medias.md"
+    },
+    {
+      "id": "cap-probabilidade",
+      "file": "revisao-probabilidade.md"
+    }
+  ]
+}

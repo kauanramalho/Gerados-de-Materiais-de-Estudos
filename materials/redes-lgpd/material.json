@@ -1,0 +1,30 @@
+{
+  "id": "redes-lgpd",
+  "title": "Redes e segurança de dados — casos de validação",
+  "version": "0.5.0",
+  "scope": "Demonstrador técnico de equipamento com partes identificadas e texto normativo. Não é atribuído a concurso/banca e não substitui uma apostila integral de edital. Fontes conferidas em 03/11/2026.",
+  "chapters": [
+    {
+      "id": "cap-redes",
+      "title": "Leia o painel e o encaminhamento",
+      "file": "01-redes.md",
+      "objectives": [
+        "NET-01"
+      ]
+    },
+    {
+      "id": "cap-lgpd",
+      "title": "Leia a obrigação normativa",
+      "file": "02-lgpd.md",
+      "objectives": [
+        "LGPD-01",
+        "LGPD-02"
+      ]
+    }
+  ],
+  "questions": "questoes.json",
+  "sources": "fontes.json",
+  "figures": "figuras.json",
+  "coverage": "cobertura.json",
+  "practice_context": "contexto.md"
+}

@@ -30,6 +30,14 @@ jobs:
       - run: python scripts/build_material.py materials/dataprev-sql/material.json --kind caderno --pdf
       - run: python scripts/build_material.py materials/matematica-basica/material.json --pdf
       - run: python scripts/build_material.py materials/matematica-basica/material.json --kind caderno --pdf
+      - run: python scripts/build_material.py materials/matematica-basica/material.json --kind simulado --pdf
+      - run: python scripts/build_material.py materials/matematica-basica/material.json --kind revisao --pdf
+      - run: python scripts/build_material.py materials/redes-lgpd/material.json --pdf
+      - run: python scripts/build_material.py materials/redes-lgpd/material.json --kind caderno --pdf
+      - run: python scripts/simulado.py materials/matematica-basica/material.json --respostas materials/matematica-basica/respostas-exemplo.json --report build/pontuacao.json
+      - run: python scripts/audit_links.py build/matematica-basica/simulado.pdf build/matematica-basica/revisao.pdf build/redes-lgpd/apostila.pdf build/redes-lgpd/caderno.pdf --browser --report build/new-formats-navigation.json
+      - run: python scripts/acessibilidade.py build/matematica-basica/revisao.html build/matematica-basica/revisao.pdf --report build/revisao-acessibilidade.json
+      - run: python scripts/acessibilidade.py build/redes-lgpd/apostila.html build/redes-lgpd/apostila.pdf --report build/redes-acessibilidade.json
       - run: python scripts/audit_links.py build/dataprev-sql/apostila.pdf build/dataprev-sql/caderno.pdf build/matematica-basica/apostila.pdf build/matematica-basica/caderno.pdf --browser --report build/navigation-audit.json
       - run: python scripts/acervo.py --db build/acervo.sqlite importar materials/dataprev-sql/material.json
       - run: python scripts/acervo.py --db build/acervo.sqlite importar materials/matematica-basica/material.json

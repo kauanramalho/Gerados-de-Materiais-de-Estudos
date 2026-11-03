@@ -4,13 +4,14 @@ from pathlib import Path
 import sys
 from material import load_material, publish
 from request import require_delivery
+from formats import prepare_format
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('manifest', type=Path)
     parser.add_argument('--output', type=Path)
-    parser.add_argument('--kind', choices=['apostila', 'caderno'], default='apostila')
+    parser.add_argument('--kind', choices=['apostila', 'caderno', 'simulado', 'revisao'], default='apostila')
     parser.add_argument('--pdf', action='store_true')
     parser.add_argument('--check', action='store_true', help='Validate sources, paths and coverage without exporting')
     parser.add_argument('--final', action='store_true', help='Exigir pedido, pesquisa e cobertura integral do escopo solicitado')
@@ -18,7 +19,7 @@ def main():
     try:
         data = load_material(args.manifest)
         if args.check:
-            require_delivery(data, args.kind, args.final)
+            require_delivery(prepare_format(data, args.kind), args.kind, args.final)
             print(f'Pré-validação aprovada: {data["config"]["id"]}; {len(data["questions"])} questões.')
             return 0
         folder = args.output or Path('build') / data['config']['id']

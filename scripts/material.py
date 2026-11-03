@@ -17,6 +17,8 @@ from integrity import validate_questions, validate_navigation
 from contracts import require_schema
 from navigation import instrument_html, required_edges, link_plan, navigation_manifest
 from request import read_request, require_delivery
+from formats import prepare_format, validate_simulation
+from acessibilidade import svg_accessibility
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -154,10 +156,24 @@ def load_material(path):
         inputs.append(request_path)
         if request['entrada']['imagem']:
             inputs.append(local_path(request_path.parent, request['entrada']['imagem']['arquivo']))
-    return {'config': config, 'folder': folder, 'inputs': inputs, 'request': request, **data}
+    result = {'config': config, 'folder': folder, 'inputs': inputs, 'request': request, **data}
+    for key, field, schema in [('simulado', 'simulation', 'simulado.schema.json'), ('revisao', 'revision', 'revisao.schema.json')]:
+        result[field] = None
+        if config.get(key):
+            plan_path = local_path(folder, config[key])
+            result[field] = read_json(plan_path)
+            require_schema(result[field], schema, key)
+            inputs.append(plan_path)
+    if result['simulation']:
+        validate_simulation(result, result['simulation'])
+    if result['revision']:
+        prepare_format(result, 'revisao')
+        inputs += [local_path(folder, row['file']) for row in result['revision']['chapters']]
+    return result
 
 
 def compose_material(data, kind='apostila'):
+    data = prepare_format(data, kind)
     config, folder, questions = data['config'], data['folder'], data['questions']
     parts = ['# Como usar este material {#orientacoes}', config['scope'],
              f'**Versão {config["version"]} · Texto e questões autorais com assistência de IA.**',
@@ -170,7 +186,22 @@ def compose_material(data, kind='apostila'):
     if any(q.get('fonte_original', {}).get('gabarito_status') == 'preliminar' for q in questions):
         parts.append('> **Gabarito preliminar:** parte dos itens reais usa resposta oficial ainda preliminar. '
                      'Confira o status na página da banca antes de usar para pontuação definitiva.')
-    if kind == 'apostila':
+    if kind == 'revisao':
+        parts += ['**Revisão ativa:** '+data['revision']['method'],
+                  'Tente recuperar a resposta antes de consultar o conceito ou a resolução. '
+                  'Este material pressupõe estudo prévio; retome a explicação extensa quando houver dúvida.']
+    if kind == 'simulado':
+        plan = data['simulation']; rules = plan['scoring']
+        basis = 'Regras autorais de treinamento' if plan['basis']['type'] == 'autoral' else 'Regras com referência oficial'
+        parts += ['# Aplicação e folha de respostas {#aplicacao}',
+                  f'**{basis}. Tempo sugerido: {plan["duration_minutes"]} minutos.** '
+                  f'Base: {plan["basis"]["locator"]}.',
+                  f'Por unidade de peso: acerto {rules["correct"]}; erro {rules["wrong"]}; branco {rules["blank"]}. '
+                  f'Anulação: {"crédito a todos" if rules["annulled"] == "credit" else "exclusão do máximo"}. '
+                  'Conclua a prova antes de abrir o gabarito comentado, que começa em seção separada.',
+                  '\n'.join(['| Questão | Peso | Sua resposta |', '|---|---:|---|'] +
+                            [f'| {ident} | {rules["weights"].get(ident, 1)} | ______ |' for ident in plan['order']])]
+    if kind in ('apostila', 'revisao'):
         for chapter in config['chapters']:
             parts += [f'# {chapter["title"]} {{#{chapter["id"]}}}',
                       local_path(folder, chapter['file']).read_text(encoding='utf-8')]
@@ -178,26 +209,31 @@ def compose_material(data, kind='apostila'):
             parts += ['# Evidência de prova e limites da amostra {#perfil-banca}',
                       local_path(folder, config['profile']).read_text(encoding='utf-8')]
     else:
-        parts.append('Este caderno acompanha a apostila de mesmo título. As remissões à teoria são indicadas '
-                     'pelo ID da seção da apostila; as questões e os comentários funcionam neste arquivo.')
+        if kind == 'caderno':
+            parts.append('Este caderno acompanha a apostila de mesmo título. As remissões à teoria são indicadas '
+                         'pelo ID da seção da apostila; as questões e os comentários funcionam neste arquivo.')
         if config.get('practice_context'):
             parts += ['# Dados para resolver as questões {#dados-pratica}',
                       local_path(folder, config['practice_context']).read_text(encoding='utf-8')]
-    for category, label, anchor in [('REAL', 'Questões reais: acesso à prova', 'questoes-reais'),
-                                    ('ADAPTADA', 'Questões adaptadas', 'questoes-adaptadas'),
-                                    ('AUTORAL', 'Questões autorais', 'questoes-autorais')]:
-        selected = [q for q in questions if q['origem'] == category]
+    groups = [('REAL', 'Questões reais: acesso à prova', 'questoes-reais'),
+              ('ADAPTADA', 'Questões adaptadas', 'questoes-adaptadas'),
+              ('AUTORAL', 'Questões autorais', 'questoes-autorais')]
+    if kind == 'simulado':
+        groups = [('MISTA', 'Prova — resolva antes de consultar as respostas', 'prova')]
+    for category, label, anchor in groups:
+        selected = ([next(q for q in questions if q['id'] == ident) for ident in data['simulation']['order']]
+                    if category == 'MISTA' else [q for q in questions if q['origem'] == category])
         if not selected:
             continue
         parts += [f'# {label} {{#{anchor}}}']
         for q in selected:
             qanchor = q['id'].lower()
             parts += ['::: {.question}', f'## {q["id"]} {{#{qanchor}}}']
-            if category == 'AUTORAL':
+            if q['origem'] == 'AUTORAL':
                 parts += [f'**Autoral · dificuldade {q["dificuldade"].replace("estimada-", "")} (estimativa editorial).**']
-            if category != 'AUTORAL':
+            if q['origem'] != 'AUTORAL':
                 source = q['fonte_original']
-                parts += [f'**{category} · {source["banca"]} · {source["orgao"]} {source["ano"]} · '
+                parts += [f'**{q["origem"]} · {source["banca"]} · {source["orgao"]} {source["ano"]} · '
                           f'{source["caderno"]}, questão {source["numero"]}, página {source["pagina"]}.**',
                           f'[Abrir questão na prova oficial]({source["prova_url"]}#page={source["pagina"]})',
                           'O texto e as alternativas originais devem ser lidos na prova. '
@@ -219,7 +255,7 @@ def compose_material(data, kind='apostila'):
         parts += [f'**{key}.** {value}' for key, value in q['comentarios'].items()]
         if q.get('reasoning'):
             parts += [q['reasoning']]
-        if kind == 'apostila':
+        if kind in ('apostila', 'revisao'):
             parts += [f'[Retomar a teoria](#{q["theory"]}){{#nav-res-{qanchor}-theory}} · '
                       f'[Voltar à questão](#{qanchor}){{#nav-res-{qanchor}-back}}']
         else:
@@ -274,6 +310,7 @@ def audit_pdf(pdf, entries, pages, questions):
 
 
 def publish(data, output_folder, kind='apostila', pdf=False, final=False):
+    data = prepare_format(data, kind)
     delivery = require_delivery(data, kind, final)
     config, folder = data['config'], data['folder']
     output = Path(output_folder).resolve()
@@ -292,10 +329,10 @@ def publish(data, output_folder, kind='apostila', pdf=False, final=False):
                     '--resource-path=' + str(folder), '--css=' + str(ROOT / 'styles/apostila.css'),
                     '--metadata=title:' + config['title'], '--metadata=lang:pt-BR',
                     '--metadata=toc-title:Sumário', '-o', str(html_path)], check=True)
-    raw_html = html_path.read_text(encoding='utf-8')
+    raw_html = svg_accessibility(html_path.read_text(encoding='utf-8'))
     entries = contents_entries(raw_html)
     original = instrument_html(render_contents(raw_html, entries))
-    required = required_edges(entries, data['questions'], include_theory=kind == 'apostila')
+    required = required_edges(entries, data['questions'], include_theory=kind in ('apostila', 'revisao'))
     html_path.write_text(original, encoding='utf-8')
     link_plan(original, required)
     errors = validate_navigation(html_path.read_text(encoding='utf-8'), data['questions'])
@@ -306,7 +343,7 @@ def publish(data, output_folder, kind='apostila', pdf=False, final=False):
               'questions': len(data['questions']), 'html_navigation': 'passed',
               'editorial_review': 'requires-recorded-review', 'files': {}, 'inputs': {}}
     report['request'] = delivery
-    report['toolchain'] = {'publisher_version': '0.4.0', 'python': platform.python_version(),
+    report['toolchain'] = {'publisher_version': '0.5.0', 'python': platform.python_version(),
                           'jsonschema': package_version('jsonschema'),
                           'pandoc': subprocess.check_output(['pandoc', '--version'], text=True).splitlines()[0],
                           'stylesheet_sha256': sha256((ROOT / 'styles/apostila.css').read_bytes()).hexdigest(),
@@ -315,6 +352,7 @@ def publish(data, output_folder, kind='apostila', pdf=False, final=False):
     report['toolchain']['contracts_sha256'] = sha256((ROOT / 'scripts/contracts.py').read_bytes()).hexdigest()
     report['toolchain']['navigation_sha256'] = sha256((ROOT / 'scripts/navigation.py').read_bytes()).hexdigest()
     report['toolchain']['request_sha256'] = sha256((ROOT / 'scripts/request.py').read_bytes()).hexdigest()
+    report['toolchain']['accessibility_sha256'] = sha256((ROOT / 'scripts/acessibilidade.py').read_bytes()).hexdigest()
     report['toolchain']['schemas'] = {p.name: sha256(p.read_bytes()).hexdigest()
                                     for p in sorted((ROOT / 'schemas').glob('*.json'))}
     if pdf:
@@ -344,7 +382,7 @@ def publish(data, output_folder, kind='apostila', pdf=False, final=False):
                               'padding-top:7px"><span>Ateliê de Estudos</span>'
                               '<span class="pageNumber"></span></div>')
                     page.pdf(path=str(pdf_path), format='A4', print_background=True,
-                             prefer_css_page_size=True, display_header_footer=True,
+                             prefer_css_page_size=True, display_header_footer=True, tagged=True, outline=True,
                              header_template='<span></span>', footer_template=footer)
                     actual = pdf_contents_pages(pdf_path, entries)
                     if actual == pages:

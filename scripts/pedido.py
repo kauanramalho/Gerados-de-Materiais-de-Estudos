@@ -17,7 +17,7 @@ def main(argv=None):
     start.add_argument('--texto', default='')
     start.add_argument('--imagem', type=Path)
     start.add_argument('--origem', choices=['texto', 'foto', 'print'], default='texto')
-    start.add_argument('--tipo', choices=['apostila', 'caderno'], default='apostila')
+    start.add_argument('--tipo', choices=['apostila', 'caderno', 'simulado', 'revisao'], default='apostila')
     start.add_argument('--output', type=Path, required=True)
     check = sub.add_parser('verificar')
     check.add_argument('pedido', type=Path)

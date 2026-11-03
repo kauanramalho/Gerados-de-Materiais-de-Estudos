@@ -1,8 +1,10 @@
 # Ateliê de Estudos
 
+Repositório público: [Gerados-de-Materiais-de-Estudos](https://github.com/kauanramalho/Gerados-de-Materiais-de-Estudos).
+
 Base permanente de instruções, skills e modelos para produzir apostilas e cadernos de questões de concursos, com explicações claras, ilustrações úteis e fontes verificáveis.
 
-**Fase atual:** publicador 0.4, entrada por texto/foto/print, pesquisa e cobertura vinculadas ao pedido, navegação auditada, dois pilotos e acervo local. O projeto é conduzido por um agente com acesso a este repositório. Ainda não existe um serviço autônomo que receba editais ou gere apostilas sem uma sessão de trabalho.
+**Fase atual:** publicador 0.5, simulado/pontuação, revisão ativa, edições/erratas e acessibilidade; entrada por texto/foto/print, pesquisa e cobertura vinculadas ao pedido, navegação auditada, dois pilotos e acervo local. O projeto é conduzido por um agente com acesso a este repositório. Ainda não existe um serviço autônomo que receba editais ou gere apostilas sem uma sessão de trabalho.
 
 ## Como pedir um material
 
@@ -16,7 +18,7 @@ O agente lê todas as instruções e skills, identifica o concurso, pesquisa edi
 
 ## O que está disponível
 
-- [Instruções para agentes](AGENTS.md) e [13 skills editoriais](docs/skills.md), com entradas, procedimentos, saídas e critérios de aceite.
+- [Instruções para agentes](AGENTS.md) e [17 skills editoriais](docs/skills.md), com entradas, procedimentos, saídas e critérios de aceite.
 - [Planejamento](docs/planejamento.md), [arquitetura](docs/arquitetura.md), [roadmap](docs/roadmap.md) e [backlog](docs/backlog.md).
 - [O que falta para ficar pronto](docs/prontidao.md): lacunas verificadas, skills candidatas, documentos previstos e critérios de conclusão.
 - [Navegação obrigatória](docs/navegacao.md): sumário clicável, resolução correta, retorno, hashes e bloqueio de exportação com erro. O layout atual foi aprovado pelo titular.
@@ -37,6 +39,8 @@ python scripts/build_material.py materials/dataprev-sql/material.json --check
 python scripts/build_material.py materials/dataprev-sql/material.json --pdf
 python scripts/build_material.py materials/dataprev-sql/material.json --kind caderno --pdf
 ```
+
+Também estão implementados [simulado e pontuação](docs/simulados.md), [revisão ativa](docs/revisao-aprendizagem.md), [impacto e erratas](docs/manutencao-edicoes.md), [auditoria de acessibilidade](docs/acessibilidade.md) e o [demonstrador redes/LGPD](materials/redes-lgpd/README.md). O layout aprovado permanece como padrão.
 
 ## Verificar e gerar a amostra inicial
 
