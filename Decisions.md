@@ -39,3 +39,7 @@
 ## D010 — 2026-11-03 — Contratos verificáveis e catálogo com revisões
 
 **Decisão:** usar JSON Schema com validação de formatos antes da publicação e SQLite local para identidade, revisões e ocorrências de questões por edição. **Motivo:** o titular autorizou continuar as pendências diagnosticadas; tipos/datas incoerentes, duplicatas e alterações silenciosas prejudicam materiais reutilizados. **Consequência:** importar edição modificada exige nova versão; revisões divergentes exigem motivo registrado, preservam o estado anterior e não recompõem PDFs antigos. Fontes oficiais continuam conferidas pelo agente. **Revisar quando:** acervo ou concorrência exigirem outra forma de armazenamento, mantendo rastreabilidade e direitos.
+
+## D011 — 2026-11-03 — Layout aprovado e navegação obrigatória
+
+**Decisão:** preservar o layout que o titular declarou ter gostado e conferir cada rota de navegação nos arquivos exportados. **Motivo:** pedido explícito de sumário clicável e links corretos em todas as futuras apostilas/cadernos. **Consequência:** exportação com destino, área clicável ou pareamento incorreto falha; relatórios são associados ao hash do arquivo. Referências externas têm verificação datada e não garantia permanente de disponibilidade. O aceite visual não encerra a avaliação didática. **Revisar quando:** titular pedir mudança visual ou um novo formato exigir contrato e testes próprios, mantendo o requisito de navegação.

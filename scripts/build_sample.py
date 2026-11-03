@@ -6,6 +6,7 @@ import shutil
 import subprocess
 from integrity import validate_questions, validate_navigation
 from contents import contents_entries, render_contents, pdf_contents_pages
+from navigation import instrument_html, required_edges, link_plan, navigation_manifest
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -18,14 +19,15 @@ def compose(questions):
         parts.append(f"\n## {q['id']} {{#{anchor}}}\n\n**AUTORAL · {q['dificuldade'].replace('estimada-', '')} (estimativa editorial).**\n\n{q['enunciado']}\n")
         for key, value in q['alternativas'].items():
             parts.append(f'\n**{key}.** {value}\n')
-        parts.append(f'\n[Ir ao gabarito comentado](#res-{anchor})\n')
+        parts.append(f'\n[Ir ao gabarito comentado](#res-{anchor}){{#nav-{anchor}-answer}}\n')
     parts.append('\n# Gabarito comentado {#gabarito}\n')
     for q in questions:
         anchor = q['id'].lower()
         parts.append(f"\n## Resolução {q['id']} {{#res-{anchor}}}\n\n**Resposta: {q['resposta']}.**\n")
         for key, comment in q['comentarios'].items():
             parts.append(f'\n**{key}.** {comment}\n')
-        parts.append(f'\n[Retomar o conceito](#cap-001) · [Voltar à questão](#{anchor})\n')
+        parts.append(f'\n[Retomar o conceito](#cap-001){{#nav-res-{anchor}-theory}} · '
+                     f'[Voltar à questão](#{anchor}){{#nav-res-{anchor}-back}}\n')
     parts.append('''
 # Referências e controle {#referencias}
 
@@ -61,9 +63,13 @@ def main():
                     '--metadata=title:Ateliê de Estudos — amostra editorial',
                     '--metadata=lang:pt-BR', '--number-sections',
                     '--metadata=toc-title:Sumário', '-o', str(output)], check=True)
-    original_html = output.read_text(encoding='utf-8')
-    entries = contents_entries(original_html)
-    output.write_text(render_contents(original_html, entries), encoding='utf-8')
+    raw_html = output.read_text(encoding='utf-8')
+    entries = contents_entries(raw_html)
+    original_html = instrument_html(render_contents(raw_html, entries))
+    required = required_edges(entries, [{**q, 'theory': 'cap-001'} for q in questions],
+                              theory_label='Retomar o conceito')
+    output.write_text(original_html, encoding='utf-8')
+    link_plan(original_html, required)
     errors = validate_navigation(output.read_text(encoding='utf-8'), questions)
     if errors:
         raise SystemExit('\n'.join(errors))
@@ -111,6 +117,10 @@ def main():
             raise SystemExit('Falha do Chromium/Playwright. HTML preservado; exportação PDF pendente.')
         if not pdf.is_file() or pdf.stat().st_size < 1000:
             raise SystemExit('Falha ao exportar PDF; confira Chromium e o HTML gerado.')
+        navigation = navigation_manifest(output, pdf, required, pages)
+        (build / 'amostra-navigation.json').write_text(json.dumps(navigation, ensure_ascii=False, indent=2), encoding='utf-8')
+        if not navigation['audit']['passed']:
+            raise SystemExit('\n'.join(navigation['audit']['errors']))
         print(f'PDF gerado: {pdf}. {len(entries)} entradas do sumário com paginação conferida.')
 
 

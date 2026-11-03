@@ -25,10 +25,12 @@ jobs:
       - run: sudo apt-get update && sudo apt-get install -y pandoc
       - run: pip install -r requirements-pdf.txt
       - run: python -m playwright install --with-deps chromium
+      - run: python -m unittest discover -s tests -p test_navigation.py -v
       - run: python scripts/build_material.py materials/dataprev-sql/material.json --pdf
       - run: python scripts/build_material.py materials/dataprev-sql/material.json --kind caderno --pdf
       - run: python scripts/build_material.py materials/matematica-basica/material.json --pdf
       - run: python scripts/build_material.py materials/matematica-basica/material.json --kind caderno --pdf
+      - run: python scripts/audit_links.py build/dataprev-sql/apostila.pdf build/dataprev-sql/caderno.pdf build/matematica-basica/apostila.pdf build/matematica-basica/caderno.pdf --browser --report build/navigation-audit.json
       - run: python scripts/acervo.py --db build/acervo.sqlite importar materials/dataprev-sql/material.json
       - run: python scripts/acervo.py --db build/acervo.sqlite importar materials/matematica-basica/material.json
       - run: python scripts/acervo.py --db build/acervo.sqlite exportar --output build/acervo.json

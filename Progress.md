@@ -1,6 +1,6 @@
 # Progresso — Ateliê de Estudos
 
-- **Estado:** active — publicador 0.3, acervo local e segundo piloto entregues tecnicamente.
+- **Estado:** active — publicador 0.3.1, layout aprovado e auditoria obrigatória de navegação implementada.
 - **Prioridade no portfólio:** unassigned.
 - **Data do estado:** 2026-11-03.
 - **Próxima ação:** implementar o formato de simulado com respostas separadas e pontuação verificável, mantendo a avaliação do leitor em paralelo.
@@ -14,7 +14,9 @@ A entrega 0.3 concluiu o núcleo do publicador genérico, a validação consiste
 
 O acervo contém 17 itens: 14 autorais e três reais por link, com filtros, deduplicação, importação idempotente, revisões explícitas e exportação com histórico. Uma revisão de gabarito no catálogo não altera um PDF já entregue. Testes de retificação são sintéticos; não indicam que a banca mudou o gabarito real.
 
-Passaram 50 testes, incluindo seis cálculos do novo piloto e exportação MathML. A suíte e quatro builds foram reproduzidos em um ambiente Python isolado, no mesmo host; isso não equivale a CI remota ou novo sistema operacional. Ver [validação 0.3](docs/validacao-v03.md) e [acervo](docs/acervo.md).
+Passaram 76 testes, incluindo regressões de destinos incorretos, botões ausentes, links em duas linhas, acentos e relatórios de outro hash. Os quatro PDFs têm 118 entradas de sumário e 217 áreas internas de clique conferidas, incluindo os 34 pares questão/resolução. Cada exportação confere destinos exatos no PDF e bloqueia falhas internas; a entrega exige reauditoria e cliques no HTML. Ver [contrato de navegação](docs/navegacao.md). Referências externas são verificadas com data; disponibilidade futura depende dos sites de origem.
+
+O titular aprovou o layout em 03/11/2026. CSS, tipografia e apresentação do sumário foram preservados; a comparação das 64 páginas verifica pixels e posições do texto. Esse retorno encerra a preferência visual atual, mas não presume avaliação de clareza, aprendizagem ou dificuldade das questões. A suíte e quatro builds foram reproduzidos no ambiente Python isolado do mesmo host; isso não equivale a CI remota ou novo sistema operacional. Ver também [validação histórica 0.3](docs/validacao-v03.md) e [acervo](docs/acervo.md).
 
 ## Materiais
 

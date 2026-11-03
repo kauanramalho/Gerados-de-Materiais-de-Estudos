@@ -2,7 +2,7 @@
 
 Base permanente de instruções, skills e modelos para produzir apostilas e cadernos de questões de concursos, com explicações claras, ilustrações úteis e fontes verificáveis.
 
-**Fase atual:** publicador 0.3, dois pilotos editoriais e acervo local consultável. O projeto é conduzido por um agente com acesso a este repositório. Ainda não existe um serviço autônomo que receba editais ou gere apostilas sem uma sessão de trabalho.
+**Fase atual:** publicador 0.3.1, navegação conferida por área de clique/destino, dois pilotos e acervo local. O projeto é conduzido por um agente com acesso a este repositório. Ainda não existe um serviço autônomo que receba editais ou gere apostilas sem uma sessão de trabalho.
 
 ## Como pedir um material
 
@@ -17,6 +17,7 @@ O agente deve recuperar o estado do projeto, identificar o concurso, buscar edit
 - [Instruções para agentes](AGENTS.md) e [13 skills editoriais](docs/skills.md), com entradas, procedimentos, saídas e critérios de aceite.
 - [Planejamento](docs/planejamento.md), [arquitetura](docs/arquitetura.md), [roadmap](docs/roadmap.md) e [backlog](docs/backlog.md).
 - [O que falta para ficar pronto](docs/prontidao.md): lacunas verificadas, skills candidatas, documentos previstos e critérios de conclusão.
+- [Navegação obrigatória](docs/navegacao.md): sumário clicável, resolução correta, retorno, hashes e bloqueio de exportação com erro. O layout atual foi aprovado pelo titular.
 - [Manual editorial](docs/manual-editorial.md), [padrão visual](docs/padrao-visual.md), [política de questões](docs/questoes.md) e [revisão](docs/qualidade.md).
 - [Referências pesquisadas](references/catalogo.md), [modelos reutilizáveis](templates/README.md), [contratos de dados](schemas/README.md) e prova mínima de navegação em [examples/redes](examples/redes/README.md).
 - [Progresso](Progress.md), [decisões](Decisions.md) e [continuidade no Segundo Cérebro](docs/continuidade.md).

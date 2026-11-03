@@ -1,7 +1,7 @@
 ---
 name: ae-revisar
 description: Revisar precisão, didática, questões e artefatos finais.
-version: 0.1.0
+version: 0.2.0
 ---
 
 # Revisar precisão, didática, questões e artefatos finais
@@ -19,8 +19,9 @@ Material, fontes, edital, perfil de banca e checklist. Consulte AGENTS.md e as p
 1. Aplique docs/qualidade.md em passagens separadas: técnica, pedagógica/linguística e visual/navegação.
 2. Reconfira afirmações mutáveis e resolva exercícios de forma independente. Compare alternativas, respostas e comentários; registre divergências oficiais.
 3. Verifique cobertura dos objetivos, progressão, explicação das figuras e utilidade dos exemplos. Elimine excesso sem remover etapas necessárias.
-4. Execute ferramentas estruturais disponíveis e inspecione HTML/PDF. Presença de metadados não prova veracidade; presença de links não prova destino.
+4. Execute as ferramentas estruturais e scripts/audit_links.py com --browser e --external nos arquivos finais. Conferir cada área clicável, destino, página e retorno, incluindo seções na mesma página e links com quebra de linha. Não aceitar somente contagem/presença de âncoras ou aprovação de outro hash. Ver docs/navegacao.md.
 5. Registre defeitos e correções. Falha crítica impede rótulo de entrega final; identifique rascunho e lacunas quando necessário.
+6. Registre o aceite visual já dado ao layout, preservando-o. Não o transforme em aprovação de precisão, aprendizagem ou dificuldade das questões; essas dimensões exigem suas próprias evidências.
 
 ## Saídas
 

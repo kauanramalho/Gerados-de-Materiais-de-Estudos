@@ -1,10 +1,10 @@
 # O que falta para o Ateliê de Estudos ficar pronto
 
-Diagnóstico de 03/11/2026, após conferir código, instruções, exemplos, marcos e registros do projeto. Base do diagnóstico inicial: revisão `fa65ffb`; atualizado com a entrega 0.3 e suas [evidências](validacao-v03.md). Esta análise não substitui a avaliação de aprendizagem pelo leitor.
+Diagnóstico de 03/11/2026, após conferir código, instruções, exemplos, marcos e registros do projeto. Base do diagnóstico inicial: revisão `fa65ffb`; atualizado com a entrega 0.3 e a auditoria de navegação 0.3.1 ([contrato](navegacao.md)). Esta análise não substitui a avaliação de aprendizagem pelo leitor.
 
 ## O que já funciona
 
-O projeto já pode ser usado em uma tarefa acompanhada por um agente: pesquisar o concurso, preparar conteúdo e gerar apostila ou caderno a partir de um manifesto. Há 13 skills locais, manual editorial, padrões visuais, políticas de fontes/questões, modelos e contratos. O piloto SQL produziu 24 páginas de apostila e 15 de caderno, três diagramas, oito questões autorais e três questões reais por link oficial. A entrega 0.3 acrescenta matemática (16/9 páginas), seis autorais, contratos e acervo de 17 itens. Passaram 50 testes; os 13 casos SQL e a navegação permanecem conferidos.
+O projeto já pode ser usado em uma tarefa acompanhada por um agente: pesquisar o concurso, preparar conteúdo e gerar apostila ou caderno a partir de um manifesto. Há 13 skills locais, manual editorial, padrões visuais, políticas de fontes/questões, modelos e contratos. O piloto SQL produziu 24 páginas de apostila e 15 de caderno, três diagramas, oito questões autorais e três questões reais por link oficial. A entrega 0.3 acrescenta matemática (16/9 páginas), seis autorais, contratos e acervo de 17 itens. Passaram 76 testes; os 13 casos SQL e a navegação permanecem conferidos. O titular aprovou o layout, preservado nesta revisão. Os quatro PDFs têm 118 entradas de sumário e 217 áreas internas auditadas; falhas internas bloqueiam a exportação.
 
 Isso é uma primeira versão utilizável. Ainda não comprova qualidade constante em qualquer matéria, cobertura de um edital inteiro ou execução permanente sem uma sessão do agente. O acervo pesquisável agora existe dentro dos critérios documentados.
 
@@ -12,7 +12,7 @@ Isso é uma primeira versão utilizável. Ainda não comprova qualidade constant
 
 | Nível | Critério de conclusão | Situação |
 |---|---|---|
-| Produzir um lote acompanhado | fontes conferidas, conteúdo revisado, figuras e questões coerentes, HTML/PDF navegáveis, limites declarados | aplicado ao piloto; aceite do leitor pendente |
+| Produzir um lote acompanhado | fontes conferidas, conteúdo revisado, figuras e questões coerentes, HTML/PDF navegáveis, limites declarados | aplicado aos pilotos; layout aprovado, avaliação pedagógica pendente |
 | V1 para uso recorrente | fluxo repetível em matérias distintas, revisões registradas, formatos prometidos testados e manutenção de edições | faltam as entregas abaixo |
 | Coleção de um concurso | cada item do edital tem conteúdo e prática, ou lacuna justificada; todas as unidades passam pela revisão | depende do concurso e dos lotes que forem solicitados |
 
@@ -23,7 +23,7 @@ Um serviço que recebe documentos e trabalha continuamente é uma evolução opc
 | Entrega | O que existe | O que falta e como encerrar | Backlog |
 |---|---|---|---|
 | Publicação GitHub | Git local, ZIP, bundle e workflow básico | criar/acessar repositório público, enviar histórico, ler árvore/SHA e verificar execução remota | AE-004 |
-| Avaliação didática | revisão técnica e visual inicial | registrar clareza, densidade, leitura das figuras e tentativa de exercícios; converter achados em correções, sem inventar aceite | AE-009 |
+| Avaliação didática | revisão técnica e layout aprovado pelo titular | registrar clareza, densidade, leitura das figuras e tentativa de exercícios; converter achados em correções, sem inventar aceite | AE-009 |
 | Referência editorial profissional | catálogo de páginas e guias; estilo e sumário próprios | comparar páginas efetivas de dois ou três capítulos abertos: explicação, exemplo, legenda, exercícios e respiro; registrar páginas e ajustes | AE-015 |
 | Publicador em outras matérias | apostila/caderno em SQL e matemática; sete fórmulas e tabela com continuação | novos casos de equipamento detalhado e texto normativo; acessibilidade integral continua separada | AE-010 concluído, AE-016 em execução |
 | Acervo reutilizável | núcleo entregue com 17 itens, filtros, deduplicação e revisões testadas | ampliar por novos lotes; consulta oficial e revisão de metadados continuam necessárias | AE-011 concluído |
@@ -38,7 +38,7 @@ Um serviço que recebe documentos e trabalha continuamente é uma evolução opc
 
 ## Skills: ampliar as existentes e criar só módulos distintos
 
-As 12 skills básicas já existem. Não é necessário reescrevê-las para começar. A aplicação de um piloto não fecha a validação de todas elas; veja [o inventário e as evidências](skills.md).
+As 12 skills básicas já existem. Não é necessário reescrevê-las para começar. A aprovação do layout e aplicação dos pilotos não fecham a validação de todas elas; veja [o inventário e as evidências](skills.md).
 
 **Aprofundar as atuais:** `ae-analisar-edital` e `ae-pesquisar-fontes` para OCR, retificações e vigência; `ae-analisar-banca` para critérios de amostragem por formato; `ae-escrever-capitulo` e `ae-ilustrar` para matérias e figuras diferentes; `ae-questoes-autorais` para revisão de ambiguidades e originalidade; `ae-diagramar` e `ae-revisar` para fórmulas, tabelas e acessibilidade; `ae-gerenciar` para fechamento verificável das edições.
 
@@ -60,6 +60,7 @@ Esta revisão acrescenta este diagnóstico, um [modelo de avaliação do piloto]
 
 | Arquivo proposto | Conteúdo que precisa ser desenvolvido | Momento |
 |---|---|---|
+| [docs/navegacao.md](navegacao.md) | contrato obrigatório, auditoria dos destinos e cliques, hashes e disponibilidade externa | entregue em AE-024 |
 | [docs/acervo.md](acervo.md) | identidade, busca, deduplicação, direitos e revisão do catálogo | entregue em AE-011 |
 | `docs/simulados.md` e `templates/plano-simulado.md` | distribuição, regras de aplicação, pontuação e respostas separadas | AE-017 |
 | `docs/revisao-aprendizagem.md` e `templates/revisao.md` | revisão curta e recuperação ativa com remissões | AE-018 |
@@ -86,7 +87,7 @@ O núcleo de contratos/acervo e o segundo piloto foram entregues. A próxima imp
 
 ## Correções de estado nesta revisão
 
-O backlog anterior marcava AE-009 e AE-011 como concluídos e AE-012 em execução. Não havia registro de avaliação do titular, implementação do catálogo consultável nem auditoria de acessibilidade em andamento que sustentassem esses estados. Na auditoria inicial foram reconciliados como planejados. Depois, AE-011 foi implementado na entrega 0.3 e concluído com evidência. A avaliação do leitor e a auditoria integral de acessibilidade ainda não foram encerradas. O resumo da arquitetura foi atualizado para reconhecer a CLI 0.2 já existente.
+O backlog anterior marcava AE-009 e AE-011 como concluídos e AE-012 em execução. Não havia registro de avaliação do titular, implementação do catálogo consultável nem auditoria de acessibilidade em andamento que sustentassem esses estados. Na auditoria inicial foram reconciliados como planejados. Depois, AE-011 foi implementado na entrega 0.3 e concluído com evidência. O titular aprovou o layout na revisão 0.3.1; a avaliação pedagógica do leitor e a auditoria integral de acessibilidade ainda não foram encerradas. O resumo da arquitetura foi atualizado para reconhecer a CLI 0.2 já existente.
 
 ## Publicação: autorização e capacidade técnica
 

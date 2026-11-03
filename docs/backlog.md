@@ -12,7 +12,7 @@ Estados: pronto, em execução, concluído, impedido, planejado. A ordem abaixo 
 | AE-006 | identificar primeiro concurso | órgão/cargo/ano e edital/retificações confirmados | referência metodológica Dataprev/FGV; sem alterar prioridade | concluído |
 | AE-007 | analisar provas relacionadas | perfil de banca com amostra e limitações | AE-006 | concluído |
 | AE-008 | produzir capítulo piloto | estrutura editorial completa e revisão técnica | AE-007 | concluído |
-| AE-009 | avaliar piloto com titular | retorno real registrado e comentários convertidos em ajustes verificáveis | AE-008 | planejado |
+| AE-009 | avaliar piloto com titular | layout aprovado em 03/11/2026; clareza, aprendizagem e dificuldade ainda sem avaliação do leitor | AE-008 | em execução |
 | AE-010 | generalizar publicador | entradas estruturadas, erros claros e navegação testados em SQL/matemática, apostila/caderno | núcleo 0.3 entregue; novos formatos em AE-017/018 | concluído |
 | AE-011 | acervo consultável de provas e questões | 17 itens, filtros, deduplicação, revisões e direitos testados | AE-007; expansão por lote e consulta oficial permanecem necessárias | concluído |
 | AE-012 | exportação acessível | teclado, descrições, contraste, fórmulas e ordem de leitura testados; limites registrados | AE-010 | planejado |
@@ -27,11 +27,12 @@ Estados: pronto, em execução, concluído, impedido, planejado. A ordem abaixo 
 | AE-021 | coleção de um concurso | itens do edital cobertos ou com lacuna justificada; capítulos e prática revisados | concurso/recorte definidos e padrão ajustado | planejado |
 | AE-022 | reprodução e retomada | build em ambiente limpo e retomada de tarefa registrados; CI remota conferida quando publicada | Python isolado no mesmo host testado; retomada/CI remota pendentes | em execução |
 | AE-023 | validar e aprofundar skills | evidência por procedimento; módulos novos criados junto do fluxo que implementam | ae-curar-acervo aplicada; demais validações ainda pendentes | em execução |
+| AE-024 | tornar obrigatória a navegação correta | sumário, questão/resolução/retorno/teoria, áreas reais e hashes auditados; regressões negativas e cliques nos quatro materiais | AE-010; contrato em docs/navegacao.md | concluído |
 
 Responsável pela execução: agente na tarefa autorizada; titular decide concurso, preferência visual final e prioridades pessoais. Issues no GitHub devem espelhar os itens abertos quando o repositório existir; não afirmar que foram criadas antes da confirmação remota.
 
 ## Reconciliação de 03/11/2026
 
-Na auditoria inicial, AE-009 e AE-011 estavam marcados como concluídos, e AE-012 como em execução, sem evidência suficiente. Os estados foram corrigidos. Na entrega 0.3 posterior, AE-011 foi implementado e testado, agora com evidência para concluir o núcleo local. Retorno do titular e auditoria integral de acessibilidade continuam pendentes. AE-004 permanece impedido pelo 403 observado na integração; nenhuma autorização adicional foi inferida como acesso técnico.
+Na auditoria inicial, AE-009 e AE-011 estavam marcados como concluídos, e AE-012 como em execução, sem evidência suficiente. Os estados foram corrigidos. Na entrega 0.3 posterior, AE-011 foi implementado e testado. Depois, o titular aprovou o layout e pediu a checagem contínua dos links; AE-009 passou a em execução e AE-024 foi implementado. Avaliação pedagógica do titular e auditoria integral de acessibilidade continuam pendentes. AE-004 permanece impedido pelo 403 observado na integração; nenhuma autorização adicional foi inferida como acesso técnico.
 
 Ver [diagnóstico de prontidão](prontidao.md) para skills candidatas, Markdown previsto, critérios e ordem de execução. A produção dos próximos lotes não exige terminar todo o acervo ou contratar um serviço.

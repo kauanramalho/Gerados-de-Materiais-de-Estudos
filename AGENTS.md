@@ -13,9 +13,10 @@ Ao receber nome, edital ou provas de um concurso, inicie a identificação e a p
 3. Planeje figuras que ensinem: componentes identificados, sequência, comparação ou relação. Inclua legenda, referência no texto, descrição alternativa e origem. Esquemas de equipamentos genéricos devem ser identificados; modelos reais exigem manual correspondente.
 4. Distinga REAL, ADAPTADA e AUTORAL conforme docs/questoes.md. Não apresente reconstruções por memória como questão real. Se não localizar prova ou gabarito verificáveis, informe a lacuna e prossiga com autorais identificadas, sem inventar atribuições.
 5. Nunca afirme frequência ou nível de uma banca sem explicitar amostra e método. Dificuldade autoral é estimativa editorial até validação empírica.
-6. Cada questão tem ID estável, link para a resolução e retorno à questão. Sumário e referências são clicáveis no HTML e no PDF. Valide o arquivo exportado, não apenas o Markdown.
+6. Cada questão tem ID estável, link para sua resolução e retorno à mesma questão. A exportação deve conferir áreas de clique, destinos exatos e páginas por scripts/navigation.py. Antes da entrega, usar scripts/audit_links.py com --browser e --external; registrar indisponibilidade externa sem declarar aprovação. Não entregar arquivo que falhe na navegação interna nem reutilizar relatório de outro hash. Novos formatos precisam de contrato de rotas e testes antes de habilitados; ver docs/navegacao.md.
 7. Corrija conteúdo técnico, gramática, contas, unidades e alternativas em uma segunda passagem separada da redação. Divergências de gabarito oficial são registradas, não corrigidas silenciosamente.
 8. Toda entrega indica escopo, edital/versão, fontes, data de conferência, limitações e versão. Use docs/qualidade.md como condição de publicação.
+9. O titular aprovou o layout atual. Preservar CSS, tipografia, hierarquia e apresentação acadêmica do sumário; melhorias de navegação não devem redesenhar a apostila. Aprovação visual não equivale a validação de aprendizagem.
 
 ## Organização e rastreabilidade
 

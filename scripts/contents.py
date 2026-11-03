@@ -2,6 +2,18 @@
 from html import escape
 from html.parser import HTMLParser
 import re
+from urllib.parse import unquote
+
+
+def pdf_names(document):
+    """Chrome percent-encodes non-ASCII PDF destination names; HTML IDs are Unicode."""
+    names = {}
+    for encoded, destination in document.resolve_names().items():
+        name = unquote(encoded)
+        if name in names and names[name] != destination:
+            raise ValueError(f'Destino PDF ambíguo após decodificação: {name}')
+        names[name] = destination
+    return names
 
 
 class ContentsParser(HTMLParser):
@@ -80,7 +92,7 @@ def render_contents(html, entries, pages=None):
 def pdf_contents_pages(path, entries):
     import pymupdf as fitz
     with fitz.open(path) as document:
-        destinations = document.resolve_names()
+        destinations = pdf_names(document)
         pages = {}
         for entry in entries:
             target = entry['target']

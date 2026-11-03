@@ -1,6 +1,6 @@
 # Sistema visual inicial
 
-Proposta v0.1, sujeita à avaliação do piloto. A qualidade visual será confirmada por PDF renderizado; o CSS sozinho não comprova resultado.
+O titular aprovou o layout em 03/11/2026. Preservar a apresentação atual, inclusive tipografia, cores e sumário acadêmico. Mudanças de navegação devem manter a aparência; conferir por PDF renderizado e comparação de páginas/texto. A aprovação visual não certifica conteúdo ou aprendizagem.
 
 | Elemento | Padrão inicial | Critério de revisão |
 |---|---|---|
@@ -30,5 +30,7 @@ O sumário deve seguir apresentação editorial acadêmica: títulos e subtítul
 Manter título com o parágrafo seguinte; evitar órfãs e viúvas; controlar quebras em figuras, tabelas e alternativas. Tabelas longas precisam de cabeçalho repetido. Sumário, glossário e índice de figuras devem navegar por IDs, sem números de página digitados manualmente.
 
 Cada questão aponta para seu gabarito comentado e cada resolução retorna à questão. A resolução pode ligar à seção de teoria. Testar após a exportação: destinos válidos, texto selecionável, fontes incorporadas ou fallback legível, figuras sem corte e nenhuma página vazia acidental. Acessibilidade PDF exige auditoria adicional; o protótipo não declara conformidade PDF/UA.
+
+A regra de navegação é obrigatória em todos os próximos lotes: [contrato, testes e comando de reauditoria](navegacao.md). A mesma página pode conter várias questões; o link precisa apontar à resolução correta, não somente a uma página existente.
 
 No publicador 0.2, SVGs incorporados respeitam a largura da coluna para evitar redução global da impressão. Blocos de questões, comentários e código evitam quebras internas quando cabem. A mediana dos trechos longos do PDF é registrada na auditoria; valor abaixo de 10 pt bloqueia a publicação. Inspecionar também rótulos e legendas: a mediana não comprova sua legibilidade.

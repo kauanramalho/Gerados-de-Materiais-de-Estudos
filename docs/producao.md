@@ -1,4 +1,4 @@
-# Produção de materiais — versão 0.3
+# Produção de materiais — versão 0.3.1
 
 O agente pesquisa e redige; o publicador monta e verifica os arquivos preparados. Esta versão já aceita materiais novos por manifesto e exporta apostila e caderno de questões. Não há chamada automática a um LLM ou serviço de recebimento permanente.
 
@@ -36,6 +36,8 @@ python scripts/build_material.py materials/dataprev-sql/material.json --kind cad
 Use --output para escolher outra pasta de saída. Sem --pdf, o comando gera Markdown, HTML e relatório; os números de página no sumário são preenchidos quando o PDF é exportado. --check não gera o material.
 
 Após revisar o lote, importe o manifesto no [acervo](acervo.md). Alterações em edições já registradas exigem nova versão. Revisões de questões são explícitas e preservam histórico; arquive o banco e a exportação fora do Git/cofre.
+
+Antes de entregar, executar a [auditoria de links](navegacao.md) com --browser e --external. A exportação PDF já bloqueia rotas internas incorretas e grava *-navigation.json. Arquivar esse manifesto com HTML/PDF e conferir o mesmo hash após upload. O sumário e os links usam o mesmo contrato em apostilas de conteúdo e cadernos de questões.
 
 ## O que as verificações garantem
 

@@ -1,7 +1,7 @@
 ---
 name: ae-diagramar
 description: Montar apostilas e cadernos navegáveis em HTML e PDF.
-version: 0.2.0
+version: 0.3.0
 ---
 
 # Montar apostilas e cadernos navegáveis em HTML e PDF
@@ -20,7 +20,8 @@ Capítulos, questões, figuras, metadados e padrões visuais. Consulte AGENTS.md
 2. Atribua IDs persistentes, gere sumário clicável e todos os links questão → resolução → questão; inclua remissões à teoria.
 3. Aplique hierarquia, margens, tipografia e quebras; evite separar dados essenciais, figuras e legendas. Em simulados, mantenha respostas separadas.
 4. Prepare o manifesto e execute scripts/build_material.py com --check; depois exporte com --pdf. Use --kind caderno para o caderno com dados suficientes aos exercícios. Consulte docs/producao.md. A amostra examples/redes permanece como demonstração inicial.
-5. Confira o relatório de links, páginas e tamanho do texto; inspecione o PDF e os blocos de questões/comentários. Corrija falhas e preserve hashes e versões da entrega.
+5. Confira o manifesto *-navigation.json: todos os links visíveis precisam de área clicável e destino esperado no PDF, incluindo título/página do sumário e pares questão/resolução. A CLI deve bloquear falha interna. Execute scripts/audit_links.py nos PDFs finais com --browser e --external; siga docs/navegacao.md e registre limitações externas.
+6. Preserve o layout aprovado. Compare paginação e posições do texto quando a mudança for só técnica. Inspecione o PDF, corrija falhas e arquive relatórios com hashes da mesma exportação. Não reaproveite aprovação de um arquivo alterado.
 
 ## Saídas
 

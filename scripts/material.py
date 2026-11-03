@@ -15,6 +15,7 @@ from urllib.parse import urlparse
 from contents import contents_entries, render_contents, pdf_contents_pages
 from integrity import validate_questions, validate_navigation
 from contracts import require_schema
+from navigation import instrument_html, required_edges, link_plan, navigation_manifest
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -192,7 +193,7 @@ def compose_material(data, kind='apostila'):
             if q['direitos'] != 'somente-link':
                 parts += [q['enunciado']]
                 parts += [f'**{key}.** {value}' for key, value in q['alternativas'].items()]
-            parts += [f'[Ir ao gabarito comentado](#res-{qanchor})', ':::']
+            parts += [f'[Ir ao gabarito comentado](#res-{qanchor}){{#nav-{qanchor}-answer}}', ':::']
     parts += ['# Gabarito comentado {#gabarito-comentado}']
     for q in questions:
         qanchor = q['id'].lower()
@@ -207,9 +208,11 @@ def compose_material(data, kind='apostila'):
         if q.get('reasoning'):
             parts += [q['reasoning']]
         if kind == 'apostila':
-            parts += [f'[Retomar a teoria](#{q["theory"]}) · [Voltar à questão](#{qanchor})']
+            parts += [f'[Retomar a teoria](#{q["theory"]}){{#nav-res-{qanchor}-theory}} · '
+                      f'[Voltar à questão](#{qanchor}){{#nav-res-{qanchor}-back}}']
         else:
-            parts += [f'Teoria na apostila: `{q["theory"]}`. [Voltar à questão](#{qanchor})']
+            parts += [f'Teoria na apostila: `{q["theory"]}`. '
+                      f'[Voltar à questão](#{qanchor}){{#nav-res-{qanchor}-back}}']
         parts += [':::']
     parts += ['# Fontes e rastreabilidade {#fontes}',
               'A presença de uma fonte não equivale a permissão para reproduzi-la. '
@@ -264,6 +267,9 @@ def publish(data, output_folder, kind='apostila', pdf=False):
     if output == folder or folder.is_relative_to(output):
         raise ValueError('Saída não pode sobrescrever a pasta de origem')
     output.mkdir(parents=True, exist_ok=True)
+    # A failed rebuild must not leave a previous success report beside a new PDF.
+    for name in (f'{kind}-validation.json', f'{kind}-navigation.json'):
+        (output / name).unlink(missing_ok=True)
     if not shutil.which('pandoc'):
         raise ValueError('Pandoc não encontrado')
     source, html_path = output / f'{kind}.md', output / f'{kind}.html'
@@ -273,9 +279,12 @@ def publish(data, output_folder, kind='apostila', pdf=False):
                     '--resource-path=' + str(folder), '--css=' + str(ROOT / 'styles/apostila.css'),
                     '--metadata=title:' + config['title'], '--metadata=lang:pt-BR',
                     '--metadata=toc-title:Sumário', '-o', str(html_path)], check=True)
-    original = html_path.read_text(encoding='utf-8')
-    entries = contents_entries(original)
-    html_path.write_text(render_contents(original, entries), encoding='utf-8')
+    raw_html = html_path.read_text(encoding='utf-8')
+    entries = contents_entries(raw_html)
+    original = instrument_html(render_contents(raw_html, entries))
+    required = required_edges(entries, data['questions'], include_theory=kind == 'apostila')
+    html_path.write_text(original, encoding='utf-8')
+    link_plan(original, required)
     errors = validate_navigation(html_path.read_text(encoding='utf-8'), data['questions'])
     if errors:
         raise ValueError('\n'.join(errors))
@@ -283,13 +292,14 @@ def publish(data, output_folder, kind='apostila', pdf=False):
               'generated_at': datetime.now(timezone.utc).isoformat(),
               'questions': len(data['questions']), 'html_navigation': 'passed',
               'editorial_review': 'requires-recorded-review', 'files': {}, 'inputs': {}}
-    report['toolchain'] = {'publisher_version': '0.3.0', 'python': platform.python_version(),
+    report['toolchain'] = {'publisher_version': '0.3.1', 'python': platform.python_version(),
                           'jsonschema': package_version('jsonschema'),
                           'pandoc': subprocess.check_output(['pandoc', '--version'], text=True).splitlines()[0],
                           'stylesheet_sha256': sha256((ROOT / 'styles/apostila.css').read_bytes()).hexdigest(),
                           'publisher_sha256': sha256(Path(__file__).read_bytes()).hexdigest(),
                           'contents_sha256': sha256((ROOT / 'scripts/contents.py').read_bytes()).hexdigest()}
     report['toolchain']['contracts_sha256'] = sha256((ROOT / 'scripts/contracts.py').read_bytes()).hexdigest()
+    report['toolchain']['navigation_sha256'] = sha256((ROOT / 'scripts/navigation.py').read_bytes()).hexdigest()
     report['toolchain']['schemas'] = {p.name: sha256(p.read_bytes()).hexdigest()
                                     for p in sorted((ROOT / 'schemas').glob('*.json'))}
     if pdf:
@@ -330,7 +340,14 @@ def publish(data, output_folder, kind='apostila', pdf=False):
             finally:
                 browser.close()
         report['pdf'] = audit_pdf(pdf_path, entries, pages, data['questions'])
+        navigation = navigation_manifest(html_path, pdf_path, required, pages)
+        (output / f'{kind}-navigation.json').write_text(json.dumps(navigation, ensure_ascii=False, indent=2), encoding='utf-8')
+        report['pdf']['navigation_verified'] = navigation['audit']['passed']
+        report['pdf']['checked_links'] = len(navigation['audit']['checked'])
+        report['pdf']['errors'] += navigation['audit']['errors']
         if report['pdf']['errors']:
+            report['build_status'] = 'failed'
+            (output / f'{kind}-validation.json').write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding='utf-8')
             raise ValueError('\n'.join(report['pdf']['errors']))
         (output / f'{kind}-toc.json').write_text(json.dumps(pages, ensure_ascii=False, indent=2), encoding='utf-8')
     for path in data['inputs']:
@@ -339,5 +356,6 @@ def publish(data, output_folder, kind='apostila', pdf=False):
         path = output / f'{kind}.{key}'
         if path.exists() and (key != 'pdf' or pdf):
             report['files'][path.name] = sha256(path.read_bytes()).hexdigest()
+    report['build_status'] = 'passed'
     (output / f'{kind}-validation.json').write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding='utf-8')
     return report

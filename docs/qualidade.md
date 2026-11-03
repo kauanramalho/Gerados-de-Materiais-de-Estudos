@@ -9,7 +9,7 @@ Marcar cada item como aprovado, reprovado ou não aplicável com motivo. Uma che
 | Didática | progressão, explicação desenvolvida, exemplo e prática | o objetivo aparece só em resumo ou exercício |
 | Questões | origem, solução, distratores e comentário | questão real sem prova; resposta ambígua; gabarito inconsistente |
 | Visual | figuras explicadas, rótulos legíveis e sem cortes | imagem induz erro ou perde informação |
-| Navegação | sumário, questão → resposta → questão e referências | qualquer destino interno obrigatório não funciona |
+| Navegação | áreas clicáveis, sumário/páginas, questão → sua resposta → sua questão e referências | qualquer rota interna ou fragmento de clique não corresponde ao destino esperado |
 | Direitos | registro de origem e condições de uso | reprodução sem base identificada |
 | Acessibilidade | títulos, ordem de leitura, descrições e contraste | informação depende apenas de cor/imagem sem alternativa |
 | Entrega | versões, manifesto, limitações e histórico | resultado não pode ser associado às fontes e instruções usadas |
@@ -23,6 +23,8 @@ Marcar cada item como aprovado, reprovado ou não aplicável com motivo. Uma che
 5. Gerar HTML e PDF. Inspecionar todas as páginas do piloto, especialmente tabelas, questões, quebras e fontes. Em lotes grandes, automação mais amostragem registrada não dispensa inspeção das áreas apontadas como problemáticas.
 6. Verificar todos os pares questão/resolução e itens do sumário no PDF. Registrar ferramenta, versão, data e resultado. Uma anotação de link existente precisa ter destino válido; presença isolada não basta.
 7. Corrigir defeitos críticos; entregar como rascunho se algo material ficar pendente. Atualizar relatório e Progress.
+
+O [contrato de navegação](navegacao.md) é aplicado no exportador e reavaliado antes da entrega. Conferir os hashes, clicar no HTML e verificar referências externas com data. Nenhuma falha interna pode ser dispensada por um relatório antigo. O layout foi aprovado pelo titular e deve ser preservado.
 
 ## Indicadores sem metas inventadas
 
