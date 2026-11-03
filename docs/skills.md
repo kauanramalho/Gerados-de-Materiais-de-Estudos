@@ -16,14 +16,13 @@ Fonte de execução: `.agents/skills/<nome>/SKILL.md`. O agente deve ler as inst
 | [ae-diagramar](../.agents/skills/ae-diagramar/SKILL.md) | Montar apostilas e cadernos navegáveis em HTML e PDF | 0.5.0 aplica quatro formatos e auditoria, mantendo navegação/--final; versão anterior aplicada a quatro PDFs; layout aprovado, 118 entradas e 217 áreas conferidas; acessibilidade e novos casos pendentes |
 | [ae-revisar](../.agents/skills/ae-revisar/SKILL.md) | Revisar precisão, didática, questões e artefatos finais | 0.4.0 confere formatos/edições/acessibilidade e fidelidade/cobertura; rotas, coordenadas, cliques e hashes conferidos; 26 testes de navegação; acessibilidade e aceite pedagógico pendentes |
 | [ae-gerenciar](../.agents/skills/ae-gerenciar/SKILL.md) | Manter progresso, decisões, backlog e documentação no Segundo Cérebro | notas e entregas no Drive conferidas; publicação e CI GitHub confirmadas |
-| [ae-curar-acervo](../.agents/skills/ae-curar-acervo/SKILL.md) | Importar, buscar, deduplicar e versionar questões | 17 itens em dois materiais; filtros, idempotência e revisões testados; fonte oficial ainda exige consulta do agente |
-
+| [ae-curar-acervo](../.agents/skills/ae-curar-acervo/SKILL.md) | Importar, buscar, deduplicar e versionar questões | 21 itens em três materiais; filtros, idempotência e revisões testados; fonte oficial ainda exige consulta do agente |
 | [ae-montar-simulado](../.agents/skills/ae-montar-simulado/SKILL.md) | Matriz, aplicação e pontuação | exemplar com seis questões e testes de pesos/anulações; treino autoral explícito |
 | [ae-produzir-revisao](../.agents/skills/ae-produzir-revisao/SKILL.md) | Recuperação ativa e síntese | revisão de matemática com remissões locais; avaliação de utilidade pelo leitor pendente |
 | [ae-atualizar-material](../.agents/skills/ae-atualizar-material/SKILL.md) | Impacto, edição e errata | mudanças de conteúdo/fontes/IDs testadas; gabaritos alterados nos testes são sintéticos |
 | [ae-auditar-acessibilidade](../.agents/skills/ae-auditar-acessibilidade/SKILL.md) | Teclado, contraste, descrições e estrutura | auditoria executada e marcação corrigida; limites assistivos explícitos |
 
-O fluxo agora começa por texto/foto/print, lê todas as skills e segue [do-pedido-a-entrega.md](do-pedido-a-entrega.md). Foram atualizadas também ae-orquestrar, ae-analisar-edital, ae-pesquisar-fontes, ae-analisar-banca e ae-escrever-capitulo para 0.2.0. Não há nova skill duplicando a orquestração. A ingestão e o contrato final têm testes; uma nova solicitação real completa ainda precisa aplicar o fluxo de ponta a ponta.
+O fluxo agora começa por texto/foto/print, lê todas as skills e segue [do-pedido-a-entrega.md](do-pedido-a-entrega.md). Na versão 0.4, essas cinco skills passaram a 0.2.0; no fechamento, ae-orquestrar passou a 0.3.0 e ae-gerenciar a 0.2.0. Não há nova skill duplicando a orquestração. A ingestão e o contrato final têm testes; uma nova solicitação real completa ainda precisa aplicar o fluxo de ponta a ponta.
 
 Ordem usual: orquestrar → edital/fontes/perfil → plano → escrita/figuras/questões → revisão → diagramação → gestão. A curadoria editorial melhora os padrões antes de escalar. As skills são modulares para reutilização; não exigem múltiplos agentes.
 
