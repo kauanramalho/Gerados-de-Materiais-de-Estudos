@@ -1,0 +1,43 @@
+{
+  "id": "dataprev-sql",
+  "title": "Banco de dados: modelagem relacional e SQL",
+  "version": "0.2.0",
+  "scope": "Capítulo piloto com referência ao Edital Dataprev 001/2026, Perfil3 — Desenvolvimento de Software, Banco de Dados, p.30, versão retificada em 29/07/2026. Recorte de estudo e validação editorial, sem alteração de prioridade pessoal. Conferência das fontes em 03/11/2026.",
+  "chapters": [
+    {
+      "id": "cap-modelagem",
+      "title": "Modelagem e integridade",
+      "file": "01-modelagem.md",
+      "objectives": [
+        "OBJ-01"
+      ]
+    },
+    {
+      "id": "cap-sql",
+      "title": "SQL: raciocine sobre o resultado",
+      "file": "02-consultas.md",
+      "objectives": [
+        "OBJ-02",
+        "OBJ-03",
+        "OBJ-04"
+      ]
+    },
+    {
+      "id": "cap-revisao",
+      "title": "Consolidação e prática reproduzível",
+      "file": "03-revisao.md",
+      "objectives": [
+        "OBJ-01",
+        "OBJ-02",
+        "OBJ-03",
+        "OBJ-04"
+      ]
+    }
+  ],
+  "questions": "questoes.json",
+  "sources": "fontes.json",
+  "figures": "figuras.json",
+  "coverage": "cobertura.json",
+  "profile": "perfil-banca.md",
+  "practice_context": "contexto-questoes.md"
+}

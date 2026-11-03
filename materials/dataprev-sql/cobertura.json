@@ -1,0 +1,59 @@
+[
+  {
+    "edital_item": "Perfil3 / Banco de Dados / 2 — abordagem relacional",
+    "objectives": [
+      "OBJ-01"
+    ],
+    "questions": [
+      "Q-AUT-001",
+      "Q-REAL-003"
+    ],
+    "status": "parcial",
+    "limits": "chaves e associação N:M; modelagem multidimensional não coberta"
+  },
+  {
+    "edital_item": "Perfil3 / Banco de Dados / 4 — integridade referencial",
+    "objectives": [
+      "OBJ-01"
+    ],
+    "questions": [
+      "Q-AUT-008",
+      "Q-REAL-001"
+    ],
+    "status": "parcial",
+    "limits": "FK e exclusão imediata; demais ações e diferimento não esgotados"
+  },
+  {
+    "edital_item": "Perfil3 / Banco de Dados / 7 — SQL",
+    "objectives": [
+      "OBJ-02",
+      "OBJ-03",
+      "OBJ-04"
+    ],
+    "questions": [
+      "Q-AUT-002",
+      "Q-AUT-003",
+      "Q-AUT-004",
+      "Q-AUT-005",
+      "Q-AUT-006",
+      "Q-AUT-007",
+      "Q-REAL-002"
+    ],
+    "status": "parcial",
+    "limits": "junções e agregações básicas; funções de janela e consultas avançadas fora do recorte"
+  },
+  {
+    "edital_item": "Perfil3 / Banco de Dados / 8 e9 — DDL e DML",
+    "objectives": [
+      "OBJ-01",
+      "OBJ-04"
+    ],
+    "questions": [
+      "Q-AUT-001",
+      "Q-AUT-008",
+      "Q-REAL-002"
+    ],
+    "status": "parcial",
+    "limits": "criação de tabelas e efeitos de DELETE/UPDATE; não é cobertura integral de comandos"
+  }
+]

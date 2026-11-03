@@ -1,6 +1,6 @@
 # Índice de skills
 
-Fonte de execução: `.agents/skills/<nome>/SKILL.md`. O agente deve ler as instruções adequadas; o nome no catálogo sozinho não executa um procedimento. Todas estão em versão 0.1.0 e exigem validação no piloto.
+Fonte de execução: `.agents/skills/<nome>/SKILL.md`. O agente deve ler as instruções adequadas; o nome no catálogo sozinho não executa um procedimento. Cada arquivo informa sua versão. A skill ae-diagramar foi atualizada para 0.2.0 e aplicada ao piloto; a validação pedagógica pelo leitor permanece pendente.
 
 | Skill | Finalidade | Estado |
 |---|---|---|

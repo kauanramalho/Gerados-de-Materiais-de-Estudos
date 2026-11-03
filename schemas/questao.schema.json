@@ -139,6 +139,18 @@
         "conferido_em": {
           "type": "string",
           "format": "date"
+        },
+        "prova_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "gabarito_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "gabarito_pagina": {
+          "type": "integer",
+          "minimum": 1
         }
       }
     },
@@ -151,6 +163,23 @@
     },
     "perfil_referencia": {
       "type": "string"
+    },
+    "theory": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "reasoning": {
+      "type": "string"
+    },
+    "permission_evidence": {
+      "type": "string",
+      "minLength": 1
     }
   },
   "allOf": [

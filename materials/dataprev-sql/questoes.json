@@ -1,0 +1,393 @@
+[
+  {
+    "id": "Q-REAL-001",
+    "origem": "REAL",
+    "objetivo": "OBJ-01",
+    "formato": "multipla-escolha",
+    "enunciado": "Consultar o enunciado original pelo link oficial; não reproduzido.",
+    "alternativas": {
+      "A": "Consultar alternativa na prova original.",
+      "B": "Consultar alternativa na prova original.",
+      "C": "Consultar alternativa na prova original.",
+      "D": "Consultar alternativa na prova original.",
+      "E": "Consultar alternativa na prova original."
+    },
+    "resposta": "E",
+    "comentarios": {
+      "A": "Inverte a direção.",
+      "B": "As ações diferem.",
+      "C": "Não existe realocação automática.",
+      "D": "Troca os comportamentos.",
+      "E": "CASCADE remove dependentes; NO ACTION impede violação."
+    },
+    "direitos": "somente-link",
+    "dificuldade": "estimada-intermediaria",
+    "fonte_original": {
+      "banca": "FGV",
+      "orgao": "Dataprev",
+      "cargo": "ATI — Desenvolvimento de Software",
+      "ano": 2026,
+      "caderno": "Tipo 1",
+      "numero": "47",
+      "pagina": "13",
+      "prova_url": "https://conhecimento.fgv.br/sites/default/files/concursos/analista-de-tecnologia-da-informacao-desenvolvimento-de-software-cns003-tipo-1.pdf",
+      "gabarito_url": "https://conhecimento.fgv.br/sites/default/files/concursos/dataprev2026-gabaritos-para-publicacao.pdf",
+      "gabarito_status": "preliminar",
+      "conferido_em": "2026-11-03",
+      "prova_sha256": "6db36aee343042d939059b38be4dae91deee284393a1e4d62f3d279dc864fdc7",
+      "gabarito_sha256": "77fef273e696ca3a540d3febb00caa4985cd12794ce6efd5fd92127af5e47ae0",
+      "gabarito_pagina": 13
+    },
+    "theory": "integridade",
+    "source_ids": [
+      "P26",
+      "G26"
+    ]
+  },
+  {
+    "id": "Q-REAL-002",
+    "origem": "REAL",
+    "objetivo": "OBJ-04",
+    "formato": "multipla-escolha",
+    "enunciado": "Consultar o enunciado original pelo link oficial; não reproduzido.",
+    "alternativas": {
+      "A": "Consultar alternativa na prova original.",
+      "B": "Consultar alternativa na prova original.",
+      "C": "Consultar alternativa na prova original.",
+      "D": "Consultar alternativa na prova original.",
+      "E": "Consultar alternativa na prova original."
+    },
+    "resposta": "D",
+    "comentarios": {
+      "A": "A subconsulta é permitida.",
+      "B": "MAX pode ser usado.",
+      "C": "Não há preservação automática.",
+      "D": "Conjunto vazio produz NULL.",
+      "E": "Não ocorre conversão automática em zero."
+    },
+    "direitos": "somente-link",
+    "dificuldade": "estimada-intermediaria",
+    "fonte_original": {
+      "banca": "FGV",
+      "orgao": "Dataprev",
+      "cargo": "ATI — Desenvolvimento de Software",
+      "ano": 2026,
+      "caderno": "Tipo 1",
+      "numero": "51",
+      "pagina": "14",
+      "prova_url": "https://conhecimento.fgv.br/sites/default/files/concursos/analista-de-tecnologia-da-informacao-desenvolvimento-de-software-cns003-tipo-1.pdf",
+      "gabarito_url": "https://conhecimento.fgv.br/sites/default/files/concursos/dataprev2026-gabaritos-para-publicacao.pdf",
+      "gabarito_status": "preliminar",
+      "conferido_em": "2026-11-03",
+      "prova_sha256": "6db36aee343042d939059b38be4dae91deee284393a1e4d62f3d279dc864fdc7",
+      "gabarito_sha256": "77fef273e696ca3a540d3febb00caa4985cd12794ce6efd5fd92127af5e47ae0",
+      "gabarito_pagina": 13
+    },
+    "theory": "subconsulta",
+    "source_ids": [
+      "P26",
+      "G26"
+    ]
+  },
+  {
+    "id": "Q-REAL-003",
+    "origem": "REAL",
+    "objetivo": "OBJ-01",
+    "formato": "multipla-escolha",
+    "enunciado": "Consultar o enunciado original pelo link oficial; não reproduzido.",
+    "alternativas": {
+      "A": "Consultar alternativa na prova original.",
+      "B": "Consultar alternativa na prova original.",
+      "C": "Consultar alternativa na prova original.",
+      "D": "Consultar alternativa na prova original.",
+      "E": "Consultar alternativa na prova original."
+    },
+    "resposta": "C",
+    "comentarios": {
+      "A": "Array não cria a associação relacional.",
+      "B": "Multivalor não resolve o mapeamento.",
+      "C": "A tabela intermediária liga as entidades.",
+      "D": "Uma FK isolada indica 1:N.",
+      "E": "Mesclar entidades não resolve N:M."
+    },
+    "direitos": "somente-link",
+    "dificuldade": "estimada-intermediaria",
+    "fonte_original": {
+      "banca": "FGV",
+      "orgao": "Dataprev",
+      "cargo": "ATI — Desenvolvimento de Software",
+      "ano": 2026,
+      "caderno": "Tipo 1",
+      "numero": "52",
+      "pagina": "14",
+      "prova_url": "https://conhecimento.fgv.br/sites/default/files/concursos/analista-de-tecnologia-da-informacao-desenvolvimento-de-software-cns003-tipo-1.pdf",
+      "gabarito_url": "https://conhecimento.fgv.br/sites/default/files/concursos/dataprev2026-gabaritos-para-publicacao.pdf",
+      "gabarito_status": "preliminar",
+      "conferido_em": "2026-11-03",
+      "prova_sha256": "6db36aee343042d939059b38be4dae91deee284393a1e4d62f3d279dc864fdc7",
+      "gabarito_sha256": "77fef273e696ca3a540d3febb00caa4985cd12794ce6efd5fd92127af5e47ae0",
+      "gabarito_pagina": 13
+    },
+    "theory": "relacoes",
+    "source_ids": [
+      "P26",
+      "G26"
+    ]
+  },
+  {
+    "id": "Q-AUT-001",
+    "origem": "AUTORAL",
+    "objetivo": "OBJ-01",
+    "formato": "multipla-escolha",
+    "enunciado": "Na massa de dados do capítulo, um processo tenta registrar novamente a matrícula do aluno 1 no curso 10, desta vez com nota 9 e situação ativa. Qual restrição explica a rejeição dessa inserção, mantendo o modelo como está?",
+    "alternativas": {
+      "A": "A chave estrangeira impede que um aluno apareça em mais de uma matrícula.",
+      "B": "O par (aluno_id, curso_id) já existe e é chave primária da associação.",
+      "C": "Toda coluna nota é obrigatoriamente única.",
+      "D": "A coluna status não permite repetir a palavra ativa.",
+      "E": "Uma associação N:M impede a repetição de qualquer aluno."
+    },
+    "resposta": "B",
+    "comentarios": {
+      "A": "Uma FK pode se repetir em linhas diferentes.",
+      "B": "O par (1,10) já identifica uma matrícula existente.",
+      "C": "Não há restrição UNIQUE sobre nota.",
+      "D": "Status é obrigatório, mas pode se repetir.",
+      "E": "O aluno pode participar de cursos diferentes."
+    },
+    "direitos": "original-projeto",
+    "dificuldade": "estimada-inicial",
+    "theory": "relacoes",
+    "source_ids": [
+      "T01",
+      "T04",
+      "T07"
+    ],
+    "reasoning": "A regra permite (1,20), mas não uma segunda ocorrência de (1,10). A mudança de nota não cria outra identidade.",
+    "perfil_referencia": "Recorte Dataprev/FGV; dificuldade editorial não calibrada"
+  },
+  {
+    "id": "Q-AUT-002",
+    "origem": "AUTORAL",
+    "objetivo": "OBJ-02",
+    "formato": "multipla-escolha",
+    "enunciado": "Considere a consulta abaixo sobre a massa inicial. Quantas linhas o resultado contém, e quantas delas trazem Ana? Não há DISTINCT.\n\n```sql\nSELECT a.nome\nFROM Aluno a JOIN Matricula m\n  ON m.aluno_id = a.id\nORDER BY a.id, m.curso_id;\n```",
+    "alternativas": {
+      "A": "3 linhas; uma Ana.",
+      "B": "4 linhas; uma Ana.",
+      "C": "4 linhas; duas Ana.",
+      "D": "5 linhas; duas Ana.",
+      "E": "4 linhas; nenhuma Ana."
+    },
+    "resposta": "C",
+    "comentarios": {
+      "A": "Dora é excluída, mas Ana gera duas correspondências.",
+      "B": "Projetar apenas o nome não remove duplicatas.",
+      "C": "Há duas correspondências para Ana, uma para Beto e uma para Caio.",
+      "D": "O INNER JOIN não preserva Dora.",
+      "E": "Ana possui matrículas e participa da junção."
+    },
+    "direitos": "original-projeto",
+    "dificuldade": "estimada-inicial",
+    "theory": "juncoes",
+    "source_ids": [
+      "T01",
+      "T04",
+      "T07"
+    ],
+    "reasoning": "Enumere os pares antes de contar: (Ana,10), (Ana,20), (Beto,10), (Caio,20).",
+    "perfil_referencia": "Recorte Dataprev/FGV; dificuldade editorial não calibrada"
+  },
+  {
+    "id": "Q-AUT-003",
+    "origem": "AUTORAL",
+    "objetivo": "OBJ-03",
+    "formato": "multipla-escolha",
+    "enunciado": "No LEFT JOIN de Aluno com Matricula, o resultado é agrupado por a.id e a.nome. Para Dora, são calculados COUNT(*) e COUNT(m.curso_id), nessa ordem. Qual par é obtido?",
+    "alternativas": {
+      "A": "(0,0)",
+      "B": "(0,1)",
+      "C": "(1,1)",
+      "D": "(1,0)",
+      "E": "(NULL,0)"
+    },
+    "resposta": "D",
+    "comentarios": {
+      "A": "A linha de Dora é preservada e conta para COUNT(*).",
+      "B": "A ordem e a semântica das contagens não permitem esse resultado.",
+      "C": "Não há curso_id não nulo na linha preservada de Dora.",
+      "D": "Uma linha é preservada; nenhuma matrícula real é contada.",
+      "E": "COUNT retorna um número, não NULL."
+    },
+    "direitos": "original-projeto",
+    "dificuldade": "estimada-intermediaria",
+    "theory": "agregacoes",
+    "source_ids": [
+      "T01",
+      "T04",
+      "T07"
+    ],
+    "reasoning": "Não use COUNT(m.nota) para contar matrículas: uma matrícula verdadeira pode estar sem nota.",
+    "perfil_referencia": "Recorte Dataprev/FGV; dificuldade editorial não calibrada"
+  },
+  {
+    "id": "Q-AUT-004",
+    "origem": "AUTORAL",
+    "objetivo": "OBJ-02",
+    "formato": "multipla-escolha",
+    "enunciado": "A coordenação quer todos os alunos e, quando existir, a matrícula ativa correspondente. Escolha a formulação que preserva Dora neste conjunto de dados.",
+    "alternativas": {
+      "A": "INNER JOIN Matricula m ON m.aluno_id=a.id AND m.status='ativa'.",
+      "B": "LEFT JOIN Matricula m ON m.aluno_id=a.id, seguido de WHERE m.status='ativa'.",
+      "C": "LEFT JOIN Matricula m ON m.aluno_id=a.id AND m.status='ativa', sem esse filtro no WHERE.",
+      "D": "CROSS JOIN Matricula m, seguido apenas de WHERE m.status='ativa'.",
+      "E": "LEFT JOIN Matricula m ON m.aluno_id=a.id, seguido de WHERE m.curso_id IS NOT NULL."
+    },
+    "resposta": "C",
+    "comentarios": {
+      "A": "O INNER JOIN descarta quem não tem correspondência.",
+      "B": "O WHERE rejeita a linha preservada com status NULL.",
+      "C": "O ON filtra correspondências; o LEFT JOIN preserva o aluno.",
+      "D": "Sem a condição de ligação, surgem combinações indevidas.",
+      "E": "Exigir correspondência não nula exclui Dora."
+    },
+    "direitos": "original-projeto",
+    "dificuldade": "estimada-intermediaria",
+    "theory": "filtros",
+    "source_ids": [
+      "T01",
+      "T04",
+      "T07"
+    ],
+    "reasoning": "",
+    "perfil_referencia": "Recorte Dataprev/FGV; dificuldade editorial não calibrada"
+  },
+  {
+    "id": "Q-AUT-005",
+    "origem": "AUTORAL",
+    "objetivo": "OBJ-03",
+    "formato": "multipla-escolha",
+    "enunciado": "Uma consulta parte somente de Matricula e aplica WHERE nota = NULL. Outra usa WHERE nota IS NULL. Quantas linhas cada consulta devolve na massa inicial?",
+    "alternativas": {
+      "A": "0 e 2.",
+      "B": "2 e 2.",
+      "C": "0 e 3.",
+      "D": "2 e 0.",
+      "E": "4 e 2."
+    },
+    "resposta": "A",
+    "comentarios": {
+      "A": "A igualdade não é verdadeira; IS NULL encontra duas matrículas.",
+      "B": "A primeira condição não testa ausência corretamente.",
+      "C": "Dora não possui registro em Matricula.",
+      "D": "IS NULL é justamente o teste que seleciona as notas ausentes.",
+      "E": "A igualdade com NULL não seleciona todas as linhas."
+    },
+    "direitos": "original-projeto",
+    "dificuldade": "estimada-inicial",
+    "theory": "nulos",
+    "source_ids": [
+      "T01",
+      "T04",
+      "T07"
+    ],
+    "reasoning": "",
+    "perfil_referencia": "Recorte Dataprev/FGV; dificuldade editorial não calibrada"
+  },
+  {
+    "id": "Q-AUT-006",
+    "origem": "AUTORAL",
+    "objetivo": "OBJ-03",
+    "formato": "multipla-escolha",
+    "enunciado": "Uma consulta parte de Curso, faz LEFT JOIN com Matricula e agrupa por curso. Para Redes e Linux são calculados COUNT(m.aluno_id) e AVG(m.nota). Qual resultado é correto?",
+    "alternativas": {
+      "A": "Redes (2,0); Linux (0,0).",
+      "B": "Redes (0,NULL); Linux (0,NULL).",
+      "C": "Redes (2,NULL); Linux (1,NULL).",
+      "D": "Redes (2,NULL); Linux (0,NULL).",
+      "E": "Redes (1,0); Linux (1,0)."
+    },
+    "resposta": "D",
+    "comentarios": {
+      "A": "Não há conversão automática de notas ausentes em zero.",
+      "B": "Redes tem duas matrículas, embora ambas estejam sem nota.",
+      "C": "A linha preservada de Linux não é matrícula real.",
+      "D": "São duas matrículas sem nota em Redes e nenhuma em Linux.",
+      "E": "As contagens e as médias não seguem essa regra."
+    },
+    "direitos": "original-projeto",
+    "dificuldade": "estimada-intermediaria",
+    "theory": "agregacoes",
+    "source_ids": [
+      "T01",
+      "T04",
+      "T07"
+    ],
+    "reasoning": "",
+    "perfil_referencia": "Recorte Dataprev/FGV; dificuldade editorial não calibrada"
+  },
+  {
+    "id": "Q-AUT-007",
+    "origem": "AUTORAL",
+    "objetivo": "OBJ-04",
+    "formato": "multipla-escolha",
+    "enunciado": "Deseja-se encontrar alunos com pelo menos duas matrículas ativas. Aplica-se WHERE status='ativa', depois GROUP BY aluno_id e HAVING COUNT(*)>=2. Quem aparece no resultado?",
+    "alternativas": {
+      "A": "Apenas Ana.",
+      "B": "Ana e Beto.",
+      "C": "Todos os quatro alunos.",
+      "D": "Apenas Caio.",
+      "E": "Nenhum aluno."
+    },
+    "resposta": "E",
+    "comentarios": {
+      "A": "A segunda matrícula de Ana está cancelada e sai no WHERE.",
+      "B": "Beto tem apenas uma matrícula ativa.",
+      "C": "O agrupamento parte de Matricula e exige duas linhas ativas.",
+      "D": "Caio possui uma matrícula ativa, não duas.",
+      "E": "Depois do filtro, cada aluno presente tem apenas uma matrícula."
+    },
+    "direitos": "original-projeto",
+    "dificuldade": "estimada-intermediaria",
+    "theory": "agrupamento",
+    "source_ids": [
+      "T01",
+      "T04",
+      "T07"
+    ],
+    "reasoning": "A ordem lógica do filtro importa. Sem o WHERE, Ana teria duas matrículas e satisfaria o HAVING.",
+    "perfil_referencia": "Recorte Dataprev/FGV; dificuldade editorial não calibrada"
+  },
+  {
+    "id": "Q-AUT-008",
+    "origem": "AUTORAL",
+    "objetivo": "OBJ-01",
+    "formato": "multipla-escolha",
+    "enunciado": "Na massa inicial, as FKs usam verificação imediata e nenhuma ação CASCADE foi declarada. Uma transação tenta DELETE FROM Aluno WHERE id=1, sem alterar Matricula. O que ocorre no ambiente de teste com foreign_keys habilitado?",
+    "alternativas": {
+      "A": "O aluno e as duas matrículas são removidos automaticamente.",
+      "B": "As matrículas passam a referenciar Dora.",
+      "C": "A exclusão falha por integridade referencial.",
+      "D": "Só a matrícula cancelada é removida.",
+      "E": "Os valores de aluno_id viram NULL automaticamente."
+    },
+    "resposta": "C",
+    "comentarios": {
+      "A": "A remoção em cascata não foi declarada.",
+      "B": "Não existe realocação automática de referências.",
+      "C": "As matrículas ainda referenciam o aluno que seria removido.",
+      "D": "A situação acadêmica não define a ação da FK.",
+      "E": "Não foi declarada ação SET NULL; a coluna é obrigatória."
+    },
+    "direitos": "original-projeto",
+    "dificuldade": "estimada-inicial",
+    "theory": "integridade",
+    "source_ids": [
+      "T01",
+      "T04",
+      "T07"
+    ],
+    "reasoning": "",
+    "perfil_referencia": "Recorte Dataprev/FGV; dificuldade editorial não calibrada"
+  }
+]

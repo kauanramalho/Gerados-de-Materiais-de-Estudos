@@ -1,0 +1,20 @@
+{
+  "id": "novo-material",
+  "title": "Título do material",
+  "version": "0.2.0",
+  "scope": "Preencher concurso, versão do edital, recorte e limites.",
+  "chapters": [
+    {
+      "id": "cap-001",
+      "title": "Título do capítulo",
+      "file": "conteudo-capitulo.md",
+      "objectives": [
+        "OBJ-01"
+      ]
+    }
+  ],
+  "questions": "questoes.json",
+  "sources": "fontes.json",
+  "figures": "figuras.json",
+  "coverage": "cobertura.json"
+}

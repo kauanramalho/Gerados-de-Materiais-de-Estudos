@@ -9,12 +9,14 @@ Estados: pronto, em execução, concluído, impedido, planejado. A ordem abaixo 
 | AE-003 | prova de navegação | HTML/PDF com figura, sumário e questão ↔ solução conferidos | AE-001 | concluído |
 | AE-004 | publicação GitHub | repositório público, árvore e SHA confirmados | permissão de criação ou repo vazio | impedido |
 | AE-005 | registro no Segundo Cérebro | projeto, cartões, índice e relatório lidos após escrita | regras do cofre | concluído |
-| AE-006 | identificar primeiro concurso | órgão/cargo/ano e edital/retificações confirmados | pedido concreto | planejado |
-| AE-007 | analisar provas relacionadas | perfil de banca com amostra e limitações | AE-006 | planejado |
-| AE-008 | produzir capítulo piloto | estrutura editorial completa e revisão técnica | AE-007 | planejado |
-| AE-009 | avaliar piloto com titular | comentários convertidos em ajustes verificáveis | AE-008 | planejado |
-| AE-010 | generalizar publicador | entradas estruturadas, erros claros e testes de navegação | AE-009 | planejado |
-| AE-011 | banco de questões | proveniência, direitos, versão e deduplicação | AE-007, AE-009 | planejado |
-| AE-012 | exportação acessível | auditoria de tags, ordem de leitura e fórmulas | AE-010 | planejado |
+| AE-006 | identificar primeiro concurso | órgão/cargo/ano e edital/retificações confirmados | referência metodológica Dataprev/FGV; sem alterar prioridade | concluído |
+| AE-007 | analisar provas relacionadas | perfil de banca com amostra e limitações | AE-006 | concluído |
+| AE-008 | produzir capítulo piloto | estrutura editorial completa e revisão técnica | AE-007 | concluído |
+| AE-009 | avaliar piloto com titular | comentários convertidos em ajustes verificáveis | AE-008 | concluído |
+| AE-010 | generalizar publicador | entradas estruturadas, erros claros e testes de navegação | piloto técnico; aceite pedagógico pendente | em execução |
+| AE-011 | banco de questões | proveniência, direitos, versão e deduplicação | AE-007, AE-009 | concluído |
+| AE-012 | exportação acessível | auditoria de tags, ordem de leitura e fórmulas | AE-010 | em execução |
 
 Responsável pela execução: agente na tarefa autorizada; titular decide concurso, preferência visual final e prioridades pessoais. Issues no GitHub devem espelhar os itens abertos quando o repositório existir; não afirmar que foram criadas antes da confirmação remota.
+
+AE-013: verificação SQL em massa independente — concluído, 13 casos. AE-014: controle de escala de SVG, quebra de questões e tamanho de texto — concluído no piloto.

@@ -30,3 +30,5 @@ O sumário deve seguir apresentação editorial acadêmica: títulos e subtítul
 Manter título com o parágrafo seguinte; evitar órfãs e viúvas; controlar quebras em figuras, tabelas e alternativas. Tabelas longas precisam de cabeçalho repetido. Sumário, glossário e índice de figuras devem navegar por IDs, sem números de página digitados manualmente.
 
 Cada questão aponta para seu gabarito comentado e cada resolução retorna à questão. A resolução pode ligar à seção de teoria. Testar após a exportação: destinos válidos, texto selecionável, fontes incorporadas ou fallback legível, figuras sem corte e nenhuma página vazia acidental. Acessibilidade PDF exige auditoria adicional; o protótipo não declara conformidade PDF/UA.
+
+No publicador 0.2, SVGs incorporados respeitam a largura da coluna para evitar redução global da impressão. Blocos de questões, comentários e código evitam quebras internas quando cabem. A mediana dos trechos longos do PDF é registrada na auditoria; valor abaixo de 10 pt bloqueia a publicação. Inspecionar também rótulos e legendas: a mediana não comprova sua legibilidade.

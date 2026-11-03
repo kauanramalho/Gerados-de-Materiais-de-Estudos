@@ -5,6 +5,7 @@ import re
 import sys
 from urllib.parse import unquote
 from integrity import validate_questions, validate_navigation
+from material import load_material
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -35,6 +36,12 @@ def main():
         data = json.loads(schema.read_text(encoding='utf-8'))
         if data.get('$schema') != 'https://json-schema.org/draft/2020-12/schema':
             errors.append(f'Schema sem versão: {schema.name}')
+    materials = list((ROOT / 'materials').glob('*/material.json'))
+    for manifest in materials:
+        try:
+            load_material(manifest)
+        except (ValueError, KeyError, OSError) as error:
+            errors.append(f'{manifest.relative_to(ROOT)}: {error}')
     html = ROOT / 'build/amostra.html'
     if html.exists():
         errors += validate_navigation(html.read_text(encoding='utf-8'), questions)
@@ -44,6 +51,7 @@ def main():
     print(f'OK: {len(files)} Markdowns, 12 skills, {len(questions)} questões e contratos JSON; '
           + ('HTML conferido.' if html.exists() else 'HTML ainda não gerado.'))
     print('Limite: existência de referências não comprova conteúdo, direitos ou qualidade pedagógica.')
+    print(f'Manifestos de materiais conferidos: {len(materials)}.')
     return 0
 
 

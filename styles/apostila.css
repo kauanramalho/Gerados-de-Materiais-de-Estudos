@@ -7,6 +7,7 @@ h1 { color: #15384f; font-size: 23pt; line-height: 1.2; margin: 30px 0 18px; }
 h2 { color: #176568; font-size: 15pt; margin: 22px 0 10px; }
 h1, h2, h3 { break-after: avoid; }
 p { margin: 0 0 10px; orphans: 3; widows: 3; }
+li { break-inside: avoid; }
 a { color: #155766; text-decoration: underline; text-underline-offset: 2px; overflow-wrap: anywhere; }
 a:focus-visible { outline: 3px solid #b15916; outline-offset: 3px; }
 nav { margin: 16mm 0 0; padding: 0; color: #243541; }
@@ -25,15 +26,19 @@ nav .toc-subsections { margin: 3mm 0 0 10mm; }
 .toc-subsections .toc-link { font: 11pt/1.4 Georgia, 'Liberation Serif', serif; color: #3e4c57; }
 .toc-subsections .toc-number { flex-basis: 10mm; color: #6a7780; }
 .header-section-number { color: #62757d; margin-right: .25em; }
+.question, .solution { break-inside: avoid; margin-bottom: 8mm; }
 @media screen { .toc-link:hover .toc-label { text-decoration: underline; } }
 blockquote { border-left: 3px solid #176568; margin: 18px 0; padding: 12px 18px; background: #f4f7f8; }
 figure { margin: 20px 0; break-inside: avoid; }
 figure img { width: 100%; height: auto; }
+figure svg { width: 100%; max-width: 100%; height: auto; }
 figcaption { color: #344f5c; font-size: 10pt; margin-top: 8px; }
 table { border-collapse: collapse; width: 100%; margin: 18px 0; }
 th, td { border-bottom: 1px solid #a9bbc5; padding: 8px; text-align: left; }
 thead { display: table-header-group; }
 code { font-family: monospace; }
+pre { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 9.5pt; line-height: 1.45; background: #f4f7f8; padding: 12px 14px; border-left: 2px solid #becdd3; break-inside: avoid; }
+pre code { white-space: pre-wrap; }
 header { border-top: 8px solid #176568; padding-top: 24px; }
 header h1.title { font-size: 30pt; }
 @media print {

@@ -12,3 +12,5 @@ Copiar os modelos para `work/<id-da-execucao>/` (ignorado pelo Git) e preencher 
 - [Relatório de entrega](relatorio.md): validação e estado real.
 
 Os contratos JSON descrevem o formato futuro de ingestão; os modelos Markdown/CSV já podem ser usados pelo agente. Não são formulários obrigatórios para o usuário.
+
+Para o publicador genérico: use [manifesto-material.json](manifesto-material.json) e [conteudo-capitulo.md](conteudo-capitulo.md). Copie-os para a pasta de trabalho e prepare as quatro listas JSON indicadas no manifesto; não publique os textos de preenchimento.

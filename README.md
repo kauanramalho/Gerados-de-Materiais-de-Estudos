@@ -2,7 +2,7 @@
 
 Base permanente de instruções, skills e modelos para produzir apostilas e cadernos de questões de concursos, com explicações claras, ilustrações úteis e fontes verificáveis.
 
-**Fase atual:** fundação editorial e planejamento. O projeto é conduzido por um agente com acesso a este repositório. Ainda não existe um serviço autônomo que receba editais ou gere apostilas sem uma sessão de trabalho.
+**Fase atual:** piloto editorial produzido e publicador de materiais em versão 0.2. O projeto é conduzido por um agente com acesso a este repositório. Ainda não existe um serviço autônomo que receba editais ou gere apostilas sem uma sessão de trabalho.
 
 ## Como pedir um material
 
@@ -20,7 +20,17 @@ O agente deve recuperar o estado do projeto, identificar o concurso, buscar edit
 - [Referências pesquisadas](references/catalogo.md), [modelos reutilizáveis](templates/README.md), [contratos de dados](schemas/README.md) e prova mínima de navegação em [examples/redes](examples/redes/README.md).
 - [Progresso](Progress.md), [decisões](Decisions.md) e [continuidade no Segundo Cérebro](docs/continuidade.md).
 
-## Verificar e gerar a amostra
+## Produzir novos materiais
+
+O agente já pode montar materiais a partir de um manifesto. O piloto contém teoria, três figuras, exemplos SQL verificados, oito questões autorais e três referências a questões reais com comentário. Veja o [fluxo de produção](docs/producao.md) e o [piloto](materials/dataprev-sql/README.md).
+
+```sh
+python scripts/build_material.py materials/dataprev-sql/material.json --check
+python scripts/build_material.py materials/dataprev-sql/material.json --pdf
+python scripts/build_material.py materials/dataprev-sql/material.json --kind caderno --pdf
+```
+
+## Verificar e gerar a amostra inicial
 
 Requer Python 3.11+ e Pandoc para HTML. Para PDF, requer Chromium/Chrome, Playwright e PyMuPDF (`pip install -r requirements-pdf.txt`). A verificação usa apenas a biblioteca padrão do Python; não exige chave de API.
 

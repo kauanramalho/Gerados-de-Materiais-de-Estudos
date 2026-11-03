@@ -1,0 +1,132 @@
+[
+  {
+    "id": "T01",
+    "title": "PostgreSQL 17 — Constraints",
+    "url": "https://www.postgresql.org/docs/17/ddl-constraints.html",
+    "locator": "§5.5; chaves primárias e estrangeiras",
+    "checked_on": "2026-11-03",
+    "rights": "consulta técnica; exemplos originais do projeto"
+  },
+  {
+    "id": "T02",
+    "title": "PostgreSQL 17 — Joins Between Tables",
+    "url": "https://www.postgresql.org/docs/17/tutorial-join.html",
+    "locator": "§2.6",
+    "checked_on": "2026-11-03",
+    "rights": "consulta técnica; exemplos originais do projeto"
+  },
+  {
+    "id": "T03",
+    "title": "PostgreSQL 17 — Select Lists",
+    "url": "https://www.postgresql.org/docs/17/queries-select-lists.html",
+    "locator": "§7.3; projeção e DISTINCT",
+    "checked_on": "2026-11-03",
+    "rights": "consulta técnica; exemplos originais do projeto"
+  },
+  {
+    "id": "T04",
+    "title": "PostgreSQL 17 — Table Expressions",
+    "url": "https://www.postgresql.org/docs/17/queries-table-expressions.html",
+    "locator": "§7.2; junções, WHERE, GROUP BY e HAVING",
+    "checked_on": "2026-11-03",
+    "rights": "consulta técnica; exemplos originais do projeto"
+  },
+  {
+    "id": "T05",
+    "title": "PostgreSQL 17 — Comparison Functions",
+    "url": "https://www.postgresql.org/docs/17/functions-comparison.html",
+    "locator": "§9.2; comparações e IS NULL",
+    "checked_on": "2026-11-03",
+    "rights": "consulta técnica; exemplos originais do projeto"
+  },
+  {
+    "id": "T06",
+    "title": "PostgreSQL 17 — Logical Operators",
+    "url": "https://www.postgresql.org/docs/17/functions-logical.html",
+    "locator": "§9.1; lógica com NULL",
+    "checked_on": "2026-11-03",
+    "rights": "consulta técnica; exemplos originais do projeto"
+  },
+  {
+    "id": "T07",
+    "title": "PostgreSQL 17 — Aggregate Functions",
+    "url": "https://www.postgresql.org/docs/17/functions-aggregate.html",
+    "locator": "§9.21; COUNT, AVG e MAX",
+    "checked_on": "2026-11-03",
+    "rights": "consulta técnica; exemplos originais do projeto"
+  },
+  {
+    "id": "T08",
+    "title": "PostgreSQL 17 — Aggregate Tutorial",
+    "url": "https://www.postgresql.org/docs/17/tutorial-agg.html",
+    "locator": "§2.7; agregação e filtro de grupos",
+    "checked_on": "2026-11-03",
+    "rights": "consulta técnica; exemplos originais do projeto"
+  },
+  {
+    "id": "T10",
+    "title": "PostgreSQL 17 — Value Expressions",
+    "url": "https://www.postgresql.org/docs/17/sql-expressions.html",
+    "locator": "§4.2; subconsultas escalares",
+    "checked_on": "2026-11-03",
+    "rights": "consulta técnica; exemplos originais do projeto"
+  },
+  {
+    "id": "T11",
+    "title": "PostgreSQL 17 — UPDATE",
+    "url": "https://www.postgresql.org/docs/17/sql-update.html",
+    "locator": "comando UPDATE",
+    "checked_on": "2026-11-03",
+    "rights": "consulta técnica; exemplos originais do projeto"
+  },
+  {
+    "id": "T09",
+    "title": "SQLite — Foreign Key Support",
+    "url": "https://www.sqlite.org/foreignkeys.html",
+    "locator": "habilitação e ações referenciais",
+    "checked_on": "2026-11-03",
+    "rights": "consulta técnica; massa de teste original"
+  },
+  {
+    "id": "E26",
+    "title": "Dataprev — Edital 001/2026 retificado",
+    "url": "https://conhecimento.fgv.br/sites/default/files/concursos/edital-retificado-dataprev.pdf",
+    "locator": "Perfil 3; Banco de Dados; p.30; retificação 29/07/2026",
+    "checked_on": "2026-11-03",
+    "rights": "referência de escopo; sem reprodução integral"
+  },
+  {
+    "id": "P26",
+    "title": "Dataprev/FGV 2026 — Desenvolvimento, tipo 1",
+    "url": "https://conhecimento.fgv.br/sites/default/files/concursos/analista-de-tecnologia-da-informacao-desenvolvimento-de-software-cns003-tipo-1.pdf",
+    "locator": "itens 47,51 e52; pp.13–14",
+    "checked_on": "2026-11-03",
+    "rights": "somente-link",
+    "sha256": "6db36aee343042d939059b38be4dae91deee284393a1e4d62f3d279dc864fdc7"
+  },
+  {
+    "id": "G26",
+    "title": "Dataprev/FGV 2026 — Gabarito preliminar",
+    "url": "https://conhecimento.fgv.br/sites/default/files/concursos/dataprev2026-gabaritos-para-publicacao.pdf",
+    "locator": "tipo1 Desenvolvimento; p.13; 47 E; 51 D; 52 C",
+    "checked_on": "2026-11-03",
+    "rights": "referência de resposta oficial preliminar",
+    "sha256": "77fef273e696ca3a540d3febb00caa4985cd12794ce6efd5fd92127af5e47ae0"
+  },
+  {
+    "id": "P24",
+    "title": "Dataprev/FGV 2024 — Desenvolvimento, tipo 1",
+    "url": "https://conhecimento.fgv.br/sites/default/files/concursos/ati-desenvolvimento-de-software-cns003-tipo-01.pdf",
+    "locator": "itens65–67; p.14; comparação histórica de formato",
+    "checked_on": "2026-11-03",
+    "rights": "consulta; sem reprodução"
+  },
+  {
+    "id": "G24",
+    "title": "Dataprev/FGV 2024 — Gabarito definitivo",
+    "url": "https://conhecimento.fgv.br/sites/default/files/concursos/dataprev_gabarito_definitivo-1.pdf",
+    "locator": "Desenvolvimento tipo1; p.5; controle do ano/caderno",
+    "checked_on": "2026-11-03",
+    "rights": "referência histórica; não aplicado a 2026"
+  }
+]

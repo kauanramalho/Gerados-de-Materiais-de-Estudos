@@ -27,3 +27,7 @@ Marcar cada item como aprovado, reprovado ou não aplicável com motivo. Uma che
 ## Indicadores sem metas inventadas
 
 Medir cobertura por item do edital, questões reais com evidência completa, pares de navegação válidos, figuras com metadados e defeitos por revisão. Metas estruturais: 100% dos links internos obrigatórios e metadados obrigatórios presentes. Metas pedagógicas serão ajustadas com o piloto; presença de elementos não prova aprendizagem.
+
+## Verificações aplicadas ao piloto 0.2
+
+Usar os relatórios de build_material.py, as verificações técnicas da matéria e docs/validacao-piloto.md. Em SQL, executar a massa e comparar resultados, inclusive ausência de valores, múltiplas correspondências e erros esperados. No caderno, conferir se todos os dados necessários constam do próprio arquivo. Aprovação estrutural não equivale a aceite pedagógico.

@@ -27,3 +27,11 @@
 ## D007 — 2026-11-03 — Sumário com apresentação acadêmica
 
 **Decisão:** usar hierarquia numerada, recuos de subseções, linhas pontilhadas discretas e páginas alinhadas à direita, com fundo branco e links preservados. **Motivo:** o titular pediu uma apresentação semelhante à de livros e apostilas de graduação. **Consequência:** o publicador obtém as páginas dos destinos do PDF e verifica a paginação; rodapés mostram a mesma numeração. O padrão fica registrado em docs/padrao-visual.md. **Revisar quando:** nova avaliação visual do titular ou novos formatos exigirem ajuste.
+
+## D008 — 2026-11-03 — Evolução editorial paralela à publicação
+
+**Decisão:** executar piloto e desenvolver o publicador enquanto a criação no GitHub depende de acesso. **Motivo:** o titular autorizou avançar o desenvolvimento e implementar melhorias; a permissão remota não é requisito para validar materiais. **Consequência:** a pendência GitHub permanece explícita, sem bloquear o trabalho local e no Drive. **Revisar quando:** o repositório estiver acessível.
+
+## D009 — 2026-11-03 — Piloto e publicador por manifesto
+
+**Decisão:** usar um recorte público de modelagem relacional/SQL da Dataprev/FGV como referência e publicar apostila e caderno dos mesmos dados. **Motivo:** havia edital e provas no contexto, permitindo testar proveniência, questões e resultados executáveis. **Consequência:** a seleção não altera prioridade pessoal; itens reais têm status preliminar explícito e acesso por link; o aceite pedagógico depende de leitura e aplicação. **Revisar quando:** houver preferência diferente de concurso ou avaliação do leitor.

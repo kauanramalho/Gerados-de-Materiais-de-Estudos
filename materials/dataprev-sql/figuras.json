@@ -1,0 +1,26 @@
+[
+  {
+    "id": "FIG-001",
+    "file": "figuras/relacoes.svg",
+    "caption": "Associação N:M materializada por duas FKs e uma PK composta.",
+    "alt": "Aluno e Curso se ligam por Matricula; aluno_id e curso_id formam a chave composta.",
+    "rights": "original-projeto",
+    "source": "original-projeto"
+  },
+  {
+    "id": "FIG-002",
+    "file": "figuras/left-join.svg",
+    "caption": "Diferença entre correspondência com nota ausente e ausência de correspondência.",
+    "alt": "Ana e Beto têm notas; Caio tem matrícula sem nota; Dora é preservada sem matrícula.",
+    "rights": "original-projeto",
+    "source": "original-projeto"
+  },
+  {
+    "id": "FIG-003",
+    "file": "figuras/nulos.svg",
+    "caption": "Resultados lógicos que passam ou não pelo WHERE.",
+    "alt": "TRUE é mantido; FALSE e UNKNOWN são descartados; IS NULL testa ausência.",
+    "rights": "original-projeto",
+    "source": "original-projeto"
+  }
+]
