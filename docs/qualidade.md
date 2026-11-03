@@ -4,7 +4,7 @@ Marcar cada item como aprovado, reprovado ou não aplicável com motivo. Uma che
 
 | Dimensão | Verificações | Bloqueia entrega final quando |
 |---|---|---|
-| Escopo | concurso, versão, objetivos e cobertura rastreáveis | material é atribuído a edital não verificado |
+| Escopo | pedido, imagem/transcrição, edital, seleção integral, objetivos e cada questão rastreáveis | edital não verificado, item omitido, questão fora do escopo ou unidade parcial apresentada como completa |
 | Precisão | definições, cálculos, datas, norma/versão e unidades | existe erro técnico sem tratamento |
 | Didática | progressão, explicação desenvolvida, exemplo e prática | o objetivo aparece só em resumo ou exercício |
 | Questões | origem, solução, distratores e comentário | questão real sem prova; resposta ambígua; gabarito inconsistente |
@@ -16,6 +16,7 @@ Marcar cada item como aprovado, reprovado ou não aplicável com motivo. Uma che
 
 ## Procedimento
 
+0. Comparar o programa e a seleção com o edital oficial; executar --check --final para entrega de concurso. Conferir imagem, pesquisa real e fontes. Validação estrutural não prova leitura efetiva nem profundidade didática. Ver [fluxo completo](do-pedido-a-entrega.md).
 1. Fazer revisão técnica sem acompanhar apenas a solução já escrita: resolver novamente, conferir fatos em fontes e verificar alternativas.
 2. Fazer revisão pedagógica e de linguagem com foco no objetivo do leitor.
 3. Conferir figuras e direitos no manifesto.

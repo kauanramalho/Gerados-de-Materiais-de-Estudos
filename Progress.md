@@ -1,6 +1,6 @@
 # Progresso — Ateliê de Estudos
 
-- **Estado:** active — publicador 0.3.1, layout aprovado e auditoria obrigatória de navegação implementada.
+- **Estado:** active — publicador 0.4, entrada por texto/foto/print e contrato de entrega focada no pedido, com layout e navegação preservados.
 - **Prioridade no portfólio:** unassigned.
 - **Data do estado:** 2026-11-03.
 - **Próxima ação:** implementar o formato de simulado com respostas separadas e pontuação verificável, mantendo a avaliação do leitor em paralelo.
@@ -17,6 +17,12 @@ O acervo contém 17 itens: 14 autorais e três reais por link, com filtros, dedu
 Passaram 76 testes, incluindo regressões de destinos incorretos, botões ausentes, links em duas linhas, acentos e relatórios de outro hash. Os quatro PDFs têm 118 entradas de sumário e 217 áreas internas de clique conferidas, incluindo os 34 pares questão/resolução. Cada exportação confere destinos exatos no PDF e bloqueia falhas internas; a entrega exige reauditoria e cliques no HTML. Ver [contrato de navegação](docs/navegacao.md). Referências externas são verificadas com data; disponibilidade futura depende dos sites de origem.
 
 O titular aprovou o layout em 03/11/2026. CSS, tipografia e apresentação do sumário foram preservados; a comparação das 64 páginas verifica pixels e posições do texto. Esse retorno encerra a preferência visual atual, mas não presume avaliação de clareza, aprendizagem ou dificuldade das questões. A suíte e quatro builds foram reproduzidos no ambiente Python isolado do mesmo host; isso não equivale a CI remota ou novo sistema operacional. Ver também [validação histórica 0.3](docs/validacao-v03.md) e [acervo](docs/acervo.md).
+
+## Pedido simples e cobertura — 0.4
+
+O fluxo aceita texto, foto ou print, com pesquisa pelo agente e leitura de todas as instruções/skills. Sem recorte, cobre todo o programa aplicável ao cargo, sem teto artificial de páginas. A ingestão preserva imagem/hash; --final exige pedido, pesquisa documentada, leitura atual e cobertura integral da seleção, detectando omissões e questões fora do escopo. Ver [contrato](docs/do-pedido-a-entrega.md).
+
+Passaram 20 testes novos de ingestão/cobertura e 96 na suíte completa, incluindo pré-validação final positiva pela CLI, com metadados sintéticos claramente identificados. Eles não comprovam OCR ou pesquisa real de um novo concurso. O agente continua responsável por visão, consulta às fontes oficiais, extração fiel do edital e revisão pedagógica; ainda falta validar o fluxo completo numa nova solicitação real. Os dois pilotos permanecem recortes de referência.
 
 ## Materiais
 

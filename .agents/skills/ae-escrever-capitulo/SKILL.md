@@ -1,7 +1,7 @@
 ---
 name: ae-escrever-capitulo
 description: Redigir um capítulo didático com teoria desenvolvida e prática.
-version: 0.1.0
+version: 0.2.0
 ---
 
 # Redigir um capítulo didático com teoria desenvolvida e prática
@@ -21,6 +21,8 @@ Objetivos, plano, fontes e público. Consulte AGENTS.md e as políticas em docs/
 3. Planeje figuras junto às explicações, com remissão e leitura guiada. Solicite ae-ilustrar com propósito e conteúdo técnico preciso.
 4. Inclua exemplo resolvido com dados, estratégia, etapas, conferência e interpretação; proponha variação para prática.
 5. Organize prática com apoio decrescente, síntese, glossário e referências. Mapeie objetivos ensinados e avaliados; envie para revisão.
+
+6. Não fixar máximo de páginas nem comprimir teoria para caber numa amostra. Cobrir os objetivos do edital com profundidade suficiente, sem repetição para preencher páginas. Em pedido completo, continuar pelas unidades do checkpoint até consolidar todos os itens selecionados.
 
 ## Saídas
 

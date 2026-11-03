@@ -2,15 +2,17 @@
 
 Base permanente de instruções, skills e modelos para produzir apostilas e cadernos de questões de concursos, com explicações claras, ilustrações úteis e fontes verificáveis.
 
-**Fase atual:** publicador 0.3.1, navegação conferida por área de clique/destino, dois pilotos e acervo local. O projeto é conduzido por um agente com acesso a este repositório. Ainda não existe um serviço autônomo que receba editais ou gere apostilas sem uma sessão de trabalho.
+**Fase atual:** publicador 0.4, entrada por texto/foto/print, pesquisa e cobertura vinculadas ao pedido, navegação auditada, dois pilotos e acervo local. O projeto é conduzido por um agente com acesso a este repositório. Ainda não existe um serviço autônomo que receba editais ou gere apostilas sem uma sessão de trabalho.
 
 ## Como pedir um material
 
 Abra uma tarefa com este repositório como contexto e diga, por exemplo:
 
-> Leia AGENTS.md e use ae-orquestrar. Quero estudar para [órgão, cargo e ano]. Segue o edital/link. Prepare uma apostila sobre [assunto], com teoria explicada, figuras comentadas, exemplos resolvidos, questões reais verificadas e questões autorais no perfil da banca, com gabarito comentado e navegação clicável.
+> Vou fazer o concurso X e quero a apostila.
 
-O agente deve recuperar o estado do projeto, identificar o concurso, buscar edital e retificações, analisar provas relacionadas, escolher as skills e registrar a execução. Em outra conversa, fornecer o repositório novamente: os arquivos não garantem memória automática fora deste contexto.
+> Quero um caderno de questões para este concurso. [Foto ou print anexado.]
+
+O agente lê todas as instruções e skills, identifica o concurso, pesquisa edital, retificações, banca, provas e fontes, e produz o formato pedido. Sem recorte, o escopo é todo o programa do cargo. Não há teto artificial de páginas: explicar e praticar o necessário até concluir. O mesmo fluxo vale para conteúdo e questões; o usuário não precisa fornecer formulário, banca ou edital. Veja o [contrato completo do pedido à entrega](docs/do-pedido-a-entrega.md), incluindo ingestão por imagem, checkpoints e verificação final de cobertura. Em outra conversa, fornecer o repositório novamente: os arquivos não garantem memória automática fora deste contexto.
 
 ## O que está disponível
 
@@ -21,6 +23,8 @@ O agente deve recuperar o estado do projeto, identificar o concurso, buscar edit
 - [Manual editorial](docs/manual-editorial.md), [padrão visual](docs/padrao-visual.md), [política de questões](docs/questoes.md) e [revisão](docs/qualidade.md).
 - [Referências pesquisadas](references/catalogo.md), [modelos reutilizáveis](templates/README.md), [contratos de dados](schemas/README.md) e prova mínima de navegação em [examples/redes](examples/redes/README.md).
 - [Progresso](Progress.md), [decisões](Decisions.md) e [continuidade no Segundo Cérebro](docs/continuidade.md).
+
+Entregas finais de concurso usam pedido.json vinculado ao manifesto e `--final`. Pilotos sem pedido continuam como referências e não certificam cobertura de um novo pedido. A pesquisa e a leitura de imagens são executadas pelo agente; os scripts validam o registro e os arquivos.
 
 ## Produzir novos materiais
 

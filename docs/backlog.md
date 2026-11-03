@@ -29,6 +29,8 @@ Estados: pronto, em execução, concluído, impedido, planejado. A ordem abaixo 
 | AE-023 | validar e aprofundar skills | evidência por procedimento; módulos novos criados junto do fluxo que implementam | ae-curar-acervo aplicada; demais validações ainda pendentes | em execução |
 | AE-024 | tornar obrigatória a navegação correta | sumário, questão/resolução/retorno/teoria, áreas reais e hashes auditados; regressões negativas e cliques nos quatro materiais | AE-010; contrato em docs/navegacao.md | concluído |
 
+| AE-025 | pedido simples e cobertura focada no concurso | texto/foto/print preservados, pesquisa/contexto registrados, escopo integral sem teto de páginas e --final com testes negativos | contrato/ingestão entregues; aplicação real completa permanece em AE-021/022 | concluído |
+
 Responsável pela execução: agente na tarefa autorizada; titular decide concurso, preferência visual final e prioridades pessoais. Issues no GitHub devem espelhar os itens abertos quando o repositório existir; não afirmar que foram criadas antes da confirmação remota.
 
 ## Reconciliação de 03/11/2026

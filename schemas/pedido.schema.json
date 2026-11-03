@@ -1,0 +1,336 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Pedido de material orientado ao concurso",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "tipo",
+    "entrada",
+    "concurso",
+    "edital",
+    "escopo",
+    "programa",
+    "pesquisa",
+    "contexto",
+    "lacunas"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]*$"
+    },
+    "tipo": {
+      "enum": [
+        "apostila",
+        "caderno"
+      ]
+    },
+    "entrada": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "origem",
+        "texto",
+        "imagem"
+      ],
+      "properties": {
+        "origem": {
+          "enum": [
+            "texto",
+            "foto",
+            "print"
+          ]
+        },
+        "texto": {
+          "type": "string"
+        },
+        "imagem": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "arquivo",
+                "sha256",
+                "transcricao",
+                "conferida"
+              ],
+              "properties": {
+                "arquivo": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "sha256": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{64}$"
+                },
+                "transcricao": {
+                  "type": "string"
+                },
+                "conferida": {
+                  "type": "boolean"
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    "concurso": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "orgao",
+        "cargo",
+        "especialidade",
+        "ano",
+        "banca"
+      ],
+      "properties": {
+        "orgao": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "cargo": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "especialidade": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "ano": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1900
+        },
+        "banca": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "edital": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "url",
+        "versao",
+        "sha256",
+        "conferido_em",
+        "retificacoes_verificadas"
+      ],
+      "properties": {
+        "url": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uri"
+        },
+        "versao": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "sha256": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "conferido_em": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date"
+        },
+        "retificacoes_verificadas": {
+          "type": "boolean"
+        }
+      }
+    },
+    "escopo": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "tipo",
+        "descricao",
+        "selecao"
+      ],
+      "properties": {
+        "tipo": {
+          "enum": [
+            "concurso",
+            "materia",
+            "recorte"
+          ]
+        },
+        "descricao": {
+          "type": "string"
+        },
+        "selecao": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "programa": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "texto",
+          "materia",
+          "localizador"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "texto": {
+            "type": "string",
+            "minLength": 1
+          },
+          "materia": {
+            "type": "string",
+            "minLength": 1
+          },
+          "localizador": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "pesquisa": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "etapa",
+          "estado",
+          "relato",
+          "evidencias"
+        ],
+        "properties": {
+          "etapa": {
+            "enum": [
+              "identificacao",
+              "edital",
+              "retificacoes",
+              "banca",
+              "provas-alvo",
+              "provas-relacionadas",
+              "fontes-conteudo",
+              "acervo"
+            ]
+          },
+          "estado": {
+            "enum": [
+              "pendente",
+              "verificado",
+              "nao-localizado",
+              "nao-publicado",
+              "nao-aplicavel"
+            ]
+          },
+          "relato": {
+            "type": "string",
+            "minLength": 1
+          },
+          "evidencias": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "referencia",
+                "localizador",
+                "conferido_em",
+                "oficial"
+              ],
+              "properties": {
+                "referencia": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "localizador": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "conferido_em": {
+                  "type": "string",
+                  "format": "date"
+                },
+                "oficial": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "contexto": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "arquivo",
+          "sha256",
+          "lido_em"
+        ],
+        "properties": {
+          "arquivo": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "lido_em": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date"
+          }
+        }
+      }
+    },
+    "lacunas": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

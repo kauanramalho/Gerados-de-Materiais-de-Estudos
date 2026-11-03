@@ -1,14 +1,14 @@
 ---
 name: ae-analisar-banca
 description: Construir um perfil de prova baseado em amostra explícita.
-version: 0.1.0
+version: 0.2.0
 ---
 
 # Construir um perfil de prova baseado em amostra explícita
 
 ## Quando usar
 
-Quando houver pedido de questões na linha de um concurso/banca.
+Em todo pedido de apostila ou caderno de concurso, para fundamentar prática, formato e nível editorial.
 
 ## Entradas
 
@@ -21,6 +21,8 @@ Concurso identificado, objetivos e provas relacionadas. Consulte AGENTS.md e as 
 3. Classifique formatos, contextos, objetivos cognitivos, estilo de alternativas e erros explorados; cite itens de apoio por metadados.
 4. Calcule frequências somente com denominador da amostra e método. Não declare probabilidade futura ou dificuldade equivalente como fato.
 5. Crie matriz de questões autorais com distribuição justificada; registre lacunas e nível editorial estimado.
+
+6. Priorizar mesmo concurso/cargo, mesma banca/área/nível, mesma banca/objetivo; outra banca exige compatibilidade justificada. Aplicar o programa atual como filtro. Registrar relação com o alvo e exclusões; não atribuir questões relacionadas ao concurso-alvo nem prever sua incidência como certeza.
 
 ## Saídas
 

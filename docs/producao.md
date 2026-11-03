@@ -1,16 +1,18 @@
-# Produção de materiais — versão 0.3.1
+# Produção de materiais — versão 0.4
 
 O agente pesquisa e redige; o publicador monta e verifica os arquivos preparados. Esta versão já aceita materiais novos por manifesto e exporta apostila e caderno de questões. Não há chamada automática a um LLM ou serviço de recebimento permanente.
 
-## Da solicitação ao primeiro lote
+## Da solicitação à entrega completa
 
-1. Ler AGENTS, Progress, Decisions e as skills pertinentes. Identificar concurso/cargo e recuperar os materiais existentes antes de perguntar.
-2. Conferir edital e retificações na fonte oficial. Delimitar um recorte; registrar objetivos, cobertura parcial e lacunas.
+Seguir [do-pedido-a-entrega.md](do-pedido-a-entrega.md). Aceitar texto, foto ou print; ler todas as skills/instruções e registrar o pedido. Em pedido completo, os lotes são unidades internas até concluir o escopo integral. Para entrega de concurso, vincular pedido.json e executar --check --final e --pdf --final. Os comandos dos pilotos abaixo permanecem builds de referência.
+
+1. Ler README, AGENTS, Progress, Decisions, todas as skills, políticas/modelos/contratos e referências. Interpretar texto/imagem, pesquisar identidade e recuperar material disponível antes de perguntar.
+2. Conferir edital e retificações oficiais. Mapear todo o programa do cargo, ou toda a matéria/seleção expressamente pedida; não reduzir para recorte por conveniência. Registrar IDs, objetivos e lacunas.
 3. Buscar provas e gabaritos relacionados. Registrar ano, perfil, tipo, item, página, status e hash; separar análise da amostra de previsão de incidência.
 4. Redigir capítulos com explicação, mecanismo, limites, exemplos resolvidos e recuperação ativa. Produzir figuras originais com legenda e descrição.
 5. Preparar as questões autorais e os comentários. Itens reais com direitos não confirmados recebem acesso ao original por link. Nunca misturar um gabarito de outro ano/tipo.
 6. Montar o manifesto e executar a pré-validação, as verificações técnicas pertinentes e a publicação. Revisar o conteúdo e inspecionar o PDF.
-7. Entregar os arquivos, atualizar estado e decisões e registrar evidências no Segundo Cérebro quando acessível.
+7. Concluir todas as unidades selecionadas, revisar cobertura e entregar os arquivos solicitados. Atualizar estado/decisões e evidências no Segundo Cérebro. Sem teto artificial de páginas; manter checkpoint de unidades pendentes até terminar.
 
 ## Arquivos de entrada
 

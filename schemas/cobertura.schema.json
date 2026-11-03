@@ -14,6 +14,10 @@
       "limits"
     ],
     "properties": {
+      "edital_id": {
+        "type": "string",
+        "minLength": 1
+      },
       "edital_item": {
         "type": "string",
         "minLength": 1,

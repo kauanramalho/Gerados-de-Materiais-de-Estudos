@@ -1,6 +1,6 @@
 # Índice de skills
 
-Fonte de execução: `.agents/skills/<nome>/SKILL.md`. O agente deve ler as instruções adequadas; o nome no catálogo sozinho não executa um procedimento. Cada arquivo informa sua versão. ae-diagramar 0.3.0 e ae-revisar 0.2.0 exigem a auditoria do PDF final e os cliques antes da entrega. O titular aprovou o layout; a validação pedagógica pelo leitor permanece pendente.
+Fonte de execução: `.agents/skills/<nome>/SKILL.md`. O agente deve ler as instruções adequadas; o nome no catálogo sozinho não executa um procedimento. Cada arquivo informa sua versão. ae-diagramar 0.4.0 e ae-revisar 0.3.0 exigem a auditoria do PDF final e os cliques antes da entrega. O titular aprovou o layout; a validação pedagógica pelo leitor permanece pendente.
 
 | Skill | Finalidade | Evidência disponível e limite |
 |---|---|---|
@@ -13,10 +13,12 @@ Fonte de execução: `.agents/skills/<nome>/SKILL.md`. O agente deve ler as inst
 | [ae-ilustrar](../.agents/skills/ae-ilustrar/SKILL.md) | Produzir ou selecionar representações visuais didáticas verificadas | três esquemas SQL e demonstração de switch; modelos reais e outras matérias não validados |
 | [ae-questoes-reais](../.agents/skills/ae-questoes-reais/SKILL.md) | Selecionar e conferir questões autênticas com gabarito oficial | três referências oficiais no piloto, com gabarito preliminar explícito |
 | [ae-questoes-autorais](../.agents/skills/ae-questoes-autorais/SKILL.md) | Criar itens originais coerentes com objetivos e perfil observado | oito itens no piloto; dificuldade editorial estimada, sem aplicação com alunos |
-| [ae-diagramar](../.agents/skills/ae-diagramar/SKILL.md) | Montar apostilas e cadernos navegáveis em HTML e PDF | 0.3.0 aplicada a quatro PDFs; layout aprovado, 118 entradas e 217 áreas conferidas; acessibilidade e novos casos pendentes |
-| [ae-revisar](../.agents/skills/ae-revisar/SKILL.md) | Revisar precisão, didática, questões e artefatos finais | 0.2.0 aplicada: rotas, coordenadas, cliques e hashes; 26 testes de navegação; acessibilidade e aceite pedagógico pendentes |
+| [ae-diagramar](../.agents/skills/ae-diagramar/SKILL.md) | Montar apostilas e cadernos navegáveis em HTML e PDF | 0.4.0 mantém a navegação e exige pedido/--final; versão anterior aplicada a quatro PDFs; layout aprovado, 118 entradas e 217 áreas conferidas; acessibilidade e novos casos pendentes |
+| [ae-revisar](../.agents/skills/ae-revisar/SKILL.md) | Revisar precisão, didática, questões e artefatos finais | 0.3.0 acrescenta fidelidade ao pedido e cobertura completa; rotas, coordenadas, cliques e hashes conferidos; 26 testes de navegação; acessibilidade e aceite pedagógico pendentes |
 | [ae-gerenciar](../.agents/skills/ae-gerenciar/SKILL.md) | Manter progresso, decisões, backlog e documentação no Segundo Cérebro | notas e entregas no Drive conferidas; publicação GitHub impedida |
 | [ae-curar-acervo](../.agents/skills/ae-curar-acervo/SKILL.md) | Importar, buscar, deduplicar e versionar questões | 17 itens em dois materiais; filtros, idempotência e revisões testados; fonte oficial ainda exige consulta do agente |
+
+O fluxo agora começa por texto/foto/print, lê todas as skills e segue [do-pedido-a-entrega.md](do-pedido-a-entrega.md). Foram atualizadas também ae-orquestrar, ae-analisar-edital, ae-pesquisar-fontes, ae-analisar-banca e ae-escrever-capitulo para 0.2.0. Não há nova skill duplicando a orquestração. A ingestão e o contrato final têm testes; uma nova solicitação real completa ainda precisa aplicar o fluxo de ponta a ponta.
 
 Ordem usual: orquestrar → edital/fontes/perfil → plano → escrita/figuras/questões → revisão → diagramação → gestão. A curadoria editorial melhora os padrões antes de escalar. As skills são modulares para reutilização; não exigem múltiplos agentes.
 

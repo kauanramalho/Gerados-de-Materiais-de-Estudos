@@ -13,6 +13,6 @@ Copiar os modelos para `work/<id-da-execucao>/` (ignorado pelo Git) e preencher 
 - [Avaliação do piloto](avaliacao-piloto.md): registrar retorno do leitor sem presumir aceite.
 - [Checklist de revisão](checklist-revisao.md): evidências e defeitos por dimensão editorial.
 
-Os contratos JSON descrevem o formato futuro de ingestão; os modelos Markdown/CSV já podem ser usados pelo agente. Não são formulários obrigatórios para o usuário.
+Os contratos JSON já são aplicados pelas ferramentas. O agente prepara pedido.json a partir de texto/foto/print e preenche os demais registros; não são formulários obrigatórios para o usuário. Veja [fluxo completo](../docs/do-pedido-a-entrega.md) e [checkpoint de produção](estado-producao.md).
 
 Para o publicador genérico: use [manifesto-material.json](manifesto-material.json) e [conteudo-capitulo.md](conteudo-capitulo.md). Copie-os para a pasta de trabalho e prepare as quatro listas JSON indicadas no manifesto; não publique os textos de preenchimento.

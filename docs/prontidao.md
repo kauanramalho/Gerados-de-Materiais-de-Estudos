@@ -2,6 +2,8 @@
 
 Diagnóstico de 03/11/2026, após conferir código, instruções, exemplos, marcos e registros do projeto. Base do diagnóstico inicial: revisão `fa65ffb`; atualizado com a entrega 0.3 e a auditoria de navegação 0.3.1 ([contrato](navegacao.md)). Esta análise não substitui a avaliação de aprendizagem pelo leitor.
 
+A revisão 0.4 explicita [texto/foto/print até a entrega](do-pedido-a-entrega.md), sem teto artificial de páginas, com pedido vinculado e cobertura integral em --final. Passaram 20 testes novos e 96 na suíte completa, incluindo ingestão e rejeições estruturais; uma nova produção completa de concurso a partir dessa entrada ainda precisa validar visão, pesquisa e execução editorial reais.
+
 ## O que já funciona
 
 O projeto já pode ser usado em uma tarefa acompanhada por um agente: pesquisar o concurso, preparar conteúdo e gerar apostila ou caderno a partir de um manifesto. Há 13 skills locais, manual editorial, padrões visuais, políticas de fontes/questões, modelos e contratos. O piloto SQL produziu 24 páginas de apostila e 15 de caderno, três diagramas, oito questões autorais e três questões reais por link oficial. A entrega 0.3 acrescenta matemática (16/9 páginas), seis autorais, contratos e acervo de 17 itens. Passaram 76 testes; os 13 casos SQL e a navegação permanecem conferidos. O titular aprovou o layout, preservado nesta revisão. Os quatro PDFs têm 118 entradas de sumário e 217 áreas internas auditadas; falhas internas bloqueiam a exportação.
@@ -55,6 +57,8 @@ Dos cinco módulos candidatos, **ae-curar-acervo foi criada e aplicada ao catál
 Criar um SKILL.md não implementa sozinho catálogo, pontuação ou atualização. Cada módulo deve nascer junto do fluxo e da evidência que o sustentam. OCR pode permanecer como parte das skills existentes, sem virar uma skill duplicada.
 
 ## Markdown e documentação ainda necessários
+
+O fluxo [do-pedido-a-entrega.md](do-pedido-a-entrega.md), o contrato pedido.schema.json e o [checkpoint](../templates/estado-producao.md) foram desenvolvidos na versão 0.4.
 
 Esta revisão acrescenta este diagnóstico, um [modelo de avaliação do piloto](../templates/avaliacao-piloto.md) e um [checklist preenchível de revisão](../templates/checklist-revisao.md). A tabela distingue documentação já entregue das demais propostas; não são criados pareceres de aprovação antes dos testes.
 

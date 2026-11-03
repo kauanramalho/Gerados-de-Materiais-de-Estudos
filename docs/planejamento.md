@@ -2,7 +2,9 @@
 
 ## Resultado pretendido
 
-Transformar um pedido de estudo em uma coleção consistente de apostilas, capítulos, cadernos de questões e revisões. O agente consulta instruções versionadas e fontes, produz um lote delimitado, verifica o resultado e deixa o estado pronto para a próxima tarefa.
+Transformar um pedido de estudo em uma coleção consistente de apostilas, capítulos, cadernos de questões e revisões. O agente consulta instruções versionadas e fontes, produz unidades internas até concluir todo o escopo solicitado, verifica o resultado e deixa o estado recuperável. Pedido sem recorte abrange todo o programa do cargo, sem teto artificial de páginas.
+
+O usuário começa com texto, foto ou print; identificação, fontes e planejamento são responsabilidade do agente. O [contrato do pedido à entrega](do-pedido-a-entrega.md) aplica a mesma pesquisa a apostilas e cadernos.
 
 ## Perfis de entrega
 

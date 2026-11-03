@@ -6,6 +6,7 @@ JSON Schema 2020-12 descreve briefing, questões, manifesto, fontes, figuras e c
 
 Questão REAL exige origem completa e gabarito oficial. AUTORAL não pode receber uma atribuição fictícia de banca. Para ADAPTADA, registrar origem e mudanças. A publicação do texto de terceiros depende de direitos; o registro pode apontar apenas para o item na prova.
 
+- [Pedido](pedido.schema.json): texto/imagem, identidade, programa/seleção, pesquisa e leitura versionada. O agente preenche; scripts/pedido.py inicia e o publicador aplica em --final. Ver [fluxo](../docs/do-pedido-a-entrega.md).
 - [Briefing](briefing.schema.json)
 - [Questão](questao.schema.json)
 

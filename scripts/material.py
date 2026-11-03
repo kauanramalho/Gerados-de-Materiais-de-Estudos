@@ -16,6 +16,7 @@ from contents import contents_entries, render_contents, pdf_contents_pages
 from integrity import validate_questions, validate_navigation
 from contracts import require_schema
 from navigation import instrument_html, required_edges, link_plan, navigation_manifest
+from request import read_request, require_delivery
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -146,7 +147,14 @@ def load_material(path):
         inputs.append(local_path(folder, config['profile']))
     if config.get('practice_context'):
         inputs.append(local_path(folder, config['practice_context']))
-    return {'config': config, 'folder': folder, 'inputs': inputs, **data}
+    request = None
+    if config.get('pedido'):
+        request_path = local_path(folder, config['pedido'])
+        request = read_request(request_path)
+        inputs.append(request_path)
+        if request['entrada']['imagem']:
+            inputs.append(local_path(request_path.parent, request['entrada']['imagem']['arquivo']))
+    return {'config': config, 'folder': folder, 'inputs': inputs, 'request': request, **data}
 
 
 def compose_material(data, kind='apostila'):
@@ -155,6 +163,10 @@ def compose_material(data, kind='apostila'):
              f'**Versão {config["version"]} · Texto e questões autorais com assistência de IA.**',
              'Resolva os itens antes de abrir os comentários. Cada resolução oferece retorno à questão. '
              'As questões reais com direitos de reprodução não confirmados são oferecidas por link para a prova oficial.']
+    if data.get('request'):
+        target = data['request']['concurso']
+        identity = ' · '.join(str(target[k] or 'a confirmar') for k in ('orgao', 'cargo', 'ano', 'banca'))
+        parts.insert(2, '**Concurso: '+identity+'.**')
     if any(q.get('fonte_original', {}).get('gabarito_status') == 'preliminar' for q in questions):
         parts.append('> **Gabarito preliminar:** parte dos itens reais usa resposta oficial ainda preliminar. '
                      'Confira o status na página da banca antes de usar para pontuação definitiva.')
@@ -261,7 +273,8 @@ def audit_pdf(pdf, entries, pages, questions):
     return result
 
 
-def publish(data, output_folder, kind='apostila', pdf=False):
+def publish(data, output_folder, kind='apostila', pdf=False, final=False):
+    delivery = require_delivery(data, kind, final)
     config, folder = data['config'], data['folder']
     output = Path(output_folder).resolve()
     if output == folder or folder.is_relative_to(output):
@@ -292,7 +305,8 @@ def publish(data, output_folder, kind='apostila', pdf=False):
               'generated_at': datetime.now(timezone.utc).isoformat(),
               'questions': len(data['questions']), 'html_navigation': 'passed',
               'editorial_review': 'requires-recorded-review', 'files': {}, 'inputs': {}}
-    report['toolchain'] = {'publisher_version': '0.3.1', 'python': platform.python_version(),
+    report['request'] = delivery
+    report['toolchain'] = {'publisher_version': '0.4.0', 'python': platform.python_version(),
                           'jsonschema': package_version('jsonschema'),
                           'pandoc': subprocess.check_output(['pandoc', '--version'], text=True).splitlines()[0],
                           'stylesheet_sha256': sha256((ROOT / 'styles/apostila.css').read_bytes()).hexdigest(),
@@ -300,6 +314,7 @@ def publish(data, output_folder, kind='apostila', pdf=False):
                           'contents_sha256': sha256((ROOT / 'scripts/contents.py').read_bytes()).hexdigest()}
     report['toolchain']['contracts_sha256'] = sha256((ROOT / 'scripts/contracts.py').read_bytes()).hexdigest()
     report['toolchain']['navigation_sha256'] = sha256((ROOT / 'scripts/navigation.py').read_bytes()).hexdigest()
+    report['toolchain']['request_sha256'] = sha256((ROOT / 'scripts/request.py').read_bytes()).hexdigest()
     report['toolchain']['schemas'] = {p.name: sha256(p.read_bytes()).hexdigest()
                                     for p in sorted((ROOT / 'schemas').glob('*.json'))}
     if pdf:
