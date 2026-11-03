@@ -36,7 +36,9 @@ IDs persistem entre revisões: `CAP-001`, `FIG-001`, `Q-AUT-001`, `Q-REAL-001`; 
 
 ## Publicação
 
-Markdown é a fonte editorial. HTML acessível serve à leitura e à revisão; PDF A4 serve à distribuição. No protótipo, scripts/build_sample.py converte uma amostra com Pandoc, incorpora a figura SVG e imprime com Chromium via Playwright. O pipeline genérico, com equações, referências cruzadas, paginação e validação acessível, permanece planejado. Avaliar Typst/Pandoc no piloto se a impressão do navegador limitar o resultado.
+Markdown é a fonte editorial. HTML serve à leitura e à revisão; PDF A4 serve à distribuição. A CLI `scripts/build_material.py` 0.2 recebe manifesto, capítulos, figuras, fontes, cobertura e questões, compondo apostila ou caderno com Pandoc e Chromium via Playwright. O sumário usa os destinos do PDF para conferir as páginas; a navegação e os hashes são registrados. `scripts/build_sample.py` preserva a demonstração inicial de redes.
+
+O piloto SQL validou essa implementação nos dois formatos. Fórmulas, tabelas longas, outras matérias, ligação entre volumes e auditoria completa de acessibilidade permanecem pendentes. HTML com títulos/descrições não certifica PDF acessível. Avaliar outro motor de impressão somente se os testes demonstrarem uma limitação concreta; ver [prontidão](prontidao.md) e [produção](producao.md).
 
 ## Integrações
 

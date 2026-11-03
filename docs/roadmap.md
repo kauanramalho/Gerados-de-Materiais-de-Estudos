@@ -16,6 +16,8 @@ Sem datas ou percentuais inventados. A sequência expressa dependências técnic
 
 Executar e avaliar o piloto enquanto a publicação remota depende de permissão. A CLI foi extraída a partir das necessidades desse lote. Corrigir padrões com a avaliação e validar outro assunto antes de ampliar catálogo e integrações. Usar formatos abertos e contratos de dados para evitar dependência de um modelo ou editor.
 
+O [diagnóstico de prontidão](prontidao.md) detalha as lacunas de cada marco, os formatos de simulado/revisão, os contratos, a manutenção e a documentação prevista. Distingue versão utilizável com agente, V1 para uso recorrente e coleção completa por edital. A autorização pública está registrada; a conexão técnica ainda recusou a criação do destino.
+
 ## Fora do compromisso atual
 
 Não há promessa de serviço sempre ligado, cron, assinaturas pagas, aplicativo multiusuário, importação de acervos comerciais ou criação de todas as apostilas nesta fase. A fundação permite que o agente retome o projeto em tarefas futuras com critérios explícitos.

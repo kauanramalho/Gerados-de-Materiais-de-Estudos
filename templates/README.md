@@ -10,6 +10,8 @@ Copiar os modelos para `work/<id-da-execucao>/` (ignorado pelo Git) e preencher 
 - [Manifesto de figuras](figuras.csv): propósito, legenda e origem.
 - [Questão e resolução](questao.md): identidade, comentário e navegação.
 - [Relatório de entrega](relatorio.md): validação e estado real.
+- [Avaliação do piloto](avaliacao-piloto.md): registrar retorno do leitor sem presumir aceite.
+- [Checklist de revisão](checklist-revisao.md): evidências e defeitos por dimensão editorial.
 
 Os contratos JSON descrevem o formato futuro de ingestão; os modelos Markdown/CSV já podem ser usados pelo agente. Não são formulários obrigatórios para o usuário.
 

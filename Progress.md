@@ -6,7 +6,7 @@
 - **Próxima ação:** avaliar clareza, densidade, figuras e comentários do piloto com o leitor e incorporar o resultado ao próximo lote.
 - **Responsável:** agente para revisão e ajustes; titular para relatar sua experiência de leitura.
 - **Condição de conclusão:** observações convertidas em correções verificadas e limites pedagógicos registrados.
-- **Pendência independente:** criação do repositório GitHub ainda sem acesso confirmado; consulta retornou 404. A falha de criação 403 continua documentada. Isso não impede desenvolver e entregar no Drive.
+- **Pendência independente:** publicação pública autorizada e reiterada pelo titular; nesta retomada, a conta foi confirmada, o destino retornou 404 e as tentativas de criação por GraphQL/REST retornaram 403. Falta acesso técnico da integração, não nova autorização textual. Isso não impede desenvolver e entregar no Drive.
 
 ## Estado e evidências
 
@@ -17,6 +17,10 @@ A CLI aceita manifesto, valida referências, gera os dois formatos e registra ha
 ## Marcos e limites
 
 M0 concluído; M0.1 mantém publicação GitHub pendente. M1 teve execução técnica entregue e aguarda aceite pedagógico. M2 tem implementação inicial aplicada ao piloto, ainda sem validação em outras matérias. Não há geração sem agente, scheduler, instalação global ou CI remota validada.
+
+## Diagnóstico de prontidão
+
+O [inventário de pendências](docs/prontidao.md) distingue uso acompanhado, V1 recorrente e coleção por edital. Registra cinco skills candidatas, aprofundamentos nas 12 existentes, documentos e materiais de validação ainda necessários. Foram criados modelos de avaliação do leitor e checklist de revisão. Backlog reconciliado: avaliação do titular, acervo consultável e auditoria de acessibilidade não estavam concluídos ou em execução com evidência suficiente. Os estados foram corrigidos sem revogar os resultados técnicos do piloto.
 
 ## Riscos
 

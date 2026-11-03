@@ -1,6 +1,8 @@
 # Publicar o pacote inicial
 
-A conta foi identificada, mas a conexão atual devolveu 403 `Resource not accessible by integration` tanto para `createRepository` quanto para `POST /user/repos`. Isso é uma limitação de permissão da integração, não uma falha dos arquivos locais. Nenhum repositório remoto foi confirmado nesta tarefa.
+A autorização pública foi reiterada pelo titular em 03/11/2026. Na nova tentativa, a conta autenticada `kauanramalho` foi confirmada; a consulta do destino retornou 404, e a conexão devolveu 403 `Resource not accessible by integration` tanto para `createRepository` quanto para `POST /user/repos`. Não houve push. A pendência é acesso técnico para criar o destino ou acesso a um repositório vazio; não exige outra autorização textual do titular. Nenhum repositório remoto foi confirmado.
+
+O plugin GitHub está instalado. Suas ferramentas de edição de repositórios existentes e a CLI disponível não conferem, por si só, permissão de criar um repositório na conta. Não alterar permissões globais de outros apps ou solicitar credenciais por chat para resolver esse erro.
 
 ## Quando houver permissão para criar
 
