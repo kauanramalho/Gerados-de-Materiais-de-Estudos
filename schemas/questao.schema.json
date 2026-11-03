@@ -1,0 +1,218 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Questão e resolução",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "origem",
+    "objetivo",
+    "formato",
+    "enunciado",
+    "alternativas",
+    "resposta",
+    "comentarios",
+    "direitos",
+    "dificuldade"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^Q-(AUT|REAL|ADP)-[0-9]{3,}$"
+    },
+    "origem": {
+      "enum": [
+        "AUTORAL",
+        "REAL",
+        "ADAPTADA"
+      ]
+    },
+    "objetivo": {
+      "type": "string",
+      "minLength": 1
+    },
+    "formato": {
+      "enum": [
+        "multipla-escolha",
+        "certo-errado"
+      ]
+    },
+    "enunciado": {
+      "type": "string",
+      "minLength": 1
+    },
+    "alternativas": {
+      "type": "object",
+      "minProperties": 2,
+      "additionalProperties": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "resposta": {
+      "type": "string",
+      "minLength": 1
+    },
+    "comentarios": {
+      "type": "object",
+      "minProperties": 2,
+      "additionalProperties": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "direitos": {
+      "enum": [
+        "original-projeto",
+        "reproducao-verificada",
+        "somente-link"
+      ]
+    },
+    "dificuldade": {
+      "enum": [
+        "estimada-inicial",
+        "estimada-intermediaria",
+        "estimada-avancada"
+      ]
+    },
+    "fonte_original": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "banca",
+        "orgao",
+        "cargo",
+        "ano",
+        "caderno",
+        "numero",
+        "pagina",
+        "prova_url",
+        "gabarito_url",
+        "gabarito_status",
+        "conferido_em"
+      ],
+      "properties": {
+        "banca": {
+          "type": "string",
+          "minLength": 1
+        },
+        "orgao": {
+          "type": "string",
+          "minLength": 1
+        },
+        "cargo": {
+          "type": "string",
+          "minLength": 1
+        },
+        "caderno": {
+          "type": "string",
+          "minLength": 1
+        },
+        "numero": {
+          "type": "string",
+          "minLength": 1
+        },
+        "pagina": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ano": {
+          "type": "integer"
+        },
+        "prova_url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "gabarito_url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "gabarito_status": {
+          "enum": [
+            "preliminar",
+            "definitivo",
+            "retificado",
+            "anulada",
+            "nao-localizado"
+          ]
+        },
+        "conferido_em": {
+          "type": "string",
+          "format": "date"
+        }
+      }
+    },
+    "adaptacoes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "perfil_referencia": {
+      "type": "string"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "origem": {
+            "enum": [
+              "REAL",
+              "ADAPTADA"
+            ]
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "fonte_original"
+        ],
+        "properties": {
+          "direitos": {
+            "enum": [
+              "reproducao-verificada",
+              "somente-link"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "origem": {
+            "const": "ADAPTADA"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "adaptacoes"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "origem": {
+            "const": "AUTORAL"
+          }
+        }
+      },
+      "then": {
+        "not": {
+          "required": [
+            "fonte_original"
+          ]
+        },
+        "properties": {
+          "direitos": {
+            "const": "original-projeto"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="330" viewBox="0 0 840 330" role="img" aria-labelledby="title desc">
+  <title id="title">Portas Ethernet de um switch genérico</title>
+  <desc id="desc">Host A conectado à porta P1, host B conectado à porta P3. As portas P2 e P4 estão livres. Esquema ilustrativo sem especificações de modelo.</desc>
+  <rect width="840" height="330" rx="12" fill="#f4f7f8"/>
+  <g font-family="Arial, sans-serif" fill="#182c3a" text-anchor="middle">
+    <text x="420" y="32" font-size="17">FIGURA 1 · CONEXÕES E PORTAS</text>
+    <rect x="72" y="65" width="120" height="58" rx="5" fill="white" stroke="#15384f" stroke-width="2"/>
+    <text x="132" y="100" font-size="20">Host A</text>
+    <rect x="510" y="65" width="120" height="58" rx="5" fill="white" stroke="#15384f" stroke-width="2"/>
+    <text x="570" y="100" font-size="20">Host B</text>
+    <path d="M132 123 V160 H250 V207" fill="none" stroke="#176568" stroke-width="4"/>
+    <path d="M570 123 V160 H490 V207" fill="none" stroke="#15384f" stroke-width="4" stroke-dasharray="8 4"/>
+    <rect x="170" y="192" width="500" height="100" rx="8" fill="#dce8ee" stroke="#15384f" stroke-width="2"/>
+    <text x="420" y="278" font-size="18">Switch genérico · vista esquemática</text>
+    <g fill="white" stroke="#15384f" stroke-width="2">
+      <rect x="218" y="208" width="64" height="36"/>
+      <rect x="338" y="208" width="64" height="36"/>
+      <rect x="458" y="208" width="64" height="36"/>
+      <rect x="578" y="208" width="64" height="36"/>
+    </g>
+    <g font-size="17"><text x="250" y="233">P1</text><text x="370" y="233">P2</text><text x="490" y="233">P3</text><text x="610" y="233">P4</text></g>
+    <text x="420" y="316" font-size="14">P1 recebe A · P3 conecta B · P2 e P4 livres neste desenho</text>
+  </g>
+</svg>

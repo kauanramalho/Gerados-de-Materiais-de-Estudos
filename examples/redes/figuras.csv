@@ -1,0 +1,2 @@
+figura_id,objetivo,capitulo_id,tipo,arquivo,rotulos,legenda,descricao_alternativa,fonte_id,licenca,adaptacoes,revisor,estado
+FIG-001,Identificar a associação entre hosts e portas,CAP-001,esquema SVG,switch.svg,Host A;Host B;P1;P2;P3;P4,Switch genérico com A em P1 e B em P3,Hosts A e B ligados às portas P1 e P3 com P2 e P4 livres,original-projeto,direitos reservados,nenhuma,Codex; conferência visual em 2026-11-03,revisão inicial da amostra

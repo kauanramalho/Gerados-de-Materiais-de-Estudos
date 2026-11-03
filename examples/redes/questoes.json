@@ -1,0 +1,28 @@
+[
+  {
+    "id": "Q-AUT-001",
+    "origem": "AUTORAL",
+    "objetivo": "Distinguir aprendizagem do endereço de origem de consulta ao destino",
+    "formato": "multipla-escolha",
+    "enunciado": "Com aprendizagem dinâmica habilitada, um quadro de A entra por P1. Qual informação permite ao switch aprender a localização de A?",
+    "alternativas": {"A": "O endereço MAC de origem do quadro.", "B": "O endereço MAC de destino do quadro.", "C": "O número da porta de destino TCP."},
+    "resposta": "A",
+    "comentarios": {"A": "Correta. A origem identifica o remetente observado na porta de entrada.", "B": "Incorreta. O destino orienta a decisão de encaminhamento, não a aprendizagem da localização de A.", "C": "Incorreta. A porta TCP pertence a outra função; não identifica a porta física do switch."},
+    "direitos": "original-projeto",
+    "dificuldade": "estimada-inicial",
+    "perfil_referencia": "Sem banca definida; amostra de navegação."
+  },
+  {
+    "id": "Q-AUT-002",
+    "origem": "AUTORAL",
+    "objetivo": "Aplicar consulta de destino conhecido",
+    "formato": "certo-errado",
+    "enunciado": "A e B estão na mesma VLAN, e a tabela associa B a P3. Um quadro unicast para B entra por P1. Com P3 em encaminhamento e sem filtros adicionais, o switch o encaminha por P3.",
+    "alternativas": {"Certo": "A afirmação está correta.", "Errado": "A afirmação está incorreta."},
+    "resposta": "Certo",
+    "comentarios": {"Certo": "Correta. O destino conhecido aponta para P3 nas condições descritas.", "Errado": "Incorreta. O enunciado já informa a associação e as condições para encaminhar; não há motivo descrito para escolher outra saída."},
+    "direitos": "original-projeto",
+    "dificuldade": "estimada-inicial",
+    "perfil_referencia": "Sem banca definida; amostra de navegação."
+  }
+]

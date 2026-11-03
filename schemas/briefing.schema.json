@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Briefing de material",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "tipo",
+    "orgao",
+    "cargo",
+    "ano",
+    "banca",
+    "edital_url",
+    "conferido_em",
+    "itens_edital",
+    "lacunas"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "tipo": {
+      "enum": [
+        "apostila",
+        "capitulo",
+        "caderno",
+        "simulado",
+        "revisao"
+      ]
+    },
+    "orgao": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "cargo": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "ano": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "banca": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "edital_url": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "uri"
+    },
+    "conferido_em": {
+      "type": "string",
+      "format": "date"
+    },
+    "itens_edital": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "lacunas": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}
