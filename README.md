@@ -4,7 +4,7 @@ Repositório público: [Gerados-de-Materiais-de-Estudos](https://github.com/kaua
 
 Base permanente de instruções, skills e modelos para produzir apostilas e cadernos de questões de concursos, com explicações claras, ilustrações úteis e fontes verificáveis.
 
-**Fase atual:** publicador 0.6, quatro formatos, validação de imagens em todas as entradas e acompanhamento de figuras nas edições; entrada por texto/foto/print, pesquisa e cobertura vinculadas ao pedido, navegação auditada e acervo local. O projeto é conduzido por um agente com acesso a este repositório. Ainda não existe um serviço autônomo que receba editais ou gere apostilas sem uma sessão de trabalho.
+**Fase atual:** publicador 0.7, quatro formatos, validação de imagens em todas as entradas e acompanhamento de figuras nas edições; entrada por texto/foto/print, pesquisa e cobertura vinculadas ao pedido, navegação auditada e acervo local. O projeto é conduzido por um agente com acesso a este repositório. Ainda não existe um serviço autônomo que receba editais ou gere apostilas sem uma sessão de trabalho.
 
 ## Como pedir um material
 
@@ -29,6 +29,8 @@ O agente lê todas as instruções e skills, identifica o concurso, pesquisa edi
 Entregas finais de concurso usam pedido.json vinculado ao manifesto e `--final`. Pilotos sem pedido continuam como referências e não certificam cobertura de um novo pedido. A pesquisa e a leitura de imagens são executadas pelo agente; os scripts validam o registro e os arquivos.
 
 ## Produzir novos materiais
+
+**Padrão obrigatório de todas as entregas:** o sumário inteiro é clicável no próprio PDF. Número, título, pontilhado e página levam à seção correspondente, tanto na apostila quanto no caderno de questões, simulado e revisão. O publicador grava destinos diretos de página/posição e recusa exportação com qualquer linha parcialmente clicável, página incorreta ou destino errado. A auditoria pertence ao hash do arquivo entregue; o padrão não depende de solicitar links a cada novo material. Ver [contrato de navegação](docs/navegacao.md).
 
 O agente já pode montar materiais a partir de um manifesto. O piloto contém teoria, três figuras, exemplos SQL verificados, oito questões autorais e três referências a questões reais com comentário. Veja o [fluxo de produção](docs/producao.md) e o [piloto](materials/dataprev-sql/README.md).
 

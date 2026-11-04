@@ -9,7 +9,7 @@ Marcar cada item como aprovado, reprovado ou não aplicável com motivo. Uma che
 | Didática | progressão, explicação desenvolvida, exemplo e prática | o objetivo aparece só em resumo ou exercício |
 | Questões | origem, solução, distratores e comentário | questão real sem prova; resposta ambígua; gabarito inconsistente |
 | Visual | figuras explicadas, rótulos legíveis e sem cortes | imagem induz erro ou perde informação |
-| Navegação | áreas clicáveis, sumário/páginas, questão → sua resposta → sua questão e referências | qualquer rota interna ou fragmento de clique não corresponde ao destino esperado |
+| Navegação | sumário inteiro clicável (número, título, pontilhado e página), destino direto /XYZ, questão → sua resposta → sua questão e referências | qualquer entrada/área é parcial, tem página incorreta ou leva ao destino errado |
 | Direitos | registro de origem e condições de uso | reprodução sem base identificada |
 | Acessibilidade | títulos, ordem de leitura, descrições e contraste | informação depende apenas de cor/imagem sem alternativa |
 | Entrega | versões, manifesto, limitações e histórico | resultado não pode ser associado às fontes e instruções usadas |

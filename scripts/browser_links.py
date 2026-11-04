@@ -25,7 +25,7 @@ def check_html_clicks(html_path, plan):
             page.goto(origin, wait_until='load', timeout=15000)
             for edge in plan['links']:
                 anchor = page.locator('[id=' + json.dumps(edge['source'], ensure_ascii=False) + ']')
-                parts = ['.toc-number', '.toc-label', '.toc-page'] if edge['role'] == 'toc' else [None]
+                parts = ['.toc-number', '.toc-label', '.toc-leader', '.toc-page'] if edge['role'] == 'toc' else [None]
                 for selector in parts:
                     element = anchor.locator(selector) if selector else anchor
                     try:

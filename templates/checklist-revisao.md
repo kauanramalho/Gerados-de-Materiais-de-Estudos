@@ -17,6 +17,7 @@ Usar aprovado, reprovado ou não aplicável, com motivo e evidência. Não infer
 | Figuras: exatidão, legenda e leitura no tamanho final | | | |
 | Linguagem e consistência de termos | | | |
 | Sumário e questão ↔ resolução no HTML e PDF | | | |
+| Sumário 100% clicável: número, título, pontilhado/espaços e página em todas as entradas; destino direto /XYZ | | | |
 | Rotas por área clicável, página e destino; manifesto do mesmo hash | | | |
 | Cliques no navegador e disponibilidade externa com data | | | |
 | Quebras, tabelas, código e fórmulas | | | |

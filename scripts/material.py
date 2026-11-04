@@ -15,7 +15,7 @@ from urllib.parse import urlparse
 from contents import contents_entries, render_contents, pdf_contents_pages
 from integrity import validate_questions, validate_navigation
 from contracts import require_schema
-from navigation import instrument_html, required_edges, link_plan, navigation_manifest
+from navigation import instrument_html, required_edges, link_plan, navigation_manifest, finalize_pdf_destinations
 from request import read_request, require_delivery
 from formats import prepare_format, validate_simulation
 from acessibilidade import svg_accessibility
@@ -352,7 +352,7 @@ def publish(data, output_folder, kind='apostila', pdf=False, final=False):
               'questions': len(data['questions']), 'html_navigation': 'passed',
               'editorial_review': 'requires-recorded-review', 'files': {}, 'inputs': {}}
     report['request'] = delivery
-    report['toolchain'] = {'publisher_version': '0.6.0', 'python': platform.python_version(),
+    report['toolchain'] = {'publisher_version': '0.7.0', 'python': platform.python_version(),
                           'jsonschema': package_version('jsonschema'),
                           'pandoc': subprocess.check_output(['pandoc', '--version'], text=True).splitlines()[0],
                           'stylesheet_sha256': sha256((ROOT / 'styles/apostila.css').read_bytes()).hexdigest(),
@@ -404,7 +404,9 @@ def publish(data, output_folder, kind='apostila', pdf=False, final=False):
                     raise ValueError('Paginação do sumário não estabilizou')
             finally:
                 browser.close()
+        destination_report = finalize_pdf_destinations(pdf_path, link_plan(html_path.read_text(encoding='utf-8'), required, pages))
         report['pdf'] = audit_pdf(pdf_path, entries, pages, data['questions'])
+        report['pdf']['native_destinations'] = destination_report
         navigation = navigation_manifest(html_path, pdf_path, required, pages)
         (output / f'{kind}-navigation.json').write_text(json.dumps(navigation, ensure_ascii=False, indent=2), encoding='utf-8')
         report['pdf']['navigation_verified'] = navigation['audit']['passed']

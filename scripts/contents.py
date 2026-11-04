@@ -72,10 +72,10 @@ def render_contents(html, entries, pages=None):
         target = escape(entry['target'], quote=True)
         page = str(pages.get(entry['target'], ''))
         return (f'<a class="toc-link" href="#{target}" id="toc-{target}">'
-                f'<span class="toc-number">{escape(entry["number"])}</span>'
-                f'<span class="toc-label">{escape(entry["title"])}</span>'
+                f'<span class="toc-number" id="toc-{target}-number">{escape(entry["number"])}</span>'
+                f'<span class="toc-label" id="toc-{target}-label">{escape(entry["title"])}</span>'
                 '<span class="toc-leader" aria-hidden="true"></span>'
-                f'<span class="toc-page">{page}</span></a>')
+                f'<span class="toc-page" id="toc-{target}-page">{page}</span></a>')
 
     rows = []
     for group in groups:

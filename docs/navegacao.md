@@ -1,6 +1,16 @@
 # Contrato de navegação — obrigatório em cada entrega
 
-O sumário deve ser clicável no PDF: clicar no número, título ou página leva à seção correspondente. Toda questão leva à sua própria resolução, que retorna à mesma questão. Remissões teóricas da apostila e referências internas precisam levar aos seus destinos. O requisito vale para qualquer concurso/matéria nos formatos já suportados: apostila, caderno, simulado e revisão. O layout atual foi aprovado pelo titular e permanece como padrão.
+O sumário deve ser 100% clicável no próprio PDF: clicar no número, título, pontilhado/espaços da linha ou página leva à seção correspondente. Toda questão leva à sua própria resolução, que retorna à mesma questão. Remissões teóricas da apostila e referências internas precisam levar aos seus destinos. O requisito é padrão obrigatório em qualquer concurso/matéria nos formatos já suportados: apostila, caderno, simulado e revisão. Não depende de um novo pedido de links. O layout atual foi aprovado pelo titular e permanece como padrão.
+
+## Destinos portáveis e linha inteira clicável
+
+O exportador converte os destinos nomeados do Chromium em destinos PDF diretos com referência da página e coordenadas /XYZ. A transformação corrige a translação das margens de impressão também no dicionário de destinos, preservando IDs, marcadores, tags, áreas de clique e conteúdo das páginas. As rotas são auditadas antes e depois; a conversão não pode reparar silenciosamente ou esconder um link que já apontava para o lugar errado.
+
+Cada entrada possui identidades para número, título e página. A auditoria encontra seus textos no PDF, confere que pertencem à mesma linha/entrada e exige uma área de clique contínua até a página indicada, incluindo o pontilhado. Ter só o título ou só o número clicável não aprova o arquivo. O manifesto de navegação versão 2 exige destinos diretos também na reauditoria independente; manifestos antigos continuam identificados como legado.
+
+A coluna de páginas tem largura mínima pelo conteúdo e não quebra seus dígitos. Isso vale também para materiais longos, sem impor teto de páginas. O restante do padrão visual aprovado é preservado.
+
+Essas verificações são executadas automaticamente pelo publicador, sem opção para entregar um PDF com falha interna. Antes de substituir uma edição, preserve os arquivos anteriores. Mudanças técnicas devem conservar paginação e aparência; registre comparação de conteúdo/posições e faça inspeção visual. Testes em visualizador independente complementam a inspeção estrutural quando o motor de navegação mudar; registrar nome, versão, bytes testados e cliques reais sem declarar suporte universal a todos os leitores existentes.
 
 ## Verificação automática na exportação
 
@@ -23,7 +33,7 @@ python scripts/build_material.py materials/dataprev-sql/material.json --kind cad
 python scripts/audit_links.py build/dataprev-sql/apostila.pdf build/dataprev-sql/caderno.pdf --browser --external --report build/auditoria-links.json
 ```
 
-O comando retorna erro se o hash divergir, se uma rota interna falhar ou se a verificação externa solicitada não for confirmada. `--browser` executa cliques nativos no HTML autocontido, incluindo número/título/página do sumário e os fragmentos de links quebrados em linhas. O navegador não usa JavaScript do conteúdo nem acessa recursos remotos para esses cliques. Ajustes de animação existem somente no teste.
+O comando retorna erro se o hash divergir, se uma rota interna falhar ou se a verificação externa solicitada não for confirmada. `--browser` executa cliques nativos no HTML autocontido, incluindo número/título/pontilhado/página do sumário e os fragmentos de links quebrados em linhas. Esse teste de HTML é separado da leitura das anotações do PDF e de testes em visualizador PDF. O navegador não usa JavaScript do conteúdo nem acessa recursos remotos para esses cliques. Ajustes de animação existem somente no teste.
 
 `--external` consulta referências HTTPS, elimina duplicatas por fragmento e registra data/status. Uma URL de PDF precisa responder com arquivo PDF; páginas de erro/login não bastam. Bloqueio, timeout e erro HTTP não são aprovados silenciosamente. A disponibilidade é uma observação da entrega: sites de terceiros podem mudar depois. Sem acesso à rede, registrar a revisão externa pendente e seus efeitos; não declarar que foi verificada.
 
@@ -38,4 +48,4 @@ Para PDF renomeado, usar `--manifest caminho/arquivo-navigation.json` em uma cha
 
 ## Regressões que devem continuar passando
 
-Troca de questão/resolução, retorno incorreto, destino errado na mesma página, deslocamento vertical, botão ausente, área invisível, sumário com página desatualizada, título diferente no destino, ID duplicado, relatório de outro hash e aprovação antiga falsamente reutilizada. Incluir também links em duas linhas e IDs em português com acentos.
+Troca de questão/resolução, retorno incorreto, destino errado na mesma página, deslocamento vertical, botão ausente, área invisível, sumário com página desatualizada, título diferente no destino, ID duplicado, relatório de outro hash e aprovação antiga falsamente reutilizada. Incluir também links em duas linhas e IDs em português com acentos; página do sumário fora do clique; pontilhado sem área ativa; conversão idempotente; preservação de tags, marcadores, URLs externas e desenho/texto; rejeição de destinos nomeados em novas exportações; e erro de rota que a conversão não pode mascarar.

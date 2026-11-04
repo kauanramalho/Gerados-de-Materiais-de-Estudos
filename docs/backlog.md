@@ -32,6 +32,7 @@ Estados: pronto, em execução, concluído, impedido, planejado. A ordem abaixo 
 | AE-026 | validar imagens em todas as entradas renderizadas | revisão e contexto rejeitam recursos não declarados/fora da pasta antes do Pandoc; recursos válidos entram nos hashes; regressões negativas e positivas | regressões e caso real 0.6 | concluído |
 | AE-027 | propagar mudanças de figuras na comparação de edições | imagem alterada sinaliza capítulos dependentes e revisão relacionada, ou usa sinalização conservadora explícita; regressão reproduzível | regressões e caso real 0.6 | concluído |
 | AE-028 | comprovar pedido real de ponta a ponta | texto e print de edital conferidos, fontes oficiais pesquisadas; apostila/caderno cobrem os 17 itens, --final e revisão editorial por IA; artefatos auditados | caso BD escolhido pelo titular; retorno real de aprendizagem separado em AE-009 | concluído |
+| AE-029 | sumário integral e destinos PDF portáveis | número/título/pontilhado/página clicáveis, destinos diretos /XYZ, rejeição de área parcial e preservação de layout/tags; reauditoria por hash | contrato e regressões de navegação 0.7; validar cada arquivo antes de entregar | concluído |
 
 Responsável pela execução: agente na tarefa autorizada; titular decide concurso, preferência visual final e prioridades pessoais. Issues no GitHub devem espelhar os itens abertos quando o repositório existir; não afirmar que foram criadas antes da confirmação remota.
 

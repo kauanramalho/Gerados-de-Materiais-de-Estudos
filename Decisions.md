@@ -1,5 +1,9 @@
 # Decisões — Ateliê de Estudos
 
+## D017 — 2026-11-04 — Sumário inteiro clicável como condição de entrega
+
+**Decisão:** todo PDF de apostila, caderno de questões, simulado ou revisão deve permitir clicar em número, título, pontilhado/espaços e página para chegar à seção correspondente. O publicador 0.7 grava destinos diretos de página/posição (/XYZ), audita a área contínua de cada linha e bloqueia falhas. **Motivo:** requisito permanente reafirmado pelo titular e maior portabilidade entre leitores PDF; contagem de links ou clique somente no título não bastam. **Consequência:** manifesto de navegação versão 2 por hash, regressões de áreas parciais e verificação adicional em visualizador PDF quando o motor mudar. Dígitos de página não podem quebrar; o restante da apresentação aprovada é preservado. **Revisar quando:** o motor de exportação ou novos formatos exigirem atualização comprovada por testes, mantendo o requisito de navegação.
+
 ## D001 — 2026-11-03 — Repositório editorial operado por agente
 
 **Decisão:** começar por instruções, skills, modelos e gestão versionados. **Motivo:** o pedido inicial é uma base de trabalho e planejamento, com produção futura sob demanda. **Consequência:** não é serviço autônomo nem exige contratação de API. **Revisar quando:** piloto demonstrar necessidade de execução persistente.

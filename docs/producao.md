@@ -1,4 +1,4 @@
-# Produção de materiais — versão 0.6
+# Produção de materiais — versão 0.7
 
 O agente pesquisa e redige; o publicador monta e verifica os arquivos preparados. Esta versão já aceita materiais novos por manifesto e exporta apostila, caderno, simulado e revisão. Os dois novos formatos têm planos próprios; ver docs/simulados.md e docs/revisao-aprendizagem.md. Não há chamada automática a um LLM ou serviço de recebimento permanente.
 
@@ -42,6 +42,8 @@ Use --output para escolher outra pasta de saída. Sem --pdf, o comando gera Mark
 Após revisar o lote, importe o manifesto no [acervo](acervo.md). Alterações em edições já registradas exigem nova versão. Revisões de questões são explícitas e preservam histórico; arquive o banco e a exportação fora do Git/cofre.
 
 Antes de entregar, executar scripts/acessibilidade.py e registrar seus limites, além da [auditoria de links](navegacao.md) com --browser e --external. A exportação PDF já bloqueia rotas internas incorretas e grava *-navigation.json. Arquivar esse manifesto com HTML/PDF e conferir o mesmo hash após upload. O sumário e os links usam o mesmo contrato em apostilas de conteúdo e cadernos de questões.
+
+O sumário inteiro é obrigatoriamente clicável nos quatro formatos. O publicador 0.7 converte links internos para destinos diretos de página/posição e confere número, título, página e intervalo contínuo de cada linha, incluindo o pontilhado. Qualquer falha bloqueia o PDF. Uma mudança nesse motor exige teste adicional em visualizador PDF independente, além do teste HTML; registrar a ferramenta e os bytes usados conforme docs/navegacao.md.
 
 ## O que as verificações garantem
 

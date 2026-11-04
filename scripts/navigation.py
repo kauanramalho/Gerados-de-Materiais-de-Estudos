@@ -2,6 +2,7 @@
 from hashlib import sha256
 from html import escape, unescape
 from html.parser import HTMLParser
+from pathlib import Path
 import math
 import re
 import unicodedata
@@ -21,6 +22,7 @@ class LinkModel(HTMLParser):
     def __init__(self):
         super().__init__(convert_charrefs=True)
         self.stack, self.links, self.targets, self.ids, self.duplicates = [], [], {}, set(), []
+        self.toc_parts = []
 
     def handle_starttag(self, tag, attrs):
         attrs = dict(attrs)
@@ -49,6 +51,14 @@ class LinkModel(HTMLParser):
         for node in reversed(nodes):
             attrs, text = node['attrs'], re.sub(r'\s+', ' ', node['text']).strip()
             ident = attrs.get('id')
+            part = set(attrs.get('class', '').split()) & {'toc-number', 'toc-label', 'toc-page'}
+            if ident and node['tag'] == 'span' and part:
+                parent = next((n for n in reversed(self.stack) if n['tag'] == 'a'), None)
+                # The containing anchor can be in this same closing group.
+                parent = parent or next((n for n in nodes if n['tag'] == 'a'), None)
+                if parent and parent['attrs'].get('id'):
+                    self.toc_parts.append({'id': ident, 'source': parent['attrs']['id'],
+                                           'part': next(iter(part)), 'label': text})
             if ident and node['tag'] in ('h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'span', 'caption', 'figcaption'):
                 self.targets[ident] = text
             if node['tag'] == 'a' and attrs.get('href', '').startswith('#') and not node['hidden']:
@@ -77,8 +87,9 @@ def instrument_html(html):
     html = re.sub(r'<a\b[^>]*>', identify, html)
     model = LinkModel()
     model.feed(html)
-    references = ''.join(f'<a style="display:none" href="#{escape(link["source"], quote=True)}" '
-                         'aria-hidden="true"></a>' for link in model.links)
+    anchors = [link['source'] for link in model.links] + [part['id'] for part in model.toc_parts]
+    references = ''.join(f'<a style="display:none" href="#{escape(ident, quote=True)}" '
+                         'aria-hidden="true"></a>' for ident in anchors)
     index = '<div hidden aria-hidden="true" data-ae-navigation-index="1">' + references + '</div>'
     if '</body>' not in html:
         raise ValueError('HTML completo é obrigatório para preparar a navegação PDF')
@@ -128,8 +139,9 @@ def link_plan(html, required, pages=None):
         actual['role'] = edge['role']
     if errors:
         raise ValueError('\n'.join(errors))
-    return {'version': 1, 'links': [{**link, 'role': link.get('role', 'reference')} for link in model.links],
-            'targets': model.targets, 'toc_pages': pages or {}}
+    version = 2 if model.toc_parts or any(e['role'] == 'toc' for e in required) else 1
+    return {'version': version, 'links': [{**link, 'role': link.get('role', 'reference')} for link in model.links],
+            'targets': model.targets, 'toc_pages': pages or {}, 'toc_parts': model.toc_parts}
 
 
 def _point(doc, name):
@@ -145,13 +157,32 @@ def _point(doc, name):
     return page, point
 
 
-def audit_pdf_links(path, plan):
+def audit_pdf_links(path, plan, require_explicit=False):
     import pymupdf as fitz
     errors, checks, claimed = [], [], set()
     with fitz.open(path) as doc:
         names = pdf_names(doc)
         links = [(i, link) for i, page in enumerate(doc) for link in page.get_links()
                  if link['kind'] in (fitz.LINK_GOTO, fitz.LINK_NAMED)]
+        text_pages, page_objects = {}, {}
+
+        def page_object(page):
+            if page not in page_objects:
+                page_objects[page] = doc[page]
+            return page_objects[page]
+
+        def textpage(page):
+            if page not in text_pages:
+                text_pages[page] = page_object(page).get_textpage()
+            return text_pages[page]
+
+        def textbox(page, rect):
+            return page_object(page).get_textbox(rect, textpage=textpage(page))
+
+        if require_explicit:
+            for page, link in links:
+                if link['kind'] != fitz.LINK_GOTO or link.get('nameddest'):
+                    errors.append(f'Link interno sem destino direto de página: página {page + 1}, xref {link["xref"]}')
         # Chrome's named destinations omit the CSS print margin. Derive the translation
         # from a unique visible TOC label, independently of its target, rather than hardcode it.
         offset = None
@@ -160,7 +191,7 @@ def audit_pdf_links(path, plan):
                 continue
             page, point = _point(doc, names[edge['source']])
             matches = [link for i, link in links if i == page
-                       and compact(doc[i].get_textbox(link['from'])) == compact(edge['label'])]
+                       and compact(textbox(i, link['from'])) == compact(edge['label'])]
             if len(matches) == 1:
                 offset = fitz.Point(matches[0]['from'].x0 - point.x, matches[0]['from'].y0 - point.y)
                 break
@@ -199,14 +230,14 @@ def audit_pdf_links(path, plan):
                     for i, candidate in links:
                         if i != page or abs(candidate['from'].y0 - point.y) > 2:
                             continue
-                        prefix = compact(doc[page].get_textbox(candidate['from']))
+                        prefix = compact(textbox(page, candidate['from']))
                         if not prefix or not label.startswith(prefix) or prefix == label:
                             continue
                         tails = [tail for j, tail in links if j == page
                                  and 0 < tail['from'].y0 - point.y <= 72
                                  and abs(tail['from'].x0 - point.x) <= 2
-                                 and compact(doc[j].get_textbox(tail['from'])) in label[len(prefix):]
-                                 and compact(doc[j].get_textbox(tail['from']))
+                                 and compact(textbox(j, tail['from'])) in label[len(prefix):]
+                                 and compact(textbox(j, tail['from']))
                                  and destination_matches(tail, target)]
                         if tails:
                             candidates.append(candidate)
@@ -215,7 +246,7 @@ def audit_pdf_links(path, plan):
                     errors.append(f'Link sem área clicável: {source}')
                     continue
                 link = candidates[0]
-                visible = compact(doc[page].get_textbox(link['from']))
+                visible = compact(textbox(page, link['from']))
                 intended = compact(edge['label'])
                 if intended and (not visible or not (intended in visible or intended.startswith(visible))):
                     errors.append(f'Área clicável não corresponde ao rótulo: {source}')
@@ -233,7 +264,7 @@ def audit_pdf_links(path, plan):
         for page, link in links:
             if (page, link['xref']) in claimed:
                 continue
-            fragment = compact(doc[page].get_textbox(link['from']))
+            fragment = compact(textbox(page, link['from']))
             matched = False
             for edge in plan['links']:
                 if edge['source'] not in positions or edge['target'] not in names:
@@ -263,7 +294,8 @@ def audit_pdf_links(path, plan):
                 continue
             physical = point + offset
             if expected_text:
-                lines = [line for block in doc[page].get_text('dict')['blocks'] for line in block.get('lines', [])]
+                lines = [line for block in page_object(page).get_text('dict', textpage=textpage(page))['blocks']
+                         for line in block.get('lines', [])]
                 nearby = [line for line in lines if physical.y - 3 <= line['bbox'][1] <= physical.y + 80]
                 beginnings = [i for i, line in enumerate(nearby) if line['bbox'][1] <= physical.y + 32]
                 found = any(compact(expected_text) in compact(''.join(span['text'] for line in nearby[i:i+4]
@@ -273,16 +305,148 @@ def audit_pdf_links(path, plan):
         for target, number in plan.get('toc_pages', {}).items():
             if target not in names or names[target]['page'] + 1 != number:
                 errors.append(f'Página do sumário diverge do PDF: {target}')
+
+        toc_checks = []
+        if plan.get('version', 1) >= 2:
+            for edge in (e for e in plan['links'] if e['role'] == 'toc'):
+                parts = [part for part in plan.get('toc_parts', []) if part['source'] == edge['source']]
+                if {p['part'] for p in parts} != {'toc-number', 'toc-label', 'toc-page'} or len(parts) != 3:
+                    errors.append(f'Sumário sem número, título e página verificáveis: {edge["source"]}')
+                    continue
+                rectangles = []
+                source_page = positions.get(edge['source'], (-1, None))[0]
+                for part in parts:
+                    if part['id'] not in names or not part['label']:
+                        errors.append(f'Componente do sumário ausente: {part["id"]}')
+                        continue
+                    page, point = _point(doc, names[part['id']])
+                    point += offset
+                    if page != source_page:
+                        errors.append(f'Componente do sumário em outra página: {part["id"]}')
+                        continue
+                    hits = page_object(page).search_for(part['label'], textpage=textpage(page))
+                    starts = [(i, box) for i, box in enumerate(hits)
+                              if point.x - 2 <= box.x0 <= point.x + 28
+                              and point.y - 3 <= box.y0 <= point.y + 24]
+                    if not starts:
+                        errors.append(f'Texto do componente do sumário não localizado: {part["id"]}')
+                        continue
+                    index, _ = min(starts, key=lambda item: abs(item[1].x0-point.x)+abs(item[1].y0-point.y))
+                    found, fragment_text = [], ''
+                    for box in hits[index:]:
+                        if box.y0 > point.y + 72:
+                            break
+                        found.append(box)
+                        fragment_text += compact(textbox(page, box))
+                        if compact(part['label']) in fragment_text:
+                            break
+                    if compact(part['label']) not in fragment_text:
+                        errors.append(f'Texto incompleto no componente do sumário: {part["id"]}')
+                        continue
+                    rectangles.extend(found)
+                if len(rectangles) < 3:
+                    continue
+                # Require a continuous click interval across the entire row, including
+                # the dotted leader, rather than accepting just its first text fragment.
+                left, right = min(r.x0 for r in rectangles), max(r.x1 for r in rectangles)
+                candidates = [link for page, link in links if page == source_page
+                              and destination_matches(link, edge['target'])]
+                covered = True
+                for box in rectangles:
+                    y = (box.y0 + box.y1) / 2
+                    intervals = sorted((r['from'].x0, r['from'].x1) for r in candidates
+                                       if r['from'].y0-1 <= y <= r['from'].y1+1)
+                    end = left
+                    for start, stop in intervals:
+                        if start > end + 1:
+                            break
+                        end = max(end, stop)
+                    if end < right - 1:
+                        covered = False
+                if not covered:
+                    errors.append(f'Sumário sem área clicável contínua em número/título/página: {edge["source"]}')
+                toc_checks.append({'source': edge['source'], 'target': edge['target'],
+                                   'parts': 3, 'full_row_clickable': covered})
         return {'passed': not errors, 'errors': errors, 'checked': checks,
                 'internal_annotations': len(links), 'coordinate_offset_pt': list(offset),
                 'checked_click_areas': len(claimed),
+                'toc_rows': toc_checks, 'explicit_destinations_required': require_explicit,
                 'pdf_sha256': sha256(path.read_bytes()).hexdigest()}
+
+
+def finalize_pdf_destinations(path, plan):
+    """Keep PDF tags/appearance and replace legacy named links by explicit GoTo/XYZ.
+
+    Correct Chrome's print-margin translation in the destination dictionary too,
+    so outlines and the audit source anchors use the same physical coordinates.
+    Validate existing routes first: normalization must never hide a wrong link.
+    """
+    import pymupdf as fitz
+    path = Path(path)
+    before = audit_pdf_links(path, plan)
+    if not before['passed']:
+        raise ValueError('Navegação antes da normalização: ' + '\n'.join(before['errors']))
+    offset = fitz.Point(before['coordinate_offset_pt'])
+    if abs(offset.x) < .01 and abs(offset.y) < .01:
+        offset = fitz.Point(0, 0)
+    temporary = path.with_name(path.name + '.native.tmp.pdf')
+    try:
+        with fitz.open(path) as doc:
+            links = [link for page in doc for link in page.get_links()
+                     if link['kind'] in (fitz.LINK_GOTO, fitz.LINK_NAMED)]
+            named = [link for link in links if link.get('nameddest')]
+            if not named and not abs(offset):
+                return {'rewritten_links': 0, 'coordinate_translation_pt': [0, 0]}
+            if doc.is_encrypted:
+                raise ValueError('Não é possível normalizar PDF criptografado')
+            kind, ref = doc.xref_get_key(doc.pdf_catalog(), 'Dests')
+            if kind != 'xref' or doc.xref_get_key(doc.pdf_catalog(), 'Names')[0] != 'null':
+                raise ValueError('Motor PDF com estrutura de destinos não suportada; atualizar contrato e testes')
+            dest_xref = int(ref.split()[0])
+            names, arrays = pdf_names(doc), {}
+
+            def name_token(value):
+                # xref_set_key interprets '/' as a path and rejects '%' in a key.
+                # Encode PDF names directly, preserving Chrome's percent-encoded IDs.
+                return '/' + ''.join(chr(b) if 33 <= b <= 126 and chr(b) not in '#%()/<>[]{}'
+                                     else f'#{b:02X}' for b in value.encode('utf-8'))
+
+            entries = []
+            for raw in doc.xref_get_keys(dest_xref):
+                name = unquote(raw)
+                page, point = _point(doc, names[name])
+                physical = point + offset
+                if not (doc[page].rect + (-1, -1, 1, 1)).contains(physical):
+                    raise ValueError('Destino corrigido fora da página: ' + name)
+                pdf_point = physical * ~doc[page].transformation_matrix
+                value = f'[{doc.page_xref(page)} 0 R /XYZ {pdf_point.x:.6f} {pdf_point.y:.6f} 0]'
+                arrays[name] = value
+                entries.append(name_token(raw) + ' ' + value)
+            doc.update_object(dest_xref, '<<\n' + '\n'.join(entries) + '\n>>')
+            for link in links:
+                if link.get('nameddest'):
+                    destination = arrays[unquote(link['nameddest'])]
+                else:
+                    page = link['page']
+                    point = (fitz.Point(link['to']) + offset) * ~doc[page].transformation_matrix
+                    destination = f'[{doc.page_xref(page)} 0 R /XYZ {point.x:.6f} {point.y:.6f} 0]'
+                # Retain Rect, StructParent, accessibility tags and appearance.
+                doc.xref_set_key(link['xref'], 'Dest', destination)
+                doc.xref_set_key(link['xref'], 'A', 'null')
+            doc.save(temporary, garbage=0, no_new_id=True)
+        after = audit_pdf_links(temporary, plan, require_explicit=True)
+        if not after['passed']:
+            raise ValueError('Navegação após normalização: ' + '\n'.join(after['errors']))
+        temporary.replace(path)
+        return {'rewritten_links': len(links), 'coordinate_translation_pt': list(offset)}
+    finally:
+        temporary.unlink(missing_ok=True)
 
 
 def navigation_manifest(html_path, pdf_path, required, pages):
     html = html_path.read_text(encoding='utf-8')
     plan = link_plan(html, required, pages)
-    audit = audit_pdf_links(pdf_path, plan)
-    return {'version': 1, 'html_file': html_path.name, 'pdf_file': pdf_path.name,
+    audit = audit_pdf_links(pdf_path, plan, require_explicit=True)
+    return {'version': 2, 'html_file': html_path.name, 'pdf_file': pdf_path.name,
             'html_sha256': sha256(html_path.read_bytes()).hexdigest(),
             'pdf_sha256': sha256(pdf_path.read_bytes()).hexdigest(), 'plan': plan, 'audit': audit}

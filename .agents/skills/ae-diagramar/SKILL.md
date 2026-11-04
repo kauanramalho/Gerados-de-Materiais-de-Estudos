@@ -1,7 +1,7 @@
 ---
 name: ae-diagramar
 description: Montar apostilas e cadernos navegáveis em HTML e PDF.
-version: 0.6.0
+version: 0.7.0
 ---
 
 # Montar apostilas e cadernos navegáveis em HTML e PDF
@@ -26,6 +26,7 @@ Capítulos, questões, figuras, metadados e padrões visuais. Consulte AGENTS.md
 7. Usar --kind simulado ou revisao com os planos próprios para esses formatos. Executar acessibilidade.py nos artefatos finais e conferir tags PDF e nomes acessíveis de SVGs; registrar limites, sem presumir certificação PDF/UA.
 8. Em entrega final de concurso, exigir pedido.json vinculado e usar --check --final e --pdf --final; acrescentar --kind do formato quando pertinente. Não impor limite artificial de páginas nem reduzir fonte para encurtar. Pilotos sem --final são referências e não demonstram cobertura do pedido completo.
 9. A pré-validação requer Pandoc e lê as imagens com o mesmo parser da exportação: capítulos, revisão, contexto, perfil e questões. Declarar todas em figuras.json, mesmo quando usadas apenas no caderno ou revisão. Usar arquivos dentro da pasta e SVGs independentes; não contornar a validação por sintaxe de referência ou recursos aninhados. Se o inventário mudar, recarregar o manifesto antes de publicar.
+10. Sumário 100% clicável é obrigatório nos quatro formatos: número, título, pontilhado/espaços e página, em toda entrada. O exportador normaliza destinos diretos PDF /XYZ e confere componentes e área contínua da linha. Conferir o manifesto versão 2 do mesmo hash, preservar edição anterior e recusar qualquer falha; não tratar esse requisito como opção. Quando o motor mudar, testar também um visualizador PDF independente e registrar a versão e os cliques realmente realizados, distinguindo-os dos cliques HTML.
 
 ## Saídas
 

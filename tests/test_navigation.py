@@ -12,7 +12,7 @@ from urllib.error import HTTPError
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts'))
 from contents import render_contents, pdf_contents_pages, pdf_names
-from navigation import instrument_html, link_plan, required_edges, audit_pdf_links
+from navigation import instrument_html, link_plan, required_edges, audit_pdf_links, finalize_pdf_destinations
 from external_links import check_url, check_external
 from audit_links import inspect_pdf
 
@@ -32,6 +32,7 @@ def fixture():
     .toc-leader{flex:1}.toc-subsections{margin-bottom:12px}li{margin-bottom:8px}
     </style></head><body><nav id="TOC"></nav>
     <section><h1 id="theory-a">1 Teoria A</h1><p>Primeiro conceito.</p>
+    <a href="https://example.org/reference">Referência externa</a>
     <p style="width:150px"><span style="display:inline-block;width:100px"></span><a id="wrapped-reference" href="#teoria-ação">Fonte complementar</a></p>
     <div class="space"></div>
     <h1 id="teoria-ação">2 Teoria B</h1><p>Segundo conceito na mesma página.</p></section>
@@ -85,7 +86,8 @@ class HTMLNavigationTests(unittest.TestCase):
     def test_stale_toc_page_is_rejected_even_when_target_exists(self):
         pages = {e['target']: 2 for e in self.entries}
         rendered = render_contents(self.html, self.entries, pages)
-        bad = rendered.replace('<span class="toc-page">2</span>', '<span class="toc-page">9</span>', 1)
+        bad = re.sub(r'(<span class="toc-page"[^>]*>)2(</span>)', r'\g<1>9\2', rendered, count=1)
+        self.assertNotEqual(bad, rendered)
         with self.assertRaisesRegex(ValueError, 'página de sumário incorreto'):
             link_plan(bad, self.required, pages)
 
@@ -129,7 +131,7 @@ class PDFNavigationTests(unittest.TestCase):
                 for _ in range(4):
                     final = render_contents(html, cls.entries, pages)
                     page.set_content(final)
-                    page.pdf(path=str(cls.pdf), format='A4', prefer_css_page_size=True)
+                    page.pdf(path=str(cls.pdf), format='A4', prefer_css_page_size=True, tagged=True, outline=True)
                     actual = pdf_contents_pages(cls.pdf, cls.entries)
                     if actual == pages:
                         break
@@ -173,6 +175,109 @@ class PDFNavigationTests(unittest.TestCase):
         result = audit_pdf_links(self.pdf, self.plan)
         self.assertTrue(result['passed'], result['errors'])
         self.assertEqual(len(result['checked']), 15)
+        self.assertEqual(len(result['toc_rows']), len(self.entries))
+        self.assertTrue(all(row['parts'] == 3 and row['full_row_clickable'] for row in result['toc_rows']))
+
+    def test_large_page_numbers_stay_on_one_line_in_the_production_layout(self):
+        from playwright.sync_api import sync_playwright
+        css = (Path(__file__).resolve().parents[1] / 'styles/apostila.css').read_text()
+        html, entries, _ = fixture()
+        html = render_contents(html, entries, {e['target']: 12345 for e in entries})
+        html = html.replace('</head>', '<style>' + css + '</style></head>')
+        with sync_playwright() as pw:
+            executable = shutil.which('chromium') or shutil.which('google-chrome') or pw.chromium.executable_path
+            browser = pw.chromium.launch(executable_path=executable, headless=True, args=['--no-sandbox'])
+            try:
+                page = browser.new_page()
+                page.emulate_media(media='print')
+                page.set_content(html)
+                results = page.locator('.toc-page').evaluate_all('''items => items.map(item => {
+                    const range = document.createRange(); range.selectNodeContents(item);
+                    const rectangles = Array.from(range.getClientRects());
+                    const row = item.closest('a').getBoundingClientRect();
+                    return {lines: rectangles.length, inside: rectangles.every(r => r.left >= row.left && r.right <= row.right + 1)};
+                })''')
+                self.assertEqual(len(results), len(entries))
+                self.assertTrue(all(r['lines'] == 1 and r['inside'] for r in results), results)
+            finally:
+                browser.close()
+
+    def test_toc_page_number_cannot_be_outside_the_click_area(self):
+        path = self.root / 'toc-page-not-clickable.pdf'
+        offset = self.fitz.Point(audit_pdf_links(self.pdf, self.plan)['coordinate_offset_pt'])
+        with self.fitz.open(self.pdf) as doc:
+            names = pdf_names(doc)
+            page = doc[names['toc-theory-a']['page']]
+            link = next(l for l in page.get_links() if l.get('nameddest') == 'theory-a')
+            point = self.fitz.Point(names['toc-theory-a-page']['to']) * page.transformation_matrix + offset
+            rect = self.fitz.Rect(link['from']);rect.x1 = point.x - 3
+            bottom_left = self.fitz.Point(rect.x0, rect.y1) * ~page.transformation_matrix
+            top_right = self.fitz.Point(rect.x1, rect.y0) * ~page.transformation_matrix
+            doc.xref_set_key(link['xref'], 'Rect', f'[{bottom_left.x} {bottom_left.y} {top_right.x} {top_right.y}]')
+            doc.save(path)
+        result = audit_pdf_links(path, self.plan)
+        self.assertFalse(result['passed'])
+        self.assertTrue(any('Sumário sem área clicável contínua' in e for e in result['errors']), result['errors'])
+
+    def test_toc_gap_is_clickable_even_when_all_three_text_parts_have_links(self):
+        path = self.root / 'toc-leader-not-clickable.pdf'
+        with self.fitz.open(self.pdf) as doc:
+            names = pdf_names(doc);page = doc[names['toc-theory-a']['page']]
+            link = next(l for l in page.get_links() if l.get('nameddest') == 'theory-a')
+            rect = link['from'];dest = names['theory-a']
+            point = self.fitz.Point(dest['to']) * doc[dest['page']].transformation_matrix
+            page.delete_link(link)
+            for area in [self.fitz.Rect(rect.x0, rect.y0, 220, rect.y1),
+                         self.fitz.Rect(460, rect.y0, rect.x1, rect.y1)]:
+                page.insert_link({'kind': self.fitz.LINK_GOTO, 'from': area, 'page': dest['page'], 'to': point})
+            doc.save(path)
+        result = audit_pdf_links(path, self.plan)
+        self.assertFalse(result['passed'])
+        self.assertTrue(any('Sumário sem área clicável contínua' in e for e in result['errors']), result['errors'])
+
+    def test_normalization_keeps_appearance_tags_outlines_external_urls_and_unicode_routes(self):
+        path = self.root / 'portable.pdf';shutil.copy2(self.pdf, path)
+        with self.fitz.open(path) as doc:
+            words = [p.get_text('words') for p in doc]
+            streams = [[doc.xref_stream(x) for x in p.get_contents()] for p in doc]
+            outlines = doc.get_toc()
+            uris = [l['uri'] for p in doc for l in p.get_links() if l['kind'] == self.fitz.LINK_URI]
+            self.assertEqual(doc.xref_get_key(doc.pdf_catalog(), 'StructTreeRoot')[0], 'xref')
+        report = finalize_pdf_destinations(path, self.plan)
+        self.assertGreaterEqual(report['rewritten_links'], len(self.plan['links']))
+        audit = audit_pdf_links(path, self.plan, require_explicit=True)
+        self.assertTrue(audit['passed'], audit['errors'])
+        self.assertEqual(audit['coordinate_offset_pt'], [0, 0])
+        with self.fitz.open(path) as doc:
+            self.assertEqual(words, [p.get_text('words') for p in doc])
+            self.assertEqual(streams, [[doc.xref_stream(x) for x in p.get_contents()] for p in doc])
+            self.assertEqual(outlines, doc.get_toc())
+            self.assertEqual(uris, [l['uri'] for p in doc for l in p.get_links() if l['kind'] == self.fitz.LINK_URI])
+            self.assertEqual(doc.xref_get_key(doc.pdf_catalog(), 'StructTreeRoot')[0], 'xref')
+            self.assertIn('teoria-ação', pdf_names(doc))
+            self.assertTrue(all(l['kind'] == self.fitz.LINK_GOTO and not l.get('nameddest')
+                                for p in doc for l in p.get_links() if l['kind'] != self.fitz.LINK_URI))
+
+    def test_normalization_is_idempotent(self):
+        path = self.root / 'idempotent.pdf';shutil.copy2(self.pdf, path)
+        finalize_pdf_destinations(path, self.plan);before = sha256(path.read_bytes()).hexdigest()
+        report = finalize_pdf_destinations(path, self.plan)
+        self.assertEqual(report['rewritten_links'], 0)
+        self.assertEqual(before, sha256(path.read_bytes()).hexdigest())
+
+    def test_normalization_does_not_repair_or_mask_a_wrong_route(self):
+        path = self.mutate('nav-q-aut-001-answer', 'res-q-aut-002')
+        before = sha256(path.read_bytes()).hexdigest()
+        with self.assertRaisesRegex(ValueError, 'Navegação antes da normalização'):
+            finalize_pdf_destinations(path, self.plan)
+        self.assertEqual(before, sha256(path.read_bytes()).hexdigest())
+
+    def test_new_export_contract_rejects_legacy_named_annotations(self):
+        manifest = json.loads(self.manifest.read_text());manifest['version'] = 2
+        path = self.root / 'explicit-required.json';path.write_text(json.dumps(manifest))
+        result = inspect_pdf(self.pdf, path)
+        self.assertFalse(result['navigation']['passed'])
+        self.assertTrue(any('sem destino direto' in e for e in result['navigation']['errors']))
 
     def test_wrapped_reference_checks_every_clickable_fragment(self):
         result = audit_pdf_links(self.pdf, self.plan)

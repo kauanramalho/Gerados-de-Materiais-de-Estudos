@@ -22,7 +22,7 @@ def inspect_pdf(pdf, manifest_path=None, browser=False):
     html = manifest_path.parent / html_name
     if sha256(html.read_bytes()).hexdigest() != manifest['html_sha256']:
         raise ValueError(f'{html.name}: hash do HTML diverge da exportação auditada')
-    result = audit_pdf_links(pdf, manifest['plan'])
+    result = audit_pdf_links(pdf, manifest['plan'], require_explicit=manifest.get('version', 1) >= 2)
     with fitz.open(pdf) as document:
         external = [link['uri'] for page in document for link in page.get_links() if link['kind'] == fitz.LINK_URI]
     report = {'pdf': str(pdf), 'navigation': result, 'external_urls': external}

@@ -6,7 +6,7 @@ import shutil
 import subprocess
 from integrity import validate_questions, validate_navigation
 from contents import contents_entries, render_contents, pdf_contents_pages
-from navigation import instrument_html, required_edges, link_plan, navigation_manifest
+from navigation import instrument_html, required_edges, link_plan, navigation_manifest, finalize_pdf_destinations
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -117,6 +117,7 @@ def main():
             raise SystemExit('Falha do Chromium/Playwright. HTML preservado; exportação PDF pendente.')
         if not pdf.is_file() or pdf.stat().st_size < 1000:
             raise SystemExit('Falha ao exportar PDF; confira Chromium e o HTML gerado.')
+        finalize_pdf_destinations(pdf, link_plan(output.read_text(encoding='utf-8'), required, pages))
         navigation = navigation_manifest(output, pdf, required, pages)
         (build / 'amostra-navigation.json').write_text(json.dumps(navigation, ensure_ascii=False, indent=2), encoding='utf-8')
         if not navigation['audit']['passed']:

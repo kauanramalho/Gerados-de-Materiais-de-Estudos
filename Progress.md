@@ -1,6 +1,6 @@
 # Progresso — Ateliê de Estudos
 
-- **Estado:** active — desenvolvimento técnico 0.6 entregue; produção CRECI-ES validada; avaliação pelo leitor em acompanhamento.
+- **Estado:** active — desenvolvimento técnico 0.7 entregue; produção CRECI-ES revisada em navegação; avaliação pelo leitor em acompanhamento.
 - **Prioridade no portfólio:** unassigned.
 - **Data do estado:** 2026-11-04.
 - **Próxima ação:** registrar tentativa e retorno real do leitor sobre clareza, aprendizagem e dificuldade (AE-009), agora também com a edição CRECI-ES; confirmar a fonte primária da alteração Cofeci 1573/2026 quando acessível.
@@ -8,6 +8,14 @@
 - **Condição técnica atendida:** AE-026/027 corrigidos, caso escolhido com cobertura integral da matéria e aplicação delimitada das 17 skills.
 - **Condição ainda aberta para encerrar a avaliação do projeto:** retorno real do leitor; aprovação visual anterior não substitui essa avaliação.
 - **GitHub:** [repositório público do titular](https://github.com/kauanramalho/Gerados-de-Materiais-de-Estudos), com histórico inicial preservado. O relatório de cada publicação registra o SHA e a CI efetivamente conferidos.
+
+## Revisão de navegação 0.7 — 04/11/2026
+
+O sumário inteiro clicável tornou-se condição automática de entrega em apostila, caderno, simulado e revisão: número, título, pontilhado/espaços e página. Destinos PDF diretos /XYZ e manifesto versão 2 permitem reauditar os mesmos bytes; páginas fora da área ativa, lacunas no pontilhado e destinos errados bloqueiam a exportação. A coluna de páginas impede quebra de dígitos em materiais longos, sem redesenhar o padrão aprovado.
+
+A edição CRECI-ES **1.0.1** preservou **325 e 194 páginas**, conteúdo, questões, figuras e fontes. Os **210 itens dos sumários** passaram por cliques reais no **PDF.js 6.5.438**, separados da auditoria estrutural dos **1.775 links internos PDF**. A suíte passou em **150 testes**; novas regressões incluem área parcial, intervalo sem link, conversão idempotente, Unicode, preservação de tags/desenho e números longos sem quebra. Comparação de palavras/coordenadas confirmou o corpo inalterado; diferenças visuais ficaram em quatro páginas do sumário da apostila e uma do caderno, além do identificador de edição. Edição anterior e relatórios por hash foram preservados no pacote privado.
+
+O contrato é permanente; cada novo arquivo continua exigindo sua própria auditoria antes da entrega. Ver [navegação](docs/navegacao.md) e D017. A mudança não encerra a avaliação pedagógica AE-009.
 
 ## Produção CRECI-ES — 04/11/2026
 
