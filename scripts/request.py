@@ -90,7 +90,8 @@ def request_errors(value, inventory=None):
             continue
         if name in ('identificacao', 'edital', 'banca', 'fontes-conteudo') and row['estado'] != 'verificado':
             errors.append('Pesquisa essencial não confirmada: ' + name)
-        if name in ('retificacoes', 'provas-alvo', 'provas-relacionadas') and row['estado'] not in ('verificado', 'nao-localizado'):
+        allowed_search_states = ('verificado', 'nao-localizado', 'nao-publicado') if name == 'provas-alvo' else ('verificado', 'nao-localizado')
+        if name in ('retificacoes', 'provas-alvo', 'provas-relacionadas') and row['estado'] not in allowed_search_states:
             errors.append('Pesquisa precisa de consulta registrada: ' + name)
         if row['estado'] != 'nao-aplicavel' and not row['evidencias']:
             errors.append('Pesquisa sem evidência: ' + name)

@@ -1,6 +1,7 @@
 import json
 from pathlib import Path
 import shutil
+import subprocess
 import sys
 import tempfile
 import unittest
@@ -8,6 +9,8 @@ import unittest
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts'))
 from material import load_material, compose_material, local_path
 from check_sql import check_cases
+from contents import contents_entries
+from integrity import validate_navigation
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -67,6 +70,43 @@ class MaterialTests(unittest.TestCase):
         for q in data['questions']:
             self.assertIn(f'](#res-{q["id"].lower()})', text)
             self.assertIn(f'](#{q["id"].lower()})', text)
+
+    def test_official_zip_is_download_link_without_fake_pdf_page_jump(self):
+        data = load_material(self.folder / 'material.json')
+        source = data['questions'][0]['fonte_original']
+        source['prova_url'] = 'https://example.org/PROVAS.ZIP?download=1'
+        text = compose_material(data, 'caderno')
+        self.assertIn('[Baixar arquivo oficial de provas (ZIP)](https://example.org/PROVAS.ZIP?download=1)', text)
+        self.assertNotIn('PROVAS.ZIP?download=1#page=', text)
+        self.assertIn('Extraia o ZIP', text)
+
+    def test_official_pdf_keeps_page_deep_link(self):
+        data = load_material(self.folder / 'material.json')
+        source = data['questions'][0]['fonte_original']
+        source['prova_url'] = 'https://example.org/prova.pdf'
+        source['pagina'] = '7'
+        text = compose_material(data, 'caderno')
+        self.assertIn('[Abrir questão na prova oficial](https://example.org/prova.pdf#page=7)', text)
+
+    def test_question_ids_keep_destinations_without_filling_the_book_contents(self):
+        data = load_material(self.folder / 'material.json')
+        data['request'] = {
+            'concurso': dict(orgao='Órgão de teste', cargo='Cargo', ano=2026, banca='Fixture'),
+            'programa': [dict(id=obj, materia='Matéria de treino')
+                         for obj in {q['objetivo'] for q in data['questions']}],
+        }
+        text = compose_material(data, 'caderno')
+        html = subprocess.run(['pandoc', '--from=markdown-raw_html', '--to=html', '--standalone',
+                               '--toc', '--toc-depth=2', '--number-sections'],
+                              input=text, text=True, capture_output=True, check=True).stdout
+        targets = {entry['target'] for entry in contents_entries(html)}
+        self.assertIn('questoes-autorais-disciplina-1', targets)
+        self.assertIn('gabarito-comentado', targets)
+        for q in data['questions']:
+            anchor = q['id'].lower()
+            self.assertNotIn(anchor, targets)
+            self.assertNotIn('res-' + anchor, targets)
+        self.assertEqual(validate_navigation(html, data['questions']), [])
 
     def test_sql_counterexamples_and_constraints_pass(self):
         result = check_cases(self.folder / 'verificacoes.json')

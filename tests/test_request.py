@@ -54,6 +54,23 @@ class RequestTests(unittest.TestCase):
         self.request['tipo'] = 'caderno'
         self.assertEqual(scope_errors(self.data, 'caderno', final=True), [])
 
+    def test_target_exam_not_yet_published_needs_evidence_and_explicit_limit(self):
+        stage = next(r for r in self.request['pesquisa'] if r['etapa'] == 'provas-alvo')
+        stage['estado'] = 'nao-publicado'
+        self.request['lacunas'] = ['Prova futura; publicação ainda não ocorreu na consulta.']
+        self.assertEqual(self.errors(), '')
+        stage['evidencias'] = []
+        self.assertIn('Pesquisa sem evidência: provas-alvo', self.errors())
+        stage['evidencias'] = [dict(referencia='https://concurso.example/cronograma.pdf', localizador='fixture', conferido_em=date.today().isoformat(), oficial=True)]
+        self.request['lacunas'] = []
+        self.assertIn('limitação explícita', self.errors())
+
+    def test_not_published_does_not_waive_retification_search(self):
+        stage = next(r for r in self.request['pesquisa'] if r['etapa'] == 'retificacoes')
+        stage['estado'] = 'nao-publicado'
+        self.request['lacunas'] = ['Fixture.']
+        self.assertIn('Pesquisa precisa de consulta registrada: retificacoes', self.errors())
+
     def test_bare_text_is_accepted_without_inventing_identity(self):
         request = initial_request('novo', 'Quero a apostila do concurso X.', 'apostila')
         self.assertIsNone(request['concurso']['banca'])

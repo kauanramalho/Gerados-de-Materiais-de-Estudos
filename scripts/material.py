@@ -217,16 +217,29 @@ def compose_material(data, kind='apostila'):
         if not selected:
             continue
         parts += [f'# {label} {{#{anchor}}}']
+        subject_by_objective = {item['id']: item['materia'] for item in (data.get('request') or {}).get('programa', [])}
+        last_subject, subject_number = None, 0
         for q in selected:
+            subject = subject_by_objective.get(q['objetivo'])
+            if category == 'AUTORAL' and subject and subject != last_subject:
+                subject_number += 1
+                parts += [f'## {subject} {{#{anchor}-disciplina-{subject_number}}}']
+                last_subject = subject
             qanchor = q['id'].lower()
-            parts += ['::: {.question}', f'## {q["id"]} {{#{qanchor}}}']
+            parts += ['::: {.question}', f'## {q["id"]} {{#{qanchor} .unnumbered .unlisted}}']
             if q['origem'] == 'AUTORAL':
                 parts += [f'**Autoral · dificuldade {q["dificuldade"].replace("estimada-", "")} (estimativa editorial).**']
             if q['origem'] != 'AUTORAL':
                 source = q['fonte_original']
+                archive = urlparse(source['prova_url']).path.lower().endswith('.zip')
+                proof_link = (f'[Baixar arquivo oficial de provas (ZIP)]({source["prova_url"]})'
+                              if archive else
+                              f'[Abrir questão na prova oficial]({source["prova_url"]}#page={source["pagina"]})')
                 parts += [f'**{q["origem"]} · {source["banca"]} · {source["orgao"]} {source["ano"]} · '
                           f'{source["caderno"]}, questão {source["numero"]}, página {source["pagina"]}.**',
-                          f'[Abrir questão na prova oficial]({source["prova_url"]}#page={source["pagina"]})',
+                          proof_link,
+                          *(['Extraia o ZIP e abra o caderno e a página identificados acima. '
+                             'Um arquivo ZIP não permite salto direto à página do PDF.'] if archive else []),
                           'O texto e as alternativas originais devem ser lidos na prova. '
                           'O comentário desta apostila é produzido pelo projeto.']
             if q['direitos'] != 'somente-link':
@@ -236,7 +249,7 @@ def compose_material(data, kind='apostila'):
     parts += ['# Gabarito comentado {#gabarito-comentado}']
     for q in questions:
         qanchor = q['id'].lower()
-        parts += ['::: {.solution}', f'## Resolução {q["id"]} {{#res-{qanchor}}}']
+        parts += ['::: {.solution}', f'## Resolução {q["id"]} {{#res-{qanchor} .unnumbered .unlisted}}']
         if q['origem'] == 'AUTORAL':
             parts += [f'**Resposta do projeto: {q["resposta"]}.**']
         else:
