@@ -1,13 +1,26 @@
 # Progresso — Ateliê de Estudos
 
-- **Estado:** active — desenvolvimento técnico 0.6 entregue; avaliação pelo leitor em acompanhamento.
+- **Estado:** active — desenvolvimento técnico 0.6 entregue; produção CRECI-ES validada; avaliação pelo leitor em acompanhamento.
 - **Prioridade no portfólio:** unassigned.
-- **Data do estado:** 2026-11-03.
-- **Próxima ação:** registrar tentativa e retorno real do leitor sobre clareza, aprendizagem e dificuldade (AE-009), usando o protocolo pronto.
+- **Data do estado:** 2026-11-04.
+- **Próxima ação:** registrar tentativa e retorno real do leitor sobre clareza, aprendizagem e dificuldade (AE-009), agora também com a edição CRECI-ES; confirmar a fonte primária da alteração Cofeci 1573/2026 quando acessível.
 - **Responsável:** agente pela produção, correções e documentação; titular pelo seu retorno de leitura.
 - **Condição técnica atendida:** AE-026/027 corrigidos, caso escolhido com cobertura integral da matéria e aplicação delimitada das 17 skills.
 - **Condição ainda aberta para encerrar a avaliação do projeto:** retorno real do leitor; aprovação visual anterior não substitui essa avaliação.
 - **GitHub:** [repositório público do titular](https://github.com/kauanramalho/Gerados-de-Materiais-de-Estudos), com histórico inicial preservado. O relatório de cada publicação registra o SHA e a CI efetivamente conferidos.
+
+## Produção CRECI-ES — 04/11/2026
+
+Pedido textual do titular: apostila de conteúdo e caderno de questões para PAS — Analista de T.I., código 407, Vitória, Edital 1/2026, banca Quadrix. Pesquisa iniciada em 03/11 e entrega verificada em 04/11. Todo o programa aplicável foi mapeado: **111 pontos de conhecimentos e uma exigência discursiva**, incluindo Inglês em substituição à informática comum.
+
+- Apostila de **325 páginas**, com **56 capítulos e 25 figuras originais**; caderno de **194 páginas**, com orientações, prática e comentários, sem capítulos expositivos.
+- **273 questões autorais**, incluindo seis propostas discursivas com modelo, e **40 referências reais** da Quadrix, com gabaritos definitivos conferidos por cargo. Direitos não confirmados: acesso ao original, sem transcrição de terceiros.
+- **143 testes**, 34 verificações de exemplos, 1.775 links internos PDF e 2.195 cliques no HTML correspondente aprovados; **60 URLs externas** responderam à checagem datada. Acessibilidade técnica passou com limites declarados; houve varredura de diagramação e ampliações amostradas.
+- Pacote privado preserva fontes normativas, Markdown/JSON/SVG, pedidos, snapshot das instruções, acervo e evidências por hash. Os PDFs enviados ao Drive foram baixados e comparados byte a byte.
+- O teste motivou correções: ZIP agora é download sem falso salto de página; prova-alvo futura aceita estado não publicado com evidência e ressalva; sumário lista disciplinas em vez de cada questão, mantendo os destinos e botões individuais.
+- Limites: o item 10.1 cita Cofen/Corens de forma incongruente; não foram inventados sistemas internos. A alteração Cofeci 1573/2026 foi corroborada em duas reproduções, com acesso primário indisponível. Não houve avaliação de aprendizagem do candidato ou calibração psicométrica.
+
+Os materiais deste pedido foram entregues em armazenamento privado do titular. O teste de produção não transforma a avaliação aberta AE-009 em aceite humano presumido.
 
 ## Resolução da auditoria 0.5
 

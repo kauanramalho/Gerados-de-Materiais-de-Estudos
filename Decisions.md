@@ -59,3 +59,7 @@
 ## D015 — 2026-11-03 — Caso real escolhido e aceite honesto
 
 **Decisão:** validar a matéria inteira Banco de Dados do Dataprev/FGV, Perfil 3, nos 17 itens do edital 001/2026. **Motivo:** escolha expressa do titular. **Consequência:** pedidos por texto e print de teste, pesquisa oficial, 17 capítulos e 49 questões; o print é renderização do edital pelo agente, não foto recebida do usuário. Aplicação das 17 skills e revisão editorial por IA são documentadas; AE-009 exige retorno real do leitor. **Revisar quando:** o retorno indicar falha ou uma nova seleção mudar o escopo.
+
+## D016 — 2026-11-04 — Arquivos de provas, sumário extenso e prova futura
+
+**Decisão:** identificar arquivos oficiais ZIP como download, mantendo PDF com salto de página; omitir itens individuais do sumário, preservando destinos de questões/resoluções e agrupamento por disciplina; admitir prova-alvo ainda não publicada apenas com consulta documentada e limitação. **Motivo:** a produção integral CRECI-ES revelou navegação enganosa de ZIP, excesso de entradas e rejeição indevida do estado previsto no esquema. **Consequência:** 143 testes locais, exportação dos dois materiais e auditorias dos arquivos finais; links externos seguem como observação datada. Itens reais continuam somente por acesso ao original sem permissão de reprodução confirmada. **Revisar quando:** nova banca usar outro tipo de arquivo ou o formato exigir outra organização, mantendo rotas e proveniência verificadas.
